@@ -156,6 +156,7 @@ Shuuangze Library - 霜泽图书馆(Discord区) ：https://discord.gg/7mxG9eMJx6
 - xc136(红与白组) - 提供相关变量对数计算教程
 - 皓尔纳 - 提供战术模板
 - Lilith Nightstar - 变量使用教程 (基础)
+- Saltfish - P语言：兼容性导论/P语言：从入门到弃坑 2025.1.12version
 
 >如因失误，未能将您的的名字（贡献者）添加至鸣谢者栏列当中，请到图书馆内联系我们！还望海涵，感谢！
 
