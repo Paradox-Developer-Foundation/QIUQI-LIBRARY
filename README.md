@@ -151,11 +151,12 @@ Shuuangze Library - 霜泽图书馆(Discord区) ：https://discord.gg/7mxG9eMJx6
 - Dream(帝国雄心组) - 提供常用代码提词器
 - 黑狗卫士 - 提供definition系列翻译文件
 - 洗不白の衣服(IRIS组) - 提供人物生成器网站
-- Phoebe - 更新MIO系列：第七次修改
+- Phoebe - 更新MIO系列：第七次修改，提供教程
 - 菜鸟 - 提供AI系列教程
 - xc136(红与白组) - 提供相关变量对数计算教程
 - 皓尔纳 - 提供战术模板
 - Lilith Nightstar - 变量使用教程 (基础)
+- Twisunshine Intelligent(FIL组) - 提供教程
 - Saltfish - P语言：兼容性导论/P语言：从入门到弃坑 2025.1.12version
 
 >如因失误，未能将您的的名字（贡献者）添加至鸣谢者栏列当中，请到图书馆内联系我们！还望海涵，感谢！

@@ -206,3 +206,6 @@
 25.7.13 - 秋起图书馆
 1.在【基础代码/代码教程合集】中，加入由Twisunshine Intelligent编写的【暮色阳光的完美MOD教室】
 2.在【其他教程/地图系列】中，加入由Twisunshine Intelligent编写的【暮色阳光的完美MOD教室 - 地图篇】
+
+25.7.16 - 秋起图书馆
+1.在【基础代码/常用代码模板】中，增加由Phoebe制作的【装备模块（equipment_modules）教程（Phoebe制）】
