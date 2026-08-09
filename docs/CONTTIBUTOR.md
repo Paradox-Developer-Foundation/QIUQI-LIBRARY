@@ -40,153 +40,155 @@
 
 ## 贡献人士
 
-阿列夫拾捌(CR组)
+阿列夫拾捌(CR组) - 为该项目及图书馆宣传，提供大量指导
 
-[GuoSS怪](https://space.bilibili.com/7403958)
+[GuoSS怪(TOD组)](https://space.bilibili.com/7403958) - 为该项目及图书馆宣传
 
-[西里斯-Sirius](https://space.bilibili.com/11067472)
+[西里斯-Sirius](https://space.bilibili.com/11067472) - 为图书馆所作宣传(MOD联合视频)
 
-希尔(钢铁萌心制作组)
+希尔(钢铁萌心制作组) - 所供诸多代码工具
 
-[战国(新生)](https://space.bilibili.com/1029778161)
+[战国(新生)](https://space.bilibili.com/1029778161) - 收录其代码案例、担任图书馆群聊管理
 
-[幸好无声(胡桃)](https://space.bilibili.com/545733083)
+[幸好无声(胡桃)](https://space.bilibili.com/545733083) - 收录其大量代码模板、案例等
 
-[希尔达](https://steamcommunity.com/sharedfiles/filedetails/?id=3285343649)
+[希尔达(白雪群)](https://steamcommunity.com/sharedfiles/filedetails/?id=3285343649) - 收录其代码模板
 
-[黑白平行](https://space.bilibili.com/13276247)
+[黑白平行(SPC组)](https://space.bilibili.com/13276247) - 收录其诸多代码工具、担任图书馆群聊管理
 
-[MangGong](https://github.com/MangoGong)
+[MangGong(TCV组)](https://github.com/MangoGong) - 收录其诸多代码工具
 
-[zhizhong](https://space.bilibili.com/74159435)
+[zhizhong(德莉莎 from TTT组)](https://space.bilibili.com/74159435)- 提供大量教程
 
-[NS9927](https://github.com/NS9927)
+[NS9927](https://github.com/NS9927) - 提供代码工具
 
-陈睿中之人
+陈睿中之人 - 收录其代码工具
 
-雪儿
+雪儿 - 收录其电台代码(From 白雪群处)
 
-[芙蓉泣露香兰笑](https://github.com/textGamex)
+[芙蓉泣露香兰笑](https://github.com/textGamex) - 收录代码工具 [VModer](https://github.com/textGamex/VModer)
 
-一个应该很贵显卡
+一个应该很贵显卡(TCV组) - 收录其诸多代码工具
 
-电锯
+电锯(PUMS) - 收录诸多代码模板、教程
 
-BLO
+BLO(AOR组) - 收录其代码工具
 
-[波罗](https://space.bilibili.com/403825504)
+[波罗](https://space.bilibili.com/403825504) - 提供代码模板、教程
 
-[Y鱼の饼B](https://space.bilibili.com/546778033)
+[Y鱼の饼B(赤潮:雨打芭蕉组)](https://space.bilibili.com/546778033)  - 担任图书馆群聊管理，并为美工馆建设做出贡献
 
-sergey taboritsky
+sergey taboritsky(TNO:DSR组;TNO:IPN组;TNO:SFFH组) - 担任图书馆群聊管理，并为汉化组建设做出贡献
 
-华莎
+华莎(CR组) - 担任图书馆群聊管理，并为美工馆建设做出贡献
 
-[4685三代目](https://space.bilibili.com/318894689)
+[4685三代目](https://space.bilibili.com/318894689) - 收录其重置的超事件模板
 
-Reordny
+Reordny(IRIS组) - 收录其诸多代码工具
 
-月茗星稀
+月茗星稀 - 收录其诸多代码工具
 
-CO-001
+CO-001(THT组) - 收录其代码工具
 
-Cethdriel
+Cethdriel(少前将领培养系统+新单位与机制MOD作者) - 收录其诸多代码教程
 
-思绪过分深情
+思绪过分深情 - 收录其字体教程
 
-Antarctica
+Antarctica - 同秋起共同制作科技教程模板
 
-Aenyrag
+Aenyrag - 提供代码工具
 
-UPRX
+UPRX(TER组) - 提供地图制作代码教程
 
-永遠のプリンセスの守護者
+永遠のプリンセスの守護者 - 帮助图书馆完成图标重置
 
-Krrat Main
+Krrat Main(复苏之日组) - 提供两个暴雨组处MOD制作通用教程
 
-iWagination
+iWagination - 提供大量GUI系列教程
 
-Peter_XL
+Peter_XL(重铸明日组) - 提供代码制作教程
 
-Roy
+Roy(复苏之日组) - 提供代码制作教程
 
-Crys7aL_L1nE
+Crys7aL_L1nE(TNO:TER组) - 收录TNO常用代码合集
 
-里脊
+里脊(TNO:SFFH组) - 提供TNO常用代码合集
 
-[anzai249](https://github.com/anzai249)
+[anzai249](https://github.com/anzai249) - 授权提供钢铁雄心4大众脸生成器
 
-德·瓦莱拉
+德·瓦莱拉 - 提供预制核心圈模板
 
-Mugi
+Mugi(TNO:SFFH组) - 提供“有趣的国家”GUI修改教程
 
-绪山花
+绪山花(AOR组) - 提供大量代码模板、教程
 
-红色大闸蟹
+红色大闸蟹(AOR组;CR组) - 提供新闻图片类工具
 
-Talirian
+Talirian(PIHC组) - 提供代码数值对数运算教程、HOI4dev工具等
 
-CancerCendil
+CancerCendil(红与白组) - 提供有关token的部分教程
 
-贝拉·库恩
+贝拉·库恩(TOD组) - 提供民族精神编辑器工具
 
-影盐
+影盐 - 担任图书馆群聊管理，提供特殊工程模板
 
-Apolynoid
+Apolynoid - 提供自定义制造商的修改模板
 
-康米斯特
+康米斯特(烈焰升腾:潜龙腾渊组) - 提供其撰写代码教程合集
 
-墨合
+墨合 - 收录其代码工具
 
-逻各斯
+逻各斯 - 收录其代码军队历史命名模板
 
-Anarchism
+Anarchism - 提供曲线Shader使用教程
 
-丛雨绯闻男友
+丛雨绯闻男友 - 提供shader制作教程
 
-59战车
+59战车(烈焰升腾:潜龙腾渊组) - 提供模型制作系列教程
 
-Dream
+Dream(帝国雄心组) - 提供常用代码提词器
 
-黑狗卫士
+黑狗卫士 - 提供definition系列翻译文件
 
-洗不白の衣服
+洗不白の衣服(IRIS组) - 提供人物生成器网站和Shader代码解析
 
-Phoebe
+Phoebe - 更新MIO系列：第七次修改，提供教程
 
-菜鸟
+菜鸟 - 提供AI系列教程
 
-xc136
+xc136(红与白组) - 提供相关变量对数计算教程
 
-皓尔纳
+皓尔纳 - 提供战术模板
 
-Lilith Nightstar
+Lilith Nightstar - 变量使用教程 (基础)
 
-Twisunshine Intelligent
+Twisunshine Intelligent(FIL组) - 提供教程
 
-Saltfish
+Saltfish - P语言：兼容性导论/P语言：从入门到弃坑
 
-[CzXieDdan](https://github.com/czxieddan)
+[CzXieDdan](https://github.com/czxieddan) - 提供代码工具和教程
 
-Stakataka_3030
+Stakataka_3030 - 提供所编写的众多P社代码工具
 
-RcE_Revolution
+RcE_Revolution - 提供大量代码工具
 
-4685
+4685 - 提供基础代码模板和教程
 
-九尾狐
+九尾狐 - 提供基础代码教程
 
-[coldfish987](https://github.com/coldfish987654)
+Krrat Main(复苏之日组) - 提供代码工具
 
-世纪
+[coldfish987](https://github.com/coldfish987654) - 提供代码工具
 
-苏丹娜
+世纪 - 提供代码模板
 
-素芒
+苏丹娜(提瓦特黎明制作组) - 提供代码模板
 
-旧怀表
+素芒 - 提供代码模板
 
-[wpx2008](https://github.com/wpx2008)
+旧怀表 - 提供代码模板
+
+[wpx2008](https://github.com/wpx2008) - 提供代码工具
 
 <sub>如因失误，未能将您添加至贡献者栏列当中，请到图书馆内联系我们！还望海涵，感谢！</sub>
 
