@@ -78,6 +78,8 @@
 
 霜泽图书馆共有如下群聊，欢迎各位择兴趣加入！
 
+<img src="https://i.imgur.com/DPldbtO.png" width=670></img>
+
 ### 核心类
 
 [霜泽图书馆(主馆)- 378525932](https://qm.qq.com/q/9XF0jLGpmo)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[霜泽图书馆(通知)- 1026294736](https://qm.qq.com/q/Z8kXya9JUC)
@@ -122,47 +124,10 @@
 
 [白雪老师的完美教室 - 768450264]()&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[红鲑鱼委员长的完美第二教室 - 970064133]()
 
-## 鸣谢名单
-
-总负责:[秋起(AOR组)](https://space.bilibili.com/1121632645)
-
-</div>
-
-<h3 align="center">
-    特别鸣谢
-</h3>
-
-<div align="center">
-
-|                                                                            霜泽图书馆及其附属群聊                                                                            |                                        白雪老师的完美教室及其附属群聊                                        |                                          PUMS(P社联合MODS)及其附属群聊                                          |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------:|
-| 暴雨工作室(辖[复苏之日](https://steamcommunity.com/sharedfiles/filedetails/?id=3015788042) ＆ [重铸明日](https://steamcommunity.com/sharedfiles/filedetails/?id=3029184172)) |                                             赤色极光(AOR)制作组                                              |             [天兆之国](https://steamcommunity.com/sharedfiles/filedetails/?id=3018869743)(CR)制作组             |
-|                                                                             亢龙有悔(TOD)制作组                                                                              |           [钢铁萌心](https://steamcommunity.com/sharedfiles/filedetails/?id=2879371758)(AH)制作组            |                                               维城歧途(TCV)制作组                                               |
-|                                        [原神:切要关头](https://steamcommunity.com/sharedfiles/filedetails/?id=2806804193)(TTT)制作组                                         |         [九色堇之心](https://steamcommunity.com/sharedfiles/filedetails/?id=2739911713)(IRIS)制作组          |         [哈布斯堡的黄昏](https://steamcommunity.com/sharedfiles/filedetails/?id=3011069378)(THT)制作组          |
-|                                          [日共重置:粉碎帝国模组](https://steamcommunity.com/sharedfiles/filedetails/?id=2064073319)                                          |          [日共重置:内容扩展模组](https://steamcommunity.com/sharedfiles/filedetails/?id=3254004005)          |                [唤醒真虎模组](https://steamcommunity.com/sharedfiles/filedetails/?id=2796382905)                |
-|                                       [红与白:炼铸钢铁的人们](https://steamcommunity.com/sharedfiles/filedetails/?id=3429688914)制作组                                       |          [灵钢协奏曲](https://steamcommunity.com/sharedfiles/filedetails/?id=2860967305)(SPC)制作组          |              [最美好的小祥](https://steamcommunity.com/sharedfiles/filedetails/?id=3340670106)模组              |
-|                                                                        新秩序:道阻且长(TNO:LAR)制作组                                                                        |     [新秩序:铁杵成针](https://steamcommunity.com/sharedfiles/filedetails/?id=3438313516)(TNO:IPN)制作组      | [新秩序:德意志社会主义共和国](https://steamcommunity.com/sharedfiles/filedetails/?id=3222941019)(TNO:DSR)制作组 |
-|                                            [英国国策重置](https://steamcommunity.com/sharedfiles/filedetails/?id=3353818187)模组                                             |         [KX部分国家微调](https://steamcommunity.com/sharedfiles/filedetails/?id=3244364529)(KXX)模组         |                [碧蓝航线](https://steamcommunity.com/sharedfiles/filedetails/?id=2249768662)模组                |
-|                            万摸殿制作组(辖[碧蓝档案将领包](https://steamcommunity.com/sharedfiles/filedetails/?id=2887728297)＆碧蓝档案:自始复新)                            |                                     新秩序:光自贝加尔湖来(TNO:LFB)制作组                                     |           [蔚蓝新世界(ANW)制作组](https://steamcommunity.com/sharedfiles/filedetails/?id=3114407695)            |
-|                                                                            凡尔赛秩序(IOV)制作组                                                                             |        [德国国策扩展:黄粱一梦](https://steamcommunity.com/sharedfiles/filedetails/?id=3308201627)模组        |                                         新秩序:离乡甚远(TNO:SFFH)制作组                                         |
-|                                                                            冷战:热斗(CW:HS)制作组                                                                            |              [日月不落](https://steamcommunity.com/sharedfiles/filedetails/?id=2917842100)模组               |     [英式和平:自由或死亡](https://steamcommunity.com/sharedfiles/filedetails/?id=3071559334)(PB:LOM)制作组      |
-|                                                                        东方乱世录:幻想终末(THW)制作组                                                                        |                                               钢铁雄心4萌新社                                                |                             [P社系列游戏资源互助站](https://share.paragames233.com)                             |
-|                                       [八年抗战优化补充整合](https://steamcommunity.com/sharedfiles/filedetails/?id=3273220145)制作组                                        | [新秩序:第二次西俄战争](https://steamcommunity.com/sharedfiles/filedetails/?id=3449417512)(TNO:2WRWCE)制作组 |                                               临界坍塌(CC)制作组                                                |
-|                                                                        新秩序:砥锋挺锷(TNO:FSE)制作组                                                                        |                                         新秩序:燧峰砂(TNO:ER)制作组                                          |                                            西欧社会主义一体化制作组                                             |
-|                                                                        新秩序:正道沧桑(TNO:STV)制作组                                                                        |                                                                                                              |                                                                                                                 |
-
-</div>
-
-<div align="center">
-
-<img src="https://i.imgur.com/DPldbtO.png" width=670></img>
-
-</div>
-
 ---
 
 <div align="center">
 
-[秋起图书馆 · 更新日志](docs/CHANGELOG.md)
+[秋起图书馆 · 更新日志](docs/CHANGELOG.md)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[秋起图书馆 · 鸣谢名单](docs/CONTTIBUTOR.md)
 
 </div>
