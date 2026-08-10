@@ -1,0 +1,36 @@
+defined_text = {
+	name = GET_your_arr_looper_starter
+	text = {
+		trigger = {
+            check_variable = { Global.Test_Arr^num > 0 }	#检查数组是否为空
+            set_temp_variable = { temp_looper = -1 }	#初始化临时变量
+		}
+		localization_key = "[GET_your_arr_looper]"	#这里开始调用下方
+	}
+	text = {
+		localization_key = ""	#空的
+	}
+}
+
+defined_text = {
+	name = GET_your_arr_looper
+	text = {
+		trigger = {
+			set_temp_variable = { temp_max = Global.Test_Arr^num }	#获取数组长度
+            subtract_from_temp_variable = { temp_max = 1 }	#数组长度减一（防止出界）
+            check_variable = { temp_looper < temp_max }	#检查循环是否结束
+			add_to_temp_variable = { temp_looper = 1 }	#循环变量加一（继续循环）
+		}
+		localization_key = GET_your_arr_looper_1	#这里是循环的文本
+	}
+	text = {
+		localization_key = GET_your_arr_looper_0	#这里是循环结束的文本
+	}
+}
+
+defined_text = {
+	name = GET_your_arr_looper_with_tech_effect
+	text = {
+		localization_key = tech_effect|test_tech_effect	#注意tech_effect|通过on_research_complete和custom_effect_tooltip，调用了带有starter脚本本地化，的本地化键值，的科技键值
+	}
+}

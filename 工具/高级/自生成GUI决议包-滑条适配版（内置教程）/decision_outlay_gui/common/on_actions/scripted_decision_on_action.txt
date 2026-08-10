@@ -1,0 +1,198 @@
+on_actions = {
+	on_daily = {
+		effect = {
+            if = {
+                limit = {
+                    check_variable = {
+                        var = global.last_days_scripted_decision
+                        value = global.num_days
+                        compare = not_equals
+                    }
+                }
+                set_variable = {
+                    global.last_days_scripted_decision = global.num_days
+                }
+
+				for_each_loop = {
+					array = global.all_scripted_decision_lists
+					value = scripted_decision_entry
+
+					var:scripted_decision_entry = {
+						##清除状态
+						if = {
+							limit = {
+								OR = {
+									check_variable = {
+										decision_status = global.scripted_mission_is_failed
+									}
+									check_variable = {
+										decision_status = global.scripted_decision_has_removed
+									}
+								}
+							}
+							set_variable = {
+								decision_status = global.scripted_decision_default_status
+							}
+						}
+						##第一：先检测取消##
+						if = {
+							limit = {	
+								meta_trigger = {
+									text = {
+										OR = {
+											check_variable = {
+												decision_status = global.scripted_decision_is_removing
+											}
+											check_variable = {
+												decision_status = global.scripted_mission_is_active
+											}
+										}
+										##取消只有在这两种情况适用
+										OR = {
+											AND = {
+												OR = {
+													NOT = {
+														scripted_decision_is_mission = yes
+													}
+													scripted_decision_is_visible_while_not_activated = yes
+												}
+												##应当只有决议在或者默认情况下可见的任务才适用visible。
+												NOT = {
+													scripted_decision_is_visible = yes
+												}
+												scripted_decision_cancel_if_not_visible = yes
+											}
+											AND = {
+												owner = {
+													[t_decision]_cancel_trigger = yes
+												}
+												NOT = {
+													scripted_decision_has_no_cancel_trigger = yes
+												}
+											}
+										}
+									}
+									t_decision = "[?THIS.GetName]"
+								}	
+							}
+							cancel_scripted_decision = yes
+						}
+						##第二：推进重启和任务，检测完成条件##
+						else_if = {
+							limit = {
+								check_variable = {
+									decision_status = global.scripted_decision_default_status
+								}
+								scripted_decision_is_re_enabling = yes
+							}
+							add_to_variable = {
+								days_re_enable_left = -1
+							}
+							if = {
+								limit = {
+									check_variable = {
+										days_re_enable_left < 0
+									}
+									NOT = {
+										scripted_decision_fire_only_once = yes
+									}
+								}
+								re_enable_scripted_decision = yes
+							}
+							##推进重启
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									decision_status = global.scripted_decision_is_removing
+								}
+							}
+							add_to_variable = {
+								days_remove_left = -1
+							}
+							if = {
+								limit = {
+									meta_trigger = {
+										text = {
+											OR = {
+												check_variable = {
+													days_remove_left < 0
+												}
+												AND = {
+													owner = {
+														[t_decision]_remove_trigger = yes
+													}
+													NOT = {
+														scripted_decision_has_no_remove_trigger = yes
+													}
+												}
+											}
+										}
+										t_decision = "[?THIS.GetName]"
+									}
+								}
+								remove_scripted_decision = yes
+							}
+						}
+						else_if = {
+							limit = {
+								check_variable = {
+									decision_status = global.scripted_mission_is_active
+								}
+							}
+							add_to_variable = {
+								days_mission_timeout_left = -1
+							}
+							if = {
+								limit = {
+									scripted_mission_can_be_auto_complete = yes
+								}
+								complete_scripted_decision = yes
+							}
+							else_if = {
+								limit = {
+									check_variable = {
+										days_mission_timeout_left < 0
+									}
+								}
+								timeout_scripted_mission = yes
+							}
+						}
+						##第三：检测任务是否可以自启动##
+						else_if = {
+							limit = {
+								scripted_decision_is_mission = yes	
+								scripted_decision_can_be_re_enable = yes
+								check_variable = {
+									decision_status = global.scripted_decision_default_status
+								}
+								meta_trigger = {
+									text = {
+										owner = {
+											[t_decision]_activation = yes
+										}
+										NOT = {
+											scripted_decision_has_no_activation = yes
+										}
+										OR = {
+											NOT = {
+												scripted_decision_is_visible_while_not_activated = yes
+											}
+											scripted_decision_is_visible = yes
+										}
+										##如果在未激活也可见的情况下，则必须可见才能激活。
+									}
+									t_decision = "[?THIS.GetName]"
+								}	
+							}
+							activate_scripted_mission = yes
+						}
+					}
+				
+					##第三：检测决议进行重启##
+
+				}
+			}
+		}
+	}
+}

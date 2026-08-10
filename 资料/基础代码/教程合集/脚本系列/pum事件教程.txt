@@ -1,0 +1,263 @@
+
+注意！请最好使用vsc或n++打开本教案以获得最佳效果！！！！！！！
+
+####################
+####################
+###第一部分：事件###
+####################
+####################
+
+如何触发事件：
+分为自动触发、被动触发
+自动触发需要依赖事件自己结构，这里我们先将被动触发：
+
+我们需要在effect中如下书写：
+
+country_event = {
+	id = PUM_game.1
+	hours = 1 #事件延迟多少小时触发
+	days = 1 #事件延迟多少天触发
+	random_hours = 12 #事件在计划的延迟之外会有多少小时的额外随机延迟
+    random_days = 10 #事件在计划的延迟之外会有多少天的额外随机延迟
+}
+
+完整的事件例子如下：
+
+####################
+#一：被动触发型事件#
+####################
+被动触发事件将通过国策、决议、其他事件等诸多效果触发（可以理解为：“没有trigger的事件”或“被trigger的事件”（可以这样理解is_triggered_only），也就是说，
+这个事件自身没有资格检测trigger，即检测自己该不该触发的，它的触发器被外包了（因为是通过其他途径触发的），所以是被触发事件，这其中没有主动性和自动性）
+country_event = {
+	id = PUM_game.1 #事件的id，用于触发事件
+	title = {
+		text = PUM_game.1.t #事件标题文本
+		trigger = { tag = PUM } #显示此标题的触发器，满足触发器条件的作用域会显示该标题，而不满足条件的则展示另外的标题（如果有的话）
+	}
+	#title = PUM_game.1.t #这是常用的一般写法，没有触发器的标题会在各国展示一样的内容
+	desc = {
+		text = PUM_game.1.desc #事件的介绍文本
+		trigger = { tag = PUM } ##显示此介绍的触发器，满足触发器条件的作用域会显示该介绍
+	}
+	#desc = PUM_game.1.desc #这是常用的一般写法，没有触发器的介绍会在各国展示一样的内容，而不满足条件的则展示另外的介绍（如果有的话）
+
+	picture = GFX_PUM_game_1 #事件图片，注册非常简单，无序严苛遵循某种格式
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { tag = PUM }
+				set_country_flag = win_in_war_flag 
+			}
+		}
+	}
+	#事件触发的瞬间会产生的效果（正常情况下会显示在事件文本的下方一段，文本字体与事件文本一样，建议做成隐藏效果）
+	
+	is_triggered_only = yes #表示此为被动触发事件，切记此条不能与trigger = {}、mean_time_to_happen = {}和fire_only_once = yes共存！
+	#或者说被动触发的事件就不能出现trigger = {}、mean_time_to_happen = {}和fire_only_once = yes！
+	
+	hidden = yes #是否为隐藏事件（配合immediate非常好用）
+	
+	option = {
+		name = PUM_game.1.a #事件按钮的本地化标题
+		trigger = { tag = PUM } #满足此条件的国家才能看到此选项
+		ai_chance = {
+			base = 100 #ai选择此选项的权重
+		}
+	}
+	option = {
+		name = PUM_game.1.b
+		trigger = { NOT = { tag = PUM } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+####################
+#二：自动触发型事件#
+####################
+
+country_event = {
+	id = PUM_game.2 #事件的id
+	title = {
+		text = PUM_game.2.t #事件标题文本
+		trigger = { tag = PUM } #显示此标题的触发器，满足触发器条件的作用域会显示该标题，而不满足条件的则展示另外的标题（如果有的话）
+	}
+	#title = PUM_game.2.t #这是常用的一般写法，没有触发器的标题会在各国展示一样的内容
+	desc = {
+		text = PUM_game.2.desc #事件的介绍文本
+		trigger = { tag = PUM } ##显示此介绍的触发器，满足触发器条件的作用域会显示该介绍
+	}
+	#desc = PUM_game.2.desc #这是常用的一般写法，没有触发器的介绍会在各国展示一样的内容，而不满足条件的则展示另外的介绍（如果有的话）
+
+	picture = GFX_PUM_game_2 #事件图片，注册非常简单，无序严苛遵循某种格式
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { tag = PUM }
+				set_country_flag = win_in_war_flag 
+			}
+		}
+	}
+	#事件触发的瞬间会产生的效果（正常情况下会显示在事件文本的下方一段，文本字体与事件文本一样，建议做成隐藏效果）
+	
+	fire_only_once = yes #自动触发型事件一般都会使用，确保事件只会触发一次，以免条件满足的情况下反复触发（但是如有特殊设计需求，也可允许多次触发）
+	
+	trigger = {
+		PUM = { has_war = no }
+		original_tag = PUM
+	} 
+	#激活事件，使之自动触发的条件，满足此条件事件将可以触发
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	#事件是否满足触发条件的检测周期，每一个MTTH天等于20个游戏内天数（可以在defines文件内更改，但是不建议，因为会影响性能），days = 1意味着每20天检测一次
+	#该事件是否满足触发条件。
+
+	option = {
+		name = PUM_game.2.a #事件按钮的本地化标题
+		trigger = { tag = PUM } #满足此条件的国家才能看到此选项
+		ai_chance = {
+			base = 100 #ai选择此选项的权重
+		}
+	}
+	option = {
+		name = PUM_game.2.b
+		trigger = { NOT = { tag = PUM } }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+####################
+#三：世界新闻型事件#
+####################
+触发：
+
+news_event = {
+	id = PUM_news.1
+	hours = 1 #延迟多少小时触发
+	days = 1 #延迟多少天触发
+	random_hours = 12 #在计划的延迟之外会有多少小时的额外随机延迟
+    random_days = 10 #在计划的延迟之外会有多少天的额外随机延迟
+}
+
+例子：
+
+news_event = {
+	id = PUM_news.1 
+	title = PUM_news.1.t #标题，用于本地化
+	picture = GFX_news_event_nuke #新闻用图
+
+	major = yes # 填yes使得新闻为所有国家可见，否则只有触发国可见
+
+	is_triggered_only = yes # 是否为被动触发，是则不能用trigger = {}、mean_time_to_happen、fire_only_once
+
+	hidden = yes # 是否为隐藏新闻事件
+
+	fire_only_once = yes # 只触发一次，建议与trigger - {}同用，也就是只用于自动触发的新闻，而不要在被动触发的新闻中使用
+	
+	trigger = {
+		#如果是自动触发事件，则触发器填在这里
+	}
+
+	mean_time_to_happen = {
+		#与上文事件同类代码一个道理
+	}
+
+	immediate = {
+		#新闻触发瞬间产生的效果
+	}
+	
+	option = { 
+		name = PUM_news.1.a 
+		trigger = {}
+	}
+	
+    option = { 
+		name = PUM_news.1.b 
+		trigger = {}
+	}
+}
+
+##############
+#四：地区事件#
+##############
+
+地区事件没有特殊性例子，和国家事件结构完全一致，不同点在于触发方式特殊：
+
+random_core_state = {
+	state_event = {
+		id = gal_state_event.1 #事件id，事件本身与普通事件一样写法
+		days = 1 #延迟，详情可参考上文
+		trigger_for = controller # 触发给谁，此处触发给当地控制者，也可以写owner（所有者）等其他作用域或数组
+	}
+}
+#注意，地区事件触发时，发送事件的仍然是国家而非地区，在PUM触发一个由AOR接受的地区事件，等同于PUM给AOR发送一个事件，在AOR侧，事件内的FROM指向的的是PUM
+#而不是random_core_state或者别的触发地区事件的state！如果你希望在地区事件内引用当地地名，请参考我以前做过的event_target机制教学，那里有详尽的解释
+
+#出于一些考虑，event_target教学文件我还是复制到这里：
+######################################################################################################################################################
+我们首先需要知道event_target是什么？
+event_target类似于一个临时变量，只不过这样讲可能反而容易让大家云里雾里。那么我们不妨把它理解为一个“飞镖”或“标记点”
+我们主要讲event_target最经典的用法“引用state的名称”
+假设我们现在是一个美国内战mod的制作人员，我们现在需要逐个写出“路易斯安那州宣布独立”、“德克萨斯州宣布独立”、“佐治亚州宣布独立”三个事件。
+那么我们是否必须得做三个独立的事件呢？这是否太麻烦了？
+答案是只要运用event_target，我们就能用一个万用事件解决这个问题。
+首先假设我们的思路是：做一个任务式决议，每隔30天在随机一个美国南方省份设置state_flag_1，这个state_flag是我们日后用来确认这些土地在内战中属于哪一方、以及这个决议要避开哪些state（以免重复触发）。
+可是我们同时希望在这个任务决议完成时，玩家可以收到一个提示，让他们了解哪些地块出了问题。于是我们就顺势产生了制作上面所述的事件的想法。
+假设这个任务决议每次完成会触发event.1，而event.1需要在不同情况下显示为：“路易斯安那州宣布独立”、“德克萨斯州宣布独立”、“佐治亚州宣布独立”
+那要完成这种需求，就得用到event_target了。
+有人可能会说：能不能用state_event呢？把触发地设置为当地，然后在本地化事件时遇到地名就写[FROM.GetName]？这并不行，因为state_event并不是说这个state发送出了一个event，如果你写[FROM.GetName]，那它只会指向把这个事件发送给你的国家，在我举的这个例子里，[FROM.GetName]会指向美国自己，变成“美国宣布独立”。
+正确的做法是，在这个决议里额外添加一个state_flag，我们不仅给目标state设置state_flag_1，还得设置stae_flag_2。
+接着我们就要正式用到event_target了。
+我们在通过决议任务触发的事件里这样书写：
+country_event = {
+	id = usa_state_event.1
+	title = usa_state_event.1.t
+	desc = usa_state_event.1.desc
+	picture = GFX_event_1
+	
+	immediate = {
+		hidden_effect = {
+			every_core_state = {
+				limit = { has_state_flag = stae_flag_2 }
+				save_event_target_as = independent_usa_state
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = usa_state_event.1.a
+		event_target:independent_usa_state = {
+			clr_state_flag = stae_flag_2
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+首先我们运用immediate在事件出来的一瞬间施加一个效果，效果是：把有state_flag_2的state保存为event_target，什么样的event_target呢？答案是名字叫independent_usa_state的event_target。
+现在的效果就等于我们已经把一个标记扔向了拥有state_flag_2的state，我们锁定了它。你可以进一步理解为，现在在这个事件内（因为event_target是临时的），event_target:independent_usa_state（意思为名叫independent_usa_state的event_target）就等于拥有state_flag_2的state，二者是同样的。
+所以你才会看到我们在option里面写：
+event_target:independent_usa_state = {
+	clr_state_flag = stae_flag_2
+}
+也就是删掉这个地块上的state_flag_2。这是因为state_flag_2的使命已经完成了，要是再留着它就会干扰下一次event_target的锁定了。
+代码搭建完成，现在只需要进行本地化即可。
+前面已经讲过，在这个事件内（因为event_target是临时的），event_target:independent_usa_state（意思为名叫independent_usa_state的event_target）就等于拥有state_flag_2的state
+所以我们直接将事件的本地化标题写为："[independent_usa_state.GetName]宣布独立"即可，写[event_target:independent_usa_state.GetName]大概也没问题，只是可能没有啥特别意义。
+然后你就会看到state的name成功经由event_target引了出来。
+我们顺利地只做了一个event.1，就解决了所有南方州都可以通用的独立事件。
+######################################################################################################################################################
+
+
+完成了事件教学，可能大家会发现——是不是没教超事件？答案是，超事件实际上不是事件，而是脚本化gui，这里我们就正好借此，引入关于脚本化GUI的基础知识教学。
+
+

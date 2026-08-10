@@ -1,0 +1,59 @@
+装备文件位置：common/units/equipment/xxx.txt
+equipments = {
+	xxx = {
+		year = 1936
+		picture = GFX_xxx_medium
+		is_archetype = yes
+		is_buildable = no
+		type = motorized 哪种单位可以用这个装备
+		group_by = archetype
+		
+		interface_category = interface_category_land 在哪个生产界面 陆军装备interface_category_land 坦克interface_category_armor 船interface_category_capital_ships 船interface_category_screen_ships 船interface_category_other_ships 飞机interface_category_air
+			
+	
+		upgrades = {
+			tank_reliability_upgrade
+		}
+	}
+	xxx_1 = {
+		year = 1936
+		active = yes/no 写no就是需要科技激活，写yes就是开局就有 
+		priority = 20
+		archetype = quzhupao_equipment
+		picture = GFX_shipgirltech_quzhupao_medium
+		can_convert_from = { 
+			可以从哪种装备改造而来，写上一级装备的名字
+			xxx_0
+		}
+		reliability = 0.8 可靠性
+		maximum_speed = 12 最大速度
+	
+		#Defensive Abilities
+		defense = 4 防御
+		breakthrough = 12 突破
+		hardness = 0.1 装甲厚度
+		armor_value = 0.5 装甲率
+
+		#Offensive Abilities
+		soft_attack = 30 对人员杀伤
+		hard_attack = 25 对装甲杀伤
+		ap_attack = 30 穿甲深度
+		air_attack = 5 对空攻击
+		
+		#Space taken in convoy
+		lend_lease_cost = 1 租借装备时候要的运输船
+
+		build_cost_ic = 22 造价
+
+		需要的资源
+		resources = {
+			steel = 1 钢铁
+			oil = 1 石油
+			tungsten = 1 钨
+			chromium = 1 铬
+			aluminium = 1 铝
+			rubber = 1 橡胶
+		}
+	}
+	
+}

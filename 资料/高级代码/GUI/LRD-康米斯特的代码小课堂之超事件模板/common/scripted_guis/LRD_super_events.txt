@@ -1,0 +1,19 @@
+	scripted_gui = {
+		TFR_PRC_to_mars_event = { 
+			context_type = player_context
+			window_name = "TFR_PRC_to_mars_event" 
+
+			visible = {
+				has_country_flag = TFR_china_to_mars_flag #超事件可用条件
+				NOT = {
+					has_global_flag = super_events_off_flag
+				}
+			}
+			
+			effects = {
+				Super_Event_Close_click = {
+					clr_country_flag = TFR_china_to_mars_flag #用来关闭超事件
+				}
+			}
+		}
+	}

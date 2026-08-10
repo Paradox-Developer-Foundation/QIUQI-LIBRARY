@@ -1,0 +1,32 @@
+
+scripted_gui = {  
+	CM_SE_main_container = {
+        window_name = CM_SE_main_container
+        context_type = player_context
+		
+		visible = {
+			# 在你喜欢的任何效果条目（决议，事件，新闻，国策？等）中设置变量，全局变量 se_display 的值作为大型事件的序列号
+			has_variable = global.se_display
+			is_ai = no
+		}
+		triggers = {
+			  # 通过隐藏其中一个文本框来定义是左对齐还是居中对齐
+			CM_SE_desc_left_visible = { NOT = { has_global_flag = CM_SE_center } }
+			CM_SE_desc_center_visible = { has_global_flag = CM_SE_center }
+		}
+		effects = {
+			CM_SE_exit_btn_click = { 
+				# 清理所有设置，全局标志通过脚本化效果 "SE_center = yes" 设置
+				# 或者你可以简单地使用 "set_global_flag = CM_SE_center"
+                # 就个人而言，我会使用前面的脚本，因为那样看起来更简洁
+				clr_global_flag = CM_SE_center
+				clear_variable = global.se_display 			
+			}
+		}
+		properties = {
+			 # 在脚本化的本地化文本中定义，[CM_SE_getpicture] 返回与相应变量值关联的超事件图片
+			CM_SE_picture_positioning_entry = { image = "[CM_SE_getpicture]" } 			
+		}
+		
+	}
+}

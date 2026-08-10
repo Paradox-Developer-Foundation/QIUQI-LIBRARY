@@ -1,0 +1,522 @@
+【原作者：一只萌新】
+
+（优化、修改、更新：胡桃）
+通常位于history/countries/XXX.txt
+本质为一种效果
+    create_equipment_variant = {
+        name = "名字"
+        type = 装备类型   #（有man the gun dlc的情况下，海军设计必须使用专门的海军类型，见下面）
+        parent_version = 0 #排序多种相同装备（同底盘）的变体。0 是最老的，1 是第二老的，依此类推。可选，默认为 0。
+        name_group = 名称组 #（可不写）
+        modules = {
+            模块 = 配件
+        }
+        upgrades = {
+            tank_nsb_engine_upgrade = 引擎等级
+            tank_nsb_armor_upgrade = 装甲等级
+        }
+        icon = "图像"
+        model = 模型
+        design_team = MIO名字
+        obsolete = yes/no #是否退役装备
+        
+        ### 不常用 ###
+        allow_without_tech = yes/no #如果设置，可以绕过必须通过研究解锁该变体装备的要求。可选，默认为 false。
+        role_icon_index = 整数数字/auto #将要使用的角色图标索引，作为整数。如果设置为“自动”，会自动选择。如果设置为 0，则会被取消设置。可选，仅适用于船。
+        mark_older_equipment_obsolete = yes/no #只要符合以下条件，所有较旧（非底盘）装备变体标记为过时：原型、定位、任务套装（飞机）。可选，默认为 false。
+        show_position = yes/no #动态设备版本编号。如果被禁用，则会移除装备名称中的后缀。编号与 parent_version 相关。默认为yes。
+    }
+    #示例
+    create_equipment_variant = {
+        name = "Light Tank Mk. IV" 
+        type = light_tank_chassis_1 
+        parent_version = 0
+        modules = {
+            main_armament_slot = tank_heavy_machine_gun
+            turret_type_slot = tank_light_one_man_tank_turret
+            suspension_type_slot = tank_christie_suspension
+            armor_type_slot = tank_riveted_armor
+            engine_type_slot = tank_gasoline_engine
+        }
+        upgrades = {
+            tank_nsb_engine_upgrade = 2
+            tank_nsb_armor_upgrade = 1
+        }
+        icon = "GFX_ENG_basic_light_tank_medium"
+        obsolete = yes #used for oob
+    }
+坦克底盘
+    light_tank_chassis_0 = 战间期型轻型坦克底盘
+    light_tank_chassis_1 = 基础型
+    light_tank_chassis_2 = 改进型
+    light_tank_chassis_3 = 先进型
+    medium_tank_chassis_0 = 战间期型中型坦克底盘
+    medium_tank_chassis_1 = 基础型
+    medium_tank_chassis_2 = 改进型
+    medium_tank_chassis_3 = 先进型
+    heavy_tank_chassis_0 = 战间期型重型坦克底盘
+    heavy_tank_chassis_1 = 基础型
+    heavy_tank_chassis_2 = 改进型
+    heavy_tank_chassis_3 = 先进型
+    modern_tank_chassis_1 = 现代坦克底盘
+    amphibious_tank_chassis_1 = 两栖坦克底盘
+    super_heavy_tank_chassis_1 = 超重型坦克底盘
+坦克模块
+    main_armament_slot = 主炮
+    turret_type_slot = 炮塔
+    suspension_type_slot = 悬挂
+    armor_type_slot = 装甲类型
+    engine_type_slot = 引擎类型
+    special_type_slot_1 = 特殊功能1
+    special_type_slot_2 = 特殊功能
+    special_type_slot_3 = 特殊功能
+    special_type_slot_4 = 特殊功能
+坦克配件
+    引擎类型
+    tank_gasoline_engine = 汽油引擎
+    tank_diesel_engine = 柴油引擎
+    tank_petrol_electric_engine = 燃油-电力引擎
+    tank_gas_turbine_engine = 燃气涡轮发动机
+
+    装甲类型
+    tank_riveted_armor = 铆接装甲
+    tank_cast_armor = 铸造装甲
+    tank_welded_armor = 焊接装甲
+
+    悬挂
+    tank_torsion_bar_suspension = 扭力杆
+    tank_christie_suspension = 克里斯蒂悬挂
+    tank_bogie_suspension = 台车式悬挂
+    tank_interleaved_suspension = 交错负重轮
+
+    炮塔
+    tank_light_one_man_tank_turret = 单乘员炮塔（轻型）
+    tank_medium_one_man_tank_turret = 中型
+    tank_light_two_man_tank_turret = 双乘员炮塔（轻型）
+    tank_medium_two_man_tank_turret = 中型
+    tank_heavy_two_man_tank_turret = 重型
+    tank_light_three_man_tank_turret = 三乘员炮塔（轻型）
+    tank_medium_three_man_tank_turret = 中型
+    tank_heavy_three_man_tank_turret = 重型
+    tank_super_heavy_three_man_tank_turret = 超重型
+    tank_light_fixed_superstructure_turret = 轻型固定式炮塔
+    tank_medium_fixed_superstructure_turret = 中型
+    tank_heavy_fixed_superstructure_turret = 重型
+    tank_super_heavy_four_man_tank_turret = 四乘员炮塔（仅限超重型）
+    tank_modern_tank_turret = 现代炮塔
+
+    主炮
+    tank_heavy_machine_gun = 重机枪
+    flamethrower = 火焰喷射器
+    tank_auto_cannon = 机关炮
+    tank_auto_cannon_2 = 改进型机关炮
+    tank_anti_air_cannon = 基础防空炮
+    tank_anti_air_cannon_2 = 改进型防空炮
+    tank_anti_air_cannon_3 = 先进型防空炮
+    tank_medium_howitzer = 中型榴弹炮
+    tank_medium_howitzer_2 = 改进型中型榴弹炮
+    tank_heavy_howitzer = 重型榴弹炮
+    tank_small_cannon = 小型加农炮
+    tank_small_cannon_2 = 改进型小型加农炮
+    tank_medium_cannon = 中型加农炮
+    tank_medium_cannon_2 = 改进型中型加农炮
+    tank_high_velocity_cannon = 基础型高速加农炮
+    tank_high_velocity_cannon_2 = 改进型高速加农炮
+    tank_high_velocity_cannon_3 = 先进型高速加农炮
+    tank_heavy_cannon = 基础型重型加农炮
+    tank_heavy_cannon_2 = 改进型重型加农炮
+    tank_heavy_cannon_3 = 先进型重型加农炮
+    tank_super_heavy_cannon = 超重型加农炮
+    tank_close_support_gun = 近距支援炮
+
+    特殊功能
+    tank_radio_1 = 基础型无线电
+    tank_radio_2 = 改进型无线电
+    tank_radio_3 = 先进型无线电
+    amphibious_drive = 两栖驱动
+    secondary_turret_hmg = 重机枪
+    secondary_turret_small_cannon = 小型加农炮
+    secondary_turret_close_support_gun = 近距支援炮
+    additional_machine_guns = 加装机枪
+    sloped_armor = 倾斜装甲
+    stabilizer = 火炮稳定器
+    smoke_launchers = 烟雾发射器
+    extra_ammo_storage = 额外弹药架
+    wet_ammo_storage = 湿式弹药架
+    expanded_fuel_tank = 燃油桶
+
+##############  海军类型 ##############
+
+    #航空母舰
+    ship_hull_carrier_1 = 1936型航母船体
+    ship_hull_carrier_2 = 1940型航母船体
+    ship_hull_carrier_3 = 1944型航母船体
+    ship_hull_carrier_conversion_bb = 改装战列舰船体
+    ship_hull_carrier_conversion_ca = 改装巡洋舰船体
+    #以此类推
+
+    #巡洋舰
+    ship_hull_cruiser_1 = 早期巡洋舰船体
+    ship_hull_cruiser_2
+    ship_hull_cruiser_3
+    ship_hull_cruiser_4
+    #战列舰
+    ship_hull_pre_dreadnought = 早期重型战舰船体
+    ship_hull_heavy_1
+    ship_hull_heavy_2
+    ship_hull_heavy_3
+    ship_hull_heavy_4
+
+    ship_hull_super_heavy_1 = 超重型战列舰
+
+    #驱逐舰
+    ship_hull_light_1 = 早期驱逐舰船体
+    ship_hull_light_2
+    ship_hull_light_3
+    ship_hull_light_4
+    #潜艇
+    ship_hull_submarine_1 = 早期潜艇船体
+    ship_hull_submarine_2
+    ship_hull_submarine_3
+    ship_hull_submarine_4
+
+    ship_hull_cruiser_submarine = 巡洋潜艇
+
+    torpedo_cruiser = 重雷装巡洋舰
+    ship_hull_torpedo_cruiser = 重雷装巡洋舰
+    ship_hull_cruiser_panzerschiff = 装甲舰
+
+    ship_hull_cruiser_coastal_defense_ship = 岸防舰
+
+    SH_battleship_1 = 超重战列舰I型
+    SH_battleship_2 = 超重战列舰II型
+######################################
+舰艇模块
+    fixed_ship_battery_slot = 主炮
+    fixed_ship_secondaries_slot = 副炮
+    fixed_ship_anti_air_slot = 防空炮
+    fixed_ship_torpedo_slot = 鱼雷
+    fixed_ship_deck_slot_1 = 甲板空间1
+    fixed_ship_deck_slot_2 = 甲板空间2
+    fixed_ship_fire_control_system_slot = 火控系统
+    fixed_ship_radar_slot = 雷达/声呐
+    fixed_ship_engine_slot = 引擎
+    fixed_ship_armor_slot = 装甲
+    front_1_custom_slot = 舰首自选装备1
+    front_2_custom_slot = 舰首自选装备2
+    mid_1_custom_slot = 中段自选装备1
+    mid_2_custom_slot = 中段自选装备2
+    mid_3_custom_slot = 中段自选装备3
+    rear_1_custom_slot = 舰尾自选装备1
+    rear_2_custom_slot = 舰尾自选装备2
+舰艇配件
+
+    轻炮
+    ship_light_battery_1 = 85mm速射炮
+    ship_light_battery_2 = 105mm速射炮
+    ship_light_battery_3 = 127mm速射炮
+    ship_light_battery_4 = 130mm速射炮
+
+    高平两用主炮
+    dp_light_battery_1 = 100mm高平两用炮
+    dp_light_battery_2 = 113mm高平两用炮
+    dp_light_battery_3 = 127mm高平两用炮
+    dp_light_battery_4 = 127mm高平两用速射炮
+
+    重型炮组
+    ship_heavy_battery_1 = 28cm火炮
+    ship_heavy_battery_2 = 30.5cm火炮
+    ship_heavy_battery_3 = 38cm火炮
+    ship_heavy_battery_4 = 40.6cm火炮
+
+    超重型炮组
+    ship_super_heavy_battery_1 = 46cm火炮
+
+    轻巡洋舰炮组
+    ship_light_medium_battery_1 = 14.5cm火炮
+    ship_light_medium_battery_2 = 15cm火炮
+    ship_light_medium_battery_3 = 15.5cm火炮
+    dp_ship_medium_1 = 152mm高平两用速射炮
+
+    自动装填式轻巡洋舰炮组
+    ship_light_medium_battery_4 = 15.5cm自动装填火炮
+
+    重巡洋舰炮组
+    ship_medium_battery_1 = 17cm火炮
+    ship_medium_battery_2 = 19cm火炮
+    ship_medium_battery_3 = 20.3cm火炮
+    ship_medium_battery_4 = 20.3cm自动装填火炮
+
+    副炮组
+    ship_secondaries_1 = 75mm速射炮
+    ship_secondaries_2 = 120mm速射炮
+
+    高平两用副炮
+    dp_ship_secondaries_1 = 100mm高平两用副炮
+    dp_ship_secondaries_2 = 113mm高平两用副炮
+    dp_ship_secondaries_3 = 127mm高平两用副炮
+    dp_ship_secondaries_4 = 127mm高平两用速射副炮
+
+    火控
+    ship_fire_control_system_1 = 火控指挥射击
+    ship_fire_control_system_2 = 机械弹道计算机
+    ship_fire_control_system_3 = 弹道计算机
+
+    鱼雷发射器
+    ship_torpedo_1 = 三联装450mm鱼雷发射器
+    ship_torpedo_2 = 四联装450mm鱼雷发射器
+    ship_torpedo_3 = 三联装533mm鱼雷发射器
+    ship_torpedo_4 = 四联装533mm鱼雷发射器
+
+    鱼雷发射管
+    ship_torpedo_sub_1 = 四联装450mm鱼雷发射管
+    ship_torpedo_sub_2 = 六联装450mm鱼雷发射管
+    ship_torpedo_sub_3 = 四联装533mm鱼雷发射管
+    ship_torpedo_sub_4 = 六联装533mm鱼雷发射管
+
+    防空炮
+    ship_anti_air_1 = 50重机枪
+    ship_anti_air_2 = 20mm防空炮
+    ship_anti_air_3 = 37mm防空炮
+    ship_anti_air_4 = 40mm四联装防空炮
+
+    深水炸弹
+    ship_depth_charge_1 = 深水炸弹轨道
+    ship_depth_charge_2 = 深水炸弹投掷器
+    ship_depth_charge_3 = 反潜迫击炮
+    ship_depth_charge_4 = 先进反潜迫击炮
+
+    雷达
+    ship_radar_1 = 分米波水面搜索雷达
+    ship_radar_2 = 改进型分米波水面搜索雷达
+    ship_radar_3 = 厘米波火控雷达
+    ship_radar_4 = 集成火控雷达
+
+    ship_mine_layer_1 = 布雷装置
+    ship_mine_sweeper_1 = 扫雷装置
+    ship_mine_layer_sub = 水雷布设管
+    ship_sub_snorkel_1 = 基础型通气管
+    ship_sub_snorkel_2 = 改进型通气管
+    ship_airplane_launcher_1 = 水上飞机弹射器
+    ship_airplane_launcher_2 = 改进型水上飞机弹射器
+    ship_deck_space = 机库
+    ship_sonar_1 = 水听器
+    ship_sonar_2 = 主动式声呐
+    ship_extra_fuel_tank = 增设油箱
+
+    轻型引擎
+    light_ship_engine_1 = 35000马力引擎
+    light_ship_engine_2 = 40000马力引擎
+    light_ship_engine_3 = 45000马力引擎
+    light_ship_engine_4 = 50000马力引擎
+
+    潜艇引擎
+    sub_ship_engine_1 = 1000马力引擎
+    sub_ship_engine_2 = 2000马力引擎
+    sub_ship_engine_3 = 3000马力引擎
+    sub_ship_engine_4 = 4000马力引擎
+
+    巡洋舰引擎
+    cruiser_ship_engine_1 = 60000马力引擎
+    cruiser_ship_engine_2 = 70000马力引擎
+    cruiser_ship_engine_3 = 80000马力引擎
+    cruiser_ship_engine_4 = 90000马力引擎
+
+    重型引擎
+    heavy_ship_engine_1 = 30000马力引擎
+    heavy_ship_engine_2 = 90000马力引擎
+    heavy_ship_engine_3 = 150000马力引擎
+    heavy_ship_engine_4 = 210000马力引擎
+
+    航空母舰引擎
+    carrier_ship_engine_1 = 50000马力引擎
+    carrier_ship_engine_2 = 120000马力引擎
+    carrier_ship_engine_3 = 150000马力引擎
+    carrier_ship_engine_4 = 210000马力引擎
+
+    战列舰装甲
+    ship_armor_bb_1 = 200mm主装甲/40mm甲板装甲
+    ship_armor_bb_2 = 350mm主装甲/150mm甲板装甲
+    ship_armor_bb_3 = 380mm主装甲/155mm甲板装甲
+
+    战列巡洋舰装甲
+    ship_armor_bc_1 = 150mm主装甲/25mm甲板装甲
+    ship_armor_bc_2 = 305mm主装甲/100mm甲板装甲
+    ship_armor_bc_3 = 330mm主装甲/130mm甲板装甲
+
+    超重型装甲
+    ship_armor_shbb = 450mm主装甲/210mm甲板装甲
+
+    巡洋舰装甲
+    ship_armor_cruiser_1 = 50mm主装甲/40mm甲板装甲
+    ship_armor_cruiser_2 = 100mm主装甲/30mm甲板装甲
+    ship_armor_cruiser_3 = 120mm主装甲/50mm甲板装甲
+    ship_armor_cruiser_4 = 150mm主装甲带/60mm甲板装甲
+
+    飞行甲板装甲
+    ship_armor_carrier_deck = 90mm甲板装甲
+
+飞机机身
+fighter_equipment_0 = 战间期型战斗机
+fighter_equipment_1 = 战斗机I型
+fighter_equipment_2 = 战斗机II型
+fighter_equipment_3 = 战斗机III型
+cv_fighter_equipment_0 = 战间期型舰载战斗机
+cv_fighter_equipment_1 = 舰载战斗机I型
+cv_fighter_equipment_2 = 舰载战斗机II型
+cv_fighter_equipment_3 = 舰载战斗机III型
+jet_fighter_equipment_1 = 喷气式战斗机I型
+jet_fighter_equipment_2 = 喷气式战斗机II型
+
+CAS_equipment_1 = 近距支援机I型
+CAS_equipment_2 = 近距支援机II型
+CAS_equipment_3 = 近距支援机III型
+cv_CAS_equipment_1 = 舰载近距支援机I型
+cv_CAS_equipment_2 = 舰载近距支援机II型
+cv_CAS_equipment_3 = 舰载近距支援机III型
+
+nav_bomber_equipment_1 = 海军轰炸机I型
+nav_bomber_equipment_2 = 海军轰炸机II型
+nav_bomber_equipment_3 = 海军轰炸机III型
+cv_nav_bomber_equipment_1 = 舰载海军轰炸机I型
+cv_nav_bomber_equipment_2 = 舰载海军轰炸机II型
+cv_nav_bomber_equipment_3 = 舰载海军轰炸机III型
+
+tac_bomber_equipment_0 = 战间期型轰炸机
+tac_bomber_equipment_1 = 战术轰炸机I型
+tac_bomber_equipment_2 = 战术轰炸机II型
+tac_bomber_equipment_3 = 战术轰炸机III型
+
+heavy_fighter_equipment_1 = 重型战斗机I型
+heavy_fighter_equipment_2 = 重型战斗机II型
+heavy_fighter_equipment_3 = 重型战斗机III型
+
+scout_plane_equipment_1 = 侦察机I型
+scout_plane_equipment_2 = 侦察机II型
+
+tac_bomber_equipment_1 = 战术轰炸机 I型
+tac_bomber_equipment_2 = 战术轰炸机 II型
+tac_bomber_equipment_3 = 战术轰炸机 III型
+
+jet_tac_bomber_equipment_1 = 喷气式战术轰炸机 I型
+jet_tac_bomber_equipment_2 = 喷气式战术轰炸机 II型
+
+strat_bomber_equipment_1 = 战略轰炸机 I型
+strat_bomber_equipment_2 = 战略轰炸机 II型
+strat_bomber_equipment_3 = 战略轰炸机 III型
+
+jet_strat_bomber_equipment_1 = 喷气式战略轰炸机 I型
+
+rocket_suicide_equipment_1 = 自杀攻击用飞行器
+飞机模块
+    fixed_main_weapon_slot = 主要武器
+    fixed_auxiliary_weapon_slot_1 = 副武器
+    fixed_auxiliary_weapon_slot_2 = 副武器
+    fixed_auxiliary_weapon_slot_3 = 副武器
+    fixed_auxiliary_weapon_slot_4 = 副武器
+    engine_type_slot = 引擎
+    #飞机设计似乎必须有 特殊功能 如果不想给就在后边 = empty #empty空
+    special_type_slot_1 = 特殊功能
+    special_type_slot_2 = 特殊功能
+    special_type_slot_3 = 特殊功能
+    special_type_slot_4 = 特殊功能
+    special_type_slot_5 = 特殊功能
+    special_type_slot_6 = 特殊功能
+飞机配件
+    战斗机武器
+    light_mg_2x = 2x 轻机枪
+    light_mg_4x = 4x 轻机枪
+    aircraft_cannon_1_1x = 1x 机炮 I
+    aircraft_cannon_1_2x = 2x 机炮 I
+    heavy_mg_2x = 2x 重机枪
+    heavy_mg_4x = 4x 重机枪
+    aircraft_cannon_2_1x = 1x 机炮 II
+    aircraft_cannon_2_2x = 2x 机炮 II
+    支援机武器#主武器时仅限小型机身，无论主副武器，大型机身都无法装配
+    small_bomb_bay = 小型炸弹舱
+    medium_bomb_bay = 中型炸弹舱#仅限中型机身
+    large_bomb_bay = 大型炸弹舱#仅限大型机身
+    tank_buster_1 = 反坦克机炮 I
+    tank_buster_2 = 反坦克机炮 II
+    rocket_rails = 火箭发射轨
+    bomb_locks = 炸弹挂架
+    海轰武器#主武器时仅限小型，大型机身
+    guided_anti_ship_missile = 制导反舰导弹
+    torpedo_mounting = 鱼雷挂架
+    fixed_explosive_charge = 固定炸药#自杀飞机，仅限小型机身
+    侦察机
+    recon_camera = 侦察相机#主武器时仅限中型机身
+    布雷
+    airdropped_mines = 空投水雷
+    引擎
+    engine_1_1x = 1x引擎I
+    engine_1_2x = 2x引擎I
+    engine_1_3x = 3x引擎I
+    engine_1_4x = 4x引擎I
+    engine_1_6x = 6x引擎I
+
+    engine_2_1x = 1x引擎II
+    engine_2_2x = 2x引擎II
+    engine_2_3x = 3x引擎II
+    engine_2_4x = 4x引擎II
+    engine_2_6x = 6x引擎II
+
+    engine_3_1x = 1x引擎III
+    engine_3_2x = 2x引擎III
+    engine_3_3x = 3x引擎III
+    engine_3_4x = 4x引擎III
+    engine_3_6x = 6x引擎III
+
+    engine_4_1x = 1x引擎IV
+    engine_4_2x = 2x引擎IV
+    engine_4_3x = 3x引擎IV
+    engine_4_4x = 4x引擎IV
+    engine_4_6x = 6x引擎IV
+
+    jet_engine_1x = 1x喷气式引擎
+    jet_engine_2x = 2x喷气式引擎
+    jet_engine_3x = 3x喷气式引擎
+    jet_engine_4x = 4x喷气式引擎
+    jet_engine_6x = 6x喷气式引擎
+
+    rocket_engine_1 = 火箭引擎I
+    rocket_engine_2 = 火箭引擎II
+    rocket_engine_3 = 火箭引擎III
+    炮塔
+    lmg_defense_turret = 轻机枪防御炮塔
+    lmg_defense_turret_2x = 轻机枪防御炮塔 2x
+    hmg_defense_turret = 重机枪防御炮塔
+    hmg_defense_turret_2x = 重机枪防御炮塔 2x
+    cannon_defense_turret = 机炮防御炮塔
+    cannon_defense_turret_2x = 机炮防御炮塔 2x
+    
+    bomb_sights_1 = 轰炸瞄准具 I
+    bomb_sights_2 = 轰炸瞄准具 II
+    radio_navigation_1 = 无线电导航 I
+    radio_navigation_2 = 无线电导航 II
+    air_ground_radar_1 = 空地雷达 I
+    air_ground_radar_2 = 空地雷达 II
+    air_air_radar_1 = 空空雷达 I
+    air_air_radar_2 = 空空雷达 II
+
+    fuel_tanks_small = 额外油箱（小型机身）
+    fuel_tanks_medium = 额外油箱（中型机身）
+    fuel_tanks_large = 额外油箱（大型机身）
+    self_sealing_fuel_tanks_small = 自动密封式油箱（小型机身）
+    self_sealing_fuel_tanks_medium = 自动密封式油箱（中型机身）
+    self_sealing_fuel_tanks_large = 自动密封式油箱（大型机身）
+    armor_plate_small = 装甲板（小型机身）
+    armor_plate_medium = 装甲板（中型机身）
+    armor_plate_large = 装甲板（大型机身）
+    dive_brakes_small = 俯冲减速板（小型机身）
+    dive_brakes_medium = 俯冲减速板
+    dive_brakes_large = 俯冲减速板
+    flying_boat_medium = 船身式改造（中型机身）
+    flying_boat_large = 船身式改造
+    non_strategic_materials_small = 使用非战略资源材料
+    demining_coil = 排雷线圈#仅限中型，大型机身
+    drop_tanks = 可抛弃式副油箱#仅限小型机身
+    floats = 浮筒#仅限小型机身
+
+
+    

@@ -1,0 +1,201 @@
+scripted_decision_gui_default_slider_counter = {
+	base = 0
+	modifier = {
+		check_variable = {
+			scr_dec_decision_slider_height < 200
+		}
+		add_to_temp_array = {
+			scr_dec_decision_slider_grid_array = scr_dec_decision_slider_height
+		}
+		add = scr_dec_decision_slider_height
+	}
+	modifier = {
+		NOT = {
+			check_variable = {
+				scr_dec_decision_slider_height < 200
+			}
+		}
+		subtract_from_temp_variable = {
+			scr_dec_decision_slider_height = 100
+		}
+		add_to_temp_array = {
+			scr_dec_decision_slider_grid_array = 100
+		}
+		add = mtth:scripted_decision_gui_default_slider_counter
+	}
+}
+scripted_decision_gui_default_height_counter = {
+	base = 0
+	modifier = {
+		scripted_decision_generate_decision_category_array = yes
+		set_temp_variable = {
+			scr_dec_gui_x_base = 0
+		}
+		set_temp_variable = {
+			scr_dec_gui_y_base = 0
+		}
+		set_temp_variable = {
+			scr_dec_decision_category_height_sum = 0 
+		}
+		all_of = {
+			array = scripted_decision_category_temp_list
+			value = scripted_decision_category_entry
+			index = i
+			set_temp_variable = {
+				scr_dec_decision_height = mtth:scripted_decision_category_default_height_counter
+			}
+		}
+		set_temp_variable = {
+			scr_dec_decision_gui_height = scr_dec_decision_category_height_sum
+		}
+		set_temp_variable = {
+			scr_dec_decision_slider_height = scr_dec_decision_gui_height
+		}
+		clear_temp_array = scr_dec_decision_slider_grid_array
+		set_temp_variable = {
+			scr_dec_decision_slider_last_height = mtth:scripted_decision_gui_default_slider_counter
+		}
+		set_temp_variable = {
+			scr_dec_decision_category_height_sum = 0 
+		}
+		log = "[?scr_dec_decision_slider_grid_array^num]"
+		log = "[?scr_dec_decision_slider_last_height]"
+		add = scr_dec_decision_gui_height
+	}
+}
+scripted_decision_category_default_height_counter = {
+	base = 0
+	modifier = {
+		scripted_decision_generate_decision_array = yes
+		set_temp_variable = {
+			scr_dec_grid_height = 40
+		}
+		set_temp_variable = {
+			scr_dec_category_x_base = 0
+		}
+		set_temp_variable = {
+			scr_dec_category_y_base = scr_dec_decision_category_height_sum
+		}
+		set_temp_variable = {
+			scr_dec_decision_grid_x_base = 0
+		}
+		set_temp_variable = {
+			scr_dec_decision_grid_y_base = 60
+		}
+		set_temp_variable = {
+			scr_dec_cat_icon_header_bg_x_modifier = -4
+		}
+		set_temp_variable = {
+			scr_dec_cat_icon_header_bg_y_modifier = 8
+		}
+		set_temp_variable = {
+			scr_dec_cat_icon_x_modifier = 10
+		}
+		set_temp_variable = {
+			scr_dec_cat_icon_y_modifier = 16
+		}
+		set_temp_variable = {
+			scr_dec_cat_name_text_x_modifier = 74
+		}
+		set_temp_variable = {
+			scr_dec_cat_name_text_y_modifier = 26
+		}
+		set_temp_variable = {
+			scr_dec_cat_collapse_btn_x_modifier = 475
+		}
+		set_temp_variable = {
+			scr_dec_cat_collapse_btn_y_modifier = 25
+		}
+		set_temp_variable = {
+			scr_dec_decision_height_sum = 0
+		}
+		all_of = {
+			array = scripted_decision_temp_list
+			value = scripted_decision_entry
+			index = i
+			set_temp_variable = {
+				scr_dec_decision_height = mtth:scripted_decision_default_height_counter
+			}
+		}
+		set_temp_variable = {
+			scr_dec_decision_category_height = scr_dec_decision_height_sum
+		}
+		add_to_temp_variable = {
+			scr_dec_decision_category_height = scr_dec_decision_grid_y_base
+		}
+		add_to_temp_variable = {
+			scr_dec_decision_category_height_sum = scr_dec_decision_category_height 
+		}
+		set_temp_variable = {
+			scr_dec_decision_height_sum = 0
+		}
+		add = scr_dec_decision_category_height
+	}
+}
+scripted_decision_default_height_counter = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			scr_dec_decision_entry_x_base = 0
+		}
+		set_temp_variable = {
+			scr_dec_decision_entry_y_base = scr_dec_decision_height_sum
+		}
+
+		set_temp_variable = {
+			scr_dec_btn_bg_x_modifier = 0
+		}
+		set_temp_variable = {
+			scr_dec_btn_bg_y_modifier = 0
+		}
+		set_temp_variable = {
+			scr_dec_name_text_x_modifier = 62
+		}
+		set_temp_variable = {
+			scr_dec_name_text_y_modifier = 9
+		}
+		set_temp_variable = {
+			scr_dec_icon_x_modifier = 32
+		}
+		set_temp_variable = {
+			scr_dec_icon_y_modifier = 20
+		}
+		set_temp_variable = {
+			scr_dec_btn_progress_x_modifier = 9
+		}
+		set_temp_variable = {
+			scr_dec_btn_progress_y_modifier = 28
+		}
+		set_temp_variable = {
+			scr_dec_timer_icon_x_modifier = 492
+		}
+		set_temp_variable = {
+			scr_dec_timer_icon_y_modifier = 15
+		}
+		set_temp_variable = {
+			scr_dec_cost_and_timer_text_x_modifier = 155
+		}
+		set_temp_variable = {
+			scr_dec_cost_and_timer_text_y_modifier = 9
+		}
+		set_temp_variable = {
+			scr_dec_cost_and_timer_text_selectable_x_modifier = 135
+		}
+		set_temp_variable = {
+			scr_dec_cost_and_timer_text_selectable_y_modifier = 9
+		}
+		set_temp_variable = {
+			scr_dec_btn_select_x_modifier = 465
+		}
+		set_temp_variable = {
+			scr_dec_btn_select_y_modifier = 6
+		}
+		set_temp_variable = {
+			scr_dec_decision_height = scr_dec_grid_height
+		}
+		add_to_temp_variable = {
+			scr_dec_decision_height_sum = scr_dec_decision_height 
+		}
+		add = scr_dec_decision_height
+	}
+}

@@ -1,0 +1,23 @@
+scripted_gui = {
+	window_gui_test = {
+        context_type = player_context
+        window_name = "blablablabla" #随便写个
+        visible = {
+            ROOT = {
+                has_country_flag = blabla #随便写个
+            }
+        }
+		dynamic_lists = {
+			god_damn_line_segments = {
+				array = line_frames
+				entry_container = OGAS_econ_line_segment_green #在interface定义了
+				value = segment_frame
+				index = segment_idx
+			}
+		}
+		properties = {
+			line_segment = { frame = segment_frame }
+
+		}
+    }
+}

@@ -1,0 +1,58 @@
+#变量
+ #设置变量（创建变量）
+  #在variable前面加temp_就是临时变量
+  set_variable = {
+	sb = 10
+  }
+ #加减乘除
+  add_to_variable = {
+ 	sb = 10
+  } 
+  subtract_from_variable = {
+	sb = 10
+  }
+  multiply_variable = {
+	sb = 2
+  }
+  divide_variable = {
+	sb = 2
+  }
+ #随机变量
+  randomize_variable = {
+	var = sb
+	distribution = uniform/binomial
+	#第一种随机分布，第二种趋向中间数值
+	min = 0
+	max = 1
+  }
+ #设置变量最大和最小
+  clamp_variable = {
+	var = sb
+	min = 0
+	max = 10000
+  }
+ #四舍五入去小数点
+  round_variable = sb
+ #清空变量
+  clear_variable = sb
+ #作为条件
+  #比较数值
+   check_variable = {
+	  var = sb
+	  value = 50
+	  compare = less_than
+   }
+   #less_than小于
+   #less_than_or_equals小于等于
+   #greater_than小于
+   #greater_than_or_equals大于等于
+   #equals等于
+   #not_equals不等于
+   #另一种表达方法
+    check_variable = {
+	   sb = 10
+	   sb >10
+	   #等等
+    }
+  #有没有这个变量
+    has_variable = sb

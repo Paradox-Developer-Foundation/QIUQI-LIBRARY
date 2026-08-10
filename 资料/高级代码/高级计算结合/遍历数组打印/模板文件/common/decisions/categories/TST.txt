@@ -1,0 +1,6 @@
+
+TST_category = {		#测试用
+	icon = GFX_decision_category_generic_crisis
+	#picture = 
+	priority = 10
+}

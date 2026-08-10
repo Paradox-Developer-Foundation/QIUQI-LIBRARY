@@ -1,0 +1,143 @@
+test_decision_2_remove_effect = {
+	add_political_power = 100
+	log = "REMOVE 2"
+}
+test_decision_2_complete_effect = {
+	army_experience = 25
+}
+test_decision_2_cancel_effect = {
+	log = "FUCKED"
+}
+
+test_decision_remove_effect = {
+	log = "REMOVE 1"
+}
+test_decision_complete_effect = {
+	log = "COMPLETE 1"
+}
+
+test_decision_3_remove_effect = {
+	log = "REMOVE 3"
+}
+test_decision_3_complete_effect = {
+	log = "COMPLETE 3"
+}
+test_decision_3_timeout_effect = {
+	log = "timeout 3"
+}
+
+
+
+e_test = {
+	create_scripted_decision = yes
+	set_variable = {
+		test_decision_1 = new_scripted_decision
+	}
+	var:test_decision_1 = {
+		set_character_name = " test_decision"
+		var:icon = {
+			set_character_name = "GFX_decision_generic_operation"
+		}
+		var:custom_cost_text = {
+			set_character_name = " test_default_cost_text"
+		}
+		set_variable = {
+			days_mission_timeout = 5
+		}
+		selectable_mission = yes
+		set_variable = {
+			days_remove = 0
+		}
+		set_variable = {
+			days_re_enable = 10
+		}
+		is_good = yes
+	}
+
+	create_scripted_decision = yes
+	set_variable = {
+		test_decision_2 = new_scripted_decision
+	}
+	var:test_decision_2 = {
+		set_character_name = " test_decision_2"
+		set_variable = {
+			days_remove = 15
+		}
+		set_variable = {
+			cost = 40
+		}
+	}
+
+	create_scripted_decision = yes
+	set_variable = {
+		test_decision_3 = new_scripted_decision
+	}
+	var:test_decision_3 = {
+		set_character_name = " test_decision_3"
+		var:icon = {
+			set_character_name = "GFX_decision_generic_construction"
+		}
+		set_variable = {
+			days_mission_timeout = 10
+		}
+		set_variable = {
+			days_re_enable = 5
+		}
+		set_variable = {
+			priority = 10
+		}
+		#selectable_mission = yes
+		#
+		#
+		#
+		is_good = yes
+	}
+
+	create_scripted_decision_category = yes
+	set_variable = {
+		test_category_1 = new_scripted_decision_category
+	}
+	var:test_category_1 = {
+		set_character_name = " test_category"
+		var:icon = {
+			set_character_name = "GFX_decision_generic_construction"
+		}
+		visible_when_empty = yes
+		var:PREV.test_decision_1 = {
+			add_to_category = yes
+		}
+		var:PREV.test_decision_2 = {
+			add_to_category = yes
+		}
+	}
+
+	create_scripted_decision_category = yes
+	set_variable = {
+		test_category_2 = new_scripted_decision_category
+	}
+	var:test_category_2 = {
+		#visible_when_empty = yes
+		set_character_name = " test_category_2"
+		var:PREV.test_decision_3 = {
+			add_to_category = yes
+		}
+	}
+	clear_array = test_list
+	add_to_array = {
+		test_list = test_category_1
+	}
+	add_to_array = {
+		test_list = test_category_2
+	}
+}
+
+ete = {
+	var:test_decision_3 = {
+		if = {
+			limit = {
+				scripted_decision_has_no_activation = yes
+			}
+			log = "FUCK"
+		}
+	}
+}

@@ -1,0 +1,18 @@
+TST_category = {	
+	TST_decision = {
+		icon = generic_research
+
+		#注意，遍历尽量在trigger或者effect block里进行，这里有案例
+
+		available = {
+			#custom_trigger_tooltip = {
+			#	tooltip = TST_decision_tr
+			#	always = yes
+			#}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = TST_decision_tt
+		}
+	}
+}

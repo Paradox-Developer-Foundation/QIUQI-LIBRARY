@@ -1,0 +1,28 @@
+# 由 CMCMC 编写
+# 本地化设置
+# CM_SE_title  为重大事件标题编写的本地化内容
+# CM_SE_desc  为特色文本内容编写的本地化内容
+# CM_SE_btn  为按钮文本编写的本地化内容
+# 纹理
+# CM_SE_getpicture  为图片条目编写的本地化内容，超事件背景图（本地化键）需要在一个 .gfx 文件中定义
+defined_text = { 
+	name = CM_SE_getpicture 
+	 text = { trigger = { check_variable = { global.se_display = 0001 } } localization_key = GFX_CM_SE_0001 }
+	 text = { trigger = { check_variable = { global.se_display = 0002 } } localization_key = GFX_CM_SE_0002 }
+	 text = { trigger = { check_variable = { global.se_display = 0003 } } localization_key = GFX_CM_SE_0003 }
+	 text = { trigger = { check_variable = { global.se_display = 0004 } } localization_key = GFX_CM_SE_0004 }
+	 text = { trigger = { check_variable = { global.se_display = 0005 } } localization_key = GFX_CM_SE_0005 }
+	 text = { trigger = { check_variable = { global.se_display = 0006 } } localization_key = GFX_CM_SE_0006 }
+	 text = { trigger = { check_variable = { global.se_display = 0007 } } localization_key = GFX_CM_SE_0007 }
+	 text = { trigger = { check_variable = { global.se_display = 0008 } } localization_key = GFX_CM_SE_0008 }
+	 text = { trigger = { check_variable = { global.se_display = 0009 } } localization_key = GFX_CM_SE_0009 }
+	 text = { trigger = { check_variable = { global.se_display = 0010 } } localization_key = GFX_CM_SE_0010 }
+	 text = {
+		trigger = { 
+		#通用的超事件背景图，兜底？
+		}
+		localization_key = GFX_CM_SE_pic_entry
+	}	
+}
+
+

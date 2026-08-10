@@ -1,0 +1,40 @@
+spriteTypes = {
+
+	###超事件边框
+	#名人名言背景
+	spriteType = {
+		name = "GFX_CM_SE_bg"
+		texturefile = "gfx//tvbigevent//SE_bg.dds"
+		legacy_lazy_load = no
+	}
+    #按钮
+	spriteType = {
+		name = "GFX_CM_SE_exit_btn"
+		texturefile = "gfx//tvbigevent//SE_btn.dds"
+		legacy_lazy_load = no 
+	}
+	#电视机边框
+	spriteType = {
+		name = "GFX_CM_SE_frame_overlay"
+		texturefile = "gfx//tvbigevent//SE_frame.dds"
+		legacy_lazy_load = no
+	}
+	#（没有自定义超事件背景就是默认图）
+	spriteType = {
+		name = "GFX_CM_SE_pic_entry"
+		texturefile = "gfx//tvbigevent//SE_pic.dds"
+		legacy_lazy_load = no
+	}
+	
+	####超事件背景图
+	spriteType = { name = "GFX_CM_SE_0001" texturefile = "gfx//tvbigevent//pics//CM_SE_0001.dds" }
+    spriteType = { name = "GFX_CM_SE_0002" texturefile = "gfx//tvbigevent//pics//CM_SE_0002.dds" }
+    spriteType = { name = "GFX_CM_SE_0003" texturefile = "gfx//tvbigevent//pics//CM_SE_0003.dds" }
+    spriteType = { name = "GFX_CM_SE_0004" texturefile = "gfx//tvbigevent//pics//CM_SE_0004.dds" }
+    spriteType = { name = "GFX_CM_SE_0005" texturefile = "gfx//tvbigevent//pics//CM_SE_0005.dds" }
+    spriteType = { name = "GFX_CM_SE_0006" texturefile = "gfx//tvbigevent//pics//CM_SE_0006.dds" }
+    spriteType = { name = "GFX_CM_SE_0007" texturefile = "gfx//tvbigevent//pics//CM_SE_0007.dds" }
+    spriteType = { name = "GFX_CM_SE_0008" texturefile = "gfx//tvbigevent//pics//CM_SE_0008.dds" }
+    spriteType = { name = "GFX_CM_SE_0009" texturefile = "gfx//tvbigevent//pics//CM_SE_0009.dds" }
+    spriteType = { name = "GFX_CM_SE_0010" texturefile = "gfx//tvbigevent//pics//CM_SE_0010.dds" }
+}

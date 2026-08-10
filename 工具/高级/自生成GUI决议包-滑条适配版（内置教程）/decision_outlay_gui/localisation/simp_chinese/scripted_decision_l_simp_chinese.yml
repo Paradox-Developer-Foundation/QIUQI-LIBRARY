@@ -1,0 +1,35 @@
+﻿l_simp_chinese:
+ test_decision:0 "测试决议"
+ test_decision_2:0 "测试决议2号"
+
+ scripted_decision_name_loc_key:0 "[GetScriptedDecisionName]"
+ scripted_decision_icon_loc_key:0 "[?scripted_decision_entry:icon.GetName]"
+ scripted_decision_category_name_loc_key:0 "[GetScriptedDecisionCategoryName]"
+ scripted_decision_category_icon_loc_key:0 "[?scripted_decision_category_entry:icon.GetName]"
+ scripted_decision_timer_and_cost_loc_key:0 "[GetScriptedDecisionTimerCost]"
+ scripted_decision_timer_text_loc_ket:0 "[GetScriptedDecisionTimer]"
+ scripted_custom_cost_text_default_cost_text:0 "[GetDefaultCostText]"
+ scripted_custom_cost_text_default_cost_text_blocked:0 "[GetDefaultCostTextBlocked]"
+ scripted_custom_cost_text_default_cost_text_tooltip:0 "[GetDefaultCostTextTooltip]"
+ scripted_custom_cost_text_default_cost_text_loc_key:0 "£pol_power §Y[?scripted_decision_entry:cost]§!"
+ scripted_custom_cost_text_default_cost_text_loc_key_blocked:0 "£pol_power §R[?scripted_decision_entry:cost]§!"
+ scripted_custom_cost_text_default_cost_text_loc_key_tooltip:0 "执行此决议需要£pol_power §Y[?scripted_decision_entry:cost]§!"
+
+ test_default_cost_text:0 "£army_experience §Y 5 §!"
+ test_default_cost_text_blocked:0 "£army_experience §R 5 §!"
+
+ scripted_decision_timer_text:0 "§Y[?t_timer]天§!"
+
+ get_scripted_decision_timer_cost_tech_key:0 "$COST$ $TIMER$"
+
+ scripted_decision_complete_trigger_tooltip_prefix_loc_key:0 "[GetCompleteTriggerTooltipPrefix]\n"
+ scripted_decision_remove_trigger_tooltip_prefix_loc_key:0 "[GetRemoveTriggerTooltipPrefix]\n"
+ scripted_decision_cancel_trigger_tooltip_prefix_loc_key:0 "[GetCancelTriggerTooltipPrefix]\n"
+
+ scripted_decision_complete_effect_tooltip_prefix_loc_key:0 "[GetCompleteEffectTooltipPrefix]\n"
+ scripted_decision_remove_effect_tooltip_prefix_loc_key:0 "[GetRemoveEffectTooltipPrefix]\n"
+ scripted_decision_cancel_effect_tooltip_prefix_loc_key:0 "[GetCancelEffectTooltipPrefix]\n"
+ scripted_decision_timeout_effect_tooltip_prefix_loc_key:0 "[GetTimeoutEffectTooltipPrefix]\n"
+
+ scripted_decision_tooltip_loc_key:0 "§Y[GetScriptedDecisionName]§!§L[GetScriptedDecisionDesc]§!\n[GetMissionCompleteTriggerTooltip][!scripted_decision_hidden_tool_button_complete_mission_click_enabled][GetMissionCompleteTriggerTooltipEnter][GetMissionCancelEffectTooltip][!scripted_decision_hidden_tool_button_cancel_mission_click][GetMissionCancelEffectTooltipEnter][GetMissionCancelTriggerTooltip][!scripted_decision_hidden_tool_button_cancel_mission_click_enabled][GetMissionCancelTriggerTooltipEnter][GetMissionTimeoutEffectTooltip][!scripted_decision_hidden_tool_button_timeout_mission_click][GetMissionTimeoutEffectTooltipEnter][GetMissionCompleteEffectTooltip][!scripted_decision_hidden_tool_button_complete_mission_click][GetMissionCompleteEffectTooltipEnter][GetDecisionCompleteTriggerTooltip][!scripted_decision_hidden_tool_button_complete_decision_click_enabled][GetDecisionCompleteTriggerTooltipEnter][GetDecisionCompleteEffectTooltip][!scripted_decision_hidden_tool_button_complete_decision_click][GetDecisionCompleteEffectTooltipEnter][GetDecisionDaysRemoveTooltip][GetDecisionDaysRemoveTooltipEnter][GetDecisionRemoveEffectTooltip][!scripted_decision_hidden_tool_button_remove_decision_click][GetDecisionRemoveEffectTooltipEnter][GetDecisionRemoveTriggerTooltip][!scripted_decision_hidden_tool_button_remove_decision_click_enabled][GetDecisionRemoveTriggerTooltipEnter][GetDecisionCancelEffectTooltip][!scripted_decision_hidden_tool_button_cancel_decision_click][GetDecisionCancelEffectTooltipEnter][GetDecisionCancelTriggerTooltip][!scripted_decision_hidden_tool_button_cancel_decision_click_enabled][GetDecisionCancelTriggerTooltipEnter] [GetDecisionCostTooltip]"
+ scripted_decision_enter:0 "\n"

@@ -1,0 +1,56 @@
+事件文件位置：hearts of iron iv/events/xxx.txt
+
+
+add_namespace = 事件前缀名
+country_event = {
+	id = 事件前缀名.X（原版为数字序号 如 germany.1）
+    picture = GFX_事件图片名
+    title = 事件前缀名.X.x（原版格式为 事件前缀名.X.t 如 germany.1.t ）
+    desc = 事件前缀名.X.x（原版格式为 事件前缀名.X.t 如 germany.1.d ）
+    #title和desc皆为文本代码，需在本地化文件写文本#
+	
+	#通常来说trigger = { …… }与is_triggered_only = yes必须二选一
+    is_triggered_only = yes
+    #或
+    trigger = {
+        满足条件时事件触发
+        ……
+    }
+    #通常trigger = { …… }与fire_only_once = yes搭配
+    fire_only_once = yes/no （事件是否仅触发一次，默认为no）
+    
+	hidden = yes/no （是否为隐藏事件，默认为no）
+
+	immediate = { 
+		事件触发时立即生效的效果
+	}
+	
+    option = { 
+        name = 事件前缀名.X（原版格式为 事件前缀名.X.a/b/c 如 germany.1.a germany.1.b germany.1.c ）
+		trigger = {
+			此选项出现的条件
+		}
+
+		#直接在option下写该选项的效果
+        ……
+		各种效果
+	}
+
+	option = { 
+		name = 事件前缀名.X
+	}
+    
+}
+
+#新闻事件模板
+news_event = {
+	id = 事件前缀名.X
+
+    ……略，全部同普通事件模板
+
+    major = yes/no （填yes为全世界显示该新闻，填no为仅本国）
+
+	option = {
+		name = 事件前缀名.X.x
+	}
+}

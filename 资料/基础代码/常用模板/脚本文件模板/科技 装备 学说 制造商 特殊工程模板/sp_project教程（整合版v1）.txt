@@ -1,0 +1,304 @@
+一、特殊项目概述
+特殊项目（Special Projects）是游戏中用于在特定设施（Facilities）中进行研究以获取装备和其他奖励的系统。特殊项目分为多个专业领域（Specializations），每个领域包含一个可研究项目的树形结构。每个项目节点（即一个特殊项目）都有其独特的设定和奖励。
+二、特殊项目的周期
+特殊项目的研究分为几个阶段：
+
+    启动阶段（Establishing phase）：每次开始或重新开始项目时都需要经过此阶段。如果在中途取消，将重新从头开始此阶段。
+    初始研究阶段（Initial research phase）：仅需完成一次，如果项目在完成后被取消，不会再次经过此阶段。如果在中途取消，将记住进度。
+    原型阶段（Prototyping phase）：需要多次迭代，直到项目完成。每次迭代都会根据项目的复杂性（Complexity）获得一定的进度，直到达到100%完成。如果在中途取消，将记住进度。
+
+三、特殊项目的构成要素
+所有的特殊项目相关内容包括以下部分：
+
+    1项目定义（special_project_id）：定义项目的属性、需求、奖励等。
+    2项目专业化（special_project_specialization）：定义项目的所属领域，如航空、核技术等。
+    3科学家定义（scientist）：定义参与项目的科学家的技能和特质。
+    4设施定义（special_project_facility）：定义进行项目研究的设施。
+
+四、自定义特殊项目教程
+（一）项目定义（special_project_id）
+# 自定义特殊项目
+位置：Hearts of Iron IV\mod\SCI\common\special_projects
+my_custom_project = {
+    # 项目所属的专业领域（必须指定）
+    specialization = "my_specialization_token"
+
+    # 项目是否允许（可选）
+    # 用于在游戏启动时检查是否为某个国家解锁此项目
+    allowed = {
+        # 示例：仅对拥有特定DLC的国家解锁
+        has_dlc = "my_dlc_name"
+    }
+
+    # 项目是否可用（可选）
+    # 用于在项目界面中判断项目是否可选
+    available = {
+        # 示例：仅在拥有特定科技后解锁
+        has_tech = "my_tech_name"
+    }
+
+    # 项目是否可见（可选）
+    # 用于判断项目是否在界面中显示
+    visible = {
+        # 示例：仅在特定国家拥有特定建筑后显示
+        has_building = my_building_name
+    }
+
+    # 项目突破点成本（可选）
+    # 定义开始项目所需的突破点
+    breakthrough_cost = {
+        # 示例：需要特定领域的突破点
+        specialization_air = 2
+        specialization_nuclear = 1
+        specialization_land = {
+            base = 1
+            modifier = {
+                add = -1
+                has_tech = improved_medium_tank_chassis  # 如果拥有特定科技，则减少1点突破点需求
+            }
+        }
+    }
+
+    # 项目描述（可选）
+    narrative = {
+        # 项目名称（本地化键）
+        name = "my_project_name_loc_key"
+        # 项目描述（本地化键）
+        desc = "my_project_desc_loc_key"
+    }
+
+    # 项目图标（可选）
+    icon = "GFX_my_project_icon"
+
+    # 蓝图背景（可选）
+    blueprint_image = "GFX_my_project_blueprint"
+
+    # 原型阶段时间（必须指定）
+    prototype_time = 5  # 每次原型迭代所需天数
+
+    # 资源消耗（可选）
+    resource_cost = {
+        resources = {
+            steel = 10  # 钢铁消耗
+            rubber = 5  # 橡胶消耗
+        }
+    }
+
+    # 项目复杂性（可选）
+    complexity = 15  # 每次原型迭代获得的进度百分比
+
+    # 空奖励权重（可选）
+    empty_reward_weight = {
+        base = 1.0
+        modifier = {
+            factor = 2.0
+            has_tech = "my_tech_name"  # 如果拥有特定科技，空奖励权重加倍
+        }
+    }
+
+    # AI权重（可选）
+    ai_will_do = {
+        base = 1
+        modifier = {
+            factor = 1.5
+            has_dlc = "my_dlc_name"  # 如果拥有特定DLC，AI更倾向于选择此项目
+        }
+    }
+
+    # 父项目（可选）
+    # 仅当所有父项目完成后才会解锁
+    special_project_parent = {
+        "my_other_project_token"
+        "another_project_token"
+    }
+
+    # 项目完成奖励（可选）
+    project_output/iteration_output = {
+        # 国家效果
+        country_effects = {
+            add_stability = var:FROM.some_variable_at_projet_level
+        }
+    
+        # 设施所在州的效果
+        facility_state_effects = {
+            add_province_modifier  = {
+                static_modifiers = { my_modifier }
+                province = var:facility_province_id
+            }
+            #例子：
+            add_province_modifier = {
+                static_modifiers = { flooded }
+                province = {
+                    id = 6241
+                }
+            }
+        }
+    
+        # 科学家效果
+        scientist_effects = {
+            retire = yes
+        }
+    
+        # 启用装备变体
+        enable_equipments = {
+            limit = { ... }
+            equipment_variant_token
+        }
+    
+        # 启用装备模块
+        enable_equipment_modules = {
+            limit = { ... }
+            module_token ...
+        }
+    
+        # 启用子单位
+        enable_subunits = {
+            limit = { ... }
+            subunit_token ...
+        }
+    
+        # 子单位属性加成
+        sub_unit_bonus = {
+            cavalry = {
+                soft_attack = 0.05
+                hard_attack = 0.05
+            }
+        }
+    
+        # 装备加成
+        equipment_bonus = {
+            armor = {
+                armor_value = 3
+                soft_attack = 3
+            }
+        }
+    }
+
+    # 原型阶段奖励（可选）
+    unique_prototype_rewards = {
+        # 自定义原型奖励
+        dynamic_token1 = {
+            # 奖励内容
+            country_effects = {
+                add_stability = 0.05  # 增加国家稳定性
+            }
+        }
+    }
+
+    generic_prototype_rewards = {
+        # 使用通用原型奖励
+        若需自定义位置：Hearts of Iron IV\mod\SCI\common\special_projects\prototype_rewards
+        "generic_prototype_reward_token"
+    }
+}
+
+（二）项目专业化（special_project_specialization）
+项目专业化定义了项目的所属领域，以下是示例代码：
+
+# 自定义项目专业化定义
+位置：Hearts of Iron IV\mod\SCI\common\special_projects\project_tags
+my_specialization_token = {
+    # 默认蓝图背景
+    blueprint_image = "GFX_my_specialization_blueprint"
+
+    # 默认设施模型
+    facility_model = "my_specialization_entity"
+
+    # 子专业化（可选）
+    sub_specializations = {
+        my_specialization_sub1 = {
+            # 子专业化的蓝图背景
+            blueprint_image = "GFX_my_specialization_sub1_blueprint"
+        }
+        my_specialization_sub2 = {
+            # 子专业化的设施模型
+            facility_model = "GFX_my_specialization_sub2_entity"
+        }
+    }
+}
+
+（三）科学家定义（scientist）
+科学家的技能和特质会影响项目的进展，以下是示例代码：
+# 自定义科学家特质
+位置：Hearts of Iron IV\common\scientist_traits\*.txt
+my_scientist_trait_token = {
+    # 科学家特质名称（可选）
+    name = "my_scientist_trait_name_loc_key"
+
+    # 科学家特质图标（可选）
+    icon = "GFX_my_scientist_trait_icon"
+
+    # 适用于特定专业化的特质（可选）
+    specialization = { specialization_land }
+
+    # 特质适用条件（可选）
+    available = {
+        has_dlc = "No Step Back"  # 仅在拥有特定DLC时可用
+        ROOT = {
+            has_tech = tech_engineers  # 仅在拥有特定科技时可用
+        }
+    }
+
+    # 特质提供的修饰符（可选）
+    modifier = {
+        special_project_prototype_speed_factor = 0.5  # 提高项目原型迭代速度
+    }
+}
+# 自定义科学家（在角色文件内定义
+USA_Einstein = {
+    portraits = {
+        army = {
+            large = GFX_portrait_USA_Einstein
+            #small = GFX_idea_djx
+        }
+    }
+    scientist = {
+        traits = { my_scientist_trait_token }
+        skills = {
+            specialization_nuclear = 3
+        }
+    }
+}
+
+四）设施自定义（special_project_facility）
+位置：Hearts of Iron IV\mod\SCI\common\buildings，写法同其他建筑，建议新开文件而不是覆盖原有建筑文件
+设施是进行项目研究的场所，以下是示例代码：
+# 自定义设施定义
+my_project_facility = {
+    icon_frame = 1  # 设施图标框架编号
+    provincial = yes  # 设施是否在省份内建造
+    disabled_in_dmz = yes  # 是否禁止在非军事区建造
+    base_cost = 20000  # 基础建造成本
+    value = 30  # 设施价值，影响PP成本和战略轰炸伤害
+    damage_factor = -1  # 设施是否对战略轰炸和陆战免疫
+    allied_build = yes  # 是否允许盟友建造
+    show_on_map = 1  # 是否在地图上显示
+    has_destroyed_mesh = yes  # 是否有被摧毁的模型
+    infrastructure_construction_effect = yes  # 是否受基础设施建设影响
+
+    # 新参数：设施等级上限
+    building_level_cap = {
+        state_max = 1  # 省份内最大设施等级
+        province_max = 1  # 省内最大设施等级
+    }
+
+    # 设施需求
+    requirements = {
+        is_coastal = yes  # 是否需要沿海省份
+        has_resources_in_country = {
+            resource = steel
+            amount > 0  # 国家是否拥有钢铁资源
+        }
+    }
+
+    # 建设速度修改器
+    construction_speed_modifier = {
+        bonus = 0.2  # 提高建设速度
+        has_resources_amount = {
+            resource = steel
+            amount > 0
+            delivered = yes  # 省份是否已交付钢铁资源
+        }
+    }
+}
+

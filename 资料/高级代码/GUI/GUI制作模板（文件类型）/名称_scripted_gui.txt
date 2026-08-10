@@ -1,0 +1,32 @@
+#路径：common\scripted_guis
+
+scripted_gui = {
+	#.gui文件的name去掉
+	name_ui_window = {
+		#gui出现的部件名称；
+		#decision_category决议gui
+		#player_context正常的界面gui（如超事件）
+		context_type = player_context
+		#.gui文件的name
+		window_name = "name_ui_window"
+		#小部件条件
+		triggers = {
+			部件名称_enabled = {
+				#按钮允许点击的条件
+			}
+			部件名称_visible = {
+				#按钮出现的条件
+			}
+		}
+		#大界面出现条件（主窗口）
+		visible = {
+			#条件
+		}
+		#按钮效果
+		effects = {
+			按钮名称_click = {
+				#效果
+			}
+		}
+	}
+}

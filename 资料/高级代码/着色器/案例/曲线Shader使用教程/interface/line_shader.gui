@@ -1,0 +1,10 @@
+guitypes = {
+    containerWindowType = {
+        name = "OGAS_econ_line_segment_green"
+        iconType = {
+            name = "line_segment"
+            spriteType = "GFX_OGAS_econ_line_graph_segment_green"
+            position = { x = 0 y = 0 }
+        }
+    }   
+}

@@ -1,0 +1,751 @@
+scr_dec_get_btn_select_frame = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_frame = 0
+		}
+		if = {
+			limit = {
+				var:scripted_decision_entry = {
+					check_variable = {
+						decision_status = global.scripted_decision_is_removing
+					}
+				}
+			}
+			set_temp_variable = {
+				t_frame = 4
+			}
+		}
+		else_if = {
+			limit = {
+				var:scripted_decision_entry = {
+					OR = {
+						check_variable = {
+							decision_status = global.scripted_decision_has_removed
+						}
+						check_variable = {
+							decision_status = global.scripted_mission_is_failed
+						}
+					}
+				}
+			}
+			set_temp_variable = {
+				t_frame = 3
+			}
+		}
+		else_if = {
+			limit = {
+				scripted_decision_available_trigger = yes
+			}
+			set_temp_variable = {
+				t_frame = 2
+			}
+		}
+		else = {
+			set_temp_variable = {
+				t_frame = 1
+			}
+		}
+		add = t_frame
+	}
+}
+scr_dec_get_btn_bg_frame = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_frame = 0
+		}
+		if = {
+			limit = {
+				NOT = {
+					scripted_decision_can_be_click_trigger = yes
+				}
+			}
+			set_temp_variable = {
+				t_frame = 1
+			}
+		}
+		else_if = {
+			limit = {
+				var:scripted_decision_entry = {
+					OR = {
+						check_variable = {
+							decision_status = global.scripted_decision_has_removed
+						}
+						check_variable = {
+							decision_status = global.scripted_decision_is_removing
+						}
+					}
+				}
+			}
+			set_temp_variable = {
+				t_frame = 3
+			}
+		}
+		else = {
+			set_temp_variable = {
+				t_frame = 2
+			}
+		}
+		add = t_frame
+	}
+}
+scr_dec_get_timer_icon_frame = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_frame = 0
+		}
+		if = {
+			limit = {
+				var:scripted_decision_entry = {
+					check_variable = {
+						decision_status = global.scripted_decision_has_removed
+					}
+				}
+			}
+			set_temp_variable = {
+				t_frame = 4
+			}
+		}
+		else_if = {
+			limit = {
+				var:scripted_decision_entry = {
+					OR = {
+						check_variable = {
+							decision_status = global.scripted_mission_is_failed
+						}
+					}
+				}
+			}
+			set_temp_variable = {
+				t_frame = 3
+			}
+		}
+		else_if = {
+			limit = {
+				var:scripted_decision_entry = {
+					OR = {
+						check_variable = {
+							decision_status = global.scripted_mission_is_active
+						}
+						check_variable = {
+							days_mission_timeout_left < 31
+						}
+					}
+				}
+			}
+			set_temp_variable = {
+				t_frame = 1
+			}
+		}
+		else = {
+			set_temp_variable = {
+				t_frame = 1
+			}
+		}
+		add = t_frame
+	}
+}
+
+
+scr_dec_progressGetFrame = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_percent = 0
+		}
+		var:scripted_decision_entry = {
+			if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_decision_is_removing
+					}
+				}
+				set_temp_variable = {
+					t_max = days_remove
+				}
+				clamp_temp_variable = {
+					var = t_max
+					min = 0
+				}
+				set_temp_variable = {
+					t_current = days_remove
+				}
+				subtract_from_temp_variable = {
+					t_current = days_remove_left
+				}
+				clamp_temp_variable = {
+					var = t_current
+					min = 0
+					max = t_max
+				}
+				if = {
+					limit = {
+						check_variable = {
+							t_max = 0
+						}
+					}
+					if = {
+						limit = {
+							check_variable = {
+								t_current > 0
+							}
+						}
+						set_temp_variable = {
+							t_percent = 0
+						}
+						else = {
+							set_temp_variable = {
+								t_percent = 100
+							}
+						}
+					}
+				}
+				else = {
+					set_temp_variable = {
+						t_percent = t_current
+					}
+					multiply_temp_variable = {
+						t_percent = 100
+					}
+					divide_temp_variable = {
+						t_percent = t_max
+					}
+					round_temp_variable = t_percent
+				}
+				## 如果最初为0，则降低到0。-100
+				##
+
+			}
+			else = {
+				set_temp_variable = {
+					t_max = days_mission_timeout
+				}
+				clamp_temp_variable = {
+					var = t_max
+					min = 0
+				}
+				set_temp_variable = {
+					t_current = days_mission_timeout
+				}
+				subtract_from_temp_variable = {
+					t_current = days_mission_timeout_left
+				}
+				clamp_temp_variable = {
+					var = t_current
+					min = 0
+					max = t_max
+				}
+				if = {
+					limit = {
+						check_variable = {
+							t_max = 0
+						}
+					}
+					if = {
+						limit = {
+							check_variable = {
+								t_current > 0
+							}
+						}
+						set_temp_variable = {
+							t_percent = 0
+						}
+						else = {
+							set_temp_variable = {
+								t_percent = 100
+							}
+						}
+					}
+				}
+				else = {
+					set_temp_variable = {
+						t_percent = t_current
+					}
+					multiply_temp_variable = {
+						t_percent = 100
+					}
+					divide_temp_variable = {
+						t_percent = t_max
+					}
+					round_temp_variable = t_percent
+				}
+
+			}
+		}
+		add = t_percent
+	}
+}
+
+
+##位置计算
+scr_dec_get_btn_bg_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_btn_bg_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_grid_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_entry_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_get_btn_bg_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_btn_bg_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_grid_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_entry_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+scr_dec_get_name_text_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_name_text_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_grid_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_entry_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_get_name_text_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_name_text_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_grid_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_entry_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+scr_dec_get_icon_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_icon_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_grid_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_entry_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_get_icon_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_icon_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_grid_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_entry_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+scr_dec_get_btn_progress_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_btn_progress_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_grid_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_entry_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_get_btn_progress_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_btn_progress_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_grid_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_entry_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+
+scr_dec_get_timer_icon_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_timer_icon_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_grid_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_entry_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_get_timer_icon_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_timer_icon_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_grid_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_entry_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+scr_dec_get_cost_and_timer_text_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = 0
+		}
+		if = {
+			limit = {
+				var:scripted_decision_entry = {
+					scripted_decision_selectable_trigger = yes
+				}
+			}
+			add_to_temp_variable = {
+				t_real_x = scr_dec_cost_and_timer_text_selectable_x_modifier
+			}
+		}
+		else = {
+			add_to_temp_variable = {
+				t_real_x = scr_dec_cost_and_timer_text_x_modifier
+			}
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_grid_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_entry_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_get_cost_and_timer_text_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = 0
+		}
+		if = {
+			limit = {
+				var:scripted_decision_entry = {
+					scripted_decision_selectable_trigger = yes
+				}
+			}
+			add_to_temp_variable = {
+				t_real_y = scr_dec_cost_and_timer_text_selectable_y_modifier
+			}
+		}
+		else = {
+			add_to_temp_variable = {
+				t_real_y = scr_dec_cost_and_timer_text_y_modifier
+			}
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_grid_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_entry_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+scr_dec_get_btn_select_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_btn_select_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_grid_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_decision_entry_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_get_btn_select_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_btn_select_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_grid_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_decision_entry_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+
+
+
+scr_dec_cat_get_icon_header_bg_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_cat_icon_header_bg_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_cat_get_icon_header_bg_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_cat_icon_header_bg_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+scr_dec_cat_get_icon_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_cat_icon_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_cat_get_icon_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_cat_icon_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+scr_dec_cat_get_name_text_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_cat_name_text_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_cat_get_name_text_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_cat_name_text_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+scr_dec_cat_get_collapse_btn_x = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_x = scr_dec_cat_collapse_btn_x_modifier
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_category_x_base
+		}
+		add_to_temp_variable = {
+			t_real_x = scr_dec_gui_x_base
+		}
+		add = t_real_x
+	}
+}
+scr_dec_cat_get_collapse_btn_y = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_real_y = scr_dec_cat_collapse_btn_y_modifier
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_category_y_base
+		}
+		add_to_temp_variable = {
+			t_real_y = scr_dec_gui_y_base
+		}
+		add = t_real_y
+	}
+}
+scr_dec_cat_get_collapse_btn_frame = {
+	base = 0
+	modifier = {
+		set_temp_variable = {
+			t_frame = 1
+		}
+		if = {
+			limit = {
+				var:scripted_decision_category_entry = {
+					check_variable = {
+						category_status = global.scripted_decision_category_collapse
+					}
+				}
+			}
+			set_temp_variable = {
+				t_frame = 2
+			}
+		}
+		add = t_frame
+	}
+}

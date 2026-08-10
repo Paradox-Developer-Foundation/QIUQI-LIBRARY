@@ -1,0 +1,616 @@
+defined_text = {
+    name = scr_dec_progressGetGoodBad
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {	
+                OR = {
+                    check_variable = {
+                        decision_status = global.scripted_decision_is_removing
+                    }
+                    is_good = yes
+                }
+            }
+        }
+        localization_key = GFX_decision_item_progress_good
+    }
+    text = {
+        localization_key = GFX_decision_item_progress_bad
+    }
+}
+
+defined_text = {
+    name = GetScriptedDecisionName
+    text = {
+        localization_key = tech_effect|get_scripted_decision_name_tech
+    }
+}
+defined_text = {
+    name = GetScriptedDecisionDesc
+    text = {
+        localization_key = tech_effect|get_scripted_decision_desc_tech
+    }
+}
+defined_text = {
+    name = GetScriptedDecisionIcon
+    text = {
+        localization_key = scripted_decision_icon_loc_key
+    }
+}
+defined_text = {
+    name = GetScriptedDecisionTimerCost
+    text = {
+        localization_key = tech_effect|get_scripted_decision_timer_cost_tech
+    }
+}
+
+defined_text = {
+    name = GetScriptedDecisionCategoryName
+    text = {
+        localization_key = tech_effect|get_scripted_decision_category_name_tech
+    }
+}
+defined_text = {
+    name = GetScriptedDecisionCategoryIcon
+    text = {
+        localization_key = scripted_decision_category_icon_loc_key
+    }
+}
+defined_text = {
+    name = GetDefaultCostText
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                check_variable = {
+                    cost > 0
+                }
+            }
+        }
+        localization_key = scripted_custom_cost_text_default_cost_text_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDefaultCostTextBlocked
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                check_variable = {
+                    cost > 0
+                }
+            }
+        }
+        localization_key = scripted_custom_cost_text_default_cost_text_loc_key_blocked
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDefaultCostTextTooltip
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                check_variable = {
+                    cost > 0
+                }
+            }
+        }
+        localization_key = scripted_custom_cost_text_default_cost_text_loc_key_tooltip
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetScriptedDecisionTimer
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                OR = {
+                    check_variable = {
+                        decision_status = global.scripted_decision_is_removing
+                    }
+                    check_variable = {
+                        decision_status = global.scripted_mission_is_active
+                    }
+                    AND = {
+                        scripted_decision_is_mission = yes
+                        check_variable = {
+                            decision_status = global.scripted_decision_default_status
+                        }
+                    }
+                }
+            }
+            set_temp_variable = {
+                t_timer = 0
+            }
+            var:scripted_decision_entry = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            decision_status = global.scripted_decision_is_removing
+                        }
+                    }
+                    add_to_temp_variable = {
+                        t_timer = days_remove_left
+                    }
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            decision_status = global.scripted_mission_is_active
+                        }
+                    }
+                    add_to_temp_variable = {
+                        t_timer = days_mission_timeout_left
+                    }
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            decision_status = global.scripted_decision_default_status
+                        }
+                    }
+                    add_to_temp_variable = {
+                        t_timer = days_mission_timeout
+                    }
+                }
+            }
+        }
+        localization_key = scripted_decision_timer_text
+    }
+    text = {
+        localization_key = ""
+    }
+}
+
+defined_text = {
+    name = GetCompleteTriggerTooltipPrefix
+    ##失败条件/完成需要/先决条件：
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                scripted_decision_is_mission = yes
+                selectable_mission = yes
+            }
+        }
+        localization_key = TIMED_DECISION_PREREQUISITES_HEADER_SELECTABLE
+    }
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                scripted_decision_is_mission = yes
+                is_good = yes
+            }
+        }
+        localization_key = TIMED_DECISION_PREREQUISITES_HEADER_GOOD
+    }
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                scripted_decision_is_mission = yes
+                NOT = {
+                    is_good = yes
+                }
+            }
+        }
+        localization_key = TIMED_DECISION_PREREQUISITES_HEADER_BAD
+    }
+    text = {
+        localization_key = DECISION_PREREQUISITES_HEADER
+    }
+}
+defined_text = {
+    name = GetCompleteEffectTooltipPrefix
+    ##失败/完成/选中时：
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                scripted_decision_is_mission = yes
+                selectable_mission = yes
+            }
+        }
+        localization_key = TIMED_DECISION_COMPLETE_EFFECT_HEADER_SELECTABLE
+    }
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                scripted_decision_is_mission = yes
+                is_good = yes
+            }
+        }
+        localization_key = TIMED_DECISION_COMPLETE_EFFECT_HEADER_GOOD
+    }
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                scripted_decision_is_mission = yes
+                NOT = {
+                    is_good = yes
+                }
+            }
+        }
+        localization_key = TIMED_DECISION_COMPLETE_EFFECT_HEADER_BAD
+    }
+    text = {
+        localization_key = DECISION_SELECT_HEADER
+    }
+}
+
+defined_text = {
+    name = GetCancelTriggerTooltipPrefix
+    ##中止条件/立即取消，如果
+    text = {
+        trigger = {
+            var:scripted_decision_entry = {
+                scripted_decision_is_mission = yes
+                NOT = {
+                    check_variable = {
+                        decision_status = global.scripted_decision_is_removing
+                    }
+                }
+            }
+        }
+        localization_key = TIMED_DECISION_ABORT_HEADER
+    }
+    text = {
+        localization_key = DECISION_WILL_BE_CANCELLED_IF
+    }
+}
+defined_text = {
+    name = GetCancelEffectTooltipPrefix
+    ##取消时：
+    text = {
+        localization_key = DECISION_CANCEL_HEADER
+    }
+}
+defined_text = {
+    name = GetRemoveTriggerTooltipPrefix
+    ##立刻移除，如果:
+    text = {
+        localization_key = DECISION_WILL_BE_REMOVED_IF
+    }
+}
+defined_text = {
+    name = GetRemoveEffectTooltipPrefix
+    ##移除时：
+    text = {
+        localization_key = DECISION_REMOVE_HEADER
+    }
+}
+defined_text = {
+    name = GetTimeoutEffectTooltipPrefix
+    text = {
+        localization_key = tech_effect|get_scripted_decision_timeout_effect_prefix
+    }
+    ##移除时：
+}
+
+
+defined_text = {
+    name = GetMissionCompleteTriggerTooltip
+    text = {
+        trigger = {
+            scripted_mission_show_complete_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_complete_trigger_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetMissionCompleteTriggerTooltipEnter
+    text = {
+        trigger = {
+            scripted_mission_show_complete_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetMissionCancelEffectTooltip
+    text = {
+        trigger = {
+            scripted_mission_show_cancel_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_cancel_effect_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetMissionCancelEffectTooltipEnter
+    text = {
+        trigger = {
+            scripted_mission_show_cancel_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetMissionCancelTriggerTooltip
+    text = {
+        trigger = {
+            scripted_mission_show_cancel_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_cancel_trigger_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetMissionCancelTriggerTooltipEnter
+    text = {
+        trigger = {
+            scripted_mission_show_cancel_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetMissionTimeoutEffectTooltip
+    text = {
+        trigger = {
+            scripted_mission_show_timeout_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_timeout_effect_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetMissionTimeoutEffectTooltipEnter
+    text = {
+        trigger = {
+            scripted_mission_show_timeout_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetMissionCompleteEffectTooltip
+    text = {
+        trigger = {
+            scripted_mission_show_complete_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_complete_effect_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetMissionCompleteEffectTooltipEnter
+    text = {
+        trigger = {
+            scripted_mission_show_complete_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+
+
+defined_text = {
+    name = GetDecisionCompleteTriggerTooltip
+    text = {
+        trigger = {
+            scripted_decision_show_complete_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_complete_trigger_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionCompleteTriggerTooltipEnter
+    text = {
+        trigger = {
+            scripted_decision_show_complete_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionCompleteEffectTooltip
+    text = {
+        trigger = {
+            scripted_decision_show_complete_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_complete_effect_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionCompleteEffectTooltipEnter
+    text = {
+        trigger = {
+            scripted_decision_show_complete_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionDaysRemoveTooltip
+    text = {
+        trigger = {
+            scripted_decision_show_days_remove_tooltip = yes
+        }
+        localization_key = tech_effect|get_scripted_decision_days_remove_tooltip_with_prefix
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionDaysRemoveTooltipEnter
+    text = {
+        trigger = {
+            scripted_decision_show_days_remove_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionRemoveEffectTooltip
+    text = {
+        trigger = {
+            scripted_decision_show_remove_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_remove_effect_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionRemoveEffectTooltipEnter
+    text = {
+        trigger = {
+            scripted_decision_show_remove_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionRemoveTriggerTooltip
+    text = {
+        trigger = {
+            scripted_decision_show_remove_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_remove_trigger_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionRemoveTriggerTooltipEnter
+    text = {
+        trigger = {
+            scripted_decision_show_remove_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionCancelEffectTooltip
+    text = {
+        trigger = {
+            scripted_decision_show_cancel_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_cancel_effect_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionCancelEffectTooltipEnter
+    text = {
+        trigger = {
+            scripted_decision_show_cancel_effect_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionCancelTriggerTooltip
+    text = {
+        trigger = {
+            scripted_decision_show_cancel_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_cancel_trigger_tooltip_prefix_loc_key
+    }
+    text = {
+        localization_key = ""
+    }
+}
+defined_text = {
+    name = GetDecisionCancelTriggerTooltipEnter
+    text = {
+        trigger = {
+            scripted_decision_show_cancel_trigger_tooltip = yes
+        }
+        localization_key = scripted_decision_enter
+    }
+    text = {
+        localization_key = ""
+    }
+}
+
+defined_text = {
+    name = GetDecisionCostTooltip
+    text = {
+        trigger = {
+            scripted_decision_show_cost_tooltip = yes
+        }
+        localization_key = tech_effect|get_scripted_decision_cost_tooltip_with_prefix
+    }
+    text = {
+        localization_key = ""
+    }
+}
+##作为任务时：
+##失败条件/完成需要/先决条件：
+##取消时：
+##中止条件：
+##X日内的效果/如果X日内未能完成时的效果/如果X日内未选择时的效果：
+##失败/完成/选中时的效果:
+##(执行此决议需要)
+
+##作为普通的决议，或者在移除时：
+##(先决条件)：
+##(选择后的效果)：
+##持续X日
+##移除后的效果：
+##立刻移除，如果:
+##取消时:
+##立刻取消，如果:
+##(执行此决议需要)
+
+## [CompleteTrigger]
+## [CancelTrigger]
+## [CancelEffect]
+## [CancelTrigger]

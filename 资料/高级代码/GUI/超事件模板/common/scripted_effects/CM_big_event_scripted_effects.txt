@@ -1,0 +1,4 @@
+SE_center = {	
+	set_global_flag = CM_SE_center
+}
+#这段代码创建了一个名为 SE_center 的表，该表包含一个键值对，键为 set_global_flag，值为 CM_SE_center

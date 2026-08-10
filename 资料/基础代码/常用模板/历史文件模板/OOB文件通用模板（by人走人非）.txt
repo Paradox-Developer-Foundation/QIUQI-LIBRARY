@@ -1,0 +1,814 @@
+# 文件位置：history/units/，命名规则：TAG_1936.txt（陆军基础版，含 TAOG 团级支援连）、TAG_1936_nsb.txt（NSB版，可同时含 TAOG）、TAG_1936_naval.txt（海军MTG版）、TAG_1936_naval_legacy.txt（海军Legacy版）、TAG_1936_air_bba.txt（空军BBA版）、TAG_1936_air_legacy.txt（空军Legacy版）、TAG_1936_sea.txt（海域版）
+# 注意：TAOG 团级支援连系统不需要单独的 OOB 文件，直接写在基础版或 NSB 版中即可
+# 注意：文件末尾请保留至少一行空行，否则最后一行可能不被读取
+# 国家历史文件中通过 set_oob / set_naval_oob / set_air_oob 引用这些文件
+# 编码：UTF-8 无 BOM（.txt 文件要求）
+
+# =================================================================================================
+#                                           第一部分：陆军 OOB（基础版）
+# =================================================================================================
+# 适用场景：无 NSB（No Step Back）DLC 时的陆军编制
+# 命名规则：TAG_1936.txt（1936年开局）或 TAG_1939.txt（1939年开局）
+
+# ==============================
+# 1.1 师模板定义（division_template）
+# ==============================
+# 每个 division_template 定义一个师级编制模板，必须放在 units 块之前定义
+# 国家历史文件中的 division_template 必须已在此处定义，否则会导致加载错误
+
+division_template = {
+	name = "Infantry Division"					# 师模板名称（英文），用于在游戏中显示和 division_template 引用
+
+	division_names_group = TAG_INF_01			# 师名列表组（定义在 common/units/names/ 中），控制自动命名规则
+
+	regiments = {								# 战斗营列表（regiments = 战斗营，support = 支援连）
+		# 每个营的坐标 (x, y) 决定其在师编制编辑器中的位置
+		# x 控制列（从左到右：0, 1, 2, 3, 4），y 控制行（从上到下：0, 1, 2）
+		infantry = { x = 0 y = 0 }				# 步兵营（第1列第1行）
+		infantry = { x = 0 y = 1 }				# 步兵营（第1列第2行）
+		infantry = { x = 0 y = 2 }				# 步兵营（第1列第3行）
+		infantry = { x = 1 y = 0 }				# 步兵营（第2列第1行）
+		infantry = { x = 1 y = 1 }				# 步兵营（第2列第2行）
+		infantry = { x = 1 y = 2 }				# 步兵营（第2列第3行）
+		infantry = { x = 2 y = 0 }				# 步兵营（第3列第1行）
+		infantry = { x = 2 y = 1 }				# 步兵营（第3列第2行）
+		infantry = { x = 2 y = 2 }				# 步兵营（第3列第3行）
+	}
+
+	# TAOG（以武抗暴）DLC 新增：团级支援连（regimental_support）
+	# 团级支援连是 TAOG DLC 引入的新系统，位于 regiments 和 support 之间
+	# 团级支援连不占用师级支援连槽位，但占用少量战斗宽度和人力
+	# 团级支援连的 x 坐标通常为 1（列），y 坐标按行递增
+	regimental_support = {						# 团级支援连列表（TAOG DLC，可选）
+		field_guns = { x = 1 y = 0 }			# 团级野战炮（团级支援连第1行）
+	}
+
+	support = {									# 师级支援连列表（不占用战斗宽度）
+		engineer = { x = 0 y = 0 }				# 工兵连（师级支援连第1行）
+		artillery = { x = 0 y = 1 }				# 炮兵支援连（师级支援连第2行）
+	}
+
+	# 可选字段：
+	# priority = 1								# 装备分配优先级（0=最低，1=默认，2=最高），用于装备短缺时的分配顺序
+	# template_counter = 1						# 模板计数器（影响自动命名编号）
+	# role = infantry							# 师角色（infantry / garrison / motorized / armor / cavalry / paratrooper / marine / mountaineers）
+	# override_model = TAG_infantry_alt_0_entity	# 覆盖模型（3D模型路径）
+	# is_locked = yes							# 锁定模板（玩家无法编辑）
+}
+
+# 常见营类型（regiments）：
+#   infantry        = 步兵营
+#   cavalry         = 骑兵营
+#   motorized       = 摩托化步兵营
+#   mechanized      = 机械化步兵营
+#   mountaineers    = 山地步兵营
+#   marines         = 海军陆战队营
+#   paratroopers    = 伞兵营
+#   light_armor     = 轻型坦克营
+#   medium_armor    = 中型坦克营
+#   heavy_armor     = 重型坦克营
+#   super_heavy_armor = 超重型坦克营
+#   modern_armor    = 现代坦克营
+#   light_tank_destroyer = 轻型坦克歼击车营
+#   medium_tank_destroyer = 中型坦克歼击车营
+#   heavy_tank_destroyer = 重型坦克歼击车营
+#   artillery       = 炮兵营
+#   anti_air        = 防空炮营
+#   anti_tank       = 反坦克炮营
+#   rocket_artillery = 火箭炮营
+#   motorized_rocket_artillery = 摩托化火箭炮营
+#   armored_car     = 装甲车营
+#   amphibious_armor = 两栖装甲营
+#   bicycle         = 自行车营
+
+# 常见支援连类型（support）：
+#   engineer        = 工兵连
+#   recon           = 侦察连（骑兵侦察）
+#   mot_recon       = 摩托化侦察连
+#   light_armor_recon = 轻装甲侦察连
+#   armored_car_recon = 装甲车侦察连
+#   artillery       = 炮兵支援连
+#   anti_air        = 防空支援连
+#   anti_tank       = 反坦克支援连
+#   rocket_artillery = 火箭炮支援连
+#   signal_company  = 通信连
+#   logistics_company = 后勤连
+#   maintenance_company = 维修连
+#   field_hospital  = 野战医院
+#   military_police = 宪兵连
+#   pioneer         = 突击工兵连
+
+# 常见团级支援连类型（regimental_support，TAOG DLC 新增）：
+#   团级支援连定义在 common/units/fire_support.txt 中，关键属性：group = support, divisional = no, combat_width = 0
+#   以下为游戏内置的团级支援连单位（active = yes 表示默认可用，active = no 需通过 unlock_subunit 解锁）：
+#   field_guns      = 团级野战炮（active = yes，默认可用）
+#   anti_air_battery = 团级防空排（active = yes，默认可用）
+#   anti_tank_battery = 团级反坦克排（active = yes，默认可用）
+#   rocket_battery  = 团级火箭炮排（active = yes，默认可用）
+#   fire_support    = 步兵火力支援连（active = no，需 unlock_subunit 解锁）
+#   mot_fire_support = 摩托化火力支援连（active = no，需 unlock_subunit 解锁）
+#   mot_field_guns  = 摩托化团级野战炮（active = no，需 unlock_subunit 解锁）
+#   pack_artillery  = 驮载炮兵（active = no，需 unlock_subunit 解锁）
+#   mot_pack_artillery = 摩托化驮载炮兵（active = no，需 unlock_subunit 解锁）
+#   注意：团级支援连与师级支援连是两个独立的槽位系统，互不影响
+
+# 常见 combat_support 组前线营类型（regiments 中使用，非支援连，有战斗宽度）：
+#   artillery_brigade = 炮兵旅（combat_width = 3, group = combat_support）
+#   mot_artillery_brigade = 摩托化炮兵旅（combat_width = 3, group = combat_support）
+#   rocket_artillery_brigade = 火箭炮兵旅（combat_width = 3, group = combat_support）
+#   anti_air_brigade = 防空旅（combat_width = 1, group = combat_support）
+#   mot_anti_air_brigade = 摩托化防空旅（combat_width = 1, group = combat_support）
+#   anti_tank_brigade = 反坦克旅（combat_width = 1, group = combat_support）
+#   mot_anti_tank_brigade = 摩托化反坦克旅（combat_width = 1, group = combat_support）
+
+# ==============================
+# 1.2 部队部署（units）
+# ==============================
+# units 块定义开局时地图上实际存在的部队
+# 每个 division 条目代表一个师级单位
+
+units = {
+	# 可以使用注释标记部队的编组（如军团、集团军等），方便阅读
+	# ##### 1. Armee #####
+	# ### I. Armeekorps ###
+
+	division = {								# 每个 division 定义地图上的一个师
+		name = "1st Infantry Division"			# 师名称（固定名称，与 division_names_group 二选一）
+
+		# 新版命名语法（推荐，兼容名列表系统）：
+		# division_name = {
+		# 	is_name_ordered = yes				# 是否使用名列表中的顺序编号
+		# 	name_order = 1						# 在名列表中的序号（从 1 开始）
+		# }
+
+		location = 12345							# 师所在省份ID（整数，1-9399 范围内的陆地省份）
+		division_template = "Infantry Division"		# 引用上方定义的师模板名称（必须用引号）
+		start_experience_factor = 0.3				# 初始经验系数（0.0~1.0，0.3 = 30% 经验，即训练有素）
+		start_equipment_factor = 0.5				# 初始装备系数（0.0~1.0，0.5 = 50% 装备满编率）
+
+		# 可选字段：
+		# force_equipment_variants = {				# 强制使用特定装备变体（无 NSB 时使用）
+		# 	light_tank_equipment_1 = { owner = "TAG" }
+		# }
+		# can_upgrade = no							# 禁止升级装备（默认可以升级）
+	}
+
+	# 可以使用 name 字段代替 division_name（旧版语法，仍然有效）：
+	division = {
+		name = "Cavalry Brigade"					# 固定名称（旧版语法）
+		location = 67890
+		division_template = "Cavalry Brigade"
+		start_experience_factor = 0.3
+	}
+}
+
+# ==============================
+# 1.3 开局生产线（instant_effect）
+# ==============================
+# instant_effect 块定义开局即刻生效的生产线设置
+# 这些生产线会被提取到国家历史文件中（按 MOD 规范）
+# 注意：在国家历史文件中，creator 和 version_name 应省略（避免 equipmentvariant.cpp:1103 错误）
+
+instant_effect = {
+	add_equipment_production = {					# 每条生产线定义一种装备的生产
+		equipment = {
+			type = infantry_equipment_1				# 装备类型（必须与 common/units/equipment/ 中的定义一致）
+			creator = TAG							# 装备设计者（TAG 大写，国家历史文件中应省略）
+		}
+		requested_factories = 3						# 分配工厂数量（整数）
+		progress = 0.1								# 初始生产进度（0.0~1.0，0.1 = 10%）
+		efficiency = 50								# 初始生产效率（0~100，50 = 50%）
+		industrial_manufacturer = mio:TAG_manufacturer_organization	# 工业制造商（可选，需要相应 DLC）
+	}
+
+	# 一条生产线可以同时生产多个国家标记的装备：
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = TAG1
+		}
+		equipment = {
+			type = infantry_equipment_1
+			creator = TAG2
+		}
+		requested_factories = 2
+		progress = 0.1
+		efficiency = 50
+	}
+}
+
+# =================================================================================================
+#                                      第二部分：陆军 OOB（NSB 坦克设计师版）
+# =================================================================================================
+# 适用场景：拥有 NSB（No Step Back）DLC 时的陆军编制
+# 命名规则：TAG_1936_nsb.txt
+# 与基础版的主要区别：坦克营使用 chassis 类型 + force_equipment_variants
+
+division_template = {
+	name = "Panzer Division"
+
+	division_names_group = TAG_ARM_01
+
+	regiments = {
+		light_armor = { x = 0 y = 0 }				# 轻型坦克营（NSB 下使用坦克底盘 + 变体）
+		light_armor = { x = 0 y = 1 }
+		light_armor = { x = 1 y = 0 }
+		light_armor = { x = 1 y = 1 }
+		motorized = { x = 2 y = 0 }					# 摩托化步兵营
+		motorized = { x = 2 y = 1 }
+	}
+	regimental_support = {						# 团级支援连（TAOG DLC，可与 NSB 共存）
+		field_guns = { x = 1 y = 0 }
+	}
+	support = {
+		mot_recon = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		artillery = { x = 0 y = 2 }
+	}
+
+	# 可选字段（NSB 特有）：
+	# role = armor									# 师角色（armor 表示装甲师，影响 AI 行为）
+}
+
+units = {
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 12345
+		division_template = "Panzer Division"
+		start_experience_factor = 0.3
+		force_equipment_variants = {				# 强制使用特定装备变体（NSB 下必须使用）
+			light_tank_chassis_1 = {				# 坦克底盘类型（chassis，非完整坦克）
+				owner = "TAG"						# 变体所属国家（大写 TAG）
+				version_name = "Panzer II"			# 变体名称（对应 create_equipment_variant 中的 name）
+			}
+		}
+	}
+}
+
+# 注意：NSB 下坦克的装备类型是 chassis（底盘），而非完整坦克：
+#   light_tank_chassis_0 / _1 / _2 / _3
+#   medium_tank_chassis_0 / _1 / _2 / _3
+#   heavy_tank_chassis_0 / _1 / _2 / _3
+#   super_heavy_tank_chassis_0
+#   modern_tank_chassis_0
+# 非 NSB 下坦克的装备类型是完整坦克：
+#   light_tank_equipment_1 / _2 / _3
+#   medium_tank_equipment_1 / _2 / _3
+#   heavy_tank_equipment_1 / _2 / _3
+#   super_heavy_tank_equipment_1
+#   modern_tank_equipment_1
+
+# NSB 版 instant_effect 与基础版相同，但装备类型可能使用 chassis
+
+
+# =================================================================================================
+#                            第二部分B：陆军 OOB（TAOG 团级支援连系统详解）
+# =================================================================================================
+# 适用场景：拥有 TAOG（Arms Against Tyranny，以武抗暴）DLC 时的陆军编制
+# TAOG 引入了"团级支援连"（Regimental Support Companies）系统，在师级支援连之外新增独立的支援连槽位
+# 命名规则：与基础版/NSB版共用同一文件，通过 regimental_support 块区分
+
+# ==============================
+# 2B.1 团级支援连 vs 师级支援连
+# ==============================
+# ┌─────────────────┬──────────────────────┬──────────────────────┐
+# │ 属性            │ 师级支援连 (support)  │ 团级支援连 (regimental_support) │
+# ├─────────────────┼──────────────────────┼──────────────────────┤
+# │ 槽位系统        │ 5个固定槽位          │ 独立槽位（与师级分开）│
+# │ 战斗宽度        │ 0                     │ 0                     │
+# │ 单位定义参数    │ group = support       │ group = support       │
+# │                 │ divisional = yes      │ divisional = no       │
+# │ 定义文件        │ common/units/ 各文件  │ common/units/fire_support.txt │
+# │ 模板中位置      │ regiments 之后        │ regiments 之后、support 之前 │
+# │ 坐标规则        │ x = 0, y 递增         │ x = 1, y 递增         │
+# │ 解锁方式        │ 科技自动解锁          │ 部分需 unlock_subunit │
+# └─────────────────┴──────────────────────┴──────────────────────┘
+
+# ==============================
+# 2B.2 团级支援连完整列表
+# ==============================
+# 默认可用（active = yes，开局即可使用）：
+#   field_guns          = 团级野战炮        | 软攻+，需要火炮装备
+#   anti_air_battery    = 团级防空排        | 对空攻击+，需要防空装备
+#   anti_tank_battery   = 团级反坦克排      | 穿甲+，需要反坦克装备
+#   rocket_battery      = 团级火箭炮排      | 软攻+，需要火箭炮装备
+
+# 需解锁（active = no，需通过 unlock_subunit 解锁）：
+#   fire_support        = 步兵火力支援连    | 通用火力支援，需要步兵装备+支援装备
+#   mot_fire_support    = 摩托化火力支援连  | 摩托化版火力支援，需要步兵装备+支援装备+摩托化装备
+#   mot_field_guns      = 摩托化团级野战炮  | 摩托化版野战炮
+#   pack_artillery      = 驮载炮兵          | 山地/特种部队适用
+#   mot_pack_artillery  = 摩托化驮载炮兵    | 摩托化版驮载炮兵
+
+# ==============================
+# 2B.3 完整师模板示例（含 regimental_support）
+# ==============================
+division_template = {
+	name = "Infantry Division (TAOG)"
+	division_names_group = TAG_INF_01
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+	}
+
+	# 团级支援连（TAOG 新增，位于 regiments 和 support 之间）
+	regimental_support = {
+		field_guns = { x = 1 y = 0 }			# 团级野战炮
+		anti_air_battery = { x = 1 y = 1 }		# 团级防空排
+	}
+
+	# 师级支援连（传统5槽位）
+	support = {
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+	}
+}
+
+# ==============================
+# 2B.4 解锁团级支援连（在国家历史文件中使用）
+# ==============================
+# 部分团级支援连 active = no，需在国家历史文件中通过 unlock_subunit 解锁：
+# unlock_subunit = fire_support
+# unlock_subunit = mot_fire_support
+# unlock_subunit = mot_field_guns
+# unlock_subunit = pack_artillery
+# unlock_subunit = mot_pack_artillery
+
+# ==============================
+# 2B.5 团级支援连在 AI 模板中的写法
+# ==============================
+# AI 模板中使用 regimental_support 块，语法与 division_template 略有不同：
+# regimental_support = {
+# 	anti_air_battery = 1			# 数量（非坐标）
+# 	fire_support = 1
+# 	field_guns = 2
+# }
+# 注意：AI 模板中 regimental_support 使用"数量"而非"坐标"
+
+# ==============================
+# 2B.6 团级支援连坐标布局规则
+# ==============================
+# regimental_support 的坐标独立于 regiments 和 support：
+#   - x 坐标通常为 1（师级支援连 x=0，团级支援连 x=1）
+#   - y 坐标按行递增：0, 1, 2, ...
+#   - 不要与 regiments 的 y 坐标混淆（两者在编辑器中显示在不同区域）
+#   - 同一团级支援连槽位内坐标不能重复
+
+
+# =================================================================================================
+#                                      第三部分：海军 OOB（MTG 舰船设计师版）
+# =================================================================================================
+# 适用场景：拥有 MTG（Man the Guns）DLC 时的海军编制
+# 命名规则：TAG_1936_naval.txt（MTG版）或 TAG_1936_naval_mtg.txt
+# 核心结构：units → fleet → task_force → ship
+
+units = {
+	##### NAVAL UNITS #####
+	### 舰队名称（如 HOME COMMAND）###
+
+	fleet = {									# fleet 定义一个舰队（通常在特定海军基地）
+		name = "Home Fleet"						# 舰队名称（英文）
+		naval_base = 11064						# 海军基地所在州ID（州ID，整数）
+
+		task_force = {							# task_force 定义一个特遣舰队（舰队内的子编组）
+			name = "Battle Force"				# 特遣舰队名称
+			location = 11064						# 特遣舰队位置（州ID，通常与 naval_base 相同）
+
+			# 主力舰
+			ship = {							# ship 定义一艘舰船
+				name = "HMS Nelson"				# 舰船名称（必须唯一，同一国家内不能重复）
+				definition = battleship			# 舰船类型定义（对应 common/units/equipment/ 中的舰船类别）
+				start_experience_factor = 0.25	# 初始经验系数（可选，0.0~1.0）
+				pride_of_the_fleet = yes		# 舰队旗舰（可选，每个国家只能有一艘，加成 10%）
+				equipment = {					# 装备定义（MTG 下使用 ship_hull_* 类型）
+					ship_hull_heavy_1 = {		# 重型舰体（MTG 舰船类型）
+						amount = 1				# 数量（通常为 1）
+						owner = ENG				# 所有国（大写 TAG）
+						version_name = "Nelson Class"	# 变体名称（对应 create_equipment_variant 中的 name）
+					}
+				}
+
+				# 可选：为舰船分配指挥官
+				# officer = {
+				# 	name = TAG_officer_name		# 指挥官ID（定义在 common/characters/ 中）
+				# 	portraits = {
+				# 		navy = {
+				# 			large = GFX_portrait_TAG_officer_name
+				# 			small = GFX_portrait_TAG_officer_name_small
+				# 		}
+				# 	}
+				# }
+			}
+
+			# 巡洋舰
+			ship = {
+				name = "HMS Norfolk"
+				definition = heavy_cruiser		# 重巡洋舰
+				start_experience_factor = 0.25
+				equipment = {
+					ship_hull_cruiser_1 = {		# 巡洋舰体
+						amount = 1
+						owner = ENG
+						version_name = "County Class"
+					}
+				}
+			}
+
+			ship = {
+				name = "HMS Emerald"
+				definition = light_cruiser		# 轻巡洋舰
+				equipment = {
+					ship_hull_cruiser_2 = {		# 巡洋舰体 II
+						amount = 1
+						owner = ENG
+						version_name = "Emerald Class"
+					}
+				}
+			}
+
+			# 驱逐舰
+			ship = {
+				name = "HMS Sabre"
+				definition = destroyer			# 驱逐舰
+				equipment = {
+					ship_hull_light_1 = {		# 轻型舰体
+						amount = 1
+						owner = ENG
+						version_name = "S Class"
+					}
+				}
+			}
+
+			# 潜艇
+			ship = {
+				name = "HMS Oxley"
+				definition = submarine			# 潜艇
+				equipment = {
+					ship_hull_submarine_1 = {	# 潜艇舰体
+						amount = 1
+						owner = ENG
+						version_name = "O/P/R Class"
+					}
+				}
+			}
+		}
+	}
+}
+
+# MTG 舰船类型（ship_hull_*）：
+#   主力舰：
+#     ship_hull_heavy_1 / _2 / _3			= 重型舰体（战列舰/战列巡洋舰）
+#     ship_hull_carrier_1 / _2 / _3			= 航母舰体
+#     ship_hull_carrier_conversion_bb		= 航母改装（战列舰改造）
+#     ship_hull_carrier_conversion_ca		= 航母改装（重巡改造）
+#   巡洋舰：
+#     ship_hull_cruiser_1 / _2 / _3			= 巡洋舰体（重巡/轻巡）
+#     ship_hull_cruiser_armored				= 装甲巡洋舰体（装甲巡洋舰）
+#     ship_hull_cruiser_coastal_defense_ship	= 岸防舰
+#     ship_hull_cruiser_panzerschiff			= 袖珍战列舰（德国专属）
+#   小型舰船：
+#     ship_hull_light_1 / _2 / _3			= 轻型舰体（驱逐舰）
+#   潜艇：
+#     ship_hull_submarine_1 / _2 / _3		= 潜艇舰体
+#     ship_hull_cruiser_submarine			= 巡洋潜艇舰体
+
+# 舰船 definition 类型（对应游戏中的舰船分类）：
+#   carrier         = 航空母舰
+#   battleship      = 战列舰
+#   battle_cruiser  = 战列巡洋舰
+#   heavy_cruiser   = 重巡洋舰
+#   light_cruiser   = 轻巡洋舰
+#   destroyer       = 驱逐舰
+#   submarine       = 潜艇
+
+
+# =================================================================================================
+#                                    第四部分：海军 OOB（Legacy 无 MTG 版）
+# =================================================================================================
+# 适用场景：无 MTG DLC 时的海军编制
+# 命名规则：TAG_1936_naval_legacy.txt
+# 与 MTG 版的主要区别：使用传统装备类型（battleship_1 等），而非 ship_hull_*
+
+units = {
+	fleet = {
+		name = "Home Fleet"
+		naval_base = 11064
+		task_force = {
+			name = "Battle Force"
+			location = 11064
+			ship = {
+				name = "HMS Nelson"
+				definition = battleship				# 战列舰
+				equipment = {
+					battleship_1 = {				# Legacy 装备类型（无 ship_hull_ 前缀）
+						amount = 1
+						owner = ENG
+						version_name = "Nelson Class"
+					}
+				}
+			}
+			ship = {
+				name = "HMS Hood"
+				definition = battle_cruiser
+				pride_of_the_fleet = yes
+				equipment = {
+					battle_cruiser_1 = {			# Legacy 战列巡洋舰
+						amount = 1
+						owner = ENG
+						version_name = "Admiral Class"
+					}
+				}
+			}
+			ship = {
+				name = "HMS Norfolk"
+				definition = heavy_cruiser
+				equipment = {
+					heavy_cruiser_1 = {				# Legacy 重巡洋舰
+						amount = 1
+						owner = ENG
+						version_name = "County Class"
+					}
+				}
+			}
+			ship = {
+				name = "HMS Emerald"
+				definition = light_cruiser
+				equipment = {
+					light_cruiser_1 = {				# Legacy 轻巡洋舰
+						amount = 1
+						owner = ENG
+						version_name = "Emerald Class"
+					}
+				}
+			}
+			ship = {
+				name = "HMS Sabre"
+				definition = destroyer
+				equipment = {
+					destroyer_1 = {					# Legacy 驱逐舰
+						amount = 1
+						owner = ENG
+					}
+				}
+			}
+			ship = {
+				name = "HMS Oxley"
+				definition = submarine
+				equipment = {
+					submarine_1 = {					# Legacy 潜艇
+						amount = 1
+						owner = ENG
+					}
+				}
+			}
+		}
+	}
+}
+
+# Legacy 舰船装备类型（无 MTG 时使用）：
+#   carrier_1 / _2 / _3 / _4			= 航空母舰
+#   battleship_1 / _2 / _3 / _4		= 战列舰
+#   battle_cruiser_1 / _2				= 战列巡洋舰
+#   heavy_cruiser_1 / _2 / _3 / _4		= 重巡洋舰
+#   light_cruiser_1 / _2 / _3 / _4		= 轻巡洋舰
+#   destroyer_1 / _2 / _3 / _4			= 驱逐舰
+#   submarine_1 / _2 / _3 / _4			= 潜艇
+
+
+# =================================================================================================
+#                                    第五部分：空军 OOB（BBA 飞机设计师版）
+# =================================================================================================
+# 适用场景：拥有 BBA（By Blood Alone）DLC 时的空军编制
+# 命名规则：TAG_1936_air_bba.txt
+# 核心结构：air_wings → STATE_ID → PLANE_TYPE → unit
+
+### Air oob
+air_wings = {									# air_wings 定义所有空军联队
+	# 可以使用注释标记各航空军区
+	# ### I. Luftkreiskommando -- Berlin ###
+
+	STATE_ID = {									# 州ID（整数），表示该联队驻扎的空军基地所在州
+		# 每个 equipment 条目定义该联队使用的一种飞机
+		# 一个联队可以包含多种飞机（如战斗机 + 轰炸机在同一联队）
+
+		small_plane_airframe_0 = {				# 小型飞机机身（BBA 飞机类型）
+			owner = "TAG"						# 所有国（大写 TAG，带引号）
+			amount = 80							# 飞机数量（整数）
+			version_name = "Bf 109"				# 变体名称（对应 create_equipment_variant 中的 name）
+		}
+
+		medium_plane_airframe_0 = {				# 中型飞机机身
+			owner = "TAG"
+			amount = 80
+			version_name = "He 111"
+		}
+
+		small_plane_cas_airframe_0 = {			# 小型近距支援机机身
+			owner = "TAG"
+			amount = 80
+			version_name = "Hs 123"
+		}
+
+		small_plane_naval_bomber_airframe_1 = {	# 小型海军轰炸机机身
+			owner = "TAG"
+			amount = 72
+			version_name = "Do 22"
+		}
+
+		name = "Jagdgeschwader 132"				# 联队名称（英文，放在最后定义）
+
+		# 可选：为联队分配王牌飞行员
+		# ace = {
+		# 	modifier = "fighter_genius"			# 王牌加成类型
+		# 	name = "Erich"						# 名字
+		# 	surname = "Hartmann"				# 姓氏
+		# 	callsign = "Bubi"					# 呼号
+		# 	portrait = 1						# 头像索引（或使用 GFX_TAG_ace_xxx 自定义头像）
+		# }
+	}
+
+	# 另一种联队定义方式：使用 state 语法
+	# state = {
+	# 	id = 64								# 州ID
+	# 	air_wings = {
+	# 		...
+	# 	}
+	# }
+}
+
+# BBA 飞机类型（airframe_*）：
+#   小型飞机：
+#     small_plane_airframe_0 / _1 / _2 / _3		= 小型飞机机身（战斗机/重型战斗机）
+#     small_plane_cas_airframe_0 / _1 / _2			= 小型近距支援机机身（俯冲轰炸机）
+#     small_plane_naval_bomber_airframe_0 / _1 / _2	= 小型海军轰炸机机身
+#   中型飞机：
+#     medium_plane_airframe_0 / _1 / _2				= 中型飞机机身（战术轰炸机/重型战斗机）
+#     medium_plane_naval_bomber_airframe_0 / _1		= 中型海军轰炸机机身
+#   大型飞机：
+#     large_plane_airframe_0 / _1 / _2				= 大型飞机机身（战略轰炸机）
+#     large_plane_naval_bomber_airframe_0 / _1		= 大型海军轰炸机机身
+#   运输机：
+#     transport_plane_equipment_1 / _2				= 运输机（独立装备类型，非 airframe）
+#   侦察机：
+#     scout_plane_airframe_0 / _1 / _2				= 侦察机机身
+
+# BBA 版 instant_effect 示例：
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_airframe_1			# BBA 飞机类型（airframe）
+			creator = TAG
+			version_name = "Bf 109 D"
+		}
+		requested_factories = 1
+		progress = 0.15
+		efficiency = 50
+		industrial_manufacturer = mio:TAG_manufacturer_organization
+	}
+}
+
+
+# =================================================================================================
+#                                   第六部分：空军 OOB（Legacy 无 BBA 版）
+# =================================================================================================
+# 适用场景：无 BBA DLC 时的空军编制
+# 命名规则：TAG_1936_air_legacy.txt
+# 与 BBA 版的主要区别：使用传统装备类型（fighter_equipment_0 等），而非 airframe_*
+
+air_wings = {
+	STATE_ID = {
+		fighter_equipment_0 = {					# Legacy 战斗机（非 airframe）
+			owner = "TAG"
+			amount = 80
+			version_name = "He 51"
+		}
+		medium_plane_airframe_0 = {				# BBA 类型也可在 Legacy 版本中使用（向后兼容）
+			owner = "TAG"
+			amount = 80
+			version_name = "Do 23"
+		}
+		tac_bomber_equipment_0 = {				# Legacy 战术轰炸机
+			owner = "TAG"
+			amount = 80
+		}
+		cas_equipment_0 = {						# Legacy 近距支援机
+			owner = "TAG"
+			amount = 80
+			version_name = "Hs 123"
+		}
+		naval_bomber_equipment_1 = {				# Legacy 海军轰炸机
+			owner = "TAG"
+			amount = 72
+		}
+		transport_plane_equipment_1 = {			# Legacy 运输机
+			owner = "TAG"
+			amount = 80
+		}
+		name = "Jagdgeschwader 132"
+	}
+}
+
+# Legacy 飞机装备类型（无 BBA 时使用）：
+#   fighter_equipment_0 / _1 / _2			= 战斗机
+#   heavy_fighter_equipment_0 / _1 / _2		= 重型战斗机
+#   cas_equipment_0 / _1 / _2				= 近距支援机
+#   nav_bomber_equipment_0 / _1 / _2		= 海军轰炸机
+#   tac_bomber_equipment_0 / _1 / _2		= 战术轰炸机
+#   strat_bomber_equipment_0 / _1 / _2		= 战略轰炸机
+#   scout_plane_equipment_0 / _1			= 侦察机
+#   transport_plane_equipment_1 / _2		= 运输机
+#   jet_fighter_equipment_0 / _1			= 喷气式战斗机
+#   jet_strat_bomber_equipment_0			= 喷气式战略轰炸机
+#   jet_tac_bomber_equipment_0				= 喷气式战术轰炸机
+#   rocket_interceptor_equipment_0 / _1		= 火箭截击机
+
+
+# =================================================================================================
+#                                      第七部分：海域 OOB（Sea）
+# =================================================================================================
+# 适用场景：海域特定的国家（如中国军阀割据势力）
+# 命名规则：TAG_1936_sea.txt
+# 结构与陆军 OOB 完全相同，仅在命名上区分
+
+# 包含 division_template 和 units 块，参见第一部分
+
+
+# =================================================================================================
+#                                      第八部分：DLC 条件分支
+# =================================================================================================
+# 在国家历史文件中，通过 if 条件块选择不同的 OOB 文件
+# 例如：
+# 
+# if = {
+# 	limit = { has_dlc = "No Step Back" }
+# 	set_oob = "TAG_1936_nsb"
+# }
+# else = {
+# 	set_oob = "TAG_1936"
+# }
+#
+# if = {
+# 	limit = { has_dlc = "Man the Guns" }
+# 	set_naval_oob = "TAG_1936_naval_mtg"
+# }
+# else = {
+# 	set_naval_oob = "TAG_1936_naval_legacy"
+# }
+#
+# if = {
+# 	limit = { has_dlc = "By Blood Alone" }
+# 	set_air_oob = "TAG_1936_air_bba"
+# }
+# else = {
+# 	set_air_oob = "TAG_1936_air_legacy"
+# }
+#
+# # TAOG（以武抗暴）DLC 条件分支（团级支援连系统）：
+# # 注意：TAOG 的团级支援连通常与 NSB/基础版共用同一 OOB 文件
+# # 条件分支主要用于 unlock_subunit 和单位可用性判断
+# if = {
+# 	limit = { has_dlc = "Arms Against Tyranny" }
+# 	unlock_subunit = fire_support
+# 	unlock_subunit = mot_fire_support
+# 	unlock_subunit = mot_field_guns
+# 	unlock_subunit = pack_artillery
+# 	unlock_subunit = mot_pack_artillery
+# }
+
+
+# =================================================================================================
+#                                      第九部分：常见错误与注意事项
+# =================================================================================================
+# 1. division_template 必须在 units 块之前定义，否则游戏无法找到模板
+# 2. 国家历史文件中引用的 division_template 必须在此 OOB 文件中声明
+# 3. 舰船名称必须唯一，同一国家内不能有重复的舰船名
+# 4. 省份ID必须是 1-9399 范围内的陆地省份（海军基地使用州ID）
+# 5. NSB 下 force_equipment_variants 必须使用 chassis 类型 + version_name
+# 6. Legacy 海军装备类型（battleship_1 等）与 MTG 类型（ship_hull_*）不能混用
+# 7. 空军 OOB 中的 equipment 类型必须与 BBA/Legacy 版本一致
+# 8. 文件末尾必须保留至少一行空行，否则最后一行可能不被读取
+# 9. 使用 UTF-8 无 BOM 编码
+# 10. 营的坐标 (x, y) 不要重复，同一位置不能有多个营
+# 11. 支援连的 x 坐标始终为 0，y 坐标连续递增
+# 12. division_names_group 必须在 common/units/names/ 中有对应的名列表文件
+# 13. force_equipment_variants 中的 version_name 必须对应 create_equipment_variant 中的 name
+# 14. 在国家历史文件中的 add_equipment_production 不要使用 creator 和 version_name（避免 equipmentvariant.cpp:1103 错误）
+# 15. regimental_support 块必须放在 regiments 和 support 之间，写错位置会导致模板解析失败
+# 16. 团级支援连的坐标 (x, y) 不要与师级支援连的坐标重复（regimental_support 使用 x=1 列，support 使用 x=0 列）
+# 17. 团级支援连中 active = no 的单位（如 fire_support、mot_fire_support 等）需要在国家历史文件中通过 unlock_subunit 解锁
+# 18. AI 模板中的 regimental_support 使用"数量"语法（如 field_guns = 2），而非坐标语法（如 field_guns = { x = 1 y = 0 }）
+# 19. 团级支援连（divisional = no）与 combat_support 组前线营（如 artillery_brigade，有战斗宽度）是不同的概念，不要混淆
+# 20. TAOG DLC 的团级支援连系统与 NSB 坦克设计师、MTG 舰船设计师、BBA 飞机设计师都是独立系统，可任意组合使用
+# 21. 无 TAOG DLC 时，regimental_support 块会导致解析错误——如需兼容无 TAOG 用户，应将 regimental_support 放在 has_dlc = "Arms Against Tyranny" 条件分支中
+# 22. 同一 regimental_support 块内的多个团级支援连坐标 (x, y) 不能重复（与 regiments 坐标规则相同）

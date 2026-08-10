@@ -1,0 +1,65 @@
+﻿l_simp_chinese:
+ ################################################################
+ # 不要动（不知道为啥） # 
+ ################################################################
+ CM_SE_title:0 "[CM_SE_title]"
+ CM_SE_desc:0 "[CM_SE_desc]"
+ CM_SE_btn:0 "[CM_SE_btn]"
+ CM_SE_quote:0 "[CM_SE_quote]"
+ CM_SE_title_missing:0 "fix your title"
+ CM_SE_desc_missing:0 "fix your content"
+ CM_SE_btn_missing:0 "missing button text"
+ CM_SE_quote_missing:0 ""
+ #######################
+ # # 以下是自定义内容 # #
+ #######################
+ ###0001 居中对齐描述示例，用于歌曲歌词或诗歌
+ CM_SE_title_0001:0 "大风纪战争"
+ CM_SE_desc_0001:0 "游戏是儿童最正当的行为，玩具是儿童的天使。"
+ CM_SE_quote_0001:0 "- - - 鲁迅 - - -"
+ CM_SE_btn_0001:0 "以孩童之名！"
+ ###0002 左对齐描述示例，常规文本格式
+ CM_SE_title_0002:0 "THE FALL OF BERLIN"
+CM_SE_desc_0002:0 "Reports from Berlin confirm that the city has been captured by advancing German troops after long, merciless fights through the greatest city of the Reichspakt. German forces put up stiff resistance, but were eventually beaten back."
+CM_SE_quote_0002:0 ""
+CM_SE_btn_0002:0 "A great victory for the German Empire, indeed"
+#0004 待确定
+CM_SE_title_0003:0 "中文字体适配测试"
+CM_SE_desc_0003:0 "\"尼克兰德属实头发秃见识短,上海算加速主义之都一看就是没去过深圳的结果,可能连杭州都没去过...好家伙，原来东方明珠是克苏鲁,他这是去黄浦江直面古神了.\""
+CM_SE_quote_0003:0 "- - - §R残唐语录§!,2021年二月 - - -"
+CM_SE_btn_0003:0 "随便抓的一段聊天记录"
+#0004 待确定
+CM_SE_title_0004:0 "日本語フォントtest"
+CM_SE_desc_0004:0 "君が代はCOMMUNICATION 千代に八千代にIMAGINATION\nさざれ石にさせない\n巌となりてROCKACTION 苔のむすまでMADITATION\n狂った現実を焼き捨てたい"
+CM_SE_quote_0004:0 "- - - 鈴木ゆゆうた - - -"
+CM_SE_btn_0004:0 "クール　ジャパン"
+#0005 tbd
+CM_SE_title_0005:0 ""
+CM_SE_desc_0005:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+CM_SE_quote_0005:0 ""
+CM_SE_btn_0005:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+#0006 tbd
+CM_SE_title_0006:0 ""
+CM_SE_desc_0006:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+CM_SE_quote_0006:0 ""
+CM_SE_btn_0006:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+#0007 tbd
+CM_SE_title_0007:0 ""
+CM_SE_desc_0007:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+CM_SE_quote_0007:0 ""
+CM_SE_btn_0007:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+#0008 tbd
+CM_SE_title_0008:0 ""
+CM_SE_desc_0008:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+CM_SE_quote_0008:0 ""
+CM_SE_btn_0008:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+#0009 tbd
+CM_SE_title_0009:0 ""
+CM_SE_desc_0009:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+CM_SE_quote_0009:0 ""
+CM_SE_btn_0009:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+#0010 tbd
+CM_SE_title_0010:0 ""
+CM_SE_desc_0010:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+CM_SE_quote_0010:0 ""
+CM_SE_btn_0010:0 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

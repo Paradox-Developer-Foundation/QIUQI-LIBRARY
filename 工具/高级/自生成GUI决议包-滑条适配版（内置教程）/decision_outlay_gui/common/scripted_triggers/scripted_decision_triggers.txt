@@ -1,0 +1,1077 @@
+scripted_decision_generate_decision_category_array = {
+	clear_temp_array = scripted_decision_category_temp_list
+	all_of = {
+		array = scripted_all_decision_category_temp_list
+		value = scripted_decision_category_entry
+		index = i
+		if = {
+			limit = {
+				scripted_decision_gui_category_should_show = yes
+			}
+			add_to_temp_array = {
+				scripted_decision_category_temp_list = scripted_decision_category_entry
+			}
+		}
+		always = yes
+	}
+	sort_scripted_decision_category_array = yes
+}
+
+scripted_decision_generate_decision_array = {
+	clear_temp_array = scripted_decision_temp_list
+	var:scripted_decision_category_entry = {
+		all_of = {
+			array = decision_lists
+			value = scripted_decision_entry
+			index = i
+			if = {
+				limit = {
+					scripted_decision_gui_should_show = yes
+				}
+				add_to_temp_array = {
+					scripted_decision_temp_list = scripted_decision_entry
+				}
+			}
+			always = yes
+		}
+	}
+	sort_scripted_decision_array = yes
+}
+
+
+
+scripted_decision_cost_trigger = {
+	meta_trigger = {
+		text = {
+			var:scripted_decision_entry = {
+				owner = {
+					[t_decision]_custom_cost_trigger = yes
+					NOT = {
+						has_political_power < PREV.cost
+					}
+				}
+			}
+		}
+		t_decision = "[?scripted_decision_entry.GetName]"
+	}
+}
+selectable_mission = {
+	has_character_flag = scripted_decision_is_selectable_mission
+}
+is_good = {
+	has_character_flag = scripted_decision_is_good
+}
+scripted_decision_selectable_trigger = {
+	var:scripted_decision_entry = {
+		OR = {
+			selectable_mission = yes
+			NOT = {
+				scripted_decision_is_mission = yes
+			}
+		}
+	}
+}
+
+scripted_decision_is_mission = {
+	NOT = {
+		check_variable = {
+			days_mission_timeout = 0
+		}
+	}
+}
+
+scripted_decision_available_is_true = {
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_decision]_available = yes
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+	OR = {
+		check_variable = {
+			category = -1
+		}
+		meta_trigger = {
+			text = {
+				owner = {
+					[t_category]_available = yes
+				}
+			}
+			t_category = "[?THIS.category.GetName]"
+		}
+	}
+}
+scripted_decision_can_be_click_trigger = {##用于检测按钮
+	if = {
+		limit = {
+			var:scripted_decision_entry = {
+				OR = {
+					check_variable = {
+						decision_status = global.scripted_decision_is_removing
+					}
+					check_variable = {
+						decision_status = global.scripted_decision_has_removed
+					}
+				}
+			}
+		}
+		hidden_trigger = {
+			always = yes
+		}
+	}
+	else = {
+		var:scripted_decision_entry = {
+			scripted_decision_available_is_true = yes
+		}
+		hidden_trigger = {
+			var:scripted_decision_entry = {
+				if = {
+					limit = {
+						scripted_decision_is_mission = yes
+					}
+					NOT = {
+						check_variable = {
+							decision_status = global.scripted_mission_is_failed
+						}
+						check_variable = {
+							decision_status = global.scripted_decision_default_status
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+scripted_decision_available_trigger = {
+	hidden_trigger = {
+		scripted_decision_cost_trigger = yes
+	}
+	var:scripted_decision_entry = {
+		scripted_decision_available_is_true = yes
+	}
+}
+scripted_decision_is_timing = {
+	var:scripted_decision_entry = {
+		OR = {
+			check_variable = {
+				decision_status = global.scripted_mission_is_active
+			}
+			check_variable = {
+				decision_status = global.scripted_decision_is_removing
+			}
+		}
+	}
+}
+scripted_decision_should_showing = {
+	if = {
+		limit = {
+			check_variable = {
+				decision_status = global.scripted_decision_default_status
+			}
+		}
+		OR = {
+			NOT = {
+				scripted_decision_is_mission = yes
+			}
+			scripted_decision_is_visible_while_not_activated = yes
+		}
+		scripted_decision_can_be_re_enable = yes
+		scripted_decision_is_visible = yes
+	}
+	else = {
+		always = yes
+	}
+}
+scripted_decision_can_be_complete = {
+	scripted_decision_should_showing = yes
+	OR = {
+		AND = {
+			check_variable = {
+				decision_status = global.scripted_decision_default_status
+			}
+			NOT = {
+				scripted_decision_is_mission = yes
+			}
+		}
+		check_variable = {
+			decision_status = global.scripted_mission_is_active
+		}
+	}
+}
+scripted_decision_is_visible = {
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_decision]_visible = yes
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+	OR = {
+		check_variable = {
+			category = -1
+		}
+		meta_trigger = {
+			text = {
+				owner = {
+					[t_category]_visible = yes
+				}
+			}
+			t_category = "[?THIS.category.GetName]"
+		}
+	}
+}
+##待做：在这些Trigger上增加有关category的内容。
+scripted_decision_is_cancel_if_not_visible = {
+	has_character_flag = scripted_decision_cancel_if_not_visible
+}
+scripted_decision_is_visible_while_not_activated = {
+	has_character_flag = scripted_decision_is_visible_while_not_activated
+}
+scripted_decision_fire_only_once = {
+	has_character_flag = scripted_decision_fire_only_once
+}
+
+scripted_decision_has_no_cancel_trigger = {
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_decision]_cancel_trigger = yes
+				[t_decision]_cancel_trigger = no
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+}
+scripted_decision_has_no_activation = {
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_decision]_activation = yes
+				[t_decision]_activation = no
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+}
+scripted_decision_has_no_remove_trigger = {
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_decision]_remove_trigger = yes
+				[t_decision]_remove_trigger = no
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+}
+scripted_decision_has_no_available = {
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_decision]_available = yes
+				[t_decision]_available = no
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+}
+scripted_decision_has_no_visible = {
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_decision]_visible = yes
+				[t_decision]_visible = no
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+}
+scripted_decision_category_has_no_visible = {
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_category]_visible = yes
+				[t_category]_visible = no
+			}
+		}
+		t_category = "[?THIS.category.GetName]"
+	}
+}
+scripted_decision_category_has_no_available = {
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_category]_available = yes
+				[t_category]_available = no
+			}
+		}
+		t_category = "[?THIS.category.GetName]"
+	}
+}
+
+scripted_decision_can_be_re_enable = {
+	NOT = {
+		has_character_flag = scripted_decision_is_re_enabling
+	}
+}
+scripted_decision_is_re_enabling = {
+	has_character_flag = scripted_decision_is_re_enabling
+}
+
+scripted_decision_use_mission_trigger_tooltip = {
+	var:scripted_decision_entry = {
+		NOT = {
+			check_variable = {
+				decision_status = global.scripted_decision_has_removed
+			}
+			check_variable = {
+				decision_status = global.scripted_mission_is_failed
+			}
+		}
+		scripted_decision_is_mission = yes
+		NOT = {
+			check_variable = {
+				decision_status = global.scripted_decision_is_removing
+			}
+		}
+	}
+}
+scripted_mission_show_complete_trigger_tooltip = {
+	scripted_decision_use_mission_trigger_tooltip = yes
+	var:scripted_decision_entry = {
+		NOT = {
+			scripted_decision_has_no_available = yes
+		}
+	}
+}
+scripted_decision_complete_mission_trigger_tooltip = {
+	if = {
+		limit = {
+			scripted_mission_show_complete_trigger_tooltip = yes
+		}
+		scripted_decision_complete_trigger_tooltip = yes
+	}
+}
+scripted_mission_show_cancel_effect_tooltip = {
+	scripted_decision_use_mission_trigger_tooltip = yes
+	var:scripted_decision_entry = {
+		NOT = {
+			scripted_decision_has_no_cancel_trigger = yes
+		}
+	}
+}
+scripted_mission_show_cancel_trigger_tooltip = {
+	scripted_decision_use_mission_trigger_tooltip = yes
+	var:scripted_decision_entry = {
+		NOT = {
+			scripted_decision_has_no_cancel_trigger = yes
+		}
+	}
+}
+scripted_decision_cancel_mission_trigger_tooltip = {
+	if = {
+		limit = {
+			scripted_mission_show_cancel_trigger_tooltip = yes
+		}
+		scripted_decision_cancel_trigger_tooltip = yes
+	}
+}
+scripted_mission_show_timeout_effect_tooltip = {
+	scripted_decision_use_mission_trigger_tooltip = yes
+}
+scripted_mission_show_complete_effect_tooltip = {
+	scripted_decision_use_mission_trigger_tooltip = yes
+	var:scripted_decision_entry = {
+		NOT = {
+			scripted_decision_has_no_available = yes
+		}
+	}
+}
+
+scripted_decision_use_decision_trigger_tooltip = {
+	var:scripted_decision_entry = {
+		NOT = {
+			check_variable = {
+				decision_status = global.scripted_decision_has_removed
+			}
+			check_variable = {
+				decision_status = global.scripted_mission_is_failed
+			}
+		}
+		OR = {
+			check_variable = {
+				decision_status = global.scripted_decision_is_removing
+			}
+			NOT = {
+				scripted_decision_is_mission = yes
+			}
+		}
+	}
+}
+scripted_decision_show_complete_trigger_tooltip = {
+	scripted_decision_use_decision_trigger_tooltip = yes
+	var:scripted_decision_entry = {
+		NOT = {
+			scripted_decision_has_no_available = yes
+		}
+		NOT = {
+			check_variable = {
+				decision_status = global.scripted_decision_is_removing
+			}
+		}
+	}
+}
+scripted_decision_complete_decision_trigger_tooltip = {
+	if = {
+		limit = {
+			scripted_decision_show_complete_trigger_tooltip = yes
+		}
+		scripted_decision_complete_trigger_tooltip = yes
+	}
+}
+scripted_decision_show_complete_effect_tooltip = {
+	scripted_decision_use_decision_trigger_tooltip = yes
+	var:scripted_decision_entry = {
+		NOT = {
+			check_variable = {
+				decision_status = global.scripted_decision_is_removing
+			}
+		}
+	}
+}
+scripted_decision_show_remove_effect_tooltip = {
+	scripted_decision_use_decision_trigger_tooltip = yes
+}
+scripted_decision_show_remove_trigger_tooltip = {
+	scripted_decision_use_decision_trigger_tooltip = yes
+	var:scripted_decision_entry = {
+		NOT = {
+			scripted_decision_has_no_remove_trigger = yes
+		}
+	}
+}
+scripted_decision_remove_decision_trigger_tooltip = {
+	if = {
+		limit = {
+			scripted_decision_show_remove_trigger_tooltip = yes
+		}
+		scripted_decision_remove_trigger_tooltip = yes
+	}
+}
+scripted_decision_show_cancel_effect_tooltip = {
+	scripted_decision_use_decision_trigger_tooltip = yes
+	var:scripted_decision_entry = {
+		NOT = {
+			scripted_decision_has_no_cancel_trigger = yes
+		}
+	}
+}
+scripted_decision_show_cancel_trigger_tooltip = {
+	scripted_decision_use_decision_trigger_tooltip = yes
+	var:scripted_decision_entry = {
+		NOT = {
+			scripted_decision_has_no_cancel_trigger = yes
+		}
+	}
+}
+scripted_decision_cancel_decision_trigger_tooltip = {
+	if = {
+		limit = {
+			scripted_decision_show_cancel_trigger_tooltip = yes
+		}
+		scripted_decision_cancel_trigger_tooltip = yes
+	}
+}
+
+scripted_decision_show_cost_tooltip = {
+	var:scripted_decision_entry = {
+		NOT = {
+			check_variable = {
+				decision_status = global.scripted_decision_is_removing
+			}
+		}
+		OR = {
+			NOT = {
+				scripted_decision_is_mission = yes
+			}
+			selectable_mission = yes
+		}
+	}
+}
+scripted_decision_show_days_remove_tooltip = {
+	var:scripted_decision_entry = {
+		check_variable = {
+			days_remove > 0
+		}
+	}
+}
+
+scripted_decision_cancel_trigger_tooltip = {
+	if = {
+		limit = {
+			var:scripted_decision_entry = {
+				scripted_decision_is_cancel_if_not_visible = yes
+				NOT = {
+					scripted_decision_has_no_visible = yes
+				}
+			}
+		}
+		meta_trigger = {
+			text = {
+				NOT = {
+					owner = {
+						[t_decision]_visible = yes
+					}
+				}
+			}
+			t_decision = "[?scripted_decision_entry.GetName]"
+		}
+	}
+	if = {
+		limit = {
+			var:scripted_decision_entry = {
+				scripted_decision_is_cancel_if_not_visible = yes
+				NOT = {
+					check_variable = {
+						category = -1
+					}
+					scripted_decision_category_has_no_visible = yes
+				}
+			}
+		}
+		meta_trigger = {
+			text = {
+				NOT = {
+					owner = {
+						[t_category]_visible = yes
+					}
+				}
+			}
+			t_category = "[?scripted_decision_entry:category.GetName]"
+		}
+	}
+	meta_trigger = {
+		text = {
+			[t_decision]_cancel_trigger = yes
+		}
+		t_decision = "[?scripted_decision_entry.GetName]"
+	}
+}
+scripted_decision_complete_trigger_tooltip = {
+	if = {
+		limit = {
+			var:scripted_decision_entry = {
+				NOT = {
+					check_variable = {
+						category = -1
+					}
+					scripted_decision_category_has_no_available = yes
+				}
+			}
+		}
+		meta_trigger = {
+			text = {
+				[t_category]_available = yes
+			}
+			t_category = "[?scripted_decision_entry:category.GetName]"
+		}
+	}
+	meta_trigger = {
+		text = {
+			[t_decision]_available = yes
+		}
+		t_decision = "[?scripted_decision_entry.GetName]"
+	}
+}
+scripted_decision_remove_trigger_tooltip = {
+	meta_trigger = {
+		text = {
+			[t_decision]_remove_trigger = yes
+		}
+		t_decision = "[?scripted_decision_entry.GetName]"
+	}
+}
+
+scripted_mission_can_be_auto_complete = {
+	
+	NOT = {
+		selectable_mission = yes
+	}
+	meta_trigger = {
+		text = {
+			owner = {
+				[t_decision]_available = yes
+			}
+			NOT = {
+				scripted_decision_has_no_available = yes
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+	OR = {
+		check_variable = {
+			category = -1
+		}
+		meta_trigger = {
+			text = {
+				owner = {
+					[t_category]_available = yes
+				}
+				NOT = {
+					scripted_decision_category_has_no_available = yes
+				}
+			}
+			t_category = "[?THIS.category.GetName]"
+		}
+	}
+}
+
+
+
+visible_when_empty = {
+	has_character_flag = scripted_decision_category_visible_when_empty
+}
+
+scripted_decision_gui_category_should_show = {
+	var:scripted_decision_category_entry = {
+		OR = {
+			any_of = {
+				array = decision_lists
+				value = scripted_decision_entry
+				index = i
+				scripted_decision_should_showing = yes
+			}
+			AND = {
+				visible_when_empty = yes
+				meta_trigger = {
+					text = {
+						[t_category]_visible = yes
+					}
+					t_category = "[?THIS.GetName]"
+				}
+			}
+		}
+	}
+}
+
+scripted_decision_gui_should_show = {
+	var:scripted_decision_entry = {
+		OR = {
+			check_variable = {
+				category = -1
+			}
+			var:category = {
+				check_variable = {
+					category_status = global.scripted_decision_category_show
+				}
+			}
+		}
+		scripted_decision_should_showing = yes
+	}
+}
+sort_scripted_decision_category_check_prev_is_good_compare = {
+	set_temp_variable = {
+		t_decision_2 = scripted_decision_category_temp_list^k
+	}
+	set_temp_variable = {
+		t_index_1 = k
+	}
+	add_to_temp_variable = {
+		t_index_1 = 1
+	}
+	set_temp_variable = {
+		t_decision_1 = scripted_decision_category_temp_list^t_index_1
+	}
+
+	set_temp_variable = {
+		t_priority_1 = 0
+	}
+	set_temp_variable = {
+		t_priority_2 = 0
+	}
+	var:t_decision_1 = {
+		add_to_temp_variable = {
+			t_priority_1 = priority
+		}
+	}
+	var:t_decision_2 = {
+		add_to_temp_variable = {
+			t_priority_2 = priority
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				t_priority_1 = t_priority_2
+			}
+		}
+		var:t_decision_1 = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							[t_category]_visible = yes
+						}
+						t_category = "[?THIS.GetName]"
+					}
+				}
+				set_temp_variable = {
+					t_priority_1 = 0
+				}
+			}
+			else = {
+				set_temp_variable = {
+					t_priority_1 = 1
+				}
+			}
+		}
+		var:t_decision_2 = {
+			if = {
+				limit = {
+					meta_trigger = {
+						text = {
+							[t_category]_visible = yes
+						}
+						t_category = "[?THIS.GetName]"
+					}
+				}
+				set_temp_variable = {
+					t_priority_2 = 0
+				}
+			}
+			else = {
+				set_temp_variable = {
+					t_priority_2 = 1
+				}
+			}
+			##此处相反：数字小的优先级高
+		}
+		check_variable = {
+			t_priority_1 < t_priority_2
+		}
+		##因此后面的数字不能比前面的小
+	}
+	else = {
+		check_variable = {
+			t_priority_1 > t_priority_2
+		}
+	}
+}
+sort_scripted_decision_category_array = {
+	set_temp_variable = {
+		t_sort_flag = 0
+	}
+	set_temp_variable = {
+		t_max_index = scripted_decision_category_temp_list^num
+	}
+	subtract_from_temp_variable = {
+		t_max_index = 1
+	}
+	##进行一次冒泡排序
+	all_of = {
+		array = scripted_decision_category_temp_list
+		value = v1
+		index = j	
+		all_of = {
+			array = scripted_decision_category_temp_list
+			index = k
+			value = v2
+			if = {
+				limit = {
+					set_temp_variable = {
+						t_limit = scripted_decision_category_temp_list^num
+					}
+					subtract_from_temp_variable = {
+						t_limit = 1
+					}
+					subtract_from_temp_variable = {
+						t_limit = j
+					}
+					check_variable = {
+						k < t_limit
+					}
+				}
+				if = {
+					limit = {
+						sort_scripted_decision_category_check_prev_is_good_compare = yes
+					}
+					set_temp_variable = {
+						t_index_1 = k
+					}
+					add_to_temp_variable = {
+						t_index_1 = 1
+					}
+					set_temp_variable = {
+						t_temp = scripted_decision_category_temp_list^k
+					}
+					set_temp_variable = {
+						scripted_decision_category_temp_list^k = scripted_decision_category_temp_list^t_index_1
+					}
+					set_temp_variable = {
+						scripted_decision_category_temp_list^t_index_1 = t_temp
+					}
+					always = yes
+				}
+				always = yes
+			}
+			always = yes
+		}
+		always = yes
+	}
+}
+sort_scripted_decision_check_prev_is_good_compare = {
+	set_temp_variable = {
+		t_decision_2 = scripted_decision_temp_list^k
+	}
+	set_temp_variable = {
+		t_index_1 = k
+	}
+	add_to_temp_variable = {
+		t_index_1 = 1
+	}
+	set_temp_variable = {
+		t_decision_1 = scripted_decision_temp_list^t_index_1
+	}
+
+	set_temp_variable = {
+		t_priority_1 = 0
+	}
+	set_temp_variable = {
+		t_priority_2 = 0
+	}
+	var:t_decision_1 = {
+		add_to_temp_variable = {
+			t_priority_1 = priority
+		}
+	}
+	var:t_decision_2 = {
+		add_to_temp_variable = {
+			t_priority_2 = priority
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				t_priority_1 = t_priority_2
+			}
+		}
+		var:t_decision_1 = {
+			if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_decision_default_status
+					}
+					NOT = {
+						scripted_decision_is_mission = yes
+					}
+					##正常的决议
+				}
+				set_temp_variable = {
+					t_priority_1 = 0
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_mission_is_active
+					}
+					##激活了的任务
+				}
+				set_temp_variable = {
+					t_priority_1 = 1
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						check_variable = {
+							decision_status = global.scripted_decision_is_removing
+						}
+						check_variable = {
+							decision_status = global.scripted_decision_has_removed
+						}
+					}
+					##移除了或者移除中的任务
+				}
+				set_temp_variable = {
+					t_priority_1 = 2
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_decision_default_status
+					}
+					NOT = {
+						scripted_decision_is_mission = yes
+					}
+					##未开始的决议
+				}
+				set_temp_variable = {
+					t_priority_1 = 3
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_mission_is_failed
+					}
+					##失败了的决议
+				}
+				set_temp_variable = {
+					t_priority_1 = 4
+				}
+			}
+		}
+		var:t_decision_2 = {
+			if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_decision_default_status
+					}
+					NOT = {
+						scripted_decision_is_mission = yes
+					}
+					##正常的决议
+				}
+				set_temp_variable = {
+					t_priority_2 = 0
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_mission_is_active
+					}
+					##激活了的任务
+				}
+				set_temp_variable = {
+					t_priority_2 = 1
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						check_variable = {
+							decision_status = global.scripted_decision_is_removing
+						}
+						check_variable = {
+							decision_status = global.scripted_decision_has_removed
+						}
+					}
+					##移除了或者移除中的任务
+				}
+				set_temp_variable = {
+					t_priority_2 = 2
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_decision_default_status
+					}
+					NOT = {
+						scripted_decision_is_mission = yes
+					}
+					##未开始的决议
+				}
+				set_temp_variable = {
+					t_priority_2 = 3
+				}
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_mission_is_failed
+					}
+					##失败了的决议
+				}
+				set_temp_variable = {
+					t_priority_2 = 4
+				}
+			}
+		}
+		check_variable = {
+			t_priority_1 < t_priority_2
+		}
+	}
+	else = {
+		check_variable = {
+			t_priority_1 > t_priority_2
+		}
+	}
+}
+sort_scripted_decision_array = {
+	#scripted_decision_temp_list
+	##优先级：
+	##决议
+	##任务
+	##已移除的决议
+	##已移除的任务
+	
+	##因为p社的代码不能很好地在决议里面写while循环，所以用不了归并或快排序。这里我们使用简单的冒泡排序。
+	set_temp_variable = {
+		t_sort_flag = 0
+	}
+	set_temp_variable = {
+		t_max_index = scripted_decision_temp_list^num
+	}
+	subtract_from_temp_variable = {
+		t_max_index = 1
+	}
+	##进行一次冒泡排序
+	all_of = {
+		array = scripted_decision_temp_list
+		value = v1
+		index = j	
+		all_of = {
+			array = scripted_decision_temp_list
+			index = k
+			value = v2
+			if = {
+				limit = {
+					set_temp_variable = {
+						t_limit = scripted_decision_temp_list^num
+					}
+					subtract_from_temp_variable = {
+						t_limit = 1
+					}
+					subtract_from_temp_variable = {
+						t_limit = j
+					}
+					check_variable = {
+						k < t_limit
+					}
+				}
+				if = {
+					limit = {
+						sort_scripted_decision_check_prev_is_good_compare = yes
+					}
+					set_temp_variable = {
+						t_index_1 = k
+					}
+					add_to_temp_variable = {
+						t_index_1 = 1
+					}
+					set_temp_variable = {
+						t_temp = scripted_decision_temp_list^k
+					}
+					set_temp_variable = {
+						scripted_decision_temp_list^k = scripted_decision_temp_list^t_index_1
+					}
+					set_temp_variable = {
+						scripted_decision_temp_list^t_index_1 = t_temp
+					}
+					always = yes
+				}
+				always = yes
+			}
+			always = yes
+		}
+		always = yes
+	}
+}

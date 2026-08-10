@@ -1,0 +1,239 @@
+scripted_gui = {
+	general_inner_circle_gui = {
+		context_type = player_context
+		parent_window_token = top_bar
+		#parent_window_name = inner_circle_anchor
+		window_name = "scripted_decision_container"
+		visible = {
+			always = yes
+			tag = ENG
+		}
+		triggers = {
+			
+			scripted_decision_gui_calculator_visible = {
+				clear_temp_array = scripted_all_decision_category_temp_list
+				all_of = {
+					array = test_list
+					value = scripted_decision_category_entry
+					add_to_temp_array = {
+						scripted_all_decision_category_temp_list = scripted_decision_category_entry
+					}
+				}
+				set_temp_variable = {
+					scr_dec_decision_gui_height = mtth:scripted_decision_gui_default_height_counter
+				}
+			}
+			scripted_decision_category_calculator_visible = {
+				set_temp_variable = {
+					scr_dec_decision_category_height = mtth:scripted_decision_category_default_height_counter
+				}
+			}
+			scripted_decision_calculator_visible = {
+				set_temp_variable = {
+					scr_dec_decision_height = mtth:scripted_decision_default_height_counter
+				}
+			}
+
+			scripted_decision_category_icon_header_bg_visible = {
+				scripted_decision_gui_category_should_show = yes
+			}
+			scripted_decision_category_icon_visible = {
+				scripted_decision_gui_category_should_show = yes
+			}
+			scripted_decision_category_name_text_visible = {
+				scripted_decision_gui_category_should_show = yes
+			}
+			scripted_decision_category_collapse_btn_visible = {
+				scripted_decision_gui_category_should_show = yes
+			}
+
+			scripted_decision_btn_bg_visible  = {
+				scripted_decision_gui_should_show = yes
+			}
+			scripted_decision_name_text_visible = {
+				scripted_decision_gui_should_show = yes
+			}
+			scripted_decision_icon_visible = {
+				scripted_decision_gui_should_show = yes
+			}
+			scripted_decision_btn_progress_visible = {
+				scripted_decision_is_timing = yes
+				scripted_decision_gui_should_show = yes
+			}
+			scripted_decision_timer_icon_visible = {
+				scripted_decision_gui_should_show = yes
+				var:scripted_decision_entry = {
+					NOT = {
+						scripted_decision_selectable_trigger = yes
+					}
+				}
+			}
+			scripted_decision_cost_and_timer_text_visible = {
+				scripted_decision_gui_should_show = yes
+			}
+			scripted_decision_btn_select_visible = {
+				scripted_decision_gui_should_show = yes
+				var:scripted_decision_entry = {
+					scripted_decision_selectable_trigger = yes
+				}
+			}
+
+			scripted_decision_btn_select_click_enabled = {
+				scripted_decision_can_be_click_trigger = yes
+			}
+
+			
+			scripted_decision_hidden_tool_button_complete_mission_click_enabled = {
+				scripted_decision_complete_mission_trigger_tooltip = yes
+			}
+			scripted_decision_hidden_tool_button_cancel_mission_click_enabled = {
+				scripted_decision_cancel_mission_trigger_tooltip = yes
+			}
+
+			
+			scripted_decision_hidden_tool_button_complete_decision_click_enabled = {
+				scripted_decision_complete_decision_trigger_tooltip = yes
+			}
+			scripted_decision_hidden_tool_button_remove_decision_click_enabled = {
+				scripted_decision_remove_decision_trigger_tooltip = yes
+			}
+			scripted_decision_hidden_tool_button_cancel_decision_click_enabled = {
+				scripted_decision_cancel_decision_trigger_tooltip = yes
+			}
+		
+			scripted_decision_hidden_tool_button_cancel_decision_visible = {
+				always = no
+			}
+			scripted_decision_hidden_tool_button_complete_decision_visible = {
+				always = no
+			}
+			scripted_decision_hidden_tool_button_remove_decision_visible = {
+				always = no
+			}
+
+			scripted_decision_hidden_tool_button_cancel_mission_visible = {
+				always = no
+			}
+			scripted_decision_hidden_tool_button_complete_mission_visible = {
+				always = no
+			}
+			scripted_decision_hidden_tool_button_timeout_mission_visible = {
+				always = no
+			}
+		}
+		effects = {
+
+			scripted_decision_category_collapse_btn_click = {
+				scripted_category_decision_collapse_buttom_effect = yes
+			}
+			scripted_decision_category_icon_header_bg_click = {
+				scripted_category_decision_collapse_buttom_effect = yes
+			}
+
+			scripted_decision_btn_select_click = {
+				scripted_decision_complete_scripted_decision_effect = yes
+			}
+			
+			scripted_decision_hidden_tool_button_cancel_mission_click = {
+				scripted_decision_cancel_mission_effect_tooltip = yes
+			}
+			scripted_decision_hidden_tool_button_timeout_mission_click = {
+				scripted_decision_timeout_mission_effect_tooltip = yes
+			}
+			scripted_decision_hidden_tool_button_complete_mission_click = {
+				scripted_decision_complete_mission_effect_tooltip = yes
+			}
+
+			
+			scripted_decision_hidden_tool_button_complete_decision_click = {
+				scripted_decision_complete_decision_effect_tooltip = yes
+			}
+			scripted_decision_hidden_tool_button_remove_decision_click = {
+				scripted_decision_remove_decision_effect_tooltip = yes
+			}
+			scripted_decision_hidden_tool_button_cancel_decision_click = {
+				scripted_decision_cancel_decision_effect_tooltip = yes
+			}
+
+		}
+		dynamic_lists = {
+			scripted_decision_slider_controller_grid = {
+				array = scr_dec_decision_slider_grid_array
+				value = scripted_decision_slider_grid_entry
+				index = scripted_decision_slider_grid_index
+				change_scope = no
+				entry_container = "scripted_decision_container_slider_controller_container_[?scripted_decision_slider_grid_entry]"
+			}
+			scripted_decision_category_grid = {
+				array = scripted_decision_category_temp_list
+				value = scripted_decision_category_entry
+				index = scripted_decision_category_index
+				change_scope = no
+				entry_container = "scripted_decision_container_category_entry"
+			}
+			scripted_decision_grid = {
+				array = scripted_decision_temp_list
+				value = scripted_decision_entry
+				index = scripted_decision_index
+				change_scope = no
+				entry_container = "scripted_decision_container_entry"
+			}
+		}#
+		properties = {
+			scripted_decision_category_icon_header_bg = {
+				x = mtth:scr_dec_cat_get_icon_header_bg_x
+				y = mtth:scr_dec_cat_get_icon_header_bg_y
+			}
+			scripted_decision_category_icon = {
+				image = "[GetScriptedDecisionCategoryIcon]"
+				x = mtth:scr_dec_cat_get_icon_x
+				y = mtth:scr_dec_cat_get_icon_y
+			}
+			scripted_decision_category_name_text = {
+				x = mtth:scr_dec_cat_get_name_text_x
+				y = mtth:scr_dec_cat_get_name_text_y
+			}
+			scripted_decision_category_collapse_btn = {
+				x = mtth:scr_dec_cat_get_collapse_btn_x
+				y = mtth:scr_dec_cat_get_collapse_btn_y
+				frame = mtth:scr_dec_cat_get_collapse_btn_frame
+			}
+
+			scripted_decision_btn_bg = {
+				x = mtth:scr_dec_get_btn_bg_x
+				y = mtth:scr_dec_get_btn_bg_y
+				frame = mtth:scr_dec_get_btn_bg_frame
+			}
+			scripted_decision_name_text = {
+				x = mtth:scr_dec_get_name_text_x
+				y = mtth:scr_dec_get_name_text_y
+			}
+			scripted_decision_icon = {
+				image = "[GetScriptedDecisionIcon]"
+				x = mtth:scr_dec_get_icon_x
+				y = mtth:scr_dec_get_icon_y
+			}
+			scripted_decision_btn_progress = {
+				image = "[scr_dec_progressGetGoodBad]"
+				frame = mtth:scr_dec_progressGetFrame
+				x = mtth:scr_dec_get_btn_progress_x
+				y = mtth:scr_dec_get_btn_progress_y
+			}
+			scripted_decision_timer_icon = {
+				x = mtth:scr_dec_get_timer_icon_x
+				y = mtth:scr_dec_get_timer_icon_y
+				frame = mtth:scr_dec_get_timer_icon_frame
+			}
+			scripted_decision_cost_and_timer_text = {
+				x = mtth:scr_dec_get_cost_and_timer_text_x
+				y = mtth:scr_dec_get_cost_and_timer_text_y
+			}
+			scripted_decision_btn_select = {
+				x = mtth:scr_dec_get_btn_select_x
+				y = mtth:scr_dec_get_btn_select_y
+				frame = mtth:scr_dec_get_btn_select_frame
+			}
+		}
+	}
+}
+

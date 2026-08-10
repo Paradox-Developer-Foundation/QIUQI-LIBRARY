@@ -1,0 +1,688 @@
+
+注意！请务必使用vsc或N++打开本教程以获得最佳效果！
+
+####################
+####################
+###第一部分：决议###
+####################
+####################
+我们以举例的方式开始决议的教程：
+
+##########
+#决议大类#
+##########
+储存在：/Hearts of Iron IV/common/decisions/categories/*.txt
+
+PUM_decision_category = {
+	
+	icon = 决议大类的图标
+	####################################################################################
+	#决议大类图标的定义格式：														   #
+	#spriteType = {																 	   #
+	#	name = "GFX_decision_category_随便写即可"									   #
+	#	texturefile = "gfx/ak_decisions/decision_category_随便写即可.dds"			   #
+	#	legacy_lazy_load = no													 	   #
+	#}																				   #
+	#随便写的部分没什么硬性要求，但是在决议自己的icon页面要把name部分全部原封不动填进来#
+	#icon = GFX_decision_category_随便写即可										   #
+	####################################################################################
+	
+	picture = 决议大类附带的图片
+	####################################################################################
+	#决议图片的定义格式：（其实不一定必须遵守，随便注册GFX_就可以了）				   #
+	#spriteType = {																 	   #
+	#	name = "GFX_decision_cat_picture_随便写即可"								   #
+	#	texturefile = "gfx/ak_decisions/decision_cat_picture_随便写即可.dds"		   #
+	#	legacy_lazy_load = no													 	   #
+	#}																				   #
+	#随便写的部分没什么硬性要求，但是在决议自己的icon页面要把name部分全部原封不动填进来#
+	#icon = GFX_decision_cat_picture_随便写即可										   #
+	####################################################################################
+	
+	allowed = {
+		original_tag = PUM#满足内部条件，才允许进一步读取和检测这个决议（仅在读取存档和开局时检查）
+	}
+	
+	target_root_trigger = {
+		<triggers>#类似于visible，检测决议是否可见（每天），但是不建议使用（只能检测ROOT），仅在目标决议中使用（因为目标决议用visible会影响性能）
+	}
+	
+	visible = {
+		<triggers>#满足条件时决议可见，每帧检查一次，既能检查ROOT也能检查FROM（以及其他任何作用域）
+	}
+	
+	priority = {
+		base = 3
+		modifier = {
+			add = 10
+			tag = PUM
+		}
+	}#该决议大类在整个决议页面中排序的权重，最高者居于页面第一位
+	
+	highlight_states = {
+		highlight_state_targets = {
+			state = 123
+			state = 321#该大类中的所有决议会出现在哪些state的上方，鼠标悬停/点击该决议后，哪些地块会出现高亮边框
+		}
+		highlight_color_while_active = 3#点击激活决议后高亮边框的颜色（不设置则为白色）
+		highlight_color_before_active = 2#悬停时高亮边框的颜色（不设置则为白色）
+	}
+	
+	on_map_area = {#给决议大类增加一个位于排头的“伪决议”，点击这个伪决议可以令镜头移动到特定地点并缩放到适当大小
+		state = 123 #点击伪决议时镜头移动到的省份（可被target_array、targets、target_trigger代替）
+		targets = { 350 352 353 800 }#以多个省份为目标
+		target_array = owned_states#限定作用域（此处是限定为“拥有的省份”）
+		target_trigger = {
+			FROM = {
+				TUR_is_kemalist_state = yes
+			}
+		}#进一步限定哪些满足条件的state才是可以被镜头锁定的（这里是“原版游戏中属于土耳其凯末尔派控制的state”）
+		name = my_localisation_key#伪决议的文本密钥，通过本地化实现
+		zoom = 850#镜头缩放程度，越大则放大越多
+		target_root_trigger = {
+			tag = PUM#对于这个伪决议，root作用域自身需要满足的条件（很少使用）
+		}
+	}
+	
+	scripted_gui = bul_internal_factions_decision_ui#脚本化的决议ui【这部分下次讲授】
+}
+
+##########
+#普通决议#
+##########
+储存在：/Hearts of Iron IV/common/decisions/*.txt
+任何决议都不能脱离特定的决议大类，需要预先做好大类，然后再写决议，写决议时也要提及大类，像下面这样：
+
+PUM_decision_category = {#决议所属的大类
+	PUM_decision_1 = {
+
+		icon = PUM_decision#决议的图标
+		##############################################################################
+		#决议图标的定义格式：														 #
+		#spriteType = {																 #
+		#	name = "GFX_decision_随便写即可"										 #
+		#	texturefile = "gfx/ak_decisions/decision_随便写即可.dds"				 #
+		#	legacy_lazy_load = no													 #
+		#}																			 #
+		#随便写的部分没什么硬性要求，但是在决议自己的icon页面一定要原封不动把它填进来#
+		#icon = <随便写即可>														 #
+		##############################################################################
+		
+		fire_only_once = yes#是否为仅能进行一次的决议（默认no）
+
+		available = {
+			#满足其中条件，才允许点选该决议
+		}
+		
+		allowed = {
+			original_tag = PUM#满足内部条件，才允许进一步读取和检测这个决议（仅在读取存档和开局时检查）
+		}
+		
+		priority = {
+			base = 3
+			modifier = {
+				add = 10
+				tag = PUM
+			}
+		}#该决议在整个大类中排序的权重，最高者居于此大类的第一位
+		
+		on_map_mode = map_only#决议的显示方式（map_only指只在地图上显示，map_and_decisions_view既在地图上显示又在决议栏目里面显示。）
+		
+		highlight_states = {
+			highlight_state_targets = {
+				state = 123
+				state = 321#该决议会出现在哪些state的上方，鼠标悬停/点击该决议后，哪些地块会出现高亮边框
+			}
+			highlight_color_while_active = 3#点击激活决议后高亮边框的颜色（不设置则为白色）
+			highlight_color_before_active = 2#悬停时高亮边框的颜色（不设置则为白色）
+		}
+
+		visible = {
+			#什么条件下决议可见（每一帧检测一次）
+		}
+		
+		custom_cost_trigger = {
+			<triggers>
+		}
+		custom_cost_text = <localisation key>
+		#######################################################################################################################
+		#这是自定义决议花费的代码，具体制作方法如下：																		  #
+		#custom_cost_trigger = {																							  #
+		#	<triggers>																										  #
+		#}																													  #
+		#其内的条件检测为真时，则custom_cost_text = <localisation key>中的localisation key显示为高亮，否则是暗色以示条件不满足#
+		#我们只需要定义一个文本图标就可以实现写出“500单位步兵装备”、“2民用工厂”等花费										  #
+		#注册文本图标只需要在interface文件夹内创设一个gfx文件，然后书写：													  #
+		#spriteType = {																										  #
+		#	name = "GFX_pum_texticon"																						  #
+		#	texturefile = "gfx/texticons/你的图标.dds"																		  #
+		#	legacy_lazy_load = no																							  #
+		#}																													  #
+		#然后我们就能在本地化时用 <localisation key>:0 "£pum_texticon"（即£加name去掉GFX_的后续部分，最后补一个空格）来引出它 #
+		#######################################################################################################################
+
+		cost = 决议需要的花费
+		days_remove = 决议点击后直到移除所需的时间（立刻完成的决议不需要写这条）
+		days_re_enable = 完成这个决议后，下次它再次出现所需的时间（需要fire_only_once = no，一次性决议不需要这条）
+		
+		modifier = {
+			#填入修正效果，在决议点选后、移除前作用于root作用域
+		}
+		
+		targeted_modifier = {
+			#填入具有目标性的修正效果，在决议点选后、移除前作用于root作用域
+		}
+		
+		war_with_on_remove = TAG # 警告ai将在决议移除时与TAG国家交战
+		war_with_on_complete = TAG # 警告ai将在决议完成时与TAG国家交战
+		war_with_on_timeout = TAG # 警告ai将在决议到期时与TAG国家交战
+		
+		complete_effect = {
+			#完成（点选）决议时触发的效果
+		}
+		
+		cancel_trigger = {
+			#满足什么条件会立刻取消（中断）此决议，会立刻打断正在读条的决议
+		}
+		
+		cancel_effect = {
+			#决议被打断时触发的效果（这个效果与其他效果不同，它不会在鼠标悬停于决议上方时显示出来）
+		}
+
+		remove_effect = {
+			#决议移除（读条完毕）时触发的效果
+		}
+		
+		ai_will_do = {
+			base = 100#ai点选这个决议的意愿
+		}
+	}
+
+##########
+#目标决议#
+##########
+	
+	PUM_decision_2 = {
+	
+		#需要特别注意的是，在整个目标决议中，FROM均是指“目标”，也就是被该决议定准的国家/地区，而ROOT（或不写作用域）则指当前掌握决议的国家自己
+
+		icon = PUM_decision#决议的图标
+		
+		fire_only_once = yes#是否为仅能进行一次的决议（默认no）
+
+		available = {
+			#满足其中条件，才允许点选该决议
+		}
+
+		visible = {
+			#什么条件下决议可见（但是因为每帧检测一次，用在目标决议中对性能消耗较大）
+		}
+		
+		state_target = yes#表示此目标决议要以地区为目标（默认no，为以国家为目标）
+		target_array = 作用域（使得目标决议的目标作用域得到进一步限定）
+		#此处的作用域不仅可以直接书写allies（盟友国家）、subjects（附庸国家）、enemies（敌国）、neighbors（邻国）等，还可以套娃
+		#比如GER.core_states（德国的核心领土）
+		
+		target_root_trigger = {
+			#目标决议中用以检测root状况的触发器，每天检测一次，可以在目标决议中替代visible，但是其他地方不建议使用
+		}
+		
+		target_trigger = {
+			#目标决议中用以检测目标状况的触发器，满足其中条件的其他国家会被标记，从而作为对象使得决议出现
+		}
+
+		cost = 决议需要的花费
+		
+		war_with_target_on_remove = yes # 警告ai将在决议移除时与目标（本决议锁定的）国家交战
+		war_with_target_on_complete = yes # 警告ai将在决议完成时与目标（本决议锁定的）国家交战
+		war_with_target_on_timeout = yes # 警告ai将在决议到期时与目标（本决议锁定的）国家交战
+		
+		complete_effect = {
+			#完成（点选）决议时触发的效果
+		}
+		
+		cancel_trigger = {
+			#满足什么条件会立刻取消（中断）此决议，会立刻打断正在读条的决议
+		}
+		
+		cancel_effect = {
+			#决议被打断时触发的效果（这个效果与其他效果不同，它不会在鼠标悬停于决议上方时显示出来）
+		}
+
+		remove_effect = {
+			#决议移除（读条完毕）时触发的效果
+		}
+		
+		ai_will_do = {
+			base = 100#ai点选这个决议的意愿
+		}
+	}
+	
+##########
+#任务决议#
+##########
+	
+	PUM_decision_3 = {
+
+		icon = PUM_decision#决议的图标
+		
+		fire_only_once = yes#是否为仅能进行一次的任务（默认no）
+
+		available = {
+			#满足其中条件，任务将会完成，并触发complete_effect
+		}
+
+		visible = {
+			#什么条件下任务可见
+		}
+		################################################################################################
+		#特别补充：																					   #
+		#一个任务可以在单个国家激活，却于多个国家可见！其他可见国家见到的任务读条进度，取决于任务触发国#
+		#如可见国在100天后完成相关条件可以见到任务，那么它看到的任务也是已经进行了100天的状态。		   #
+		################################################################################################
+		
+		activation = {
+			#在满足什么条件时任务被激活
+		}
+		
+		days_mission_timeout = 任务给出的读条时间
+		is_good = yes#是好是坏（会影响到本地化，坏任务会显示“未能完成的效果”，好任务会显示“如果失败的效果”等）
+		cost = 决议需要的花费
+		
+		complete_effect = {
+			#任务的available被满足时触发的条件，同时任务会终止
+		}
+		
+		selectable_mission = yes#可选决议，默认为no。也就是说默认的任务都是一旦达成available的条件就自动完成的，但是如果这里填入yes，那么它看到的任务也是已经进行了100天的状态。
+		#条件达成后，任务将变得可选，就像决议一样，只有玩家点选了，才能触发complete_effect里面的效果
+		
+		cancel_trigger = {
+			#满足什么条件任务会立刻中止
+		}
+		
+		cancel_effect = {
+			#任务终止时触发的效果
+		}
+
+		timeout_effect = {
+			#任务读条走到头时触发的效果
+		}
+		
+		ai_will_do = {
+			base = 100#ai点选这个任务的意愿
+		}
+	}
+}
+	
+####################
+####################
+###第二部分：操作###
+####################
+####################
+
+操作即On_action：
+
+以下是目前on_action所有的操作名录（wiki可查）
+
+通用 = {
+		# on_startup #游戏开始时执行操作
+		# on_daily #每天执行操作
+		# on_daily_TAG #在TAG国家每天执行操作
+		# on_weekly #每周执行操作
+		# on_weekly_TAG #在TAG国家每周执行操作
+		# on_monthly #每月执行操作
+		# on_monthly_TAG #在TAG国家每月执行操作
+		
+	FROM 是被炸的省份（state）
+		# on_nuke_drop #核弹降落时执行操作
+		
+	FROM -击沉它的国家, ROOT -被击沉的国家
+		# on_pride_of_the_fleet_sunk #舰队荣耀击沉时执行操作
+		
+	ROOT是进行有关行动的国家。FROM（state）是该行动开始的省份，如果是空降，THIS则是降落到的state
+		# on_naval_invasion #海军入侵发生时执行操作
+		# on_paradrop #空投发生时执行操作
+}
+
+政治 = {
+	# on_coup_succeeded #政变成功时执行操作
+	# on_government_change #政府改变时执行操作（与下一项的区别暂不知，但是子意识形态变换应该也能唤起此操作）
+	# on_ruling_party_change #执政党改变时执行操作
+	# on_new_term_election #大选时执行操作
+	# on_peaceconference_started #和平会议开始时执行操作：ROOT是胜利者, FROM是失败者，而且会直接锁定全部胜者和全部败者
+	# on_peaceconference_ended #和平会议结束时执行操作：ROOT是胜利者, FROM是失败者，而且会直接锁定全部胜者和全部败者
+}
+
+外交与战争 = {
+	ROOT -发起动作国 FROM -收到动作国
+		# on_send_volunteers #志愿军发出时执行操作
+		# on_recall_volunteers #召回志愿军时执行操作（原版少见）
+		# on_border_war_lost #边境战争失败时执行操作（少见，因为可以被边境战争自带机制替换）
+	ROOT 是进攻国, FROM 是防御国
+		# on_war_relation_added #两个国家之间添加战争关系时执行操作
+		# on_declare_war #宣战时执行操作
+	ROOT是本国，不过建议直接写tag = 或初始tag = 。
+		# on_war #当一个国家参加战争时触发
+		# on_peace #当一国结束战争状态回到和平时触发
+		# on_capitulation #投降时执行操作（可能慢于和平会议）
+		# on_capitulation_immediate #投降时瞬间执行的操作（在和平会议开始前就触发，并且触发后阻止和平会议开始）
+		# on_uncapitulation #当一个国家脱离投降状态时触发的操作
+	ROOT是吞并者 FROM是被吞并者
+		# on_annex #吞并动作发生时触发的操作
+		# on_civil_war_end_before_annexation #内战结束而吞并动作还没发生时执行的操作
+		# on_civil_war_end #内战结束后触发的操作
+	ROOT 是被傀儡国, FROM是宗主国
+		# on_puppet #一个国家变为傀儡国时的操作
+		# on_force_government #被强迫改变政府
+		# on_liberate #被解放（和谈上）
+	ROOT是被释放国, FROM是解放国
+		# on_release_as_free #被解放为独立国
+	ROOT是被释放国, FROM是宗主国
+		# on_release_as_puppet #被解放为附庸国
+}
+
+阵营 = {
+	FROM是加入该阵营的国家
+		# on_create_faction #创建起阵营时
+		# on_faction_formed #阵营真正形成时（两个及以上国家加入）
+	FROM是被邀请的国家
+		# on_offer_join_faction #邀请他国加入时
+	FROM 是阵营领导者
+		# on_join_faction #加入一个阵营时
+	FROM 是之前的阵营领导者
+		# on_assume_faction_leadership #夺取阵营领导权时
+		# on_leave_faction #离开阵营时
+}
+
+自治 = {
+ROOT -傀儡, FROM -宗主国
+	# on_subject_annexed #吞并傀儡时
+	# on_subject_free #附庸独立时
+	# on_subject_autonomy_level_change #附庸等级变化时
+}
+
+流亡政府 = {
+	ROOT -该流亡国家 FROM -这个流亡政府所在的国家
+		# on_government_exiled #当政府流亡时
+	FROM:FROM -该流亡政府之前所在的国家，其他部分与上一条相同
+		# on_host_changed_from_capitulation #流亡政府所在国（接纳此流亡政府的国家）投降时触发
+	ROOT -该流亡国家, FROM -该流亡政府曾经所在的国家
+		# on_exile_government_reinstated #当一国结束流亡时触发
+}
+
+省份 = {
+	ROOT -新控制者 FROM -旧控制者 FROM.FROM -省份（state）ID
+		# on_state_control_changed #当state控制者变换时
+}
+
+战争目标 = {
+	FROM -目标国家
+		# on_justifying_wargoal_pulse #开始正当化战争时触发（远古版本苏联吞并波罗的海三国的事件就是这样触发的）
+	FROM -战争借口的所有国
+		# on_wargoal_expire #战争目标过期时触发
+}
+
+将帅 = {
+	FROM 是该国家 ROOT是该将领
+		# on_unit_leader_created #招募新将领时触发
+		# on_army_leader_daily #在将帅身上每天触发
+		# on_army_leader_won_combat #当一名将领打赢一场战斗后触发
+		# on_army_leader_lost_combat #当一名将领打输一场战斗后触发
+		# on_unit_leader_level_up #当一名将领升级时触发
+		# on_army_leader_promoted #晋升将领时触发
+}
+
+王牌 = {
+	FROM =王牌
+		# on_ace_promoted #当产生王牌时触发
+		# on_ace_killed #王牌阵亡
+	FROM = 因事故而死的王牌
+		# on_ace_killed_on_accident #王牌事故死亡
+	FROM = 王牌 PREV =敌军王牌
+		# on_non_ace_killed_other_ace #王牌击落敌军王牌
+		# on_ace_killed_by_ace #我方王牌被敌军王牌击落
+		# on_ace_killed_other_ace
+		# on_aces_killed_each_other #当两个王牌击落了彼此时触发
+}
+
+抵抗运动 = {
+	THIS -这场行动 ROOT -行动发起国 FROM - 目标国家
+		# on_operation_completed #当行动完成即触发命令
+	THIS -这场行动 ROOT -阻止这场行动的国家(可不写) FROM - 这场行动针对的国家 FROM.FROM - 行动省份 (在这场行动有省份目标时才能写)
+		# on_operative_detected_during_operation #当参与行动的人员死亡时触发命令
+	THIS -这场行动 FROM -特工所在的国家 ROOT-行动所针对的国家
+		# on_operative_on_mission_spotted #当一个特工在一个国家执行任务时触发
+	THIS -这场行动 ROOT -特工所在的国家 FROM -行动所针对的国家
+		# on_operative_captured #特工被捕时触发
+		# on_operative_created #特工招募时触发
+	THIS -被杀特工，ROOT -杀害特工的国家（可选），FROM -特工为之工作的国家
+		# on_operative_death #特工死亡时触发
+		# on_operative_recruited #特工被救时触发
+	THIS -密码被解密的目标国家，FROM -解密国家
+		# on_fully_decrypted_cipher #当一个国家完全解密目标国家的密码时触发
+	THIS -密码被解密的目标国家，FROM -解密国家
+		# on_activated_active_decryption_bonuses #点选对目标国家完全解密加成奖励时触发
+}
+
+#############################
+#以下是On_action的典型例子：#
+#############################
+
+用法一：为特定的战争触发相关新闻
+on_actions = {  
+	on_war_relation_added = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { tag = COL }
+					FROM = { tag = IBE }
+					NOT = { has_global_flag = second_caribbean_war_flag } 
+				}
+				set_global_flag = second_caribbean_war_flag
+				news_event = {
+					id = ASB_great_war_news.2
+				}
+			}
+		}
+	}
+}
+#效果为：一旦伊比利亚和哥伦比亚开战，且世界上没有“第二次加勒比海战争”这个flag，那么触发新闻事件“第二次加勒比海战争”
+
+用法二：帮助特殊机制或修正运作
+on_actions = {  
+	on_monthly_URS = {
+		effect = {
+			if = {
+				limit = {
+					OR = {	
+						has_idea = URS_Rasputin
+						has_idea = URS_Rasputin_1
+						has_idea = URS_Rasputin_2
+						has_idea = URS_Rasputin_3
+						has_idea = URS_Rasputin_4
+						has_idea = URS_Rasputin_5
+						has_idea = URS_Rasputin_6
+					}
+				}
+				URS_Rasputin_event_effect = yes
+			}
+		}
+	}
+}
+这个民族精神在modifier中这样写：
+	modifier = {
+		custom_modifier_tooltip = 1_bad_thing_weekly_tt
+	}
+然后把20_percent_bad_thing_weekly_tt本地化为“每月恶性事件触发：+1”
+于是就通过这个on_action实现了每月触发一个恶性事件URS_Rasputin_event_effect = yes是一个脚本化作用，它如下写在：common/scripted_effects/*中
+
+######################################################################################################################
+#拉斯普京恶性事件抽取
+URS_Rasputin_event_effect = {
+	if = {
+		limit = { has_idea = URS_Alexei_Nikolaevich_Kuropatkin }
+		random_list = {
+			20 = {
+				country_event = {
+					id = urs_special_event_a.2
+					days = 60
+				}
+			}
+			20 = {
+				country_event = {
+					id = urs_special_event.2
+					days = 65
+				}
+			}
+			20 = {
+				country_event = {
+					id = urs_special_event.3
+					days = 70
+				}
+			}
+			20 = {
+				country_event = {
+					id = urs_special_event.4
+					days = 75
+				}
+			}
+			20 = {
+				country_event = {
+					id = urs_special_event.5
+					days = 80
+				}
+			}
+		}
+	}
+	random_list = {
+		10 = {
+			country_event = {
+				id = urs_special_event.14
+			}
+		}
+		10 = {
+			country_event = {
+				id = urs_special_event.15
+			}
+		}
+		10 = {
+			country_event = {
+				id = urs_special_event.16
+			}
+		}
+		10 = {
+			country_event = {
+				id = urs_special_event.17
+			}
+		}
+		10 = {
+			country_event = {
+				id = urs_special_event.18
+			}
+		}
+		10 = {
+			country_event = {
+				id = urs_special_event.19
+			}
+		}
+		10 = {
+			country_event = {
+				id = urs_special_event.20
+			}
+		}
+		10 = {
+			country_event = {
+				id = urs_special_event.21
+			}
+		}
+		10 = {
+			if = {
+				limit = { NOT = { has_country_flag = urs_little_prince_dead } }
+				country_event = {
+					id = urs_special_event.22
+				}
+			}
+			else = {
+				country_event = {
+					id = urs_special_event.24
+				}
+			}
+		}
+		10 = {
+			country_event = {
+				id = urs_special_event.23
+			}
+		}
+	}
+}
+#################这个脚本化效果提供了一套事件，每月随机在其中触发一个####################
+
+#效果为：在拥有“拉斯普京”这一顾问/民族精神时，URS每月触发一个恶性事件，恶性事件通过预先写好的脚本化效果进行抽取。
+
+
+用法三：开局事件（gui介绍）的展示与触发
+on_actions = {  
+	on_startup = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				country_event = { id = softb_start_event.1 }
+			}
+		}
+	}
+}
+#效果为：当前国家不是ai时，开局立刻按照设置触发事件softb_start_event.1
+
+
+用法四：在假内战中（内战各国全是你自创的tag而非炸出来的tag）避开和谈以免出现奇怪bug
+on_actions = {  
+	on_capitulation_immediate = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = LNM
+					has_global_flag = lei_civilwar_happened_flag
+				}
+				every_owned_state = {
+					limit = {
+						is_controlled_by = LEI 
+					}
+					transfer_state_to = LEI
+				}
+				every_owned_state = {
+					limit = {
+						is_controlled_by = RSB 
+					}
+					transfer_state_to = RSB
+				}
+				every_owned_state = {
+					limit = {
+						is_controlled_by = RSA
+					}
+					transfer_state_to = RSA
+				}
+				every_owned_state = {
+					limit = {
+						is_controlled_by = RMA 
+					}
+					transfer_state_to = RMA
+				}
+				every_owned_state = {
+					limit = {
+						is_controlled_by = LNM 
+					}
+					transfer_state_to = LEI
+				}
+			}
+		}
+	}
+}
+#效果为：当前国家投降时，如果tag是LNM，且有全球flag表明莱塔尼亚还在内战，那么投降此国全部所拥有的领土，直接交给当时实际控制当地的其他内战势力
+如果你想要照搬此写法，一定要注意确保该国经过这一番操作（如果你有特殊设计可以不考虑）之后，所有土地都会被转交，确保其彻底不存在。
+
+以上就是本期PUM代码教学内容了，希望大家能有所收获！我们下次再见。
+作者：我电锯呢 （b站id也是这个）
+PUM粉丝群群号：948522045，欢迎大家前来游玩！
+

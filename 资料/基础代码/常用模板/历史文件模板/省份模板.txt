@@ -1,0 +1,49 @@
+#state 地区 province 省份 by秋起修改适配
+#文件在history/states/*.txt
+state={
+	id= 242 #省份id，重要
+	name="STATE_242" #省份名称
+	manpower=131000 #人口，重要
+	state_category = city #省份类型，重要 
+	#包括wasteland（荒漠）、large_city（密集城镇地区）、metropolis（大城市地区）、megalopolis（大都市地区）、town（发达乡村地区）、large_town（稀疏城镇地区）
+	#rural（乡村地区）、enclave（飞地）、small_island（小岛）、tiny_island（极小岛屿）、large_island（大型岛屿）、pastoral（牧区）、city（城镇地区）
+	local_supplies = 0.0 #地区补给
+
+	provinces={ #该地区下的省份，重要
+		528 2246 2333 3322 
+	}
+
+	buildings_max_level_factor = 0.1 #最大建筑等级修正，百分比，可选内容
+	impassable = <bool> #布尔值，yes/no，是否可以通过，默认是no
+
+	resources = {
+		oil = 0 #石油
+        aluminium = 0 #铝
+        rubber = 0 #橡胶
+        tungsten = 0 #钨
+        steel = 0 #钢
+        chromium = 0 #铬
+        coal = 0 #煤
+	}
+
+	history={ #历史文件夹，包括该省份的控制者，核心，建筑.....
+		owner = LYU #拥有者，后跟国家代码tag
+		add_core_of = LYU #核心
+		controller = TAG #控制者，国家TAG，可选，仅当控制者和拥有者相区别时使用
+		victory_points = { 2246 1 } #胜利点，第一个2246是胜利点位置，第二个1是分数
+		buildings = { #建筑，具体看维基百科
+			infrastructure = 5
+			industrial_complex = 3
+			arms_factory = 1
+			2246 = { #某省份建筑
+				bunker = 3
+				dockyard = 5
+			}
+		}
+		219.1.1 = { #第二个剧本的省份归属
+            owner = WUU
+			add_core_of = WUU
+		}
+	}
+	
+}

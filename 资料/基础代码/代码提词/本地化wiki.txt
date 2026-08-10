@@ -1,0 +1,310 @@
+本地化
+跳到导航跳到搜索
+这是一个社区维护的维基。如果您发现错误，欢迎您修复它。
+
+HOI4使用现代Paradox游戏使用的修改后的YAML本地化系统。
+
+
+目录
+1	快速清单
+2	基本
+3	取代
+4	特殊字符
+4.1	着色字符
+4.1.1	错误
+4.2	设置变量格式
+4.3	国旗
+4.4	文本化图标
+5	嵌套文本
+6	命名空间
+6.1	功能
+7	脚本化本地化
+8	引用
+本地化存储在 /Hearts of Iron IV/localisation/ 文件夹中，可以在其中使用任何子文件夹。每个文件都通过最后添加文件名来分配一种语言及其文件名，并存在以下语言：
+
+l_english：英语，如/Hearts of Iron IV/localisation/english/filename_l_english.yml
+l_french：法语，如 /Hearts of Iron IV/localisation/French/mod_file_l_french.yml
+l_german：德语，如 /Hearts of Iron IV/localisation/German/state_names_l_german.yml
+l_spanish：西班牙语，如 /Hearts of Iron IV/localisation/Spanish /mod_germany_l_spanish.yml
+l_braz_por：巴西葡萄牙语，如/Hearts of Iron IV/localisation/braz_por/bahrain_l_braz_por.yml
+l_polish：波兰语，如 /Hearts of Iron IV/localisation/polish/myfile_l_polish.yml
+l_russian：俄语，如 /Hearts of Iron IV/localisation/russian/siberia_l_russian.yml
+l_japanese：日语，如 /Hearts of Iron IV/本地化/日语/kuril_l_japanese.yml
+文件名必须以语言的内部名称结尾，否则不会加载文件。
+当前打开的语言是在用户目录的 /Hearts of Iron IV/settings.txt 文件中选择的，但是，除了这些列出的语言之外，不能直接添加更多语言。
+
+快速检查表
+为了使文件正常工作，它必须具有以下内容：
+
+该文件的扩展名为 .yml。默认情况下，Windows 会隐藏文件扩展名，因此必须关闭此功能才能更改扩展名并轻松查看。
+文件名减去扩展名后，必须以语言的内部名称结尾，例如 .在这种情况下，l 是小写的 L。filename_l_english.yml
+该文件必须以 UTF-8-BOM 编码 - UTF-8 编码，文件开头带有 EFBBBF 字节顺序标记。如果不满足此要求，游戏会在日志中引发错误。
+文件的第一行必须是内部语言，后跟冒号，例如 。这会将其中的键分配给更大的数据库。l_english:l_english
+基础知识
+本地化是在本地化文件夹中的任何文件中创建的：除了决议选择哪种语言之外，文件扩展名以外的文件名无关紧要。
+每个本地化文件都必须使用 UTF-8-BOM 编码，即在文件开头带有字节顺序标记的 UTF-8 编码。确切的详细信息取决于文本编辑器：
+
+记事本++：顶部栏的“编码”菜单提供了一系列编码。在这种情况下使用 UTF-8-BOM。
+崇高文本：顶部栏的“文件”菜单提供“使用编码保存”选项。在这种情况下使用带有 BOM 的 UTF-8。
+Visual Studio Code：在底部栏中，有“选择编码”按钮，标题为当前编码（通常是“UTF-8”或“带有BOM的UTF-8”）。要转换，必须按下此按钮，然后必须使用“带BOM的UTF-8”选择“使用编码保存”。
+文件中的第一行决议除文件名外的语言，例如l_english:
+
+下一行的结构为 。在这里：localisation_key:0 "Localisation value"
+
+localisation_key是正在本地化的本地化键。这通常与数据库条目的名称相同（例如，名称为 TAG_focusname 的国策将TAG_focusname作为所需的本地化键）。其他时候，可以或需要在数据库条目本身中进行设置（例如 在事件中）。通常，将_desc追加为TAG_focusname_desc为描述提供本地化键，例如角色、国策、idea、特征等。本地化密钥中不能包含特殊字符，其中特殊字符定义为使用 UTF-1 编码占用超过 8 个字节。这包括 ASCII 字符系统中除字符之外的所有字符，因此从本质上讲，本地化键不应包含英文字母、下划线、点和数字以外的任何字符。此外，本地化键中不能包含空格。title = my_event.1.t
+0 是版本号，用于 Paradox 的内部翻译跟踪。[1]这在游戏中永远不会被阅读，可以完全省略，没有区别。
+本地化值是指将在游戏中显示的文本。这必须在一行上，多行会破坏文件。而是使用（请注意，这是反斜杠而不是常规斜杠）标记换行符，例如localisation_key：“第一行。\n第二行”。应避免在 \n 后面使用空格，因为它会在游戏中显示为偏移下一行。\n
+本地化的任何问题（例如本地化键中的特殊字符或空格或缺少引号）都会破坏本地化文件，从语法首次停止正确遵循的位置开始。
+
+本地化文件内容的示例如下：
+
+l_english:
+ infantry_equipment: "Infantry Equipment"
+ infantry_equipment_short: "Inf. Eq."
+ infantry_equipment_desc: "This is infantry equipment"
+替换
+通常，必须避免本地化键重叠，重叠是在同一语言的文件中多次定义的同一本地化键。这在用户目录的 /Hearts of Iron IV/logs/text.log 文件中进行跟踪，该文件包含重叠本地化键的列表（如果有）。将要选择的值似乎没有一致的模式，但似乎优先考虑基本游戏文件。
+
+但是，如果本地化文件包含在名为“replace”的文件夹中（例如 /Hearts of Iron IV/localisation/english/replace，仍然必须在本地化内部），它将优先于非本地化条目。这对于仅覆盖特定的本地化键而不移植整个文件很有帮助，例如，如果文件在基础游戏中频繁更新。
+
+例如，如果希望更改效果的名称以从默认添加政治权力，则可能不希望将整个/Hearts of Iron IV/localisation/english/effects_l_english.yml文件移植到mod中，因为新效果经常被添加到游戏中，这意味着必须控制该文件。
+但是，如果您在 /Hearts of Iron IV/localisation/english/replace/ 文件夹中创建一个新的本地化文件并在那里定义POLITICS_ADD_POLITICAL_POWER本地化密钥，则密钥的值将更改而无需复制整个本地化文件，这意味着该 mod 现在更容易移植到未来的更新中。 POLITICS_ADD_POLITICAL_POWER:0 "Political Power: $VAL|=+0$."
+
+特殊字符
+着色字符
+可以在字符串中添加各种字符以在游戏中更改其颜色。要以不同方式着色的文本必须以着色字符开头，并且必须以感叹号结尾。§!
+
+实现以下格式设置字符（提供的颜色是默认的通用颜色，可能因字体而异）：
+
+写法	影响	精确的颜色
+§!	结束当前格式规则。	没有。
+§C	为文本着色青色。	( 35, 206, 255 )
+§L	将文本着色为脏橙色灰色（标记为“淡紫色”）。	( 195, 176, 145 )
+§W	将文本着色为白色。	( 255, 255, 255 )
+§B	将文本着色为蓝色。	( 0, 0, 255 )
+§G	将文本着色为绿色。	( 0, 159, 3 )
+§R	将文本着色为红色。	( 255, 50, 50 )
+§b	将文本着色为黑色。	( 0, 0, 0 )
+§g	将文本着色为浅灰色。	( 176, 176, 176 )
+§Y	将文本着色为黄色。	( 255, 189, 0 )
+§H	将文本着色为黄色（与 §Y 相同，标记为“标题”）。	( 255, 189, 0 )
+§T	将文本着色为白色（与 §W 相同，标记为“标题”）。	( 255, 255, 255 )
+§O	将文本着色为橙色。	( 255, 112, 25 )
+§0	将文本着色为紫色（标记为“渐变步骤 0”）。	( 203, 0, 203 )
+§1	将文本着色为淡紫色（标记为“渐变步骤 1”）。	( 128, 120, 211 )
+§2	将文本着色为蓝色（标记为“渐变步骤 2”）。	( 81, 112, 243 )
+§3	将文本着色为灰蓝色（标记为“渐变步骤 3”）。	( 81, 143, 220 )
+§4	将文本着色为浅蓝色（标记为“渐变步骤 4”）。	( 90, 190, 231 )
+§5	将文本着色为暗青色（标记为“渐变步骤 5”）。	( 63, 181, 194 )
+§6	为文本着色绿松石色（标记为“渐变步骤 6”）。	( 119, 204, 186 )
+§7	将文本着色为浅绿色（标记为“渐变步骤 7”）。	( 153, 209, 153 )
+§8	将文本着色为橙黄色（标记为“渐变步骤 8”）。	( 204, 163, 51 )
+§9	将文本着色为白橙色（标记为“渐变步骤 9”）。	( 252, 169, 125 )
+§t	将文本着色为鲜红色（标记为“渐变步骤 10”）。	( 255, 76, 77 )
+下面是颜色格式的示例：
+
+l_english:
+ example_key: "This is my text, §Bthis text is blue§!, and §Rthis text is red§!"
+可以通过扩展interface/core.gfx中的textcolors = {}数组来添加新的文本颜色。颜色键不能有多个字母（即“BU = {0 255 0}”），并且会尝试用相同的第一个字母覆盖另一个颜色键。当在字体的位图字体定义中使用某种字体时，也可以使着色字符表示与默认颜色不同的颜色。
+
+错误
+与着色字符相关的错误可能相当不直观，因为它们不提供文件的位置。
+有两种类型的错误：
+
+Could not find coloring for character 'M'– 这个确切的例子意味着，在本地化的某个地方找到游戏;但是，由于“M”不是有效的颜色，因此这是一个意外的结果。提供了确切的字符，因此找到原因应该是基本的。§M
+Could not find coloring for character id '17'– 请注意，它指定了字符 ID。在这种情况下，将提供可打印的 Unicode 字符 ID。这通常是在提供实际角色会令人困惑的情况下完成的（例如，对于数字“1”，如果不存在这样的颜色，游戏将指定角色 ID “17”。由于“1”是第 18 个打印字符，因此它的 id 为 17，因为数字通常从 0 开始。
+这有一个值得注意的例外：字符 ID “0”指的是 NULL 字符而不是空格，其中游戏提供字符本身。换句话说，字符 id '0' 表示 § 符号后绝对没有任何东西，因此字符串以 § 结尾。因此，通过搜索 这通常是由于省略字符中的感叹号以结束颜色格式（正确的是 ."§§!"
+可以使用具有“在文件中查找”功能的文本编辑器进行搜索。例如，这是在更常用的编辑器中访问该功能的方式：
+
+记事本++ –它位于“搜索”顶栏菜单中，作为“在文件中查找...”。默认情况下，不提供文件夹。“遵循当前文档”允许文本编辑器自动输入当前打开的文档文件夹作为搜索位置，也可以手动输入。或者，可以从“文件夹作为工作区”菜单中文件夹的右键单击菜单中打开此菜单 - 通过顶栏中的按钮访问 - 该菜单将自动将文件夹位置设置为该文件夹。
+崇高文本 - 这位于“查找”顶部栏菜单中作为“在文件中查找...”。为了添加要搜索的文件夹，可以打开“Where：”行右侧的菜单，使用“添加文件夹”（选择单个文件夹）或“添加打开的文件夹”（自动选择通过Sublime Text打开的所有文件夹）按钮执行此操作。
+Visual Studio Code – Visual Studio Code 仅支持搜索当前打开的文件夹。通过“打开文件夹...” 打开文件夹...”按钮，在“文件”顶栏菜单或“资源管理器”菜单中，通过左侧的栏访问。之后，可以在“编辑”菜单中以“在文件中查找”的形式访问该功能。为了加快搜索速度，可以使用文件名过滤器。例如，在“要包含的文件”中，将仅搜索<当前打开的文件夹>/localisation/english/文件夹中的每个 *.yml 文件，其中代表文件名中任何字符 的任意数量（包括 0）。类似的过滤器可以在前两个文本编辑器中使用，但不允许过滤文件夹 - 只允许文件名。localisation/english/*.yml*
+格式化变量
+另请参阅：变量
+变量有一种特殊的方式来更轻松地应用着色字符以及特殊格式字符。这些是在放置在变量名称末尾的管道之后应用的，例如，这将使变量的颜色变为红色。仅限于变量的格式字符 的确切列表如下：[?my_variable|R]my_variable
+
+写法	影响
+%	将变量转换为百分比，乘以 100 并追加 %。
+%%	将百分比追加到变量的末尾，而不乘以 100。
+*	将变量转换为 SI 单位 - 附加“K”或“M”并适当划分变量，例如 65 536 变为 65.53K，1 500 000 变为 1.50M。默认情况下，在点后显示 2 位小数。
+^	与 * 相同。
+=	如果值为正，则以 + 为前缀，如果值为负，则以 - 为前缀。
+0..3	控制要显示的小数位数。由于游戏变量的性质，可以使用的小数点不超过 3 位。可以选择在开头加上一个点。
++	如果为正，则为变量绿色，如果为零，则为黄色，如果为负，则为红色。
+-	如果为正数，则为变量红色，如果为零，则为黄色，如果为负数，则为绿色。
+以下是使用中设置字符格式的一些示例：
+
+loc_key: "Democratic party popularity: [?party_popularity@democracy|%G0]"
+loc_key_2: "Modifier token's value: [?modifier@my_modifier|.1%%+]"
+在这些示例中，第一个字符串将当前范围的民主受欢迎程度描述为百分比乘以 100 （%），以绿色 （G） 表示，四舍五入为小数点后 0 位的整数 （0）。第二个字符串将修饰符标记的值显示为“好”数字（+如果为正则为绿色，则为红色，如果为负），并在末尾附加一个百分号 （%%），并四舍五入为带有一个小数点 （.1） 的数字。my_modifier
+
+国旗
+本地化中的以下内容将显示一个国家/地区的默认 /Hearts of Iron IV/gfx/flags/TAG.tga：
+建议尽可能改用 GetFlag 命名空间，但是，这可用于不支持命名空间的本地化，例如自定义修饰符工具提示或游戏规则。@TAG
+
+文本化图标
+图标可以使用 £ 表示法显示在字符串中。
+
+l_english:
+ example_key: "£army_experience"
+文本化图标作为定义添加到 /Hearts of Iron IV/interface/*.gfx 文件中的总体 .一个示例定义如下所示：spriteType = { ... }spriteTypes = { ... }
+
+	spriteType = {
+		name = "GFX_my_text_icon"
+		texturefile = "gfx/texticons/filename.dds"
+		legacy_lazy_load = no
+	}
+在这种情况下，文本化图标的名称等于文本化图标，删除了开头的GFX_部分。£my_text_icon
+如果文本化图标的子画面由多个框架组成，则可以在本地化中使用指定的框架，例如第一个框架。请注意，这是多框架文本化图标正常工作所必需的。£icon_name|1legacy_lazy_load = no
+
+嵌套文本
+美元符号特殊符号用于在任何给定本地化键的值中嵌套其他字符串。特别是，它有 3 个主要用例：
+
+嵌套其他本地化键。例如， 将在游戏中显示为 ，假设 的定义与基础游戏相同。 some_modifier_tooltip:0 "$modifier_production_speed_infrastructure_factor$: §R-10%§!"Infrastructure construction speed: -10%modifier_production_speed_infrastructure_factor
+这对于需要在其他人中重用的本地化键值很有用，但在 Mod 开发过程中可以轻松更改，因为在更改它时不需要调整使用它的每个本地化值。这也可用于扩展与基础游戏更新或其他模组的兼容性，这些更新或其他模组可能会更改本地化值，但仍应与模组兼容。
+在界面元素中使用时，这不能正常工作，而是显示可见的美元符号。可以使用脚本化本地化绕过这一点，因为指向键（其值包含嵌套本地化条目）的脚本化本地化条目将按预期工作。pdx_tooltip
+输入美元符号本身。这是通过在本地化中将美元符号加倍来完成的，例如 . cost_tooltip: "This option costs $$100"
+嵌套严格的内部变量。这在基础游戏的本地化中尤其常见，本地化对应于游戏机制而不是数据库条目，例如 .在这些情况下，指定的内部变量仅存在于该本地化键的范围内，不能在其他任何地方使用。 confirm_cancel_national_focus_desc:0 "Are you sure you want to cancel the national focus §H$FOCUS_NAME$§!?"
+严格内部变量的一个值得注意的用法是在国家名称中，因为它们提供了各种内部变量，以常规、ADJ 或 DEF 形式获取国家的非意识形态名称和霸主的名称，例如 .COUNTRY_autonomy_collaboration_government:0 "$OVERLORDADJ$ $NONIDEOLOGY$"
+
+命名空间
+命名空间是指从某个范围获取某些信息以在本地化中显示。例如，获取一个国家的名称、角色的姓氏、state的 ID 等。
+命名空间的两侧用方括号标记，如 中所示。默认情况下，没有假定的范围。可以添加一个范围，用点与命名空间分隔，以便让游戏知道从谁那里获取信息，例如 ，这将导致国家 QAT 的执政党出现在本地化中。任何可用作目标的双作用域都可以用于本地化。可以使用 THIS 来指代其使用范围，例如 .my_localisation_key: "[GetDateText]"my_localisation_key: "[QAT.GetRulingParty]" effect_tooltip: "[ROOT.GetNameDefCap] declares war on [THIS.GetNameDef]"
+
+变量和事件目标也可以在命名空间中使用。例如，这会使用“capital”变量授予OMA的首都状态的名称：。可以在相应的 wiki 页面中看到可以使用的内置变量列表。另一个常用的包括状态的“所有者”和“控制器”，例如 . my_localisation_key: "[OMA.capital.GetName]"my_localisation_key: "Owner of South-West England: [123.owner.GetName]"
+
+字符仅存在于招募国家/地区的范围内，在 1.12.8 之前的版本中。这意味着在确定角色范围之前，必须首先确定角色分配到的国家/地区，例如 .如果字符标有其他标记（如 THIS 或 ROOT），则不需要这样做，但对于直接字符 ID 是必需的。字符还支持事先限定本地化功能的范围，例如在这种情况下，仍然需要将范围限定为国家/地区。 current_name_of_fdr:0 "[USA.USA_franklin_delano_roosevelt.GetFullName]"GetLeaderleader_pronoun: "[ROOT.GetLeader.GetHeShe]"
+
+请注意，命名空间不能在任何地方使用。在大多数用户界面中，例如战争或国家的名称，它们将无法正常工作，而是与本地化中完全相同，方括号仍然可见。命名空间工作的位置列表如下：
+
+位置	提示
+国策	需要在国策内才能在标题中正常工作，否则它会在游戏开始时生成一个值，并且在下次重新加载（保存文件或国策树）之前保持不变。描述不需要，它始终动态刷新本地化。dynamic = yes
+idea	尽管它在idea中起作用，但它在动态修正中不起作用。
+决议	
+事件	有时，最好在事件中使用完全不同的本地化键，而不是使用脚本化本地化。
+自定义效果/触发器工具提示	尽管它适用于效果和触发器，但自定义修饰符工具提示不支持脚本化本地化。
+布尔标志	布尔标志的名称，当使用触发器（如或）检查它们时，将显示在工具提示中has_country_flag = flag_namehas_character_flag = flag_name
+特工	
+邻接规则工具提示	指的是将鼠标悬停在该国禁用的海峡上时出现的工具提示。
+脚本化 GUI 工具提示	有时，在调试模式下重新加载可能无法正常工作。如果已将脚本化本地化添加到同一会话中的界面元素pdx_tooltip则可能需要重新启动才能正常工作。
+该列表可能不完整，因此未提及的内容不一定意味着本地化在那里不起作用，但这确实不太可能。但是，其他本地化功能（不涉及方括号）在这种情况下仍然有效。
+
+
+获取代码
+
+在这种情况下，日期变量是指设置为日期值的变量。将它与当前日期一起使用可以通过使用 global.date 变量作为 来完成。[?global.date.GetDateString]
+
+名字	范围	例子	描述
+GetDateText	任何	[GetDateText]	获取“HH：00，DD 月份，YYYY”格式的日期，例如“12 年 00 月 1 日 1936：<>”。
+GetDate	任何	[GetDate]	获取 YYYY 格式的日期。MM.DD.HH，如 1936.1.1.12。
+GetMonth	任何	[GetMonth]	获取当前月份。
+GetYear	任何	[GetYear]	获取当前年份。
+GetName	国家，state，性格，特工，王牌	[GER.GetName]
+[123.GetName]
+[POL.POL_character.GetName]
+
+获取国家/地区的名称、state的名称或角色的名称。对于 ace，只获取名字：请参阅 GetFullName。
+GetTag	国家	[GER.GetTag]	将国家/地区的标签置于本地化状态。对于元效果特别有用。
+如果国家/地区有一个非意识形态名称，这可能会导致在某些情况下出现在本地化中。
+GetLeader	国家	[POL.GetLeader]	获取国家领导人的名称。
+GetManpower	国家	[ENG.GetManpower]	获取国家/地区的总人口，包括平民。
+GetFactionName	国家	[SOV.GetFactionName]	获取国家/地区所在的派系的名称。
+GetAgency	国家	[FRA.GetAgency]	获取国家情报机构的名称。
+GetFlag	国家	[GER.GetFlag]	获取国家/地区的当前国旗。
+GetNameWithFlag	国家	[ITA.GetNameWithFlag]	获取国家/地区的当前国旗，并在后面添加名称。
+GetNameDef	国家	[SPR.GetNameDef]	获取国家/地区的 DEF 名称，主要用于判断是否需要将“the”放在开头。
+GetNameDefCap	国家	[POR.GetNameDefCap]	获取国家/地区的 DEF 名称，主要用于判断是否需要将“The”放在开头，并将第一个字母大写。
+GetAdjective	国家	[YUG.GetAdjective]	获取国家的形容词，例如英国国旗英国。
+GetAdjectiveCap	国家	[CAN.GetAdjectiveCap]	获取国家/地区的形容词，将第一个字母大写。
+GetOldName	国家	[RAJ.GetOldName]	获取未应用任何修饰标记的国家/地区的名称。
+GetOldNameDef	国家	[MAL.GetOldNameDef]	获取国家/地区的 DEF 名称，主要用于判断是否需要将“the”放在开头，而不应用任何修饰标记。
+GetOldNameDefCap	国家	[AST.GetOldNameDefCap]	获取国家/地区的 DEF 名称，主要用于判断是否需要将“The”放在开头，而不应用任何修饰标记，将第一个字母大写。
+GetOldAdjective	国家	[NZL.GetOldAdjective]	获取未应用任何修饰标签的国家/地区的形容词。
+GetOldAdjectiveCap	国家	[HAW.GetOldAdjectiveCap]	获取未应用任何修饰标签的国家/地区的形容词，将第一个字母大写。
+GetNonIdeologyName	国家	[JAP.GetNonIdeologyName]	获取国家/地区的非意识形态名称，定义为TAG:0 "Country name"
+GetNonIdeologyNameDef	国家	[SAU.GetNonIdeologyNameDef]	获取国家/地区的非意识形态 DEF 名称，主要用于判断是否需要将“the”放在开头。
+GetNonIdeologyNameDefCap	国家	[SWE.GetNonIdeologyNameDefCap]	获取国家/地区的非意识形态 DEF 名称，主要用于判断是否需要将“The”放在开头，并将第一个字母大写。
+GetNonIdeologyAdjective	国家	[DEN.GetNonIdeologyAdjective]	获取该国的非意识形态形容词。
+GetNonIdeologyAdjectiveCap	国家	[NOR.GetNonIdeologyAdjectiveCap]	获取国家/地区的非意识形态形容词，将第一个字母大写。
+GetPartySupport	国家	[ICE.GetPartySupport]	获取执政党的百分比（从 0 到 100）。最后没有 % 符号。
+GetLastElection	国家	[ROOT.GetLastElection]	以“HH：00，DD 月份，YYYY”格式获取最后一个国家/地区选举的日期，例如“01 年 00 月 1 日 1936：<>”。
+GetRulingParty	国家	[HOL.GetRulingParty]	获取统治国家的政党的简称。
+GetRulingPartyLong	国家	[BEL.GetRulingPartyLong]	获取统治国家的党的长名称。
+GetRulingIdeology	国家	[LUX.GetRulingIdeology]	以形容词形式获取国家/地区意识形态组的名称。
+GetRulingIdeologyNoun	国家	[GER.GetRulingIdeologyNoun]	以名词形式获取国家/地区意识形态组的名称。
+GetCommunistParty	国家	[HUN.GetCommunistParty]	获取共产党的名称共产主义。
+GetDemocraticParty	国家	[AUS.GetDemocraticParty]	获取民主党的名称民主的。
+GetFascistParty	国家	[CZE.GetFascistParty]	获取法西斯党的名称法西斯。
+GetNeutralParty	国家	[ROM.GetNeutralParty]	获取不结盟方的名称不结盟。
+GetCommunistLeader	国家	[BUL.GetCommunistLeader]	获取该国共产主义共产党领导人的名称。
+GetDemocraticLeader	国家	[GRE.GetDemocraticLeader]	获取该国民主的民主党领导人的名称。
+GetFascistLeader	国家	[ALB.GetFascistLeader]	获取该国法西斯法西斯党领导人的名称。
+GetNeutralLeader	国家	[TUR.GetNeutralLeader]	获取该国不不结盟结盟政党领导人的名称。
+GetID	state	[123.GetID]	获取状态的 ID。对于元效果特别有用。
+GetCapitalVictoryPointName	state	[540.GetCapitalVictoryPointName]	获取该state的首都胜利点（即胜利点数最多的省份）的名称。
+GetSheHe	角色	[PRU.GetLeader.GetSheHe]	根据角色的性别，以小写字母开头，结果为“她”或“他”。
+GetSheHeCap	角色	[MEX.MEX_character.GetSheHeCap]	根据角色的性别，以大写字母开头，结果为“她”或“他”。
+GetHerHim	角色	[BRA.BRA_character.GetHerHim]	根据角色的性别，以小写字母开头，结果为“她”或“他”。
+GetHerHimCap	角色	[ARG.ARG_character.GetHerHimCap]	根据角色的性别，以大写字母开头，结果为“她”或“他”。
+GetHerHis	角色	[CHI.CHI_character.GetHerHis]	根据角色的性别，结果为“她”或“他的”，以小写字母开头。
+GetHerHisCap	角色	[CHL.CHL_character.GetHerHisCap]	结果为“她”或“他的”，具体取决于角色的性别，以大写字母开头。
+GetHersHis	角色	[PRC.PRC_character.GetHersHis]	结果为“她的”或“他的”，具体取决于角色的性别，以小写字母开头。
+GetHersHisCap	角色	[YUN.YUN_character.GetHersHisCap]	结果为“她的”或“他的”，具体取决于角色的性别，以大写字母开头。
+GetHerselfHimself	角色	[GXC.GXC_character.GetHerselfHimself]	根据角色的性别，结果为“她自己”或“他自己”，以小写字母开头。
+GetHerselfHimselfCap	角色	[XSM.XSM_character.GetHerselfHimselfCap]	根据角色的性别，以大写字母开头，结果为“她自己”或“他自己”。
+GetIdeology	国家领导人	[SIK.GetLeader.GetIdeology]	获取分配给国家领导人的意识形态类型，如自由主义或中间主义。
+GetIdeologyGroup	国家领导人	[MAN.MAN_character.GetIdeologyGroup]	获取分配给国家领导人的意识形态组，如民主的“民主党”或不结盟“不结盟”。
+GetRank	将领	[MEN.MEN_character.GetRank]	获取将领的军衔，例如军团指挥官或陆军元帅。
+GetCodeName	特工	[THIS.GetCodeName]	获取特工的代号。
+GetCallsign	特工	[THIS.GetCallsign]	获取特工的呼号。
+GetSurname	王牌	[LIB.GetLeader.GetSurname]	获取王牌的姓氏。
+GetFullName	王牌	[ECU.ECU_character.GetFullName]	获取 王牌 的全名，包括名字和姓氏。
+GetWing	王牌	[THIS.GetWing]	获取王牌分配到的翅膀。
+GetWingShort	王牌	[THIS.GetWingShort]	获取 王牌 分配到的机翼的缩写名称。
+GetAceType	王牌	[THIS.GetAceType]	获取 王牌 的类型。
+GetMissionRegion	王牌	[THIS.GetMissionRegion]	获取 王牌 分配到的区域。
+GetTokenKey	任何变量	[?global.variablename.GetTokenKey]	获取变量的标记（如 infantry_equipment），而不是内部 ID。 对于元效果特别有用。
+GetTokenLocalizedKey	任何变量	[?GER.variablename.GetTokenLocalizedKey]	获取变量的本地化名称，如“步兵装备”。
+对于高级抽象技术很有用，因为它可用于通过应用于引用虚拟对象的标记变量（例如已定义任意本地化字符串的空idea）来近似元效果中的任意字符串插值。能够传递解析为本地化虚拟对象的令牌变量是目前最接近直接传递和操作字符串的方法。这可以实现各种有用的技巧和技术，您甚至可以连接两个虚拟令牌的本地化值以形成一个新的令牌字符串，然后将其粘贴到 Meta 效果中的令牌变量中（只要生成的令牌字符串实际上是有效的现有令牌，否则结果只是一个整数 0）。实际上，这允许您根据另一个已知令牌变量提供的模板从另一个已知令牌变量派生以前未知的令牌变量，前提是目标令牌是源令牌的某个前缀或后缀模板变体。
+
+GetDateString	日期变量	[?global.date.GetDateString]	获取“HH：00，DD 月份，YYYY”格式的日期，例如“12 年 00 月 1 日 1936：<>”。
+GetDateStringShortMonth	日期变量	[?global.date.GetDateStringShortMonth]	获取格式为“HH：00， DD 星期一， YYYY”的日期，例如“12 年 00 月 1 日 1936：<>”。
+GetDateStringNoHour	日期变量	[?global.date.GetDateStringNoHour]	获取 YYYY 格式的日期。MM.DD，例如 1936.1.1。
+GetDateStringNoHourLong	日期变量	[?global.date.GetDateStringNoHourLong]	获取“DD 月份，YYYY”格式的日期，如“1 年 1936 月 <> 日”。
+脚本化本地化
+脚本化本地化类似于创建自己的命名空间。它在 /Hearts of Iron IV/common/scripted_localisation/*.txt 中定义，并以类似于命名空间的方式用于本地化。但是，与命名空间不同，默认情况下，使用脚本化本地化时会假定当前作用域，从而使作用域成为可选。 脚本化本地化定义的一个示例如下：
+
+defined_text = {
+    name = mod_scripted_loc
+    text = {
+        trigger = {
+            tag = FRA
+        }
+        localization_key = FRA_localization_key
+    }
+    text = {
+        localization_key = mod_localization_key
+    }
+}
+这包括以下条目：
+
+name = my_scripted_loc- 脚本化本地化的名称，用于在常规本地化中引用它。
+text = { ... }- 本地化的可能选择。游戏选择最上面的块作为本地化的输出。具体而言，这些在示例中使用：text = { ... }
+trigger = { ... }是为检查范围评估的触发器块，如果为 true，则使用此脚本化本地化。在此触发器块中设置的临时变量将在显示本地化键时保持设置状态，允许在不同变量之间进行数学运算或递归使用脚本化本地化（例如显示数组的每个元素）。
+localization_key = my_loc_key（请注意，使用 Z 的美式拼写，而不是其他地方使用的带 S 的英式拼写）分配要与此脚本化本地化选项一起使用的本地化键。这不支持直接在内部进行动态本地化（例如），但是本地化键的内容确实支持动态本地化。localization_key = "my_loc_key_[?my_var]"
+上面的示例将显示法国的FRA_localization_key本地化密钥，否则mod_localization_key本地化密钥作为备份。将使用满足触发器的第一个本地化密钥。在本地化中，该示例可用作
+
+some_localisation: "[mod_scripted_loc]"
+FRA_localization_key: "France-exclusive localisation"
+mod_localization_key: "Generic localisation"
+脚本化本地化还允许使用 random_list 随机化将要选择的本地化密钥。例如，当使用此脚本化本地化条目时，以下代码将分别提供 60% 和 40% 的机会来选择mod_localization_key_1或mod_localization_key_2：
+
+defined_text = {
+    name = mod_scripted_loc
+    text = {
+        random_list = {
+            30 = { localization_key = mod_localization_key_1 }
+            20 = { localization_key = mod_localization_key_2 }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+﻿l_english:
+ TST_fascism:0 "Test Country"
+ TST_fascism_DEF:0 "Test Country"
+ TST_democratic:0 "Test Country"
+ TST_democratic_DEF:0 "Test Country"
+ TST_neutrality:1 "Test Country"
+ TST_neutrality_DEF:1 "Test Country"
+ TST_communism:0 "Test Country"
+ TST_communism_DEF:0 "Test Country"
+ TST_fascism_ADJ:0 "Test Country"
+ TST_democratic_ADJ:0 "Test Country"
+ TST_neutrality_ADJ:0 "Test Country"
+ TST_communism_ADJ:0 "Test Country"

@@ -1,0 +1,40 @@
+
+@manifest_fulfilled_value = 0.75
+
+#阵营章程
+
+# Defense of Democracy
+faction_manifest_Unified_Prairie = { #阵营章程的块。比如，在这里是草原统一。
+	name = Unified_Prairie_goal_name #章程名字
+	description = Unified_Prairie_goal_desc #章程描述
+	is_manifest = yes #是否是阵营章程。如果不写yes则会被认为是普通的阵营目标
+	ratio_progress = { #总进度
+		#改变进度的条件。在这里是直接改的原版同盟国的捍卫民主的逻辑。
+		total_amount = 8 #结合下文，这里的意思就是总进度是8个tag。可以填变量
+		#completed_amount = anything #已完成数量
+		completed_amount_collection = collection:Is_Prairie_Tag_and_Joined_the_PRA #在这里指的是“加入了阵营的草原的tag“的集合。也就是说，当草一个tag同时满足了是草原tag并且加入了阵营时，集合中的元素就会增加，因此，进度就会增加。
+		#range = { min = 0.1 max = 0.8 }	#章程的范围。超出这个范围后自动达到0%或100%的进度。min的值可以大于max，此时进度会随比值的降低而升高，反之亦然。
+		scale = { #按照章程满足的比例给的修正。在这里，就是当章程进度为100%时，完全给予下列修正。
+			trade_opinion_factor = 0.25
+			faction_trade_opinion_factor = 0.50
+			stability_factor = 0.15
+		}
+		
+		reversed = { #按照章程未满足的比例给的修正，只不过是反向的。在这里，就是当章程进度为0%时，完全给予下列修正。
+			stability_factor = -0.15
+		}
+		
+		progress_sections = { #进度阶段
+
+			manifest_fulfilled = { #章程已达成
+				min = @manifest_fulfilled_value #最小值。这里是声明了一个名为manifest_fulfilled_value的常量，值为0.75。也就是当章程进度在75%-100%中间时，得到下列修正。如果你没有声明这个常量，不要写这个。
+				#max = 1 #最大值。这里是100%。
+	
+				modifier = { 
+					drift_defence_factor = 0.15
+				}
+			}
+		}
+	}
+}
+#更多内容参见md说明文档

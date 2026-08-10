@@ -1,0 +1,109 @@
+零、制作音乐包所需要的软件 {
+
+	钢铁雄心4-1.7以上版本 { Hearts of Iron IV 1.7.x + } # 废话。
+	
+	记事本++ { Notepad++ } # 用来编辑游戏文件。
+	
+	格式工厂 { Format Factory } # 用来转换ogg格式的音乐，因为 Hearts of Iron IV 仅识别ogg格式的音乐。
+
+}
+
+
+
+一、制作音乐包所需要改动的文件夹 {
+
+	gfx -------------------- 你专属电台的贴图文件
+	
+	interface -------------- UI文件
+	
+	music ------------------ 音乐文件【必须是ogg格式】
+	
+	localisation ----------- 汉化语言
+
+}
+
+
+
+二、创建一个1.8.1可用的mod文件 {
+
+	1.启动 { Paradox Launcher V2 } # 这个是钢4的新启动器。
+	
+	2.点击 { mod工具 } （图-1）
+	
+	3.配置你的mod【名称不建议用中文，路径不能用中文】 （图-2）
+	
+	4.你可以在 { 我的文档\Paradox Interactive\Hearts of Iron IV\mod } 找到【XXX】和【XXX.mod】 # 【XXX】是你的mod文件夹，修改都将在里面完成，【XXX.mod】是你的mod信息文件，初学者不建议动。
+
+}
+
+
+
+三、需要建立的文件夹 {
+
+	1.创建 { 【你的mod目录】\gfx\interface\topbar\musicplayer } 这样几个文件夹
+	
+	2.创建 { 【你的mod目录】\interface } 文件夹
+	
+	3.创建 { 【你的mod目录】\localisation } 文件夹
+	
+	4.创建 { 【你的mod目录】\music } 文件夹
+
+}
+
+四、让游戏识别你的音乐包 {
+
+	1.复制 { _songs.txt } 到 { 【你的mod目录】\music }文件夹
+	
+	2.复制 { music.asset } 到 { 【你的mod目录】\music }文件夹
+	
+	3.将 { _songs.txt } 重命名为 { 【你的mod名】_songs.txt } # 例如 { Cher_songs.txt }
+	
+	4.将 { music.asset } 重命名为 { 【你的mod名】_music.asset } # 例如 { Cher_music.asset }
+	
+	5.将音乐文件放入 { 【你的mod目录】\music } # 音乐文件【必须是ogg格式】
+	
+	6.打开 { 【你的mod名】_music.asset } 进行修改 （图-3） # 前面加 { # } 是为了方便分类，游戏不会读取 { # } 后面的内容，内容不要重复。
+	
+	7.打开 { 【你的mod名】_songs.txt } 进行修改 （图-4）
+
+}
+
+五、制作电台的UI {
+
+	1.定位到 { 【你的mod目录】\gfx\interface\topbar\musicplayer } 
+	
+	2.复制游戏原版的 { classic_album_art.dds }进行修改 # 此处需要一些PS技术，左半边是电台关闭时的UI，右半边是启用电台时的UI，最后不要忘了 { alpha-1 } 通道，黑色部分不会在游戏中显示。
+	
+	3.你也可以将你喜欢的图片变成UI # 只需要在PS里小小编辑一下就好。
+	
+	4.保存格式为 { 8.8.8.8 ARGB 32bpp | unsigned }
+	
+	5.重命名dds文件
+
+}
+
+六、让游戏读取你的UI {
+
+	1.复制任意一个音乐dlc的【gfx文件】和一个【gui文件】 # 我已经为你准备好了。
+	
+	2.重命名为 { 【你的mod名】_station_music.gfx } # 这个是你电台UI的路径文件。
+	
+	3.重命名为 { 【你的mod名】_station_music.gui } # 这个是你电台UI的显示界面。
+	
+	4.在 { 【你的mod名】_station_music.gfx } 中搜索 { Cher } 并进行修改 （图-5）
+	
+	5.在 { 【你的mod名】_station_music.gui } 中搜索 { Cher } 并进行修改 （图-6） （图-7）
+
+}
+
+七、汉化文本 {
+
+	1.那汉化文本就交给你来做咯 # 提示你一下，汉化文件是localisation里面的yml文件哦！
+	
+	2.你真的不会么 # 才不要告诉你，我发的基础篇里面有汉化教学呢！
+
+}
+
+
+
+

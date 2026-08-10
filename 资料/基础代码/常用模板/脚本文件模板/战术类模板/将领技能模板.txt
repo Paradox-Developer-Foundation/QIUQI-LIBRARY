@@ -1,0 +1,53 @@
+ability = {
+    <my_ability_name> = { #技能ID，用于代码检索
+        name = <my_ability_name> #技能名称，用于本地化
+        desc = my_ability_name_desc #技能描述
+        icon = GFX_ability_last_stand #技能图标
+        sound_effect = <my_sound_effect> #点击音效
+        
+        type = army_leader #技能类型，现阶段技能都是给陆军使用的
+
+        allowed = {
+            is_leading_army_group = yes/no #是否为集团军群技能，yes为只有集团军群可以使用，no只有集团军可以使用，不写则都可以用
+		    is_border_war = yes/no #边境战争时是否可用
+			OWNER = {
+	            #对使用者的规定
+			}
+            ....................
+        }
+
+        cost = <value> #单个营花费的指挥点数
+		duration = <value> #持续的时间（单位：小时）
+        cooldown = <value> #技能冷却的时间（单位：小时）
+         
+		requires_deployed_hq = yes/no #定义该技能是否部署集团军总部后才可以显示，默认为no
+        cancelable = yes/no #技能是否需要手动关闭（否则为自动关闭），默认为no
+        
+        one_time_effect = { #选中技能后立即触发的效果
+           <effect> 
+
+           #add_temporary_buff_to_units = { #选中技能后，添加的临时modifier
+           #     <modifier>
+           #     days = <value> #持续时间（单位：天）
+           #}
+		   #在《门前惊雷》DLC更新后add_temporary_buff_to_units代码块被废弃，统一由unit_modifiers代码块接替
+        }
+		
+        unit_modifiers = { #技能生效时的效果 
+            <modifier> 
+
+            #特殊modifier
+            dont_lose_dig_in_on_attack = 1.0 #进攻时无堑壕值损失
+            cannot_retreat_while_defending = 1.0 #防守时无法撤退
+        }
+
+        #AI使用该技能的倾向
+        ai_will_do = {
+            factor = <value>
+            modifier = {
+                <trigger>
+                add = <value>
+            }
+        }
+    }
+}

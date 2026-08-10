@@ -1,0 +1,74 @@
+# 作者：幸好无声（8小时速冻水饺、胡桃） Q号：1803770293 Q群：950718988 欢迎把该文件存在的问题反馈给我
+# 纯新增 （打[?]表示本地化没有，我自己按照钢四语理解的意思。）
+army_claim_attack_factor = 陆军师已宣称领土攻击
+air_invasion_division_cap = 空降登陆部队数量上限
+air_invasion_preparation = 空降登陆准备时间
+army_claim_defence_factor = 陆军师已宣称领土防御
+army_experience_from_volunteers = 来自志愿军的陆军经验
+army_retreat_speed_factor = 陆军师撤退速度
+modifier_army_sub_unit_category_rocket_artillery_attack_factor = 所有火箭炮攻击
+planning_decay_rate_factor = 作战准备下降率
+rangers_special_forces_contribution_factor = 游骑兵特种部队上限贡献
+autonomy_manpower_share_from_subjects = 附属国人力要求[附属国部队所需要的人力]
+resources_to_overlord_factor = 向宗主国提供资源
+
+<Doctrine>_mastery_gain_factor = 单个学说精通度增长系数
+原版全子学说类型（vsc请按alt+z自动换行，我翻译不动了草，本地化文件里有）: air_cavalry, air_subdoctrine_aerial_reconnaissance, air_subdoctrine_bomber_interception, air_subdoctrine_carpet_bombing, air_subdoctrine_carrier_strikes, air_subdoctrine_coastal_air_patrol, air_subdoctrine_deep_air_raids, air_subdoctrine_dive_bombers, air_subdoctrine_dogfighting_mastery, air_subdoctrine_escort_fighter, air_subdoctrine_fighter_bombers, air_subdoctrine_fighter_central_field, air_subdoctrine_fighter_homeland_defense, air_subdoctrine_flexible_fire_support, air_subdoctrine_flying_artillery, air_subdoctrine_flying_fortresses, air_subdoctrine_heavy_aircraft_focus, air_subdoctrine_long_range_escort, air_subdoctrine_naval_strike_tactics, air_subdoctrine_naval_torpedo_tactics, air_subdoctrine_night_bombing, air_subdoctrine_open_ocean_air_patrol, air_subdoctrine_operational_air_support, air_subdoctrine_tactical_battlefield_support, air_subdoctrine_tactical_flexibility, air_subdoctrine_theater_interdiction, anti_aircraft_cruisers, anti_tank_frontline, armored_cavalry, armored_cavalry_no_lar, armored_infantry_support, armored_raiders, armored_spearhead, armored_spearhead_no_lar, assault_infantry, battlecruiser_supremacy, battleship_antiair_screen, broad_naval_support, capital_hunters, carrier_battlegroups, coastal_defence_fleet, coastal_minelaying, commandos, convoy_escort, deep_battle, deep_battle_no_lar, defensive_postures, escort_carrier_support, expeditionary_warfare, field_engineering, fire_concentration, floating_airfields, flying_batteries, grand_assault, great_war_infantry, guerilla_war, hunter_killers, infiltration_tactics, irregulars, jeune_ecole, large_unit_tactics, last_stand, light_task_forces, line_of_battle, long_range_submarines, massed_carrier_fleet, mission_type_tactics, mobile_defense, mobile_infantry, mobile_recon_and_assault, mobile_recon_and_assault_no_lar, mounted_infantry, naval_gunfire_support, patrol_boats, peoples_war, rapid_domination, screen_support_focus, self_propelled_support, siege_artillery, streamlined_deployment, submarine_coastal_defense, submarine_fleet_operations, support_integrated_operations, tank_destroyer_force, torpedo_primacy, wolfpacks, 
+原版全母学说类型（vsc请按alt+z自动换行）: grand_battleplan（决战计划）, mass_assault（人海突击）, new_base_strike（基地打击）, new_battlefield_support（战场支援）, new_convoy_raiding（贸易阻断）, new_fleet_in_being（存在舰队）, new_mobile_warfare（机动作战）, new_operational_integrity（连续作战）, new_strategic_destruction（战略破坏）, superior_firepower（优势火力）
+
+<Doctrine>_track_mastery_gain_factor = 子学说轨道精通度增长系数
+原版全类型: armor（装甲子学说）, capital_ships（主力舰子学说）, carriers（航母子学说）, combat_support（炮兵子学说）, fighter_aircraft（战斗机子学说）, heavy_aircraft（重型飞机子学说）, infantry（步兵子学说）, medium_aircraft（中型飞机子学说）, operations（作战子学说）, screens（屏卫舰子学说）, strike_aircraft（攻击机子学说）, submarines（潜艇子学说）
+
+air_invasion_plan_cap = 空降作战计划上限
+air_invasion_prep_days = 空降作战准备时间
+annex_subject_cost_factor = 吞并附属国花费系数
+automatic_grant_medal_chance = 自动获得免费勋章几率
+can_guarantee_other_ideologies = 可以保障独立其他意识形态的国家[填写布尔值，即yes或no，1或0]
+experience_gain_<Unit>_training_factor = 训练中单位经验获得系数
+factory_energy_consumption = 工厂能源消耗
+local_resources_<Resource>_factor = 本地资源获取率
+naval_invasion_plan_cap = 登陆作战计划上限
+naval_invasion_prep_days = 登陆作战准备时间
+shore_bombardment_collateral_damage_factor = 对岸炮击附带损害
+special_forces_doctrine_cost_factor = 特种部队战术消耗
+unit_medal_effectiveness = 单位勋章效率
+faction_influence_contribution_factor = 阵营影响贡献系数
+faction_influence_war_score_factor = 阵营影响战争分数系数
+faction_subject_contribution_gain = 附属国贡献减成
+intelligence_operation_speed = 情报行动速度系数
+amphibious_invasion_against = 对该国两栖登陆（作用于target_modifier）
+headquarters_experience_gain_factor = 从海军指挥部获得的经验
+invasion_preparation_against = 对该国海上登录准备（作用于target_modifier）
+max_organisation = 海军最大组织度[别问为什么只是海军的，因为官方只给了海军的修正类别]
+naval_hit_chance_against = 海军对该国命中率（作用于target_modifier）
+naval_invasion_division_cap = 登陆作战部队数量上限
+naval_mission_xp_factor = 海军任务经验系数
+naval_ship_recovery_chance = 舰船组织度恢复速率（作用于target_modifier）
+naval_ship_recovery_chance_factor = 舰船组织度恢复速率系数（作用于target_modifier）
+naval_supply_consumption_factor = 海军补给消耗
+navy_capital_ship_attack_factor_against = 主力舰对该国攻击（作用于target_modifier）
+navy_capital_ship_defence_factor_against = 主力舰对该国防御（作用于target_modifier）
+navy_screen_attack_factor_against = 屏卫舰对该国攻击（作用于target_modifier）
+navy_screen_defence_factor_against = 屏卫舰对该国防御（作用于target_modifier）
+navy_submarine_attack_factor_against = 潜艇对该国攻击（作用于target_modifier）
+navy_submarine_defence_factor_against = 潜艇对该国防御（作用于target_modifier）
+spotting_chance_against = 对该国的侦测几率
+<Ideology>_drift_from_guarantees = 境外独立保障产生的意识形态增长
+naval_repair_support_factor = 维修舰-最大维修效果
+naval_general_support_factor = 支援舰-最大支援效果
+naval_general_support_value_factor = 支援舰-支援值
+naval_repair_support_value_factor = 维修舰-维修值
+local_factory_energy_consumption = 本地工厂能源消耗
+air_invasion_preparation = 空降登陆准备时间
+naval_critical_score_chance_factor_against = 海军对该国打出致命一击的几率（作用于target_modifier）
+industrial_capacity_dockyard_powered = 已供能的船坞产出
+industrial_capacity_factory_powered = 已供能的工厂产出
+out_of_power_impact_factor = 降低缺乏电力的惩罚
+production_speed_buildings_powered_factor = 已供能的建设速度
+energy_gain_factor = 从煤炭获得的能量
+
+# 修改 （左旧右新）
+modifier_army_sub_unit_marines_attack_factor → modifier_army_sub_unit_marine_attack_factor
+modifier_army_sub_unit_marines_defence_factor → modifier_army_sub_unit_marine_defence_factor
+modifier_army_sub_unit_marines_max_org_factor → modifier_army_sub_unit_marine_max_org_factor
+modifier_army_sub_unit_marines_speed_factor → modifier_army_sub_unit_marine_speed_factor

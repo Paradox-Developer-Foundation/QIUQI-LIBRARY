@@ -1,0 +1,18 @@
+technologies = {
+	
+	test_tech_effect = {
+		
+		allow = {
+			always = no
+		}
+
+		on_research_complete = {	#科技完成时效果，tech_effect能显示这里的内容
+			custom_effect_tooltip = TST_decision_tt		#调用了带有starter脚本本地化的本地化键值
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}

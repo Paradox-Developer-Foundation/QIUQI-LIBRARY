@@ -1,0 +1,74 @@
+#####船体####
+潜艇船体 ship_hull_submarine
+轻型船体 ship_hull_light
+巡洋船体 ship_hull_cruiser
+战列船体 ship_hull_heavy
+航母船体 ship_hull_carrier
+
+####改装槽#####
+固定主炮 fixed_ship_battery_slot
+固定防空 fixed_ship_anti_air_slot
+固定火控 fixed_ship_fire_control_system_slot
+固定雷达 fixed_ship_radar_slot
+固定发动机 fixed_ship_engine_slot
+固定副炮 fixed_ship_secondaries_slot
+固定装甲 fixed_ship_armor_slot
+
+舰首1槽 front_1_custom_slot
+舰首2槽 front_2_custom_slot
+中段1槽 mid_1_custom_slot
+中段3槽 mid_3_custom_slot
+舰尾1槽 rear_1_custom_slot
+舰尾2槽rear_2_custom_slot
+#####改装配件####
+
+重型主炮 ship_heavy_battery_1
+中型主炮 ship_medium_battery_2
+速射巡洋主炮 ship_light_medium_battery_1
+轻型主炮 ship_light_battery_1
+
+AA防空炮 ship_anti_air_1
+主炮火控 ship_fire_control_system_1
+雷达 ship_radar_1
+战列舰发动机 heavy_ship_engine_1
+航母发动机 carrier_ship_engine_1
+巡洋发动机 cruiser_ship_engine_1
+驱逐发动机 light_ship_engine_1
+潜艇发动机 sub_ship_engine_1
+深水炸弹 ship_depth_charge_1
+破雷卫 ship_mine_layer_1
+副炮插件 ship_secondaries_1
+高平两用炮 dp_ship_secondaries
+战列舰装甲 ship_armor_bb_1
+战巡装甲 ship_armor_bc_1
+巡洋舰装甲ship_armor_cruiser_1
+弹射飞机 ship_airplane_launcher_1
+######科技####
+副炮1级 basic_secondary_battery
+副炮2级 improved_secondary_battery
+高平两用炮 dp_secondary_battery
+
+改进飞机弹射 improved_airplane_launcher
+牵引火炮 gw_artillery
+防空炮 interwar_antiair 
+改良防空炮 antiair2
+先进防空炮 antiair5
+
+早期重船体 1922#early_ship_hull_heavy
+基础重船体 1936#basic_ship_hull_heavy
+改进重船体 1940#improved_ship_hull_heavy
+先进重船体 1944#advanced_ship_hull_heavy
+·基本重甲 basic_heavy_armor_scheme
+·高级重甲 improved_heavy_armor_scheme
+·基本重炮 basic_heavy_battery
+·基本火控 basic_fire_control_system
+
+早期航母 early_ship_hull_carrier
+基础航母 basic_ship_hull_carrier
+改进航母 improved_ship_hull_carrier
+先进航母 advanced_ship_hull_carrier
+
+分米波雷达 decimetric_radar
+分米波雷达+ improved_decimetric_radar
+厘米波 centimetric_radar
+先进厘米波 advanced_centimetric_radar

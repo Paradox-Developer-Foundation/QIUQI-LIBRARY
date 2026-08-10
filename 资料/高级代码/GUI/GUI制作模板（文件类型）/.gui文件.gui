@@ -1,0 +1,94 @@
+#可以写多个也可以不写，起辅助作用
+#例如：要写多个position = { x= 150 y= 76 }
+#@button_x = 150
+#@button_y = 76
+#然后就可以在position里面使用这个，例如：
+#position = { x= @button_x y= @button_y = 76 }
+@名称 = 数值
+
+guiTypes = {
+	containerWindowType = {
+		#名称，在scripted_guis有用
+		name = "name_ui_window"
+
+		#gui初始位置
+		position = { x = 540 y = 600 }
+
+		#起始位置，不写则默认左上角为起始位置
+		Orientation = center
+		#Orientation = lower_left左下
+		#Orientation = left左
+		#Orientation = lower_right右下
+		#Orientation = right右
+		#Orientation = upper_right右上
+		#Orientation = center_up中上
+		#Orientation = center_down中下
+		#Orientation = center正中
+
+		#gui最大大小
+		#在决议gui里，width可以写“100%”（不用双引号）
+		size = { width = 400 height= 400 }
+
+		#显示图片（无效果，仅仅显示一个图）
+		iconType = {
+			#与gui初始位置的相对位置
+			position = { x= 0 y= 0 }
+
+			#名称不可重复
+			name ="名称" 
+
+			#显示的图片名称，如果要新图片就要在interface里绑定
+			spriteType = "GFX_constructions_bg4"
+		}
+		#按钮
+		buttonType = {
+			#名称不可重复
+			name = "名称"
+
+			position = { x = 17 y = 60 }
+			
+			#按钮图标名称
+			quadTextureSprite ="GFX_small_button_71x26"
+
+			#字体名称，hoi_18mbs是小字体，适用大部分场景
+			buttonFont = "hoi_18mbs"
+
+			#按钮上显示的名字，名字随意起，本地化即可，直接在双引号里写也可以
+			buttonText = "消灭p社蠢驴"
+
+			#点击音效（没啥用，有需要再说）可以直接搬原版的
+			clicksound = click_default
+
+			#把鼠标放到按钮上显示的提示，必须在本地化里写
+			pdx_tooltip = "xiaomie_pshe_chunlv"
+		}
+
+		#文本框，显示文本
+		instantTextboxType = {
+			#名称不可重复
+			name = "名称"
+
+			position = { x = 150 y = 0}
+
+			#字体
+			font = "hoi_16mbs"
+
+			#文本框的文本，在本地化里写
+			text = "wenbenkuang_wenben_xiezai_bendihua"
+			
+			#文本框最大宽度
+			maxWidth = 350
+
+			#文本框最大高度
+			maxHeight = 250 
+
+			borderSize = {x = 0 y = 0}
+
+			#文本与文本框对齐方式，center left right
+			format = left
+			
+			#始终透明
+			alwaystransparent = yes
+		}
+	}
+}

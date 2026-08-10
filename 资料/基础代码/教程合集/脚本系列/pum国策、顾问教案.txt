@@ -1,0 +1,669 @@
+上次我补充了旧教案中的一些不足，那么也引出了我们今天的课题——国策、顾问
+
+注意！请最好使用vsc或n++打开本教案以获得最佳效果！！！！！！！
+
+####################
+####################
+###第一部分：国策###
+####################
+####################
+
+首先我们来看一些完整的国策例子：
+
+##############
+##独有型国策##
+##############
+focus_tree = {
+	id = PUM_study_focus
+	#这是这一套国策树的id，id一般用于加载国策树。虽然开局时我们会根据下方的country = {}来限定使用该国策的国家，但是如果要直接载入一条国策树，仍然需要采取
+	#load_focus_tree = PUM_study_focus这样的方式来进行（或者，在country = {}内部的modifier中设置一个新的条件，并通过mark_focus_tree_layout_dirty = yes检查）。
+	#一般而言游戏仅会在开局时检查这个条件，但是mark_focus_tree_layout_dirty = yes可以立刻进行一次检查，以在条件满足时切换到factor最高的国策树（但原版一般并
+	#用load_focus_tree和mark_focus_tree_layout_dirty两个效果）
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 20
+			tag = PUM
+		}
+	}
+	#########################################################################################################
+	#补充内容：																						    	#
+	#load_focus_tree = x有它的完整写法：														    		#
+	#load_focus_tree = { tree = x keep_completed = yes }													#	
+	#keep_completed = yes时，会继承该国策原主人的完成进度，如果这个国策没有原主任那就无影响					#
+	#########################################################################################################
+	
+	default = no#用以说明此国策树不是通用国策树
+
+	continuous_focus_position = { x = 55 y = 1500 }#用以规定此国策页面内，可持续国策的位置在哪里
+	
+	reset_on_civilwar = no#当内战中起义者也采用同一个国策树时，如此处为no，则会继承原政府的国策进度，否则从头进行
+	
+	initial_show_position = {
+		x = 17
+		y = 0
+		#focus = x
+		offset = {
+			x = -4
+			y = 1
+			trigger = {
+				tag = PUM
+			}
+		}
+	}
+	#当你打开这国策树时，初始的相机位置聚焦于何处。有两种写法（不能共存）：focus = x让相机初始聚焦在特定国策上，xy坐标则是直接指出相机停留的位置。
+	#使用offset可以在条件trigger满足时，调整相机的聚焦位置，例子中的效果为：当tag = PUM时，相机的初始位置在原基础上左移4个单位，下移一个单位。
+	
+	focus = {
+		id = PUM_focus_1#国策id，可以用在unlock_national_focus = PUM_focus_1（解开该国策，但是既不显示跳过也不显示完成，不会触发任何效果）、complete_national_focus = x
+						#（立刻完成该国策）、uncomplete_national_focus = x（如果该国策已经完成，则重新令其变回未完成状态）
+		#########################################################################################################
+		#补充内容：																						    	#
+		#uncomplete_national_focus = x有它的完整写法：														    #
+		#uncomplete_national_focus = {																		    #
+		#	focus = x																							#
+		#	uncomplete_children = yes																			#
+		#	refund_political_power = no																			#
+		#}																										#
+		#uncomplete_children = yes时，该国策的“被未完成”会令其他以它为前置国策的国策跟着一起“被未完成”。		#
+		#refund_political_power = no时，令该国策变得未完成不会退还完成国策消耗的政治点数（一般为1x国策消耗天数）#
+		#########################################################################################################
+		
+		icon = GFX_focus_1
+		x = 1
+		y = 0
+		cost = 5
+		#国策图标、位置和耗时
+		#耗时的天数为7 x cost数值
+
+		mutually_exclusive = { focus = PUM_focus_2 } #与PUM_focus_2互斥，如果与多个国策互斥，那么继续添加focus = x即可
+
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = PUM_focus_2 }
+			}
+		}
+		#在什么条件下，该国策及其分支处于可见状态，一般首先需要游戏规则允许隐藏互斥分支（这条规则被限定为需要装载“决不后退”dlc才能实现）
+		#在这个例子中，当规则允许隐藏且我们完成了PUM_focus_2，那么PUM_focus_1就会连带其分支国策一起被隐藏
+		#请注意，这个效果仅在开局时检查一次，如果需要再次检查，需要在实现隐藏分支的条件时同时触发mark_focus_tree_layout_dirty = yes的效果，重新检查方可隐藏
+
+		available = {
+			#什么情况下允许执行这个国策
+		}
+		
+		bypass = {
+			#满足什么条件会跳过国策
+		}
+		
+		cancel = {
+			#满足什么条件时取消国策
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		#ai执行此国策的意愿大小
+		
+		bypass_if_unavailable = yes#如果不满足available内的条件就跳过国策（默认为no）
+		available_if_capitulated = yes#即使root投降也可以完成该国策
+		cancel_if_invalid = yes#如果不满足cancel内的条件就取消执行国策（默认为no）
+		continue_if_invalid = yes#即使满足cancel也继续执行国策
+		
+		search_filters = { } #用于检索国策的关键词（参考原版与wiki）
+		#############################################################################################################
+		#补充内容：																									#
+		#如何定义search_filters的图标？																				#
+		#如果你书写了一个名为FOCUS_FILTER_PUM_FILTER的检索关键词，那么请前往Hearts of Iron IV/interface/*.gfx注册它 #
+		#spriteType = {																								#
+		#	name = GFX_你的关键词（这里我们写GFX_FOCUS_FILTER_PUM_FILTER）											#
+		#	texturefile = gfx/interface/focusview/filter/pum_filter_icon.dds										#
+		#}																											#
+		#本地化直接写FOCUS_FILTER_PUM_FILTER: "PUM相关"																#
+		#############################################################################################################
+		
+		select_effect = {
+		   #当你点选这个国策时会触发的效果
+		   #注意：如果这里写下任何效果，都会令这个国策变成不能手动取消的状态，一旦执行只能等待其完成
+		}
+
+		completion_reward = {
+			
+			mark_focus_tree_layout_dirty = yes#与allow_branch配合，以检查条件确保国策隐藏
+		}
+	}
+	focus = {
+		id = PUM_focus_2
+		icon = GFX_focus_2
+		x = 2
+		y = 0
+		offset = {
+			x = -2
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = PUM_focus_2
+			}
+		}
+		#这里的offset用于调整国策位置，同样的位置的调整也需要mark_focus_tree_layout_dirty相配合，这里之所以要做这个是为了实现在PUM_focus_1被隐藏的时候让
+		#PUM_focus_2移动过去以接替PUM_focus_1的位置，如果没有有关需求可以不写。
+		
+		relative_position_id = PUM_focus_1#位置关联国策，将PUM_focus_2的xy坐标位置从绝对位置变为与PUM_focus_1相关的相对位置。
+		cost = 5
+
+		mutually_exclusive = { focus = PUM_focus_1 }
+
+		allow_branch = {
+			if = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = PUM_focus_1 }
+			}
+		}
+
+		available = {
+
+		}
+		
+		search_filters = { }
+
+		completion_reward = {
+			
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+}
+
+##############
+##共享型国策##
+##############
+
+#如果要引出共享国策，需要在所有需要这个国策的国家之独立国策树内书写shared_focus = x，随后x下属的所有分支中的shared_focus都会跟随着一起出现在这个国家的国策页面里。
+#如同原版光头国策内shared_focus = CHI_invite_foreign_investors（外国投资，即共享线第一个国策），就能引出整个共享线一样。
+	shared_focus = { ##尤其注意这里写shared_focus
+		id = PUM_shared_focus
+		icon = GFX_PUM_shared_focus
+		x = 5
+		y = 0
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		available = {
+		
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		search_filters = {  }
+		completion_reward = {
+			
+		}
+	}
+
+共享性国策与普通国策除抬头要写shared_focus外没有任何区别
+
+####################
+####################
+###第二部分：顾问###
+####################
+####################
+
+格式如下：
+characters = {
+	PUM_xstlond = {##角色的直接编码（招募一个角色是用它：recruit_character = PUM_xstlond）
+		name = "Xstlond" #角色在游戏中的name，可以对此本地化
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/PUM/xstlond.dds"
+				small = "gfx/leaders/PUM/xstlond_small.dds"
+			}
+			#在民政职位（领导人、政治顾问、科技理论家）上，该角色的大头像、小头像
+			army = {
+				large = "gfx/leaders/PUM/xstlond.dds"
+				small = "gfx/leaders/PUM/xstlond_small.dds"
+			}
+			#在军事职位（将帅、军事顾问与军事理论家）上，该角色的大头像、小头像
+		}
+		country_leader = {
+			ideology = dan_shi_zhe_shi_bu_neng_peng_de_hua_ti #作为领导人的所属意识形态（填子意识形态）
+			traits={  }#作为领导人的特质
+			desc = ""#介绍文本（这里只能写本地化密钥，并通过本地化文件显示，直接书写是无效的）
+			expire = "9999.9.9"#超过这个时间点，该角色可以理解为趋势了，即使招募也不会激活
+			id = -1#老版本遗留的用于锁定角色的编号，可以用has_id来检查，以便锁定特定角色并对其进行操作（不建议贸然使用）
+		}
+		field_marshal={
+			traits={ # }#元帅特质
+			skill = 5
+            attack_skill = 6
+            defense_skill = 6
+            planning_skill = 8
+            logistics_skill = 5
+			legacy_id= -1#老版本遗留的用于锁定角色的编号，可以用has_id来检查，以便锁定特定角色并对其进行操作（不建议贸然使用）
+		}
+		corps_commander={
+			traits={ # }#将领特质
+			skill = 3
+            attack_skill = 4
+            defense_skill = 5
+            planning_skill = 3
+            logistics_skill = 2
+			legacy_id= 11
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = xstlond_political_advisor#下文进行详细讲解
+			allowed = {
+				original_tag = PUM
+			}
+			traits = {
+				#顾问特质
+			}
+			on_add = {
+				#选择该顾问并将其添加出来时触发的效果
+			}
+			on_remove = {
+				#该顾问遭到移除时触发的效果
+			}
+			visible = {
+				#该顾问什么情况下在选择栏目里面可见
+			}
+			cost = 100#启用该顾问的pp花费（默认150）
+			removal_cost = -1#一般来说是一个用来判定你需要多少pp来移除一个角色的数值，实际一般填写-1，但是也可以填入其他数值造成无法手动移除角色的效果（有此需求可以填一个超出pp上限大小的数据）
+			ai_will_do = {
+				factor = 0.000#ai启用该顾问的意愿大小
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = xstlond_theorist
+			allowed = {
+				original_tag = PUM
+			}
+			traits = {
+				#特质
+			}
+			ledger = army#理论家需要用到，以便指出这个理论家是军事理论家（军职），还是核物理学家等（文职）
+			cost = 100
+			removal_cost = -1
+			ai_will_do = {
+				factor = 0.000
+			}
+		}
+		advisor={
+			slot = army_chief#（还有：navy_chief、air_chief、high_command）
+			idea_token = xstlond_army_chief
+			allowed = {
+				original_tag = PUM
+			}
+			traits = {
+				
+			}
+			cost = 100
+			removal_cost = -1
+			ai_will_do = {
+				factor = 0.000
+			}
+		}
+	}
+}
+################
+idea_token的意义：
+一名角色的每一个顾问身份（无论是何种顾问）都需要对应一个单独的idea_token，这意味着这名角色的这一顾问身份，可以通过add_ideas = <idea_token中你所写的编码>的形式
+来直接启用到对应的顾问栏目里。例如如果我输入add_ideas = xstlond_theorist，就会在理论家栏目直接任用Xstlond。
+
+traits的书写：
+#国家领导人和顾问特质：
+均写在：common/country_leader/*.txt中，格式如下：
+
+leader_traits = {
+    PUM_trait = {
+        random = no
+        sprite = 1#这一数字用以指出拥有该特质的顾问，在它头像左下方的小本本上显示什么黑色小图案，在/Hearts of Iron IV/interface/ideas.gfx里面定义
+        political_power_gain = 0.1
+
+        ai_will_do = {
+            base = 2#ai选择该特质顾问的意愿
+        }
+    }
+}
+
+#将帅特质：
+均写在：common/unit_leader/*.txt中，格式如下：
+leader_traits = {
+    PUM_trait_1 = {
+        type = { land navy }#特质类型，有all、land、navy、operative（间谍用特质）、corps_commander（将领用）、field_marshal（元帅用）
+        trait_type = personality_trait #个人特质，无法指定，也不会出现在特质页面上
+        non_shared_modifier = {
+            promote_cost_factor = -0.5#对将领自己的修正（如受伤概率和自我经验增长）
+        }
+		modifier = {
+			#对手下部队的修正
+		}
+		allowed = {}#如果不符合其内的要求，则无法分配此特质，或者会将其移除
+		ai_will_do = {}#ai选择的倾向
+		show_in_combat = yes#在战斗页面显示这个特质的效果
+		trait_xp_factor = {
+			PUM_trait_2 = 0.1#拥有此特质时，学习另一特质会获得的经验加成
+		}
+		enable_ability = PUM_ability#获得特质后激活的允许使用的技能（工程火炮、额外补给等）
+		on_add = {}
+		on_remove = {}
+		#获得/移除此特质会触发的效果
+		daily_effect = {
+			gain_xp = 1
+		}#拥有此特质的将领每天自己获得的效果
+		unit_type = {
+			type = infantry
+			type = militia
+		}#仅对所率部队中的民兵和步兵生效（可类推）
+		unit_trigger = {
+			division_has_majority_template = camelry
+			owner = { neutrality > 0.5 }
+		}#仅在所率部队有超过50%的骑兵营时生效（可类推）
+        attack_skill_factor = 1#对将领4大数值的加成
+        new_commander_weight = {
+            factor = 0  # Scripted starting leaders only
+        }#在新指挥官招募时获得的权重
+    }
+    PUM_trait_2 = {
+        type = land
+		trait_type = assignable_trait#可分配特质，能够在特质页面用指挥点数分配给将帅
+        gain_xp_leader = {
+            num_units > 10#学习该特质需要的条件（将帅本人作用域）
+			custom_gain_xp_trigger_tooltip = {
+				tooltip = my_prerequisite_tt
+				xxxx
+			}#隐藏框内效果，显示tooltip的本地化内容
+        }
+		gain_xp = {
+            is_amphibious_invasion = yes#学习该特质需要的条件（手下部队作用域，即底下的大兵在干啥，这里是“在两栖入侵”）
+        }
+		#gain_xp_on_spotting = 5#海军上将发现敌人舰队时获得的经验
+		
+        cost = 3000#习得此特质需要的经验
+        field_marshal_modifier = {
+            org_loss_when_moving = -0.30#在特定职位时特质的修正效果（这里是元帅）
+        }
+		mutually_exclusive = PUM_trait#与什么特质互斥，书写后在特质页面会出现互斥箭头
+		parent = PUM_trait#在特质页面，首先要有什么特质，才能选取此特质
+		prerequisites = {
+			defense_skill_level > 3
+			custom_prerequisite_tooltip = {
+				tooltip = my_prerequisite_tt
+				xxxx
+			}#隐藏框内效果，显示tooltip的本地化内容
+		}#选取此特质的前置要求
+        slot = army_chief#拥有此特质的将帅的在成为军官团角色后使用哪个顾问职位。
+        specialist_advisor_trait = army_chief_trait_1#此人被创建为军官团角色后，解锁的可选军官团特质
+        expert_advisor_trait = army_chief_trait_2#大师（6级）的特质
+        genius_advisor_trait = army_chief_trait_3#奇才（9级）的特质
+        ai_will_do = {
+            factor = 10
+        }
+        gui_row = 10#特质页面中特质所在的行
+		gui_column = 1#特质页面中特质所在的列
+    }
+}
+将帅特制的图标：
+在interface中直接注册即可显示，格式严格遵循：
+spriteTypes = {	
+	spriteType = {
+		name = "GFX_trait_你的traits（比如PUM_traits_1）"
+		texturefile = "gfx/traits/personal/你选取的图片（最好也命名为PUM_traits_1）.dds"
+		legacy_lazy_load = no
+	}
+}
+
+
+########################
+########################
+###第三部分：思维拓展###
+########################
+########################
+
+角色visible的重要作用：
+在原版苏联中，存在一些开局被监禁的顾问，他们的头像附带一个表示监禁的铁窗。实际上这并不是什么复杂的操作达成的。其根本逻辑是做两个同样的角色并拥有同样的职业。
+他们俩主要的区别有二：
+1、负责演示被监禁的角色会在效果栏增加一些字符以说明其被监禁了。这可以通过给这两个角色设置不一样的traits来实现，被监禁角色的traits如下书写：
+	Xstlond_jianjin_Play = {
+		stability_factor = 0.05
+		war_support_factor = 0.1
+
+		custom_modifier_tooltip = xstlond_jianjin_tt
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	#xstlond_jianjin_tt则在本地化文件里本地化为"被监禁的角色有可能被鸿儒"即可。
+	而另一个没有被监禁的xstlond则用这个traits：
+	Xstlond_free = {
+		stability_factor = 0.05
+		war_support_factor = 0.1
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+2、负责演示被监禁的角色头像不同，需要另做一个，把铁窗覆盖在原头像上面即可。
+
+另外顾问的特质是可以被替换掉的，具体写法如下：
+remove_trait = {
+	character = PUM_Xiuyi_Lang
+	slot = army_chief
+	trait = Min_Cui_Nao_Tan
+}
+add_trait = {
+	character = PUM_Xiuyi_Lang
+	slot = army_chief
+	trait = Da_Nao_Sheng_Ji
+}
+注意特质的替换无法像民族精神修正一样展示修正前后效果之变化。如果你希望达成这一效果，可以写两个或多个modifier与特质对应的“工具民族精神”，然后需要运用
+effect_tooltip = {
+	swap_ideas = {
+		remove_idea = PUM_tool_idea_1
+		add_idea = PUM_tool_idea_2
+	}
+}
+来在不实现效果的同时展示效果（effect_tooltip的作用就是展示它内部的效果但是实际不会执行）
+然后在hidden_effect里面隐藏地执行traits的替换效果
+hidden_effect = {
+	remove_trait = {
+		character = PUM_Xiuyi_Lang
+		slot = army_chief
+		trait = PUM_Xiuyi_Lang_1
+	}
+	add_trait = {
+		character = PUM_Xiuyi_Lang
+		slot = army_chief
+		trait = PUM_Xiuyi_Lang_2
+	}
+}
+你可以将工具民族精神的name栏这样书写：name = PUM_tool_idea，最后将其本地化为：
+PUM_tool_idea:0 "休伊朗的特质：PUM群大叔"
+
+当然视具体需要，我们可以进行灵性的操作，比如这样：
+PUM_tool_idea_1:0 "休伊朗的现有特质：PUM群大叔"
+PUM_tool_idea_2:0 "新特质：大脑升级"
+这种灵性操作的意义我们马上就会展示。
+
+于是整个效果会显示为：
+
+##################################
+休伊朗的特质：PUM群大叔追加效果：#
+xxx								 #
+								 #
+而不是原来的：					 #
+								 #
+休伊朗：						 #
+移除PUM群大叔，其效果为：  		 #
+xxx 							 #
+获得PUM群大叔，其效果为：		 #
+xxx								 #
+##################################
+
+或者如果你采取了更加灵性的本地化举措：
+##################################
+以新特质：大脑升级替换休伊朗的现 #
+有特质：民粹老坛，效果变化为：	 #
+xxx								 #
+								 #
+而不是原来的：					 #
+								 #
+休伊朗：						 #
+移除民粹老坛，其效果为：  		 #
+xxx 							 #
+获得大脑升级，其效果为：		 #
+xxx								 #
+##################################
+
+这两种方式各有各的好处，我们建议按照个人需要进行选择，无需刻意制作。在替换前后的特质重名时这样做可能会大有好处。
+
+最后我们进行一次反推式的拓展，因为既然我们观察到顾问在某些方面与民族精神有相似性（idea_token），那么民族精神又和他们有什么相似性呢？
+而兼具顾问特点与民族精神特点的，就是我们的制造商/设计商。它们阐释了民族精神的最大可能性：也就是不仅仅可以书写modifier，也能拥有traits
+
+我们进行一次举例：
+country = {
+	tank_manufacturer = {
+		
+		name = PUM_tank
+		
+		designer = yes
+	
+		PUM_tank_1 = {
+		
+			picture = PUM_panzer
+						
+			allowed = {
+				original_tag = PUM
+			}
+			
+			available = {
+				
+			}
+			
+			visible = {
+				NOT = { has_country_flag = PUM_tank_upgrade }
+			}
+						
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			modifier = {
+				army_armor_attack_factor = 0.05
+				army_armor_defence_factor = 0.05
+			}
+			
+			equipment_bonus = {
+				armor = {
+					build_cost_ic = -0.10 instant = yes
+				}
+			}
+
+			traits = { tank_manufacturer }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+		
+		PUM_tank_2 = {
+			
+			name = PUM_tank
+			
+			picture = PUM_panzer
+						
+			allowed = {
+				original_tag = PUM
+			}
+			
+			available = {
+				
+			}
+			
+			visible = {
+				has_country_flag = PUM_tank_upgrade
+			}
+						
+			research_bonus = {
+				armor = 0.15
+			}
+			
+			modifier = {
+				army_armor_attack_factor = 0.1
+				army_armor_defence_factor = 0.1
+			}
+			
+			equipment_bonus = {
+				armor = {
+					build_cost_ic = -0.15 instant = yes
+				}
+			}
+
+			traits = { tank_manufacturer }
+			
+			ai_will_do = {
+				factor = 20
+			}
+		}
+	}
+}
+在这个例子中，我们看到两个同名的制造商（都叫PUM_tank），但是它们效果不同（下面那个明显更强），显示条件不同（PUM_tank_1在没有coutry_flag：PUM_tank_upgrade才可见和可选取
+，而PUM_tank_2则完全相反）。这样的设计有什么好处呢？
+
+让我们想想原版的苏联，原版苏联有合并工厂的决议，还有国家建筑局聘请外国专家和专业化的决议。这些决议点击后会强化制造商，让他们的buff更厉害，而这就是我们今天这样做的好处。
+
+为了强化PUM_tank，我们将制作一个国策，该国策将在我们启用PUM_tank的时候可以执行。我们在它的效果中书写：
+completion_reward = {
+	swap_ideas = {
+		remove_idea = PUM_tank_1
+		add_idea = PUM_tank_2
+	}
+	set_country_flag = PUM_tank_upgrade
+}
+效果会显示：
+PUM_tank追加效果：
+装甲单位攻击：+5%
+装甲单位防御：+5%
+装甲科技：
+	制造花费：-5%
+	
+而country_flag：PUM_tank_upgrade的添加恰恰隐藏了老的PUM_tank，我们就这样完成了偷天换日，升级了制造商。
+
+
+
+以上就是本期PUM代码教学内容了，希望大家能有所收获！我们下次再见。
+作者：我电锯呢 （b站id也是这个）
+PUM粉丝群群号：948522045，欢迎大家前来游玩！
+
+链接：https://pan.baidu.com/s/1e3mG06m_KBaLG77RsZLfDQ?pwd=4xfc 
+提取码：4xfc 
+--来自百度网盘超级会员V5的分享

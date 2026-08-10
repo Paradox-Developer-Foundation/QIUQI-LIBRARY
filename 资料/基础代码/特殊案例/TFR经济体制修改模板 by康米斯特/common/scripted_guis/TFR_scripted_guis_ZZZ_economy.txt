@@ -1,0 +1,486 @@
+scripted_gui = {
+	TFR_economy_button_container = {
+		window_name = "TFR_economy_button_container"
+		context_type = player_context
+		parent_window_token = trade_tab
+		
+		visible = { 
+			always = yes
+		}
+		
+		properties = {
+			open_econ_button = {
+				frame = open_econ_button_frame
+			}
+        }
+
+		effects = {
+			open_econ_button_click = {
+				if = {
+					limit = { NOT = { has_country_flag = TFR_economy_tab_open } }
+					set_country_flag = TFR_economy_tab_open
+					set_variable = { open_econ_button_frame = 2 }
+				}
+				else_if = {
+					limit = { has_country_flag = TFR_economy_tab_open }
+					clr_country_flag = TFR_economy_tab_open
+					set_variable = { open_econ_button_frame = 1 }
+				}
+			}
+		}
+	}
+	econ_tab_window_gui = {
+		window_name = "econ_tab_window"
+		context_type = player_context
+		parent_window_token = trade_tab
+	
+		visible = {
+			NOT = {
+				has_country_flag = TFR_economy_tab_open
+			}
+		}
+		
+		#Economy Types
+		
+		triggers = {
+			TFR_no_economy_type_icon_visible = {
+				NOT = {
+					has_idea = ZZZ_capitalist_economy
+					has_idea = ZZZ_american_capitalism
+					has_idea = ZZZ_collective_capitalism
+					has_idea = ZZZ_collective_capitalism2
+					has_idea = ZZZ_oligopolistic_capitalism
+					has_idea = ZZZ_welfare_capitalism
+					has_idea = ZZZ_corporatism
+					has_idea = ZZZ_managed_economy
+					has_idea = ZZZ_command_economy
+					has_idea = ZZZ_planned_economy
+					has_idea = ZZZ_socialist_market
+					has_idea = ZZZ_developed_socialism
+					has_idea = ZZZ_military_controlled_economy
+					has_idea = ZZZ_worker_controlled_economy
+					has_idea = ZZZ_chaostic_economy
+					has_idea = ZZZ_minarchism
+					has_idea = ZZZ_ancap
+					has_idea = ZZZ_hajimi_economy
+				}
+			}
+			TFR_capitalism_type_icon_visible = {
+				has_idea = ZZZ_capitalist_economy
+			}		
+			TFR_american_capitalism_type_icon_visible = {
+				has_idea = ZZZ_american_capitalism
+			}	
+			TFR_collective_capitalism_type_icon_visible = {
+				OR = {
+					has_idea = ZZZ_collective_capitalism
+					has_idea = ZZZ_collective_capitalism2
+				}
+			}		
+			TFR_oligopolistic_capitalism_type_icon_visible = {
+				has_idea = ZZZ_oligopolistic_capitalism
+			}	
+			TFR_welfare_capitalism_type_icon_visible = {
+				has_idea = ZZZ_welfare_capitalism
+			}	
+			TFR_corporatism_type_icon_visible = {
+				has_idea = ZZZ_corporatism
+			}	
+			TFR_managed_economy_type_icon_visible = {
+				has_idea = ZZZ_managed_economy
+			}	
+			TFR_command_economy_type_icon_visible = {
+				has_idea = ZZZ_command_economy
+			}	
+			TFR_planned_economy_type_icon_visible = {
+				has_idea = ZZZ_planned_economy
+			}		
+			TFR_socialist_market_type_icon_visible = {
+				
+				has_idea = ZZZ_socialist_market
+				  
+				
+				
+			}	
+			TFR_ZZZ_hajimi_economy_type_politics_icon_visible = {
+				has_idea = ZZZ_hajimi_economy
+				
+			}	
+			TFR_developed_socialism_type_icon_visible = {
+				has_idea = ZZZ_developed_socialism
+			}		
+			TFR_military_controlled_economy_type_icon_visible = {
+				has_idea = ZZZ_military_controlled_economy
+			}			
+			TFR_worker_controlled_economy_type_icon_visible = {
+				has_idea = ZZZ_worker_controlled_economy
+			}		
+			TFR_chaostic_economy_type_icon_visible = {
+				has_idea = ZZZ_chaostic_economy
+			}
+			TFR_minarchism_economy_type_icon_visible = {
+				has_idea = ZZZ_minarchism
+			}
+			TFR_ancap_economy_type_icon_visible = {
+				has_idea = ZZZ_ancap
+			}
+		}
+		
+		#Economic Actions
+		
+		dynamic_lists = {
+			economic_actions_gridbox = {
+				array = economic_actions_array
+				entry_container = economic_actions_window_item_grid
+				value = economicaction
+			}
+		}
+
+		effects = {
+			action_button_click = {
+				meta_effect = {
+					text = {
+						[TOKEN]_effect = yes
+					}
+					TOKEN = "[?economicaction.GetTokenKey]"
+				}
+			}
+			action_button_right_click = {
+				meta_effect = {
+					text = {
+						custom_effect_tooltip = [TOKEN]_desc
+					}
+					TOKEN = "[?economicaction.GetTokenKey]"
+				}
+			}
+		}
+
+		triggers = {
+			action_button_click_enabled = {
+				is_economic_action_trigger = yes
+                meta_trigger = {
+					text = {
+						[TOKEN]_trigger = yes
+					}
+					TOKEN = "[?economicaction.GetTokenKey]"
+				}
+            }
+		}
+
+		#Checkboxes
+
+		properties = {
+			auto_payment_checkbox = {
+				frame = auto_payment_var
+			}
+		}
+
+		effects = {
+			auto_payment_checkbox_click = {
+				if = {
+					limit = {
+						has_country_flag = auto_payment_flag
+					}
+					set_variable = { 
+						var = auto_payment_var
+						value = 1
+					}
+					clr_country_flag = auto_payment_flag
+				}
+				else = {
+					set_country_flag = auto_payment_flag
+					set_variable = { 
+						var = auto_payment_var 
+						value = 2
+					}
+				}
+			}
+		}
+
+		properties = {
+			bank_checkbox = {
+				frame = bank_var
+			}
+		}
+
+		effects = {
+			bank_checkbox_click = {
+				if = {
+					limit = {
+						has_country_flag = bank_flag
+					}
+					set_variable = { 
+						var = bank_var
+						value = 1
+					}
+					clr_country_flag = bank_flag
+				}
+				else = {
+					set_country_flag = bank_flag
+					set_variable = { 
+						var = bank_var 
+						value = 2
+					}
+				}
+			}
+		}
+
+		#Loans
+		triggers = {
+			gdp_1b_loan_button_click_enabled = {
+				is_ai = no
+				has_disabled_ideas = yes
+				NOT = {
+					has_country_flag = auto_payment_flag
+					has_political_power < 2
+				}
+			}
+		}
+
+		effects = {
+			gdp_1b_loan_button_click = {
+				add_political_power = -2
+				set_temp_variable = {
+					var = income_var_temp
+					value = 1
+				}
+				add_income = yes
+				set_temp_variable = {
+					var = debt_var_temp
+					value = 1
+				}
+				add_debt = yes
+			}
+		}
+
+		triggers = {
+			gdp_10b_loan_button_click_enabled = {
+				is_ai = no
+				has_disabled_ideas = yes
+				NOT = {
+					has_country_flag = auto_payment_flag
+					has_political_power < 20
+				}
+			}
+		}
+
+		effects = {
+			gdp_10b_loan_button_click = {
+				add_political_power = -20
+				set_temp_variable = {
+					var = income_var_temp
+					value = 10
+				}
+				add_income = yes
+				set_temp_variable = {
+					var = debt_var_temp
+					value = 10
+				}
+				add_debt = yes
+			}
+		}
+
+		triggers = {
+			gdp_50b_loan_button_click_enabled = {
+				is_ai = no
+				has_disabled_ideas = yes
+				NOT = {
+					has_country_flag = auto_payment_flag
+					has_political_power < 100
+				}
+			}
+		}
+
+		effects = {
+			gdp_50b_loan_button_click = {
+				add_political_power = -100
+				set_temp_variable = {
+					var = income_var_temp
+					value = 50
+				}
+				add_income = yes
+				set_temp_variable = {
+					var = debt_var_temp
+					value = 50
+				}
+				add_debt = yes
+			}
+		}
+
+		#Debt Payment
+		triggers = {
+			gdp_1b_debt_payment_button_click_enabled = {
+				is_ai = no
+				has_disabled_ideas = yes
+				set_temp_variable = {
+					var = income_trigger_temp_var
+					value = 1
+				}
+				has_income_greater_than_or_equals = yes
+				set_temp_variable = {
+					var = debt_trigger_temp_var
+					value = 1
+				}
+				has_debt_greater_than_or_equals = yes
+			}
+		}
+
+		effects = {
+			gdp_1b_debt_payment_button_click = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -1
+				}
+				add_income = yes
+				set_temp_variable = {
+					var = debt_var_temp
+					value = -1
+				}
+				add_debt = yes
+			}
+		}
+
+		triggers = {
+			gdp_10b_debt_payment_button_click_enabled = {
+				is_ai = no
+				has_disabled_ideas = yes
+				set_temp_variable = {
+					var = income_trigger_temp_var
+					value = 10
+				}
+				has_income_greater_than_or_equals = yes
+				set_temp_variable = {
+					var = debt_trigger_temp_var
+					value = 10
+				}
+				has_debt_greater_than_or_equals = yes
+			}
+		}
+
+		effects = {
+			gdp_10b_debt_payment_button_click = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -10
+				}
+				add_income = yes
+				set_temp_variable = {
+					var = debt_var_temp
+					value = -10
+				}
+				add_debt = yes
+			}
+		}
+
+		triggers = {
+			gdp_50b_debt_payment_button_click_enabled = {
+				is_ai = no
+				has_disabled_ideas = yes
+				set_temp_variable = {
+					var = income_trigger_temp_var
+					value = 50
+				}
+				has_income_greater_than_or_equals = yes
+				set_temp_variable = {
+					var = debt_trigger_temp_var
+					value = 50
+				}
+				has_debt_greater_than_or_equals = yes
+			}
+		}
+
+		effects = {
+			gdp_50b_debt_payment_button_click = {
+				set_temp_variable = {
+					var = income_var_temp
+					value = -50
+				}
+				add_income = yes
+				set_temp_variable = {
+					var = debt_var_temp
+					value = -50
+				}
+				add_debt = yes
+			}
+		}
+
+		#Economic Actions
+		#triggers = {
+			#gdp_printer_button_click_enabled = {
+			#	has_disabled_ideas = yes
+			#	has_political_power > 100
+			#}
+		#}
+
+		#effects = {
+			#gdp_printer_button_click = {
+			#	add_political_power = -100
+			#}
+		#}
+
+		ai_enabled = {
+			has_content_tag = yes
+		}
+
+		ai_test_interval = 720 # Every 30 days
+
+		ai_weights = {
+			auto_payment_checkbox_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						add = 1
+						OR = {
+							AND = {
+								has_country_flag = auto_payment_flag
+								check_variable = { 
+									var = debt_difference_var
+									value = 0
+									compare = less_than
+								}
+							}
+							AND = {
+								NOT = {
+									has_country_flag = auto_payment_flag
+								}
+								check_variable = { 
+									var = debt_difference_var
+									value = 0
+									compare = greater_than
+								}
+							}
+						}
+					}
+				}
+			}
+			bank_checkbox_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						add = 1
+						OR = {
+							AND = {
+								has_country_flag = bank_flag
+								check_variable = { 
+									var = debt_difference_var
+									value = 0
+									compare = less_than
+								}
+							}
+							AND = {
+								NOT = {
+									has_country_flag = bank_flag
+								}
+								check_variable = { 
+									var = debt_difference_var
+									value = 0
+									compare = greater_than
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

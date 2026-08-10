@@ -1,0 +1,345 @@
+
+注意！请务必使用vsc或N++打开本教程以获得最佳效果！
+
+####################
+####################
+###本次内容：数组###
+####################
+####################
+
+数组是变量的综合，需要保存在一个作用域中，可以被读取和编写。
+一般来说，数组中储存的是变量，但是也可以把国家、省份作用域当做变量存进去。
+
+几个最基本的对数组的操作：
+
+###为数组添加变量
+add_to_array = { 
+	array = <string> #要添加到的数组名称
+	index = <int> #可选，如果填写则在数组的对应位置插入变量（填写数字即可，可以理解为数组的第123456……位）
+	value = <var> #要添加的变量
+}
+也可以简化为：
+add_to_array = { <array> = <value> }
+
+例子（来自原版）：
+add_to_array = {
+	array = SOV.many_weapons_array
+	value = ROOT
+}
+源于苏联内战事件，如果外国选择在事件中支持叛军，该国就会被纳入SOV作用域下的many_weapons_array数组（这也展示了将国家纳入数组的可行性）
+#这一例子还有一个非常灵性的延伸，我们接下来在讲别的内容时会看到。
+
+
+###从数组中移除变量，如果index和value都不指出则移除最后一个变量（最后添加的）
+remove_from_array = { 
+	array = <string> #要移除的数组
+	index = <int> #可选，与value冲突，将会移除数组中处在该位置的变量
+	value = <var> #可选，与index冲突，将会移除数组中所有等于该值的变量
+}
+也可以简化为：
+remove_from_array = { <array> = <value> }
+
+
+###引用数组中的变量
+<array>^<index>
+即数组名称^变量位置
+例子：SOV_paranoia_generic_portraits_array^3 意思是引用SOV_paranoia_generic_portraits_array这个数组中处在位置3上的变量
+原版使用方法：
+scripted_gui = {
+	sov_paranoia_system_ui = {
+		context_type = decision_category
+		window_name = "sov_paranoia_system_ui_window"
+		properties = {
+			paranoia_photo_1 = {
+				frame = SOV_paranoia_generic_portraits_array^1
+			}
+			paranoia_photo_2 = {
+				frame = SOV_paranoia_generic_portraits_array^2
+			}
+			paranoia_photo_3 = {
+				frame = SOV_paranoia_generic_portraits_array^3
+			}
+			paranoia_photo_4 = {
+				frame = SOV_paranoia_generic_portraits_array^4
+			}
+		}
+	}
+}
+脚本化GUI中，properties下每个元素的frame项表示该元素采用一个多帧图像的第几帧（只有是个多帧图像时才能这样写）。而SOV_paranoia_generic_portraits_array
+则储存了一连串的变量，每个元素挨个对应一个，这也是数组的“位置”概念得天独厚的优势，一开局，SOV_paranoia_generic_portraits_array内部从头到尾每个变量的
+值都是1，那么SOV_paranoia_generic_portraits_array^3和SOV_paranoia_generic_portraits_array^4（以此类推）都是1，全部采用第一帧。而如果我们要分别调整
+每个元素的图像，只需要将其在SOV_paranoia_generic_portraits_array数组内对应位置上的变量改掉即可。
+
+
+###清除一个数组内所有变量
+clear_array = <string> #清除一个数组内所有变量
+
+
+###设置数组规模大小
+resize_array = { 
+	array = <string> #要设置的数组
+	value = <var> #可选，用以填充空白位置的变量，默认为0
+	size = <int> #要设置的大小，多余的舍去，不足的用value补上
+}
+也可以简化为
+resize_array = { <array> = <size> }
+如果size小于数组内现有的变量数量，那么被扩充出来的位置将全部填入value内的值。如果多于size，那么从index=size开始的全部变量都将被舍去。
+
+
+###对数组内每一个变量操作（切换作用域）
+for_each_scope_loop = { 
+	array = <string> #读取的数组
+	break = <string> #可选，定义一个局部临时变量，当数值不为0时终止循环，默认为break #break用法稍后示范 
+	<effects>
+}
+切换作用域意为：在执行effect时，可以不在effect外注明执行它的作用域是哪个，这个指令本身就带有作用域转换的效果，会把effect执行到数组内每个
+具体的变量那里去。
+
+例子（来自原版）：
+for_each_scope_loop = {
+	array = SWI_humanitarian_support_countries
+	remove_ideas = { SWI_humanitarian_effort }
+}
+#每个SWI_humanitarian_support_countries数组中的变量（这里是国家），移除民族精神SWI_humanitarian_effort
+
+
+###对数组内每一个变量操作（不切换作用域）
+for_each_loop = { 
+	array = <string> #读取的数组
+	value = <string> #可选，定义一个局部临时变量，用以代表正在读取的变量，默认为v
+	index = <string> #可选，定义一个局部临时变量，用以代表正在读取变量的位置，默认为i
+	break = <string> #可选，定义一个局部临时变量，当数值不为0时终止循环，默认为break
+	<effects>
+}
+不切换作用域意味着effect的默认作用域是ROOT。
+
+例子（来自原版）：
+for_each_loop = {
+	array = SOV.many_weapons_array
+	value = weapons_country
+	add_equipment_to_stockpile = {
+		type = infantry_equipment
+		amount = 200
+		producer = var:weapons_country
+	}
+}
+解读：首先指出要操作的数组是SOV.many_weapons_array，即sov作用域的many_weapons_array数组（这个这个数组装载的是国家，在我们执行这里解读的操作前，
+苏联会向列强发送一个事件，向其索要武器援助，以便策划反对斯大林的内战，如果对方点选“大量援助”，对方就会被add_to_array列入这个数组）
+##其实就是上面我们提到过的那个东西##
+随后value定义了一个局部变量weapons_country，那么意味着weapons_country现在在这个for_each_loop的括号内部，就拥有了指代一切many_weapons_array数组中
+变量的权力，只要写道weapons_country，就等于在写many_weapons_array内部储存的变量。
+随后我们执行了effect，也就是添加武器，由于此处是不切换作用域的数组操作，所以effect的施加对象是root，那么每处理一个weapons_country，就会为root添加
+200单位步兵武器，而步兵武器的制造者则是var:weapons_country（因为weapons_country是一个局部变量，所以要加前缀var:）。这样就完成了苏联内战爆发时，反对者
+将能够拿到生产自不同国家的武器援助。
+
+####break中断循环用法示范！！！！（由于该机制在for_each_loop中运行逻辑最明显，所以我们在这里进行示范）
+complete_effect = {
+	set_temp_variable = { ROOT.a = 0 }
+	for_each_loop = { 
+		array = global.countries
+		break = b
+		var:v = {
+			if = {
+				limit = { exists = yes }
+				add_ideas = militarism_focus
+				add_to_temp_variable = { ROOT.a = 1 }
+			}
+		}
+		if = {
+			limit = { check_variable = { ROOT.a = 10 } }
+			set_temp_variable = { ROOT.b = 1 }
+		}
+	}
+}
+解读：首先设置一个在complete_effect = {}框内活动执行完就会自然删除的局部变量，接着采取for_each_loop，选用全球国家这一数组，并把break设置为b，
+b在初始状态下就是一个等于0的局部变量，不会打断循环。随后由于我们没有设置value项，默认可以用var:v指代数组内的一切元素，于是我们进一步在effect
+里面利用该机制，先指出var:v这个作用域，并且用if和limit进行限制，将全球一切国家限定为全球一切目前存在的国家，并执行add_ideas = militarism_focus
+如果按照流程，在没有限制的情况下，我们会给全球全部存在的国家添加精神militarism_focus。但是我们在var:v作用域添加ideas时，每执行一次就会让ROOT作用域
+的局部变量a增加1。并且每执行一次还会检查一次a的大小。随着我们执行了10次（也就是对数组中的十个变量进行了动作），a的大小来到了10，也就导致下半部
+分激活，于是set_temp_variable = { ROOT.b = 1 }，这导致局部变量b被设置为1。而b就是我们设置用来作为break的局部变量，一旦它不等于0，就代表break不等于
+0了，于是中断循环。这一整套代码最后会在全球所有当前存在的国家里面按照某种顺序，为前10个国家添加民族精神militarism_focus。而后由于break切断循环，
+效果终止。
+###总效果：全球会有10个国家获得民族精神militarism_focus，但是不是随机获得，会有一定的顺序（因为本身这个指令也是按照顺序依次给数组内每个变量执行effect
+的），每次执行时获得此精神的国家都是同样那10个。
+
+
+###选取数组内一个满足条件的变量操作（切换作用域）
+random_scope_in_array = { 
+	array = <string> #读取的数组
+	break = <string> #可选，定义一个局部临时变量，当数值不为0时终止循环，默认为break
+	limit = { <triggers> } #变量须满足的条件
+	<effects>
+}
+
+###同样可以建立局部（临时）数组，使用以下命令对局部数组本身进行修改，调用时尽可使用与一般数组同样的命令：
+add_to_temp_array
+remove_from_temp_array
+clear_temp_array
+resize_temp_array
+
+检测变量的条件语句：
+
+###检查某数值（或者说符合此数值的变量）是否在数组中
+is_in_array = { 
+	array = <string> #要检测的数组
+	value = <var> #要检测的数值
+}
+
+
+###对数组中所有数值进行检查（不切换作用域），要求任一符合
+any_of = { 
+	array = <string> #要检测的数组
+	value = <string> #可选，定义一个局部临时变量，用以代表正在读取的变量，默认为v
+	index = <string> #可选，定义一个局部临时变量，用以代表正在读取变量的位置，默认为i
+	<triggers>
+}
+
+例子（来自原版）：
+any_of = {
+	array = UKR.core_states
+	var:v = { is_controlled_by = SOV }
+}
+意为：任意一块乌克兰UKR的核心领土被苏联SOV控制
+
+解析：由于value在不进行特别设置的情况下，默认值是v（v可以指代数组中一切正在读取的变量），那么本例子中的var:v就等于该数组中的每一个“value”
+（即乌克兰的核心领土UKR.core_states）所有此处的var:v可以理解为all_state这样的作用域。而做为作用域，在其中补充is_controlled_by = SOV，自然
+就是检查满足该条件的var:v，也就是乌克兰的核心领土是否被苏联掌控。
+另外，由于此命令不切换作用域，所有在这里才会用到var:v，来帮它将检测的作用域锁定到数组内部的各个地块。
+
+
+###对数组中所有数值执行检查（不切换作用域），要求全部符合
+all_of = { 
+	array = <string> #要检测的数组
+	value = <string> #可选，定义一个局部临时变量，用以代表正在读取的变量，默认为v
+	index = <string> #可选，定义一个局部临时变量，用以代表正在读取变量的位置，默认为i
+	<triggers>
+}
+
+
+###对数组中所有数值执行检查（不切换作用域），要求任一符合
+any_of_scopes = { 
+	array = <string> #要检测的数组
+	<triggers>
+}
+
+例子（来自原版）：
+any_of_scopes = {
+	array = UKR.core_states
+	is_controlled_by = SOV
+}
+意为：任意一块乌克兰UKR的核心领土被苏联SOV控制（与上一个例子意义相同，但是不需要切换作用域，因为该指令本身就能切换作用域了）
+
+
+###对数组中所有数值运行检查（切换作用域），要求全部符合
+all_of_scopes = { 
+	array = <string> #要检测的数组
+	<triggers>
+}
+
+另外，游戏中还有一种不需要数组服务就能实现的循环指令：
+
+while_loop_effect = { #循环，在循环开始时检查条件是否满足，若不满足终止循环
+	break = <string> #可选，定义一个局部临时变量，当数值不为0时终止循环，默认为break
+	limit = { <triggers> } #循环继续的条件
+	<effects>
+}
+######这是我很久以前在写这个循环指令时留下的教程，复制过来以供参考：
+set_temp_variable = { VIC.temp_targets_index_a = 0 } #设定一个用来计数的变量
+while_loop_effect = { #发起循环指令
+   	limit = {
+		check_variable = { temp_targets_index_a = 5 compare = less_than }
+	}
+	#在什么条件下继续循环指令，如果不满足此条件则停止（本例子中的条件是当VIC作用域下的temp_targets_index_a变量小于5时执行循环指令，
+	#实际上会在等于5时执行最后一次，也就是会进行5次循环）
+   	hidden_effect = { 
+	#建议做成隐藏效果，这些指令的效果要么不显示要么显得很奇怪
+    random_core_state = { #抽取随机一块核心领土
+	    limit = { 
+			#对这个核心领土的限定，如果抽取到的核心领土不满足此条件，就会改抽另一块核心领土，直到选中一块满足条件的核心领土
+	      	arms_factory > 2 
+			#这个区块的军用工厂多于2个
+	      	free_building_slots = {         
+				building = industrial_complex
+	      		size > 0
+	      		include_locked = yes 
+				#是否把处于锁定状态的建筑槽也计入其中
+	        }
+			#这个区块拥有至少一个可以建设民用工厂的空余建筑槽，锁定建筑槽也算空余建筑槽。
+	   		NOT = { has_state_flag = VIC_development_of_tankograd_flag }
+			#这个区块没有被标记（没有VIC_development_of_tankograd_flag这个flag）
+		}
+		add_extra_state_shared_building_slots = 1 #增加一个额外建筑槽
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes 
+		} 
+		#增加一个民用工厂
+	    set_state_flag = VIC_development_of_tankograd_flag
+		#给这个地块标记上VIC_development_of_tankograd_flag这个flag ，下一轮循环时该地块就会因为不满足条件而被系统略过。   
+	  	add_to_temp_variable = { VIC.temp_targets_index_a = 1 }
+		#VIC作用域下的temp_targets_index_a变量数值增加1（结合前文，增加到5时就会进行最后一次循环）
+	} 
+}
+#循环指令结束，并且回到开始，执行下一轮循环（当当前条件不满足循环指令的limit的时候，循环指令停止）
+最终效果：
+给每个拥有3军工的地块增加一个民工，但是最多对5个地块生效，如果拥有3个军工的地块或者拥有足够可用建筑槽的地块没有达到5个，那么能影响几个地块就影响几个。
+
+
+
+在游戏变量当中，也存在游戏自带数组，这里简单举例，最好上wiki查询：
+
+全局（global）：
+countries #所有国家，包括不存在的
+ideology_groups #所有意识形态组，现版本有民主、共产、法西斯、中立四个
+majors #所有主要国家
+operations #所有特工行动种类
+
+国家：
+allies #所有盟友
+army_leaders #所有拥有的元帅将军
+controlled_states #所有控制的省份
+core_states #所有核心省份
+enemies #所有敌人
+enemies_of_allies #盟友的所有敌人
+faction_members #阵营的所有成员
+neighbors #所有相邻国家
+neighbors_owned #所有相邻省份
+occupied_countries #所有占领的国家
+operatives #所有拥有的特工
+owned_controlled_states #所有拥有并控制的省份
+owned_states #所有拥有的省份
+potential_and_current_enemies #所有现有和潜在（与现有敌人处于同一阵营）敌人
+subjects #所有附庸国
+
+省份：
+core_countries #所有核心国家
+
+数组有时能够给人带来极大的便利，例如当你想要给某块state移除大量国家的核心时：
+
+329 = {
+	for_each_scope_loop = {
+		array = core_countries
+		329 = {  remove_core_of = PREV }
+	}
+}
+329的core_countries数组就是一切在当地有核心的国家，然后采用作用域切换中的prev，将他们的核心全部移除，329就成没人有核心的土地了
+
+329 = {
+	for_each_loop = {
+		array = core_countries
+		var:v = {
+			if = {
+				limit = { tag = SOV }
+				329 = {  remove_core_of = PREV }
+			}
+		}
+	}
+}
+这是优化版本，只移除当地除了苏联核心以外的其他国家核心
+
+
+
+以上就是本期PUM代码教学内容了，希望大家能有所收获！我们下次再见。
+作者：我电锯呢 （b站id也是这个）
+PUM粉丝群群号：948522045，欢迎大家前来游玩！

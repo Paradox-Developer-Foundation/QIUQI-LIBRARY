@@ -1,0 +1,270 @@
+do_chinese_renames_in_asia = { #定义重命名命令
+	if = {
+		limit = { state = 872 } #判断省份
+		set_state_name = endo_state_872_chinese #设定省份名
+		set_province_name = { #设定胜利点名
+			id = 13299
+			name = endo_vp_13299_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 526 }
+		set_state_name = endo_state_526_chinese
+		set_province_name = {
+			id = 11932
+			name = endo_vp_11932_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 841 }
+		set_state_name = endo_state_841_chinese
+		set_province_name = {
+			id = 7763
+			name = endo_vp_7763_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 873 }
+		set_state_name = endo_state_873_chinese
+		set_province_name = {
+			id = 7115
+			name = endo_vp_7115_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 839 }
+		set_state_name = endo_state_839_chinese
+	}
+	else_if = {
+		limit = { state = 836 }
+		set_state_name = endo_state_836_chinese
+	}
+	else_if = {
+		limit = { state = 837 }
+		set_state_name = endo_state_837_chinese
+	}
+	else_if = {
+		limit = { state = 838 }
+		set_state_name = endo_state_838_chinese
+	}
+	else_if = {
+		limit = { state = 408 }
+		set_state_name = endo_state_408_chinese
+		set_province_name = {
+			id = 957
+			name = endo_vp_957_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 409 }
+		set_state_name = endo_state_409_chinese
+		set_province_name = {
+			id = 12189
+			name = endo_vp_12189_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 560 }
+		set_state_name = endo_state_560_chinese
+		set_province_name = {
+			id = 7868
+			name = endo_vp_7868_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 330 }
+		set_state_name = endo_state_330_chinese
+		set_province_name = {
+			id = 4801
+			name = endo_vp_4801_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 329 }
+		set_state_name = endo_state_329_chinese
+	}
+	else_if = {
+		limit = { state = 728 }
+		set_state_name = endo_state_728_chinese
+	}
+	# else_if = {
+	# 	limit = { state = 831 }
+	# 	set_state_name = endo_state_831_chinese
+	# }
+	else_if = {
+		limit = { state = 657 }
+		set_state_name = endo_state_657_chinese
+	}
+	else_if = {
+		limit = {
+			state = 434
+			has_state_flag = state_name_zangnan
+		}
+		set_state_name = endo_state_434_chinese_zangnan
+	}
+	else_if = {
+		limit = {
+			state = 434
+			has_state_flag = state_name_sanyu
+		}
+		set_state_name = endo_state_434_chinese_sanyu
+	}
+	else_if = {
+		limit = {
+			state = 434
+			has_state_flag = state_name_dawang
+		}
+		set_state_name = endo_state_434_chinese_dawang
+	}
+	else_if = {
+		limit = { state = 655 }
+		set_state_name = endo_state_655_chinese
+	}
+	else_if = {
+		limit = { state = 537 }
+		set_state_name = endo_state_537_chinese
+		set_province_name = {
+			id = 12446
+			name = endo_vp_12446_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 629 }
+		set_province_name = {
+			id = 4180
+			name = endo_vp_4180_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 561 }
+		set_state_name = endo_state_561_chinese
+	}
+	else_if = {
+		limit = { state = 564 }
+		set_state_name = endo_state_564_chinese
+	}
+	else_if = {
+		limit = { state = 654 }
+		set_state_name = endo_state_654_chinese
+	}
+	else_if = {
+		limit = { state = 586 }
+		set_state_name = endo_state_586_chinese
+		set_province_name = {
+			id = 10547
+			name = endo_vp_10547_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 328 }
+		set_province_name = {
+			id = 4572
+			name = endo_vp_4572_chinese
+		}
+	}
+	else_if = {
+		limit = { state = 847 }
+		set_state_name = endo_state_847_chinese
+		set_province_name = {
+			id = 8027
+			name = endo_vp_8027_chinese
+		}
+	}
+	
+}
+do_ryukyuan_renames_in_asia = {
+	if = {
+		limit = { state = 872 }
+		set_state_name = endo_state_872_ryukyu
+		set_province_name = {
+			id = 13250
+			name = endo_vp_13299_ryukyu
+		}	
+	}
+	else_if = {
+		limit = { state = 526 }
+		set_state_name = endo_state_526_ryukyu
+		set_province_name = {
+			id = 11932
+			name = endo_vp_11932_ryukyu
+		}
+	}
+	else_if = {
+		limit = { state = 873 }
+		set_state_name = endo_state_826_ryukyu
+		set_province_name = {
+			id = 7115
+			name = endo_vp_7115_ryukyu
+		}
+	}
+}
+do_japanese_renames = {
+	if = {
+		limit = { state = 592 }
+		# set_state_name = endo_state_592_japanese
+		set_province_name = {
+			id = 1047
+			name = endo_vp_1047_japanese
+		}
+			
+	}
+	# else_if = {
+	# 	limit = { state = 870 }
+	# 	set_state_name = endo_state_870_japanese
+	# 	set_province_name = {
+	# 		id = 12299
+	# 		name = endo_vp_12299_japanese
+	# 	}
+	# }
+	else_if = {
+		limit = { state = 408 }
+		set_state_name = endo_state_408_japanese
+		set_province_name = {
+			id = 957
+			name = endo_vp_957_japanese
+		}
+	}
+	else_if = {
+		limit = { state = 560 }
+		set_state_name = endo_state_560_japanese
+		set_province_name = {
+			id = 7868
+			name = endo_vp_7868_japanese
+		}
+	}
+	else_if = {
+		limit = { state = 629 }
+		set_state_name = endo_state_629_japanese
+		set_province_name = {
+			id = 4180
+			name = endo_vp_4180_japanese
+		}
+	}
+	else_if = {
+		limit = { state = 378 }
+		set_state_name = endo_state_378_japanese
+		set_province_name = {
+			id = 9713
+			name = endo_vp_9713_japanese
+		}
+		set_province_name = {
+			id = 9671
+			name = endo_vp_9671_japanese
+		}
+	}
+	else_if = {
+		limit = { state = 361 }
+		set_province_name = {
+			id = 3957
+			name = endo_vp_3957_japanese
+		}
+	}
+	# else_if = {
+	# 	limit = { state = 422 }
+	# 	set_state_name = endo_state_422_japanese
+	# }
+	else_if = {
+		limit = { state = 466 }
+		set_state_name = endo_state_466_japanese
+	}
+}

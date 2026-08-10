@@ -1,0 +1,5 @@
+1.gfx/interface/toggle_renaming_button.png 重命名按钮的图标，KR的动态地名替代的是原本成就的位置
+2.interface下的两个文件，用于定义重命名按钮
+3.common/scripted_guis/renaming_toggle.txt 用于定义与按钮的交互
+4.common/scripted_effects下的文件见文件内注释
+5.需要对动态地名进行本地化

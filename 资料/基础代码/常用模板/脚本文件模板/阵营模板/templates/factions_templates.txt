@@ -1,0 +1,22 @@
+# 阵营模板
+faction_template_allies = { #阵营的模板的块
+	name = i_dont_know_what_to_call_this #模板的名字。同本地化键值
+	manifest = some_manifest #章程
+
+	goals = { #阵营模板初始的目标
+		some_goal
+	}
+
+
+	default_rules = { #默认规则
+		joining_rule_non_fascist
+		joining_rule_has_no_offensive_war
+		faction_peace_rule_liberation_focus
+		government_in_exile_allowed
+		change_leader_rule_manifest_below_35
+		dismissal_rule_ideology_not_democratic
+		change_leader_rule_industry
+	}
+	
+	icon = GFX_faction_icon_allies #阵营模板的图标
+}

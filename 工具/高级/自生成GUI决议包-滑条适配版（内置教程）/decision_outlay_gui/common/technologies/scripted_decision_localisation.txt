@@ -1,0 +1,247 @@
+technologies = {
+	get_scripted_decision_category_name_tech ={ ##由于名前加了空格，因此用这种形式来获取名字
+		allow = {
+			always = no
+		}
+		on_research_complete_limit = {
+			always = yes
+		}
+		on_research_complete = {
+			meta_effect = {
+				text = {
+					custom_effect_tooltip = [t_name]
+				}
+				t_name = "[?scripted_decision_category_entry.GetName]"
+			}
+		}
+	}
+
+	get_scripted_decision_name_tech ={ ##由于名前加了空格，因此用这种形式来获取名字
+		allow = {
+			always = no
+		}
+		on_research_complete_limit = {
+			always = yes
+		}
+		on_research_complete = {
+			meta_effect = {
+				text = {
+					custom_effect_tooltip = [t_name]
+				}
+				t_name = "[?scripted_decision_entry.GetName]"
+			}
+		}
+	}
+	
+	get_scripted_decision_desc_tech ={ ##由于名前加了空格，因此用这种形式来获取名字
+		allow = {
+			always = no
+		}
+		on_research_complete_limit = {
+			always = yes
+		}
+		on_research_complete = {
+			meta_effect = {
+				text = {
+					custom_effect_tooltip = [t_name]_desc
+				}
+				t_name = "[?scripted_decision_entry.GetName]"
+			}
+		}
+	}
+	get_scripted_decision_timer_cost_tech ={ ##由于名前加了空格，因此我们选择用这种形式来获取名字
+		allow = {
+			always = no
+		}
+		on_research_complete_limit = {
+			always = yes
+		}
+		on_research_complete = {
+			meta_effect = {
+				text = {
+					if = {
+						limit = {
+							var:scripted_decision_entry = {
+								check_variable = {
+									decision_status = global.scripted_decision_has_removed
+								}
+							}
+						}
+						custom_effect_tooltip = {
+							localization_key = TIMED_DECISION_COMPLETED
+						}
+					}
+					else_if = {
+						limit = {
+							var:scripted_decision_entry = {
+								check_variable = {
+									decision_status = global.scripted_mission_is_failed
+								}
+							}
+						}
+						custom_effect_tooltip = {
+							localization_key = TIMED_DECISION_FAILED
+						}
+					}
+					else_if = {
+						limit = {
+							var:scripted_decision_entry = {
+								OR = {
+									check_variable = {
+										decision_status = global.scripted_decision_is_removing
+									}
+									AND = {
+										NOT = {
+											scripted_decision_selectable_trigger = yes
+										}
+										OR = {
+											check_variable = {
+												decision_status = global.scripted_mission_is_active
+											}
+											check_variable = {
+												decision_status = global.scripted_decision_default_status
+											}
+										}
+									}
+								}
+							}
+						}
+						custom_effect_tooltip = {
+							localization_key = get_scripted_decision_timer_cost_tech_key
+							COST = ""
+							TIMER = scripted_decision_timer_text_loc_ket
+						}
+					}
+					else_if = {
+						limit = {
+							scripted_decision_cost_trigger = yes
+						}
+						custom_effect_tooltip = {
+							localization_key = get_scripted_decision_timer_cost_tech_key
+							COST = [t_cost]
+							TIMER = scripted_decision_timer_text_loc_ket
+						}
+					}
+					else = {
+						custom_effect_tooltip = {
+							localization_key = get_scripted_decision_timer_cost_tech_key
+							COST = [t_cost]_blocked
+							TIMER = scripted_decision_timer_text_loc_ket
+						}
+					}
+				}
+				t_cost = "[?scripted_decision_entry:custom_cost_text.GetName]"
+			}
+		}
+	}
+	
+	get_scripted_decision_cost_tooltip_with_prefix ={ ##由于名前加了空格，因此用这种形式来获取名字
+		allow = {
+			always = no
+		}
+		on_research_complete_limit = {
+			always = yes
+		}
+		on_research_complete = {
+			
+			meta_effect = {
+				text = {
+					custom_effect_tooltip = {
+						localization_key = [t_cost]_tooltip
+					}
+				}
+				t_cost = "[?scripted_decision_entry:custom_cost_text.GetName]"
+			}
+		}
+	}
+	get_scripted_decision_days_remove_tooltip_with_prefix = {
+		allow = {
+			always = no
+		}
+		on_research_complete_limit = {
+			always = yes
+		}
+		on_research_complete = {
+			meta_effect = {
+				text = {
+					if = {
+						limit = {
+							var:scripted_decision_entry = {
+								check_variable = {
+									decision_status = global.scripted_decision_is_removing
+								}
+							}
+						}
+						custom_effect_tooltip = {
+							localization_key = DECISION_ACTIVE_FOR_AMOUNT_DAYS
+							AMOUNT = [t_days_left]
+						}
+					}
+					else = {
+						custom_effect_tooltip = {
+							localization_key = DECISION_ACTIVE_FOR_AMOUNT_DAYS
+							AMOUNT = [t_days]
+						}
+					}
+				}
+				t_days = "[?scripted_decision_entry:days_remove]"
+				t_days_left = "[?scripted_decision_entry:days_remove_left]"
+			}
+			#
+		}
+	}
+	
+	get_scripted_decision_timeout_effect_prefix ={
+		allow = {
+			always = no
+		}
+		on_research_complete_limit = {
+			always = yes
+		}
+		on_research_complete = {
+			meta_effect = {
+				text = {
+					if = {
+						limit = {
+							var:scripted_decision_entry = {
+								scripted_decision_is_mission = yes
+								selectable_mission = yes
+							}
+						}
+						custom_effect_tooltip = {
+							localization_key = TIMED_DECISION_TIMEOUT_EFFECT_HEADER_SELECTABLE
+							TIMEOUT = [t_days]
+						}
+					}
+					else_if = {
+						limit = {
+							var:scripted_decision_entry = {
+								scripted_decision_is_mission = yes
+								is_good = yes
+							}
+						}
+						custom_effect_tooltip = {
+							localization_key = TIMED_DECISION_TIMEOUT_EFFECT_HEADER_GOOD
+							TIMEOUT = [t_days]
+						}
+					}
+					else_if = {
+						limit = {
+							var:scripted_decision_entry = {
+								scripted_decision_is_mission = yes
+								NOT = {
+									is_good = yes
+								}
+							}
+						}
+						custom_effect_tooltip = {
+							localization_key = TIMED_DECISION_TIMEOUT_EFFECT_HEADER_BAD
+							TIMEOUT = [t_days]
+						}
+					}
+				}
+				t_days = "[?scripted_decision_entry:days_mission_timeout]"
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+faction_member_upgrade_manpower_group = { #共享组。这里以原版的人力贡献为例。
+	name = FACTION_MANPOWER_CONTRIBUTION #共享组名字
+	desc = FACTION_MANPOWER_CONTRIBUTION_VALUE_DESC #共享组描述
+	
+	default_upgrade = manpower_contribution_full_enable #默认升级。在这里虽然显得是满贡献，但实际上是没有贡献。
+
+    upgrade_type = faction_member_upgrade_manpower #升级类型。这里是人力贡献。
+
+    upgrades = { #等级列表，对应原版人力池的四个等级
+		manpower_contribution_full_enable
+		faction_manpower_sharing1
+		faction_manpower_sharing2
+		faction_manpower_sharing3
+	}
+
+	icon = GFX_manpower_contribution #共享组图标
+}
+#其他内容参见member_upgrades.txt
+#这方面暂时没有更多内容被研究出来。

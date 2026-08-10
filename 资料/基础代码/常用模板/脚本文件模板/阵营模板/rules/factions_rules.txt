@@ -1,0 +1,17 @@
+#参见rule_groups.txt
+rules1 = { #规则的名字
+	type = some_rules #规则类型
+	trigger = { #什么条件下可以选择这个规则（无论是否是阵营领袖）
+		is_faction_leader = yes
+	}
+	ai_will_do = { #AI倾向
+		base = 0
+		modifier = { 
+			add = 2
+		}
+	}
+	modifier = {
+		political_power_factor = -0.1
+	}
+}
+#.....

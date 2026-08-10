@@ -1,0 +1,14 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			# Setup up a player array  #定义一个作用域
+			every_country = {
+				limit = { is_ai = no }
+				add_to_array = { # It will automatically add the scope
+					array = global.players
+				}
+			}
+		}
+	}
+}
+

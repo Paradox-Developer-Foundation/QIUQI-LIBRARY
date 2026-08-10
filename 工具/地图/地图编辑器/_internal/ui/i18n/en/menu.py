@@ -1,0 +1,48 @@
+"""
+menu — en 翻译
+
+本文件由 tools/migrate_i18n.py 生成。后续手动维护。
+"""
+
+STRINGS: dict[str, str] = {
+    "action_about": "About",
+    "action_exit": "Exit",
+    "action_export_mod": "Export MOD",
+    "action_generate_heightmap": "Generate Heightmap",
+    "action_generate_provinces": "Generate Provinces",
+    "action_guide": "Getting Started Guide",
+    "action_import_image": "Import Reference Image",
+    "action_import_landmask": "Extract Land/Sea from Image...",
+    "action_import_mod_map": "Import MOD Map...",
+    "action_language": "Language / 语言",
+    "action_load_vanilla_ref": "Load Vanilla Map Reference",
+    "action_new": "New Project",
+    "action_open": "Open Project",
+    "action_paths": "Path Settings",
+    "action_redo": "Redo",
+    "action_reset_hints": "Reset Mode Hints",
+    "action_save": "Save Project",
+    "action_shortcut_settings": "Shortcut Settings...",
+    "action_show_grid": "Show Grid",
+    "action_show_ref": "Show Reference Image",
+    "action_show_country_state_overlay": "Show Country / State",
+    "action_show_country_state_overlay_tip": "Semi-transparent country fill + white state borders, keeps the current view (terrain / height / provinces / ...) unchanged",
+    "action_show_terrain_underlay": "Terrain Underlay (Country / State)",
+    "action_show_terrain_underlay_tip": "Show colored heightmap under the country/state fill so coastlines and mountains stay visible while drawing borders",
+    "action_terrain_underlay_opacity": "Opacity",
+    "action_terrain_underlay_src_height": "  └─ Source: Heightmap (color)",
+    "action_terrain_underlay_src_terrain": "  └─ Source: Provincial Terrain (gameplay)",
+    "action_test_export": "Test Export (Minimal MOD)",
+    "action_undo": "Undo",
+    "action_validate": "Validate Provinces",
+    "action_zoom_fit": "Fit to Window",
+    "action_zoom_in": "Zoom In",
+    "action_zoom_out": "Zoom Out",
+    "app_title": "HOI4 Fantasy World MOD Maker",
+    "menu_edit": "&Edit",
+    "menu_file": "&File",
+    "menu_help": "&Help",
+    "menu_settings": "&Settings",
+    "menu_tools": "&Tools",
+    "menu_view": "&View",
+}

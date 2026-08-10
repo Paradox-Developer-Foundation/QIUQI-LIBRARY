@@ -1,0 +1,123 @@
+guiTypes = {
+
+	containerWindowType = {
+		name = "CM_SE_main_container"
+		orientation = center
+		Origo = center
+		size = { width = 500 height = 500 }
+		position = { x = 0  y= 0 }  
+		moveable = yes 	
+		
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_window_transparent"
+			 # 需要一个实心背景以便拖动窗口	
+		}	
+		
+		iconType = {
+			name = "CM_SE_bg"
+			spriteType = "GFX_CM_SE_bg"
+			position = { x = 0 y = 0 }
+			Orientation = upper_left
+			alwaystransparent = yes
+			# 背景纹理，使其可被点击穿透
+			
+		}
+		
+		iconType = {
+			name = "CM_SE_picture_positioning_entry"
+			spriteType = "GFX_CM_SE_pic_entry"
+			position = { x = 20  y = 21 }
+			Orientation = upper_left
+			alwaystransparent = yes 
+			# 自定义图片的入口，由脚本化图形用户界面和脚本化本地化定义
+		}
+		  	
+		iconType = {
+			name = "CM_SE_frame_overlay"
+			spriteType = "GFX_CM_SE_frame_overlay"
+			position = { x = 0 y = 0 }
+			Orientation = upper_left
+			alwaystransparent = yes
+			# 顶部覆盖纹理
+		}
+		buttonType = {
+			name = "CM_SE_exit_btn"
+			position = { x = 54  y = 446 }
+			spriteType = "GFX_CM_SE_exit_btn"
+			orientation = upper_left
+			scale = 1.1 
+			# 位置 = { x = 103  y = 444 }
+            # 按钮文本 = "CM_SE_btn"
+            # 按钮字体 = "hoi_20bs"
+            # 选项按钮
+		}
+		instantTextboxType = {
+			name = "CM_SE_btn" 
+			position = { x = 0 y = 454  }
+			font = "hoi_20bs"
+			text = "CM_SE_btn"		
+			maxWidth = 500
+			maxHeight = 30
+			fixedsize = yes
+			format = center
+			 # 选项文本，与按钮文本分开
+		}
+		instantTextboxType = {
+			name = "CM_SE_title" 
+			position = { x = 0 y = 278 }
+			font = "hoi_30header"
+			text = "CM_SE_title"		
+			maxWidth = 500
+			maxHeight = 80
+			fixedsize = yes
+			format = center
+		}
+		instantTextboxType = {
+			name = "CM_SE_desc_left" 
+			position = { x = 30 y = 342 }
+			font = "hoi_18mbs"        
+			text = "CM_SE_desc"		
+			maxWidth = 440 
+			maxHeight = 88
+			format = left
+			fixedsize = yes
+			 # 左对齐文本框
+		} 
+		instantTextboxType = {
+			name = "CM_SE_desc_center" 
+			position = { x = 30 y = 342 }
+			font = "hoi_18mbs"        
+			text = "CM_SE_desc"		
+			maxWidth = 440 
+			maxHeight = 88
+			format = center  
+			fixedsize = yes
+			 # 居中对齐文本框，用于歌词或诗歌
+		}
+		instantTextboxType = {
+			name = "CM_SE_quote" 
+			position = { x = 50  y = 420 }
+			font = "hoi_16mbs"
+			text = "CM_SE_quote"		
+			maxWidth = 400
+			maxHeight = 30
+			format = center
+			fixedsize = yes
+			  # 上一条引用内容的出处，可选
+		}
+		instantTextboxType = { 
+			name = "CM_SE_quote_extra" 
+			position = { x = 50  y = 420 }
+			font = "hoi_16mbs"
+			text = "CM_SE_quote"		
+			maxWidth = 400
+			maxHeight = 30
+			format = center
+			fixedsize = yes
+			 # 强调上一条文本，否则由于字体太小，在游戏中可能会看起来有点模糊
+		}
+	}
+	
+	
+}

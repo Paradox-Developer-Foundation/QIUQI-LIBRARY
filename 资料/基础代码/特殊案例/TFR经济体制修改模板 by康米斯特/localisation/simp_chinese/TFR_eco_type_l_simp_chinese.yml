@@ -1,0 +1,5 @@
+﻿l_simp_chinese:
+ change_economy_type_hajimi_tt: "我们的§Y经济制度§!变为§R哈基米经济模式§!"
+ ZZZ_hajimi_economy: "§R哈基米经济模式§!!"
+ ZZZ_HAJIMI_ECONOMY_TT: "§R哈基米经济模式§!"
+ ZZZ_HAJIMI_ECONOMY_TT_LONG: "§R哈基米经济模式是哈基米经济模式,是LRD的康米斯特提出的哈基米经济模式§!\n\n\n\n\n£GFX_ZZZ_mixed_economy_banner\n\n\n\n\n\n £consumer_goods_texticon 生活消费品产出修正：§Y-2.5%§!\n £efficiency_base_texticon 基础生产效率：§G+2.0%§!"

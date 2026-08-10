@@ -1,0 +1,3 @@
+感谢KR制作组的工作，本模板仅从原mod中分离出开局欢迎窗口并稍作修改（增加了title、修改了一些localisation key和文件名以便于理解）
+如果你要更改KR标志，修改替换gfx/interface/logo.png和gfx/splash/splash.png即可。
+在welcome_l_english.yml中进行本地化。

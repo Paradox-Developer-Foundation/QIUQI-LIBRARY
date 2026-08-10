@@ -1,0 +1,7101 @@
+#Diplomacy
+enable_wargoal_justification = {
+	custom_effect_tooltip = enable_wargoal_justification_tt
+	hidden_effect = {
+		set_country_flag = tfr_wargoal_justification_enabled
+	}
+}
+
+disable_wargoal_justification = {
+	custom_effect_tooltip = disable_wargoal_justification_tt
+	hidden_effect = {
+		clr_country_flag = tfr_wargoal_justification_enabled
+	}
+}
+
+enable_guarantee = {
+	custom_effect_tooltip = enable_guarantee_tt
+	hidden_effect = {
+		set_country_flag = tfr_guarantee_enabled
+	}
+}
+
+disable_guarantee = {
+	custom_effect_tooltip = disable_guarantee_tt
+	hidden_effect = {
+		clr_country_flag = tfr_guarantee_enabled
+	}
+}
+
+#Politics
+vacate_political_ministers = {
+	custom_effect_tooltip = vacate_political_ministers_tooltip
+	hidden_effect = {
+		add_ideas = {
+			vacant_for
+			vacant_eco
+			vacant_sec
+		}
+	}
+}
+
+#States
+increase_state_category = {
+	if = {
+		limit = {
+			OR = {
+				has_state_category = wasteland
+				has_state_category = enclave
+				has_state_category = tiny_island
+			}
+		}
+		set_state_category = pastoral
+	}
+	else_if = {
+		limit = {
+			has_state_category = pastoral
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = rural
+	}
+	else_if = {
+		limit = {
+			has_state_category = rural
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = village
+	}
+	else_if = {
+		limit = {
+			has_state_category = village
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = town
+	}
+	else_if = {
+		limit = {
+			has_state_category = town
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = large_town
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_town
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = suburb
+	}
+	else_if = {
+		limit = {
+			has_state_category = suburb
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = large_suburb
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_suburb
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = city
+	}
+	else_if = {
+		limit = {
+			has_state_category = city
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = large_city
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_city
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = metropolis
+	}
+	else_if = {
+		limit = {
+			has_state_category = metropolis
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = conurbation
+	}
+	else_if = {
+		limit = {
+			has_state_category = conurbation
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = megalopolis
+	}
+	else = {
+		add_extra_state_shared_building_slots = 1
+	}
+	custom_effect_tooltip = increase_state_category_by_one_level_tt
+}
+
+#Development
+increase_industry = {
+	if = {
+		limit = {
+			has_idea = higher_industry
+		}
+		swap_ideas = {
+			remove_idea = higher_industry
+			add_idea = highest_industry
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_industry
+		}
+		swap_ideas = {
+			remove_idea = high_industry
+			add_idea = higher_industry
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_industry
+		}
+		swap_ideas = {
+			remove_idea = medium_industry
+			add_idea = high_industry
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_industry
+		}
+		swap_ideas = {
+			remove_idea = low_industry
+			add_idea = medium_industry
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_industry
+		}
+		swap_ideas = {
+			remove_idea = lower_industry
+			add_idea = low_industry
+		}
+	}
+}
+
+decrease_industry = {
+	if = {
+		limit = {
+			has_idea = low_industry
+		}
+		swap_ideas = {
+			remove_idea = low_industry
+			add_idea = lower_industry
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_industry
+		}
+		swap_ideas = {
+			remove_idea = medium_industry
+			add_idea = low_industry
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_industry
+		}
+		swap_ideas = {
+			remove_idea = high_industry
+			add_idea = medium_industry
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_industry
+		}
+		swap_ideas = {
+			remove_idea = higher_industry
+			add_idea = high_industry
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = highest_industry
+		}
+		swap_ideas = {
+			remove_idea = highest_industry
+			add_idea = higher_industry
+		}
+	}
+}
+
+increase_society = {
+	if = {
+		limit = {
+			has_idea = higher_society
+		}
+		swap_ideas = {
+			remove_idea = higher_society
+			add_idea = highest_society
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_society
+		}
+		swap_ideas = {
+			remove_idea = high_society
+			add_idea = higher_society
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_society
+		}
+		swap_ideas = {
+			remove_idea = medium_society
+			add_idea = high_society
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_society
+		}
+		swap_ideas = {
+			remove_idea = low_society
+			add_idea = medium_society
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_society
+		}
+		swap_ideas = {
+			remove_idea = lower_society
+			add_idea = low_society
+		}
+	}
+}
+
+decrease_society = {
+	if = {
+		limit = {
+			has_idea = low_society
+		}
+		swap_ideas = {
+			remove_idea = low_society
+			add_idea = lower_society
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_society
+		}
+		swap_ideas = {
+			remove_idea = medium_society
+			add_idea = low_society
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_society
+		}
+		swap_ideas = {
+			remove_idea = high_society
+			add_idea = medium_society
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_society
+		}
+		swap_ideas = {
+			remove_idea = higher_society
+			add_idea = high_society
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = highest_society
+		}
+		swap_ideas = {
+			remove_idea = highest_society
+			add_idea = higher_society
+		}
+	}
+}
+
+increase_academic = {
+	if = {
+		limit = {
+			has_idea = higher_academic
+		}
+		swap_ideas = {
+			remove_idea = higher_academic
+			add_idea = highest_academic
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_academic
+		}
+		swap_ideas = {
+			remove_idea = high_academic
+			add_idea = higher_academic
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_academic
+		}
+		swap_ideas = {
+			remove_idea = medium_academic
+			add_idea = high_academic
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_academic
+		}
+		swap_ideas = {
+			remove_idea = low_academic
+			add_idea = medium_academic
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_academic
+		}
+		swap_ideas = {
+			remove_idea = lower_academic
+			add_idea = low_academic
+		}
+	}
+}
+
+decrease_academic = {
+	if = {
+		limit = {
+			has_idea = low_academic
+		}
+		swap_ideas = {
+			remove_idea = low_academic
+			add_idea = lower_academic
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_academic
+		}
+		swap_ideas = {
+			remove_idea = medium_academic
+			add_idea = low_academic
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_academic
+		}
+		swap_ideas = {
+			remove_idea = high_academic
+			add_idea = medium_academic
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_academic
+		}
+		swap_ideas = {
+			remove_idea = higher_academic
+			add_idea = high_academic
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = highest_academic
+		}
+		swap_ideas = {
+			remove_idea = highest_academic
+			add_idea = higher_academic
+		}
+	}
+}
+
+increase_poverty = {
+	if = {
+		limit = {
+			has_idea = higher_poverty
+		}
+		swap_ideas = {
+			remove_idea = higher_poverty
+			add_idea = highest_poverty
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_poverty
+		}
+		swap_ideas = {
+			remove_idea = high_poverty
+			add_idea = higher_poverty
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_poverty
+		}
+		swap_ideas = {
+			remove_idea = medium_poverty
+			add_idea = high_poverty
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_poverty
+		}
+		swap_ideas = {
+			remove_idea = low_poverty
+			add_idea = medium_poverty
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_poverty
+		}
+		swap_ideas = {
+			remove_idea = lower_poverty
+			add_idea = low_poverty
+		}
+	}
+}
+
+decrease_poverty = {
+	if = {
+		limit = {
+			has_idea = low_poverty
+		}
+		swap_ideas = {
+			remove_idea = low_poverty
+			add_idea = lower_poverty
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_poverty
+		}
+		swap_ideas = {
+			remove_idea = medium_poverty
+			add_idea = low_poverty
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_poverty
+		}
+		swap_ideas = {
+			remove_idea = high_poverty
+			add_idea = medium_poverty
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_poverty
+		}
+		swap_ideas = {
+			remove_idea = higher_poverty
+			add_idea = high_poverty
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = highest_poverty
+		}
+		swap_ideas = {
+			remove_idea = highest_poverty
+			add_idea = higher_poverty
+		}
+	}
+}
+
+increase_farming = {
+	if = {
+		limit = {
+			has_idea = higher_farming
+		}
+		swap_ideas = {
+			remove_idea = higher_farming
+			add_idea = highest_farming
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_farming
+		}
+		swap_ideas = {
+			remove_idea = high_farming
+			add_idea = higher_farming
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_farming
+		}
+		swap_ideas = {
+			remove_idea = medium_farming
+			add_idea = high_farming
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_farming
+		}
+		swap_ideas = {
+			remove_idea = low_farming
+			add_idea = medium_farming
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_farming
+		}
+		swap_ideas = {
+			remove_idea = lower_farming
+			add_idea = low_farming
+		}
+	}
+}
+
+decrease_farming = {
+	if = {
+		limit = {
+			has_idea = low_farming
+		}
+		swap_ideas = {
+			remove_idea = low_farming
+			add_idea = lower_farming
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_farming
+		}
+		swap_ideas = {
+			remove_idea = medium_farming
+			add_idea = low_farming
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_farming
+		}
+		swap_ideas = {
+			remove_idea = high_farming
+			add_idea = medium_farming
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_farming
+		}
+		swap_ideas = {
+			remove_idea = higher_farming
+			add_idea = high_farming
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = highest_farming
+		}
+		swap_ideas = {
+			remove_idea = highest_farming
+			add_idea = higher_farming
+		}
+	}
+}
+
+increase_military = {
+	if = {
+		limit = {
+			has_idea = higher_military
+		}
+		swap_ideas = {
+			remove_idea = higher_military
+			add_idea = highest_military
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_military
+		}
+		swap_ideas = {
+			remove_idea = high_military
+			add_idea = higher_military
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_military
+		}
+		swap_ideas = {
+			remove_idea = medium_military
+			add_idea = high_military
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_military
+		}
+		swap_ideas = {
+			remove_idea = low_military
+			add_idea = medium_military
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_military
+		}
+		swap_ideas = {
+			remove_idea = lower_military
+			add_idea = low_military
+		}
+	}
+}
+
+decrease_military = {
+	if = {
+		limit = {
+			has_idea = low_military
+		}
+		swap_ideas = {
+			remove_idea = low_military
+			add_idea = lower_military
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_military
+		}
+		swap_ideas = {
+			remove_idea = medium_military
+			add_idea = low_military
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_military
+		}
+		swap_ideas = {
+			remove_idea = high_military
+			add_idea = medium_military
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_military
+		}
+		swap_ideas = {
+			remove_idea = higher_military
+			add_idea = high_military
+		}
+	}	
+	else_if = {
+		limit = {
+			has_idea = highest_military
+		}
+		swap_ideas = {
+			remove_idea = highest_military
+			add_idea = higher_military
+		}
+	}
+}
+
+add_academic_development = {
+	custom_effect_tooltip = add_academic_development_tooltip
+	add_to_variable = {
+		var = academic_development_var
+		value = academic_development_var_temp
+	}
+	check_academic_development = yes
+}
+
+check_academic_development = {
+	if = {
+		limit = {
+			check_variable = {
+				var = academic_development_var
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.1
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.3
+			}
+		}
+		increase_academic = yes
+		add_to_variable = {
+			var = academic_development_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = academic_development_var
+				value = -1
+				compare = less_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.2
+			}
+		}
+		decrease_academic = yes
+		add_to_variable = {
+			var = academic_development_var
+			value = 1
+		}
+	}
+	clamp_variable = {
+		var = academic_development_var
+		min = -1
+		max = 1
+	}
+}
+
+add_farming_development = {
+	custom_effect_tooltip = add_farming_development_tooltip
+	add_to_variable = {
+		var = farming_development_var
+		value = farming_development_var_temp
+	}
+	check_farming_development = yes
+}
+
+check_farming_development = {
+	if = {
+		limit = {
+			check_variable = {
+				var = farming_development_var
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.4
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.6
+			}
+		}
+		increase_farming = yes
+		add_to_variable = {
+			var = farming_development_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = farming_development_var
+				value = -1
+				compare = less_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.5
+			}
+		}
+		decrease_farming = yes
+		add_to_variable = {
+			var = farming_development_var
+			value = 1
+		}
+	}
+	clamp_variable = {
+		var = farming_development_var
+		min = -1
+		max = 1
+	}
+}
+
+add_poverty_development = {
+	custom_effect_tooltip = add_poverty_development_tooltip
+	add_to_variable = {
+		var = poverty_development_var
+		value = poverty_development_var_temp
+	}
+	check_poverty_development = yes
+}
+
+check_poverty_development = {
+	if = {
+		limit = {
+			check_variable = {
+				var = poverty_development_var
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.7
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.9
+			}
+		}
+		increase_poverty = yes
+		add_to_variable = {
+			var = poverty_development_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = poverty_development_var
+				value = -1
+				compare = less_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.8
+			}
+		}
+		decrease_poverty = yes
+		add_to_variable = {
+			var = poverty_development_var
+			value = 1
+		}
+	}
+	clamp_variable = {
+		var = poverty_development_var
+		min = -1
+		max = 1
+	}
+}
+
+add_industrial_development = {
+	custom_effect_tooltip = add_industrial_development_tooltip
+	add_to_variable = {
+		var = industrial_development_var
+		value = industrial_development_var_temp
+	}
+	check_industrial_development = yes
+}
+
+check_industrial_development = {
+	if = {
+		limit = {
+			check_variable = {
+				var = industrial_development_var
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.10
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.12
+			}
+		}
+		increase_industry = yes
+		add_to_variable = {
+			var = industrial_development_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = industrial_development_var
+				value = -1
+				compare = less_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.11
+			}
+		}
+		decrease_industry = yes
+		add_to_variable = {
+			var = industrial_development_var
+			value = 1
+		}
+	}
+	clamp_variable = {
+		var = industrial_development_var
+		min = -1
+		max = 1
+	}
+}
+
+add_military_development = {
+	custom_effect_tooltip = add_military_development_tooltip
+	add_to_variable = {
+		var = military_development_var
+		value = military_development_var_temp
+	}
+	check_military_development = yes
+}
+
+check_military_development = {
+	if = {
+		limit = {
+			check_variable = {
+				var = military_development_var
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.13
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.15
+			}
+		}
+		increase_military = yes
+		add_to_variable = {
+			var = military_development_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = military_development_var
+				value = -1
+				compare = less_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.14
+			}
+		}
+		decrease_military = yes
+		add_to_variable = {
+			var = military_development_var
+			value = 1
+		}
+	}
+	clamp_variable = {
+		var = military_development_var
+		min = -1
+		max = 1
+	}
+}
+
+add_society_development = {
+	custom_effect_tooltip = add_society_development_tooltip
+	add_to_variable = {
+		var = society_development_var
+		value = society_development_var_temp
+	}
+	check_society_development = yes
+}
+
+check_society_development = {
+	if = {
+		limit = {
+			check_variable = {
+				var = society_development_var
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.16
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.18
+			}
+		}
+		increase_society = yes
+		add_to_variable = {
+			var = society_development_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = society_development_var
+				value = -1
+				compare = less_than_or_equals
+			}
+		}
+		ROOT = {
+			country_event = {
+				id = generic.17
+			}
+		}
+		decrease_society = yes
+		add_to_variable = {
+			var = society_development_var
+			value = 1
+		}
+	}
+	clamp_variable = {
+		var = society_development_var
+		min = -1
+		max = 1
+	}
+}
+
+update_development = {
+	add_to_variable = {
+		var = academic_development_var
+		value = modifier@academic_development_monthly
+	}
+	check_academic_development = yes
+	add_to_variable = {
+		var = farming_development_var
+		value = modifier@farming_development_monthly
+	}
+	check_farming_development = yes
+	add_to_variable = {
+		var = poverty_development_var
+		value = modifier@poverty_development_monthly
+	}
+	check_poverty_development = yes
+	add_to_variable = {
+		var = industrial_development_var
+		value = modifier@industrial_development_monthly
+	}
+	check_industrial_development = yes
+	add_to_variable = {
+		var = military_development_var
+		value = modifier@military_development_monthly
+	}
+	check_military_development = yes
+	add_to_variable = {
+		var = society_development_var
+		value = modifier@society_development_monthly
+	}
+	check_society_development = yes
+}
+
+#Economics
+add_GDP = {
+	clear_variable = resourceincome
+	clear_variable = resourceexpenses
+	clear_variable = expenses_total_var
+	clear_variable = income_total_var	#Monthly Income
+	set_variable = {
+		income_total_var = 0
+	}
+	set_variable = {
+		var = gdp_previous_var
+		value = gdp_var
+	}
+	set_variable = {
+		var = gdp_var
+		value = 0
+	}
+	#Taxes
+	#Office Parks
+	set_variable = {
+		var = ROOT.office_park_total_var
+		value = 0
+	}
+	every_controlled_state = {
+		add_to_variable = {
+			var = ROOT.office_park_total_var
+			value = building_level@office_park
+		}
+	}
+	set_variable = {
+		var = office_park_value_var
+		value = ROOT.office_park_total_var
+	}
+	multiply_variable = {
+		var = office_park_value_var
+		value = modifier@business_value
+	}
+	multiply_variable = {
+		var = office_park_value_var
+		value = 1.2
+	}
+	set_variable = {
+		var = office_park_value_factor
+		value = office_park_value_var
+	}
+	multiply_variable = {
+		var = office_park_value_factor
+		value = modifier@business_value_factor
+	}
+	add_to_variable = {
+		var = office_park_value_var
+		value = office_park_value_factor
+	}
+	#Civilian Factories
+	set_variable = {
+		var = business_value_var
+		value = num_of_civilian_factories
+	}
+	multiply_variable = {
+		var = business_value_var
+		value = modifier@business_value
+	}
+	set_variable = {
+		var = business_value_factor_var
+		value = business_value_var
+	}
+	multiply_variable = {
+		var = business_value_factor_var
+		value = modifier@business_value_factor
+	}
+	add_to_variable = {
+		var = business_value_var
+		value = business_value_factor_var
+	}
+	add_to_variable = {
+		var = business_value_var
+		value = office_park_value_var
+	}
+	divide_variable = {
+		var = business_value_var
+		value = 12
+	}
+	add_to_variable = {
+		var = gdp_var
+		value = business_value_var
+	}
+	set_variable = {
+		var = business_tax_rate_var
+		value = modifier@tax_business_rate
+	}
+	set_variable = {
+		var = business_tax_rate_factor_var
+		value = business_tax_rate_var
+	}
+	multiply_variable = {
+		var = business_tax_rate_factor_var
+		value = modifier@tax_business_rate_factor
+	}
+	add_to_variable = {
+		var = business_tax_rate_var
+		value = business_tax_rate_factor_var
+	}
+	set_variable = {
+		var = business_tax_var
+		value = business_value_var
+	}
+	multiply_variable = {
+		var = business_tax_var
+		value = business_tax_rate_var
+	}
+	#Personal Income Per 100k
+	set_variable = {
+		var = personal_value_var
+		value = max_manpower_k
+	}
+	multiply_variable = {
+		var = personal_value_var
+		value = 0.01		#Turns 1k to 100k
+	}
+	multiply_variable = {
+		var = personal_value_var
+		value = modifier@personal_value
+	}
+	set_variable = {
+		var = personal_value_factor_var
+		value = personal_value_var
+	}
+	multiply_variable = {
+		var = personal_value_factor_var
+		value = modifier@personal_value_factor
+	}
+	add_to_variable = {
+		var = personal_value_var
+		value = personal_value_factor_var
+	}
+	divide_variable = {
+		var = personal_value_var
+		value = 12
+	}
+	add_to_variable = {
+		var = gdp_var
+		value = personal_value_var
+	}
+	set_variable = {
+		var = personal_tax_rate_var
+		value = modifier@tax_personal_rate
+	}
+	set_variable = {
+		var = personal_tax_rate_factor_var
+		value = personal_tax_rate_var
+	}
+	multiply_variable = {
+		var = personal_tax_rate_factor_var
+		value = modifier@tax_personal_rate_factor
+	}
+	add_to_variable = {
+		var = personal_tax_rate_var
+		value = personal_tax_rate_factor_var
+	}
+	set_variable = {
+		var = personal_tax_var
+		value = personal_value_var
+	}
+	multiply_variable = {
+		var = personal_tax_var
+		value = personal_tax_rate_var
+	}
+	set_variable = {
+		var = total_tax_var
+		value = business_tax_var
+	}
+	add_to_variable = {
+		var = total_tax_var
+		value = personal_tax_var
+	}
+	#Exports
+	multiply_variable = {
+		var = chromium_export
+		value = 0.1
+	}
+	set_variable = {
+		tungsten_export = resource_exported@tungsten
+	}
+	multiply_variable = {
+		var = tungsten_export
+		value = 0.1
+	}
+	set_variable = {
+		rubber_export = resource_exported@rubber
+	}
+	multiply_variable = {
+		var = rubber_export
+		value = 0.1
+	}
+	set_variable = {
+		aluminum_export = resource_exported@aluminum
+	}
+	multiply_variable = {
+		var = aluminum_export
+		value = 0.1
+	}
+	set_variable = {
+		oil_export = resource_exported@oil
+	}
+	multiply_variable = {
+		var = oil_export
+		value = 0.1
+	}
+	set_variable = {
+		steel_export = resource_exported@steel
+	}
+	multiply_variable = {
+		var = steel_export
+		value = 0.1
+	}
+	#Imports
+	set_variable = {
+		chromium_import = resource_imported@chromium
+	}
+	multiply_variable = {
+		var = chromium_import
+		value = 0.1
+	}
+	set_variable = {
+		tungsten_import = resource_imported@tungsten
+	}
+	multiply_variable = {
+		var = tungsten_import
+		value = 0.1
+	}
+	set_variable = {
+		rubber_import = resource_imported@rubber
+	}
+	multiply_variable = {
+		var = rubber_import
+		value = 0.1
+	}
+	set_variable = {
+		aluminum_import = resource_imported@aluminum
+	}
+	multiply_variable = {
+		var = aluminum_import
+		value = 0.1
+	}
+	set_variable = {
+		oil_import = resource_imported@oil
+	}
+	multiply_variable = {
+		var = oil_import
+		value = 0.1
+	}
+	set_variable = {
+		steel_import = resource_imported@steel
+	}
+	multiply_variable = {
+		var = steel_import
+		value = 0.1
+	}
+	set_variable = {
+		chromium_export = resource_exported@chromium
+	}
+	set_variable = {
+		expenses_total_var = 0
+	}
+	set_variable = {
+		resourceexpenses = 0
+	}
+	set_variable = {
+		resourceincome = 0
+	}
+	add_to_variable = {
+		var = resourceincome
+		value = rubber_export
+	}
+	add_to_variable = {
+		var = resourceincome
+		value = chromium_export
+	}
+	add_to_variable = {
+		var = resourceincome
+		value = tungsten_export
+	}
+	add_to_variable = {
+		var = resourceincome
+		value = steel_export
+	}
+	add_to_variable = {
+		var = resourceincome
+		value = oil_export
+	}
+	add_to_variable = {
+		var = resourceincome
+		value = aluminum_export
+	}
+	divide_variable = {
+		var = resourceincome
+		value = 12
+	}
+	add_to_variable = {
+		var = gdp_var
+		value = resourceincome
+	}
+	#Expenses
+	set_variable = {
+		var = military_factory_upkeep_var
+		value = num_of_military_factories
+	}
+	multiply_variable = {
+		var = military_factory_upkeep_var
+		value = modifier@military_factory_upkeep
+	}
+	set_variable = {
+		var = military_factory_upkeep_factor_var
+		value = military_factory_upkeep_var
+	}
+	multiply_variable = {
+		var = military_factory_upkeep_factor_var
+		value = modifier@military_factory_upkeep_factor
+	}
+	add_to_variable = {
+		var = military_factory_upkeep_var
+		value = military_factory_upkeep_factor_var
+	}
+	divide_variable = {
+		var = military_factory_upkeep_var
+		value = 12
+	}
+	set_variable = {
+		var = dockyard_upkeep_var
+		value = num_of_naval_factories
+	}
+	multiply_variable = {
+		var = dockyard_upkeep_var
+		value = modifier@military_factory_upkeep
+	}
+	set_variable = {
+		var = dockyard_upkeep_factor_var
+		value = dockyard_upkeep_var
+	}
+	multiply_variable = {
+		var = dockyard_upkeep_factor_var
+		value = modifier@dockyard_upkeep_factor
+	}
+	add_to_variable = {
+		var = dockyard_upkeep_var
+		value = dockyard_upkeep_factor_var
+	}
+	divide_variable = {
+		var = dockyard_upkeep_var
+		value = 12
+	}
+	#Battalion Upkeep
+	set_variable = {
+		var = battalion_upkeep_var
+		value = 0
+	}
+	set_variable = {
+		var = militia_upkeep_var
+		value = num_battalions_with_type@militia
+	}
+	multiply_variable = {
+		var = militia_upkeep_var
+		value = 0.001
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = militia_upkeep_var
+	}
+	set_variable = {
+		var = cavalry_upkeep_var
+		value = num_battalions_with_type@cavalry
+	}
+	multiply_variable = {
+		var = cavalry_upkeep_var
+		value = 0.002
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = cavalry_upkeep_var
+	}
+	set_variable = {
+		var = mot_militia_upkeep_var
+		value = num_battalions_with_type@mot_militia
+	}
+	multiply_variable = {
+		var = mot_militia_upkeep_var
+		value = 0.004
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = mot_militia_upkeep_var
+	}
+	set_variable = {
+		var = infantry_upkeep_var
+		value = num_battalions_with_type@infantry
+	}
+	multiply_variable = {
+		var = infantry_upkeep_var
+		value = 0.01
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = infantry_upkeep_var
+	}
+	set_variable = {
+		var = marine_upkeep_var
+		value = num_battalions_with_type@marine
+	}
+	multiply_variable = {
+		var = marine_upkeep_var
+		value = 0.03
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = marine_upkeep_var
+	}
+	set_variable = {
+		var = paratrooper_upkeep_var
+		value = num_battalions_with_type@paratrooper
+	}
+	multiply_variable = {
+		var = paratrooper_upkeep_var
+		value = 0.04
+	}
+	add_to_variable = {
+		var = PAP_light_mechanized_upkeep_var
+		value = PAP_light_mechanized_upkeep_var
+	}
+	set_variable = {
+		var = PAP_light_mechanized_upkeep_var
+		value = num_battalions_with_type@PAP_light_mechanized
+	}
+	multiply_variable = {
+		var = PAP_light_mechanized_upkeep_var
+		value = 0.85
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = paratrooper_upkeep_var
+	}
+	set_variable = {
+		var = recce_upkeep_var
+		value = num_battalions_with_type@recce
+	}
+	multiply_variable = {
+		var = recce_upkeep_var
+		value = 0.02
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = recce_upkeep_var
+	}
+	set_variable = {
+		var = special_forces_upkeep_var
+		value = num_battalions_with_type@special_forces
+	}
+	multiply_variable = {
+		var = special_forces_upkeep_var
+		value = 0.05
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = special_forces_upkeep_var
+	}
+	set_variable = {
+		var = motorized_upkeep_var
+		value = num_battalions_with_type@motorized
+	}
+	multiply_variable = {
+		var = motorized_upkeep_var
+		value = 0.08
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = motorized_upkeep_var
+	}
+	set_variable = {
+		var = motorized_exoskeleton_upkeep_var
+		value = num_battalions_with_type@motorized_exoskeleton_unit
+	}
+	multiply_variable = {
+		var = motorized_exoskeleton_upkeep_var
+		value = 0.16
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = motorized_upkeep_var
+	}
+	set_variable = {
+		var = light_armor_upkeep_var
+		value = num_battalions_with_type@light_armor
+	}
+	multiply_variable = {
+		var = light_armor_upkeep_var
+		value = 0.1
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = light_armor_upkeep_var
+	}
+	set_variable = {
+		var = modern_armor_upkeep_var
+		value = num_battalions_with_type@modern_armor
+	}
+	multiply_variable = {
+		var = modern_armor_upkeep_var
+		value = 0.15
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = modern_armor_upkeep_var
+	}
+	set_variable = {
+		var = railway_gun_upkeep_var
+		value = num_battalions_with_type@railway_gun
+	}
+	multiply_variable = {
+		var = railway_gun_upkeep_var
+		value = 2.7
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = railway_gun_upkeep_var
+	}
+	set_variable = {
+		var = modern_sp_artillery_brigade_upkeep_var
+		value = num_battalions_with_type@modern_sp_artillery_brigade
+	}
+	multiply_variable = {
+		var = modern_sp_artillery_brigade_upkeep_var
+		value = 0.1
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = modern_sp_artillery_brigade_upkeep_var
+	}
+	set_variable = {
+		var = spaa_brigade_upkeep_var
+		value = num_battalions_with_type@spaa_brigade
+	}
+	multiply_variable = {
+		var = spaa_brigade_upkeep_var
+		value = 0.08
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = spaa_brigade_upkeep_var
+	}
+	set_variable = {
+		var = amphibious_armor_upkeep_var
+		value = num_battalions_with_type@amphibious_armor
+	}
+	multiply_variable = {
+		var = amphibious_armor_upkeep_var
+		value = 0.12
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = amphibious_armor_upkeep_var
+	}
+	set_variable = {
+		var = amphibious_mechanized_upkeep_var
+		value = num_battalions_with_type@amphibious_mechanized
+	}
+	multiply_variable = {
+		var = amphibious_mechanized_upkeep_var
+		value = 0.09
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = amphibious_mechanized_upkeep_var
+	}
+	set_variable = {
+		var = mechanized_upkeep_var
+		value = num_battalions_with_type@mechanized
+	}
+	multiply_variable = {
+		var = mechanized_upkeep_var
+		value = 0.09
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = mechanized_upkeep_var
+	}
+	set_variable = {
+		var = mechanized_exoskeleton_upkeep_var
+		value = num_battalions_with_type@mechanized_exoskeleton
+	}
+	multiply_variable = {
+		var = mechanized_exoskeleton_upkeep_var
+		value = 0.18
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = mechanized_exoskeleton_upkeep_var
+	}
+	set_variable = {
+		var = light_mechanized_upkeep_var
+		value = num_battalions_with_type@light_mechanized
+	}
+	multiply_variable = {
+		var = light_mechanized_upkeep_var
+		value = 0.08
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = light_mechanized_upkeep_var
+	}
+	set_variable = {
+		var = light_mechanized_exoskeleton_upkeep_var
+		value = num_battalions_with_type@light_mechanized_exoskeleton
+	}
+	multiply_variable = {
+		var = light_mechanized_exoskeleton_upkeep_var
+		value = 0.16
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = light_mechanized_exoskeleton_upkeep_var
+	}
+	set_variable = {
+		var = artillery_brigade_upkeep_var
+		value = num_battalions_with_type@artillery_brigade
+	}
+	multiply_variable = {
+		var = artillery_brigade_upkeep_var
+		value = 0.07
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = artillery_brigade_upkeep_var
+	}
+	set_variable = {
+		var = battalion_multiply_var
+		value = battalion_upkeep_var
+	}
+	multiply_variable = {
+		var = battalion_multiply_var
+		value = modifier@battalion_upkeep_factor
+	}
+	add_to_variable = {
+		var = battalion_upkeep_var
+		value = battalion_multiply_var
+	}
+	divide_variable = {
+		var = battalion_upkeep_var
+		value = 12
+	}
+	set_variable = {
+		var = military_spending_var
+		value = battalion_upkeep_var
+	}
+	#Aircraft Upkeep
+	set_variable = {
+		var = aircraft_upkeep_var
+		value = num_deployed_planes
+	}
+	multiply_variable = {
+		var = aircraft_upkeep_var
+		value = 0.01
+	}
+	set_variable = {
+		var = aircraft_factor_var
+		value = aircraft_upkeep_var
+	}
+	multiply_variable = {
+		var = aircraft_factor_var
+		value = modifier@aircraft_upkeep_factor
+	}
+	add_to_variable = {
+		var = aircraft_upkeep_var
+		value = aircraft_factor_var
+	}
+	divide_variable = {
+		var = aircraft_upkeep_var
+		value = 12
+	}
+	add_to_variable = {
+		var = military_spending_var
+		value = aircraft_upkeep_var
+	}
+	#Ship Upkeep
+	set_variable = {
+		var = ship_upkeep_var
+		value = 0
+	}
+	set_variable = {
+		var = submarine_upkeep_var
+		value = num_ships_with_type@submarine
+	}
+	multiply_variable = {
+		var = submarine_upkeep_var
+		value = 0.1
+	}
+	add_to_variable = {
+		var = ship_upkeep_var
+		value = submarine_upkeep_var
+	}
+	set_variable = {
+		var = destroyer_upkeep_var
+		value = num_ships_with_type@destroyer
+	}
+	multiply_variable = {
+		var = destroyer_upkeep_var
+		value = 0.15
+	}
+	add_to_variable = {
+		var = ship_upkeep_var
+		value = destroyer_upkeep_var
+	}
+	set_variable = {
+		var = battle_cruiser_upkeep_var
+		value = num_ships_with_type@battle_cruiser
+	}
+	multiply_variable = {
+		var = battle_cruiser_upkeep_var
+		value = 0.3
+	}
+	add_to_variable = {
+		var = ship_upkeep_var
+		value = battle_cruiser_upkeep_var
+	}
+	set_variable = {
+		var = heavy_cruiser_upkeep_var
+		value = num_ships_with_type@heavy_cruiser
+	}
+	multiply_variable = {
+		var = heavy_cruiser_upkeep_var
+		value = 0.5
+	}
+	add_to_variable = {
+		var = ship_upkeep_var
+		value = heavy_cruiser_upkeep_var
+	}
+	set_variable = {
+		var = battleship_upkeep_var
+		value = num_ships_with_type@battleship
+	}
+	multiply_variable = {
+		var = battleship_upkeep_var
+		value = 0.8
+	}
+	add_to_variable = {
+		var = ship_upkeep_var
+		value = battleship_upkeep_var
+	}
+	set_variable = {
+		var = carrier_upkeep_var
+		value = num_ships_with_type@carrier
+	}
+	multiply_variable = {
+		var = carrier_upkeep_var
+		value = 1
+	}
+	add_to_variable = {
+		var = ship_upkeep_var
+		value = carrier_upkeep_var
+	}
+	set_variable = {
+		var = ship_factor_var
+		value = ship_upkeep_var
+	}
+	multiply_variable = {
+		var = ship_factor_var
+		value = modifier@ship_upkeep_factor
+	}
+	add_to_variable = {
+		var = ship_upkeep_var
+		value = ship_factor_var
+	}
+	divide_variable = {
+		var = ship_upkeep_var
+		value = 12
+	}
+	add_to_variable = {
+		var = military_spending_var
+		value = ship_upkeep_var
+	}
+	#Total Military Spending
+	add_to_variable = {
+		var = military_spending_var
+		value = military_factory_upkeep_var
+	}
+	add_to_variable = {
+		var = military_spending_var
+		value = dockyard_upkeep_var
+	}
+	add_to_variable = {
+		var = gdp_var
+		value = military_spending_var
+	}
+	#Social Spending Per 100k
+	set_variable = {
+		var = personal_expense_var
+		value = max_manpower_k
+	}
+	multiply_variable = {
+		var = personal_expense_var
+		value = 0.01		#Turns 1k to 100k
+	}
+	multiply_variable = {
+		var = personal_expense_var
+		value = modifier@personal_expense
+	}
+	set_variable = {
+		var = personal_expense_factor_var
+		value = personal_expense_var
+	}
+	multiply_variable = {
+		var = personal_expense_factor_var
+		value = modifier@personal_expense_factor
+	}
+	add_to_variable = {
+		var = personal_expense_var
+		value = personal_expense_factor_var
+	}
+	divide_variable = {
+		var = personal_expense_var
+		value = 12
+	}
+	set_variable = {
+		var = social_spending_var
+		value = personal_expense_var
+	}
+	add_to_variable = {
+		var = gdp_var
+		value = social_spending_var
+	}
+	#Imports
+	add_to_variable = {
+		var = resourceexpenses
+		value = rubber_import
+	}
+	add_to_variable = {
+		var = resourceexpenses
+		value = chromium_import
+	}
+	add_to_variable = {
+		var = resourceexpenses
+		value = tungsten_import
+	}
+	add_to_variable = {
+		var = resourceexpenses
+		value = steel_import
+	}
+	add_to_variable = {
+		var = resourceexpenses
+		value = oil_import
+	}
+	add_to_variable = {
+		var = resourceexpenses
+		value = aluminum_import
+	}
+	divide_variable = {
+		var = resourceexpenses
+		value = 12
+	}
+	subtract_from_variable = {
+		var = gdp_var
+		value = resourceexpenses
+	}
+	#Debt
+	set_variable = {
+		var = debt_payment_var
+		value = debt_var
+	}
+	divide_variable = {
+		var = debt_payment_var
+		value = 12
+	}
+	set_variable = {
+		var = interest_rate_var
+		value = modifier@interest_rate
+	}
+	set_variable = {
+		var = interest_rate_factor_var
+		value = interest_rate_var
+	}
+	multiply_variable = {
+		var = interest_rate_factor_var
+		value = modifier@interest_rate_factor
+	}
+	add_to_variable = {
+		var = interest_rate_var
+		value = interest_rate_factor_var
+	}
+	multiply_variable = {
+		var = debt_payment_var
+		value = interest_rate_var
+	}
+	#Expenses
+	add_to_variable = {
+		var = gdp_var
+		value = modifier@misc_expense
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = modifier@misc_expense
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = resourceexpenses
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = rubber_import
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = chromium_import
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = tungsten_import
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = steel_import
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = oil_import
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = aluminum_import
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = military_spending_var
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = social_spending_var
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = debt_payment_var
+	}
+	set_variable = {
+		var = expenses_growth_var
+		value = expenses_total_var
+	}
+	multiply_variable = {
+		var = expenses_growth_var
+		value = modifier@expense_growth_factor
+	}
+	add_to_variable = {
+		var = expenses_total_var
+		value = expenses_growth_var
+	}
+	#Income
+	add_to_variable = {
+		var = gdp_var
+		value = modifier@misc_income
+	}
+	add_to_variable = {
+		var = income_total_var
+		value = modifier@misc_income
+	}
+	add_to_variable = {
+		var = income_total_var
+		value = total_tax_var
+	}
+	add_to_variable = {
+		var = income_total_var
+		value = resourceincome
+	}
+	set_variable = {
+		var = dx_growth
+		value = income_total_var
+	}
+	multiply_variable = {
+		var = dx_growth
+		value = modifier@income_growth_factor
+	}
+	add_to_variable = {
+		var = income_total_var
+		value = dx_growth
+	}
+	set_variable = {
+		var = money_change_var
+		value = income_total_var
+	}
+	subtract_from_variable = {
+		var = money_change_var
+		value = expenses_total_var
+	}
+	if = {
+		limit = {
+			has_country_flag = auto_payment_flag
+			check_variable = {
+				var = money_change_var
+				value = 0
+				compare = greater_than
+			}
+			check_variable = {
+				var = debt_var
+				value = 0
+				compare = greater_than
+			}
+		}
+		set_variable = {
+			var = income_debt_var
+			value = money_change_var
+		}
+		multiply_variable = {
+			var = income_debt_var
+			value = -1
+		}
+		set_temp_variable = {
+			var = debt_var_temp
+			value = income_debt_var
+		}
+		add_debt = yes
+	}
+	else = {
+		add_to_variable = {
+			var = income_var
+			value = money_change_var
+		}
+	}
+	#Expense To Income Ratio, Used for AI
+	set_variable = {
+		var = expenses_income_var
+		value = expenses_total_var
+	}
+	divide_variable = {
+		var = expenses_income_var
+		value = income_total_var
+	}
+	#Inflation
+	set_variable = {
+		var = inflation_monthly_var
+		value = modifier@inflation_monthly
+	}
+	set_variable = {
+		var = inflation_monthly_factor_var
+		value = inflation_monthly_var
+	}
+	multiply_variable = {
+		var = inflation_monthly_factor_var
+		value = modifier@inflation_monthly_factor
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = modifier@inflation_monthly
+				value = 0
+				compare = less_than
+			}
+			check_variable = {
+				var = modifier@inflation_monthly_factor
+				value = 0
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = inflation_monthly_factor_var
+			value = -1
+		}
+	}
+	add_to_variable = {
+		var = inflation_monthly_var
+		value = inflation_monthly_factor_var
+	}
+	set_temp_variable = {
+		var = inflation_var_temp
+		value = inflation_monthly_var
+	}
+	add_inflation = yes
+	#GDP
+	multiply_variable = {
+		#This accounts for the previous 12 months
+		var = gdp_var
+		value = 12
+	}
+	set_variable = {
+		var = gdp_trillion_var
+		value = gdp_var
+	}
+	multiply_variable = {
+		var = gdp_trillion_var
+		value = 0.001
+	}
+	set_variable = {
+		var = gdp_billion_var
+		value = gdp_var
+	}
+	set_variable = {
+		var = gdp_million_var
+		value = gdp_var
+	}
+	multiply_variable = {
+		var = gdp_million_var
+		value = 1000
+	}
+	set_variable = {
+		var = gdp_total_var
+		value = gdp_var
+	}
+	set_temp_variable = {
+		var = gdp_inflation_var_temp
+		value = 1
+	}
+	add_to_temp_variable = {
+		var = gdp_inflation_var_temp
+		value = inflation_var
+	}
+	divide_variable = {
+		var = gdp_total_var
+		value = gdp_inflation_var_temp
+	}
+	set_variable = {
+		var = gdp_total_trillion_var
+		value = gdp_total_var
+	}
+	multiply_variable = {
+		var = gdp_total_trillion_var
+		value = 0.001
+	}
+	set_variable = {
+		var = gdp_total_billion_var
+		value = gdp_total_var
+	}
+	set_variable = {
+		var = gdp_total_million_var
+		value = gdp_total_var
+	}
+	multiply_variable = {
+		var = gdp_total_million_var
+		value = 1000
+	}
+	check_gdp = yes
+}
+
+check_gdp = {
+	#Prevents infinite loop and adds negative Income to Debt
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = anti_loop_flag
+				}
+				check_variable = {
+					var = income_var
+					value = 0
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = income_debt_var
+				value = income_var
+			}
+			multiply_variable = {
+				var = income_debt_var
+				value = -1
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = income_debt_var
+			}
+			set_country_flag = anti_loop_flag
+			add_debt = yes
+			set_variable = {
+				var = income_var
+				value = 0
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_country_flag = anti_loop_flag
+				}
+				check_variable = {
+					var = debt_var
+					value = 0
+					compare = less_than
+				}
+			}
+			multiply_variable = {
+				var = debt_var
+				value = -1
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = debt_var
+			}
+			set_country_flag = anti_loop_flag
+			add_income = yes
+			set_variable = {
+				var = debt_var
+				value = 0
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = anti_loop_flag
+			}
+			clr_country_flag = anti_loop_flag
+		}
+	}
+	update_economy = yes
+}
+
+update_economy = {
+	#Updates effects of Inflation and Debt
+	#Debt
+	set_variable = {
+		var = debt_gdp_var
+		value = debt_var
+	}
+	divide_variable = {
+		var = debt_gdp_var
+		value = gdp_total_var
+	}
+	set_variable = {
+		#DtG Debuff
+		var = debt_dynamic_var
+		value = debt_gdp_var
+	}
+	set_variable = {
+		var = dtg_threshold_var
+		value = modifier@dtg_threshold
+	}
+	set_variable = {
+		var = dtg_threshold_factor_var
+		value = dtg_threshold_var
+	}
+	multiply_variable = {
+		var = dtg_threshold_factor_var
+		value = modifier@dtg_threshold_factor
+	}
+	add_to_variable = {
+		var = dtg_threshold_var
+		value = dtg_threshold_factor_var
+	}
+	subtract_from_variable = {
+		#DtG Threshold
+		var = debt_dynamic_var
+		value = dtg_threshold_var
+	}
+	set_variable = {
+		var = debt_difference_var
+		value = debt_dynamic_var
+	}
+	set_variable = {
+		var = debt_stability_factor_dynamic_var
+		value = 0
+	}
+	if = {
+		#Checks difference between Debt to GDP and Debt to GDP Threshold, Negative = Good; Positive = Bad
+		limit = {
+			check_variable = {
+				var = debt_difference_var
+				value = 0
+				compare = less_than
+			}
+		}
+		set_variable = {
+			var = debt_stability_factor_dynamic_var
+			value = debt_dynamic_var
+		}
+		multiply_variable = {
+			var = debt_stability_factor_dynamic_var
+			value = -0.25
+		}
+		set_variable = {
+			var = debt_dynamic_var
+			value = 0
+		}
+	}
+	else = {
+		multiply_variable = {
+			var = debt_dynamic_var
+			value = -0.25
+		}
+	}
+	#Inflation
+	if = {
+		limit = {
+			check_variable = {
+				var = inflation_var
+				value = 0
+				compare = greater_than
+			}
+		}
+		set_variable = {
+			var = inflation_consumer_goods_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_consumer_goods_factor_dynamic_var
+			value = 1
+		}
+		set_variable = {
+			var = inflation_stability_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_stability_factor_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		#Deflation
+		limit = {
+			check_variable = {
+				var = inflation_var
+				value = 0
+				compare = less_than
+			}
+		}
+		set_variable = {
+			var = inflation_production_factory_max_efficiency_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_production_factory_max_efficiency_factor_dynamic_var
+			value = 1
+		}
+		set_variable = {
+			var = inflation_production_speed_buildings_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_production_speed_buildings_factor_dynamic_var
+			value = 2
+		}
+	}
+}
+
+update_power_plants_effect = {
+	every_controlled_state = {
+		limit = {
+			OR = {
+				nuclear_reactor > 0
+				power_plant > 0
+				energy_farm > 0
+				has_dynamic_modifier = {
+					modifier = generic_nuclear_reactor_state_dynamic
+				}
+				has_dynamic_modifier = {
+					modifier = generic_power_plant_state_dynamic
+				}
+				has_dynamic_modifier = {
+					modifier = generic_energy_farm_state_dynamic
+				}
+			}
+		}
+		if = {
+			limit = {
+				nuclear_reactor > 0
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = generic_nuclear_reactor_state_dynamic
+					}
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = generic_nuclear_reactor_state_dynamic
+			}
+		}
+		else_if = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = generic_nuclear_reactor_state_dynamic
+				}
+				NOT = {
+					nuclear_reactor > 0
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = generic_nuclear_reactor_state_dynamic
+			}
+		}
+		if = {
+			limit = {
+				power_plant > 0
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = generic_power_plant_state_dynamic
+					}
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = generic_power_plant_state_dynamic
+			}
+		}
+		else_if = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = generic_power_plant_state_dynamic
+				}
+				NOT = {
+					power_plant > 0
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = generic_power_plant_state_dynamic
+			}
+		}
+		if = {
+			limit = {
+				energy_farm > 0
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = generic_energy_farm_state_dynamic
+					}
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = generic_energy_farm_state_dynamic
+			}
+		}
+		else_if = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = generic_energy_farm_state_dynamic
+				}
+				NOT = {
+					energy_farm > 0
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = generic_energy_farm_state_dynamic
+			}
+		}
+		if = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = generic_power_plant_state_dynamic
+				}
+				OR = {
+					energy_farm > 0
+					nuclear_reactor > 0
+				}
+			}
+			set_building_level = {
+				type = energy_farm
+				level = 0
+				instant_build = yes
+			}
+			set_building_level = {
+				type = nuclear_reactor
+				level = 0
+				instant_build = yes
+			}
+		}
+		if = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = generic_energy_farm_state_dynamic
+				}
+				OR = {
+					power_plant > 0
+					nuclear_reactor > 0
+				}
+			}
+			set_building_level = {
+				type = power_plant
+				level = 0
+				instant_build = yes
+			}
+			set_building_level = {
+				type = nuclear_reactor
+				level = 0
+				instant_build = yes
+			}
+		}
+		if = {
+			limit = {
+				has_dynamic_modifier = {
+					modifier = generic_nuclear_reactor_state_dynamic
+				}
+				OR = {
+					energy_farm > 0
+					power_plant > 0
+				}
+			}
+			set_building_level = {
+				type = energy_farm
+				level = 0
+				instant_build = yes
+			}
+			set_building_level = {
+				type = power_plant
+				level = 0
+				instant_build = yes
+			}
+		}
+	}
+}
+
+add_income = {
+	custom_effect_tooltip = add_income_tooltip
+	add_to_variable = {
+		var = income_var
+		value = income_var_temp
+	}
+	check_gdp = yes
+}
+
+add_inflation = {
+	custom_effect_tooltip = add_inflation_tooltip
+	add_to_variable = {
+		var = inflation_var
+		value = inflation_var_temp
+	}
+	update_economy = yes
+}
+
+add_debt = {
+	custom_effect_tooltip = add_debt_tooltip
+	add_to_variable = {
+		var = debt_var
+		value = debt_var_temp
+	}
+	check_gdp = yes
+	hidden_effect = {
+		set_variable = {
+			var = debt_trillion_var
+			value = debt_var
+		}
+		multiply_variable = {
+			var = debt_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = debt_billion_var
+			value = debt_var
+		}
+		set_variable = {
+			var = debt_million_var
+			value = debt_var
+		}
+		multiply_variable = {
+			debt_million_var = 1000
+		}
+	}
+}
+
+add_income_with_inflation = {
+	set_temp_variable = {
+		var = income_factor_var_temp
+		value = income_var_temp
+	}
+	multiply_temp_variable = {
+		var = income_factor_var_temp
+		value = inflation_var
+	}
+	add_to_temp_variable = {
+		var = income_var_temp
+		value = income_factor_var_temp
+	}
+	custom_effect_tooltip = add_income_tooltip
+	add_to_variable = {
+		var = income_var
+		value = income_var_temp
+	}
+	check_gdp = yes
+}
+
+add_debt_with_inflation = {
+	set_temp_variable = {
+		var = debt_factor_var_temp
+		value = debt_var_temp
+	}
+	multiply_temp_variable = {
+		var = debt_factor_var_temp
+		value = inflation_var
+	}
+	add_to_temp_variable = {
+		var = debt_var_temp
+		value = debt_factor_var_temp
+	}
+	custom_effect_tooltip = add_debt_tooltip
+	add_to_variable = {
+		var = debt_var
+		value = debt_var_temp
+	}
+	check_gdp = yes
+	hidden_effect = {
+		set_variable = {
+			var = debt_trillion_var
+			value = debt_var
+		}
+		multiply_variable = {
+			var = debt_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = debt_billion_var
+			value = debt_var
+		}
+		set_variable = {
+			var = debt_million_var
+			value = debt_var
+		}
+		multiply_variable = {
+			debt_million_var = 1000
+		}
+	}
+}
+
+#Country scope
+ROOT_inherit_current_scope_wars_effect = {
+	custom_effect_tooltip = ROOT_inherit_current_scope_wars_effect
+	hidden_effect = {
+		every_country = {
+			limit = {
+				has_defensive_war_with = PREV
+			}
+			ROOT = {
+				declare_war_on = {
+					target = PREV
+					type = annex_everything
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_offensive_war_with = PREV
+			}
+			declare_war_on = {
+				target = ROOT
+				type = annex_everything
+			}
+		}
+	}
+}
+
+clear_sabotaged_resources_if_necesary = {
+	if = {
+		limit = {
+			not = {
+				has_dynamic_modifier = {
+					modifier = sabotaged_resources
+				}
+			}
+		}
+		clear_variable = sabotaged_oil
+		clear_variable = sabotaged_aluminium
+		clear_variable = sabotaged_rubber
+		clear_variable = sabotaged_tungsten
+		clear_variable = sabotaged_steel
+		clear_variable = sabotaged_chromium
+	}
+}
+
+#Corona
+increase_corona = {
+	if = {
+		limit = {
+			has_idea = high_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = high_covid_cases
+			add_idea = higher_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = medium_covid_cases
+			add_idea = high_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = low_covid_cases
+			add_idea = medium_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = lower_covid_cases
+			add_idea = low_covid_cases
+		}
+	}
+}
+
+decrease_corona = {
+	if = {
+		limit = {
+			has_idea = low_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = low_covid_cases
+			add_idea = lower_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = medium_covid_cases
+			add_idea = low_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = high_covid_cases
+			add_idea = medium_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = higher_covid_cases
+			add_idea = high_covid_cases
+		}
+	}
+}
+
+decrease_corona = {
+	if = {
+		limit = {
+			has_idea = lower_covid_cases
+		}
+		remove_ideas = lower_covid_cases
+	}
+	else_if = {
+		limit = {
+			has_idea = low_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = low_covid_cases
+			add_idea = lower_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = medium_covid_cases
+			add_idea = low_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = high_covid_cases
+			add_idea = medium_covid_cases
+		}
+	}
+	else = {
+		swap_ideas = {
+			remove_idea = higher_covid_cases
+			add_idea = high_covid_cases
+		}
+	}
+}
+
+add_mask_supply = {
+	custom_effect_tooltip = add_mask_supply_tooltip
+	add_to_variable = {
+		var = mask_supply_var
+		value = mask_supply_var
+	}
+}
+
+add_mask_daily_gain = {
+	custom_effect_tooltip = add_mask_gain_tooltip
+	add_to_variable = {
+		var = mask_weekly_gain_var
+		value = mask_daily_gain_var
+	}
+}
+
+#Laws
+decrease_economy_law = {
+	if = {
+		limit = {
+			has_idea = total_mobilization
+		}
+		add_ideas = war_mobilization
+	}
+	else_if = {
+		limit = {
+			has_idea = war_mobilization
+		}
+		add_ideas = partial_mobilization
+	}
+	else_if = {
+		limit = {
+			has_idea = partial_mobilization
+		}
+		add_ideas = early_mobilization
+	}
+	else_if = {
+		limit = {
+			has_idea = early_mobilization
+		}
+		add_ideas = civilian_mobilization
+	}
+	else_if = {
+		limit = {
+			has_idea = civilian_mobilization
+		}
+		add_ideas = mass_consumerism
+	}
+	else_if = {
+		limit = {
+			has_idea = total_mobilization
+			OR = {
+				AND = {
+					tag = SOV
+					has_completed_focus = SOV_state_of_permanent_mobilization
+				}
+				tag = ATW
+				AND = {
+					tag = GMA
+					has_completed_focus = GMA_Privatize_Mobilization
+				}
+				AND = {
+					tag = GER
+					has_completed_focus = GER_economy_fueld_by_war
+				}
+			}
+		}
+		add_ideas = permanent_mobilization
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = all_russian_total_mobilization
+				has_idea = all_russian_consolidation
+			}
+		}
+		add_war_support = -0.15
+	}
+	else = {
+		add_ideas = mass_consumerism
+	}
+}
+
+upgrade_economy_law = { #used
+	if = {
+		limit = {
+			has_idea = mass_consumerism
+		}
+		add_ideas = civilian_mobilization
+	}
+	else_if = {
+		limit = {
+			has_idea = civilian_mobilization
+		}
+		add_ideas = early_mobilization
+	}
+	else_if = {
+		limit = {
+			has_idea = early_mobilization
+		}
+		add_ideas = partial_mobilization
+	}
+	else_if = {
+		limit = {
+			has_idea = partial_mobilization
+		}
+		add_ideas = war_mobilization
+	}
+	else_if = {
+		limit = {
+			has_idea = war_mobilization
+		}
+		add_ideas = total_mobilization
+	}
+	else_if = {
+		limit = {
+			has_idea = total_mobilization
+			OR = {
+				AND = {
+					tag = SOV
+					has_completed_focus = SOV_state_of_permanent_mobilization
+				}
+				tag = ATW
+				AND = {
+					tag = GMA
+					has_completed_focus = GMA_Privatize_Mobilization
+				}
+				AND = {
+					tag = GER
+					has_completed_focus = GER_economy_fueld_by_war
+				}
+			}
+		}
+		add_ideas = permanent_mobilization
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = all_russian_total_mobilization
+				has_idea = all_russian_consolidation
+			}
+		}
+		add_political_power = 150
+	}
+	else = {
+		add_ideas = mass_consumerism
+	}
+}
+
+increase_trade = {
+	if = {
+		limit = {
+			has_idea = high_trade
+		}
+		swap_ideas = {
+			remove_idea = high_trade
+			add_idea = higher_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_trade
+		}
+		swap_ideas = {
+			remove_idea = medium_trade
+			add_idea = high_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_trade
+		}
+		swap_ideas = {
+			remove_idea = low_trade
+			add_idea = medium_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_trade
+		}
+		swap_ideas = {
+			remove_idea = lower_trade
+			add_idea = low_trade
+		}
+	}
+}
+
+decrease_trade = {
+	if = {
+		limit = {
+			has_idea = low_trade
+		}
+		swap_ideas = {
+			remove_idea = low_trade
+			add_idea = lower_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_trade
+		}
+		swap_ideas = {
+			remove_idea = medium_trade
+			add_idea = low_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_trade
+		}
+		swap_ideas = {
+			remove_idea = high_trade
+			add_idea = medium_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_trade
+		}
+		swap_ideas = {
+			remove_idea = higher_trade
+			add_idea = high_trade
+		}
+	}
+}
+
+increase_taxes = {
+	if = {
+		limit = {
+			has_idea = high_taxes
+		}
+		swap_ideas = {
+			remove_idea = high_taxes
+			add_idea = higher_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_taxes
+		}
+		swap_ideas = {
+			remove_idea = medium_taxes
+			add_idea = high_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_taxes
+		}
+		swap_ideas = {
+			remove_idea = low_taxes
+			add_idea = medium_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_taxes
+		}
+		swap_ideas = {
+			remove_idea = lower_taxes
+			add_idea = low_taxes
+		}
+	}
+}
+
+decrease_taxes = {
+	if = {
+		limit = {
+			has_idea = low_taxes
+		}
+		swap_ideas = {
+			remove_idea = low_taxes
+			add_idea = lower_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_taxes
+		}
+		swap_ideas = {
+			remove_idea = medium_taxes
+			add_idea = low_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_taxes
+		}
+		swap_ideas = {
+			remove_idea = high_taxes
+			add_idea = medium_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_taxes
+		}
+		swap_ideas = {
+			remove_idea = higher_taxes
+			add_idea = high_taxes
+		}
+	}
+}
+
+decrease_prison = {
+	if = {
+		limit = {
+			has_idea = lower_prison
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = low_prison
+		}
+		swap_ideas = {
+			remove_idea = low_prison
+			add_idea = lower_prison
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_prison
+		}
+		swap_ideas = {
+			remove_idea = medium_prison
+			add_idea = low_prison
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_prison
+		}
+		swap_ideas = {
+			remove_idea = high_prison
+			add_idea = medium_prison
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_prison
+		}
+		swap_ideas = {
+			remove_idea = higher_prison
+			add_idea = high_prison
+		}
+	}
+}
+
+increase_prison = {
+	if = {
+		limit = {
+			has_idea = higher_prison
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = high_prison
+		}
+		swap_ideas = {
+			remove_idea = high_prison
+			add_idea = higher_prison
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_prison
+		}
+		swap_ideas = {
+			remove_idea = medium_prison
+			add_idea = high_prison
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_prison
+		}
+		swap_ideas = {
+			remove_idea = low_prison
+			add_idea = medium_prison
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_prison
+		}
+		swap_ideas = {
+			remove_idea = lower_prison
+			add_idea = low_prison
+		}
+	}
+}
+
+decrease_race = {
+	if = {
+		limit = {
+			has_idea = lower_race
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = low_race
+		}
+		swap_ideas = {
+			remove_idea = low_race
+			add_idea = lower_race
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_race
+		}
+		swap_ideas = {
+			remove_idea = medium_race
+			add_idea = low_race
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_race
+		}
+		swap_ideas = {
+			remove_idea = high_race
+			add_idea = medium_race
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_race
+		}
+		swap_ideas = {
+			remove_idea = higher_race
+			add_idea = high_race
+		}
+	}
+}
+
+increase_race = {
+	if = {
+		limit = {
+			has_idea = higher_race
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = high_race
+		}
+		swap_ideas = {
+			remove_idea = high_race
+			add_idea = higher_race
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_race
+		}
+		swap_ideas = {
+			remove_idea = medium_race
+			add_idea = high_race
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_race
+		}
+		swap_ideas = {
+			remove_idea = low_race
+			add_idea = medium_race
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_race
+		}
+		swap_ideas = {
+			remove_idea = lower_race
+			add_idea = low_race
+		}
+	}
+}
+
+decrease_female = {
+	if = {
+		limit = {
+			has_idea = lower_female
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = low_female
+		}
+		swap_ideas = {
+			remove_idea = low_female
+			add_idea = lower_female
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_female
+		}
+		swap_ideas = {
+			remove_idea = medium_female
+			add_idea = low_female
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_female
+		}
+		swap_ideas = {
+			remove_idea = high_female
+			add_idea = medium_female
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_female
+		}
+		swap_ideas = {
+			remove_idea = higher_female
+			add_idea = high_female
+		}
+	}
+}
+
+increase_female = {
+	if = {
+		limit = {
+			has_idea = higher_female
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = high_female
+		}
+		swap_ideas = {
+			remove_idea = high_female
+			add_idea = higher_female
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_female
+		}
+		swap_ideas = {
+			remove_idea = medium_female
+			add_idea = high_female
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_female
+		}
+		swap_ideas = {
+			remove_idea = low_female
+			add_idea = medium_female
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_female
+		}
+		swap_ideas = {
+			remove_idea = lower_female
+			add_idea = low_female
+		}
+	}
+}
+
+decrease_female_service = {
+	if = {
+		limit = {
+			has_idea = lower_female_service
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = low_female_service
+		}
+		swap_ideas = {
+			remove_idea = low_female_service
+			add_idea = lower_female_service
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_female_service
+		}
+		swap_ideas = {
+			remove_idea = medium_female_service
+			add_idea = low_female_service
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_female_service
+		}
+		swap_ideas = {
+			remove_idea = high_female_service
+			add_idea = medium_female_service
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_female_service
+		}
+		swap_ideas = {
+			remove_idea = higher_female_service
+			add_idea = high_female_service
+		}
+	}
+}
+
+increase_female_service = {
+	if = {
+		limit = {
+			has_idea = higher_female_service
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = high_female_service
+		}
+		swap_ideas = {
+			remove_idea = high_female_service
+			add_idea = higher_female_service
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_female_service
+		}
+		swap_ideas = {
+			remove_idea = medium_female_service
+			add_idea = high_female_service
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_female_service
+		}
+		swap_ideas = {
+			remove_idea = low_female_service
+			add_idea = medium_female_service
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_female_service
+		}
+		swap_ideas = {
+			remove_idea = lower_female_service
+			add_idea = low_female_service
+		}
+	}
+}
+decrease_racial_integration = {
+	if = {
+		limit = {
+			has_idea = lower_racial_integration
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = low_racial_integration
+		}
+		swap_ideas = {
+			remove_idea = low_racial_integration
+			add_idea = lower_racial_integration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_racial_integration
+		}
+		swap_ideas = {
+			remove_idea = medium_racial_integration
+			add_idea = low_racial_integration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_racial_integration
+		}
+		swap_ideas = {
+			remove_idea = high_racial_integration
+			add_idea = medium_racial_integration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_racial_integration
+		}
+		swap_ideas = {
+			remove_idea = higher_racial_integration
+			add_idea = high_racial_integration
+		}
+	}
+}
+
+increase_racial_integration = {
+	if = {
+		limit = {
+			has_idea = higher_racial_integration
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = high_racial_integration
+		}
+		swap_ideas = {
+			remove_idea = high_racial_integration
+			add_idea = higher_racial_integration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_racial_integration
+		}
+		swap_ideas = {
+			remove_idea = medium_racial_integration
+			add_idea = high_racial_integration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_racial_integration
+		}
+		swap_ideas = {
+			remove_idea = low_racial_integration
+			add_idea = medium_racial_integration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_racial_integration
+		}
+		swap_ideas = {
+			remove_idea = lower_racial_integration
+			add_idea = low_racial_integration
+		}
+	}
+}
+
+
+
+decrease_education = {
+	if = {
+		limit = {
+			has_idea = lower_education
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = low_education
+		}
+		swap_ideas = {
+			remove_idea = low_education
+			add_idea = lower_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_education
+		}
+		swap_ideas = {
+			remove_idea = medium_education
+			add_idea = low_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_education
+		}
+		swap_ideas = {
+			remove_idea = high_education
+			add_idea = medium_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_education
+		}
+		swap_ideas = {
+			remove_idea = higher_education
+			add_idea = high_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = privatized_education
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.025
+		}
+		add_political_power = -25
+	}
+}
+
+increase_education = {
+	if = {
+		limit = {
+			has_idea = higher_education
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = high_education
+		}
+		swap_ideas = {
+			remove_idea = high_education
+			add_idea = higher_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_education
+		}
+		swap_ideas = {
+			remove_idea = medium_education
+			add_idea = high_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_education
+		}
+		swap_ideas = {
+			remove_idea = low_education
+			add_idea = medium_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_education
+		}
+		swap_ideas = {
+			remove_idea = lower_education
+			add_idea = low_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = privatized_education
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.025
+		}
+		add_political_power = 25
+	}
+}
+
+disable_interest_rates = {
+	custom_effect_tooltip = disable_interest_rates_tooltip
+	if = {
+		limit = {
+			NOT = {
+				has_country_flag = disabled_interest_rates_flag
+			}
+		}
+		set_country_flag = disabled_interest_rates_flag
+	}
+}
+
+enable_interest_rates = {
+	custom_effect_tooltip = enable_interest_rates_tooltip
+	if = {
+		limit = {
+			has_country_flag = disabled_interest_rates_flag
+		}
+		clr_country_flag = disabled_interest_rates_flag
+	}
+}
+
+increase_interest_rates = {
+	if = {
+		limit = {
+			has_idea = high_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = high_interest_rates
+			add_idea = higher_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = medium_interest_rates
+			add_idea = high_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = low_interest_rates
+			add_idea = medium_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = lower_interest_rates
+			add_idea = low_interest_rates
+		}
+	}
+}
+
+decrease_interest_rates = {
+	if = {
+		limit = {
+			has_idea = low_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = low_interest_rates
+			add_idea = lower_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = medium_interest_rates
+			add_idea = low_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = high_interest_rates
+			add_idea = medium_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = higher_interest_rates
+			add_idea = high_interest_rates
+		}
+	}
+}
+
+increase_welfare = {
+	if = {
+		limit = {
+			has_idea = high_welfare
+		}
+		swap_ideas = {
+			remove_idea = high_welfare
+			add_idea = higher_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_welfare
+		}
+		swap_ideas = {
+			remove_idea = medium_welfare
+			add_idea = high_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_welfare
+		}
+		swap_ideas = {
+			remove_idea = low_welfare
+			add_idea = medium_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_welfare
+		}
+		swap_ideas = {
+			remove_idea = lower_welfare
+			add_idea = low_welfare
+		}
+	}
+}
+
+decrease_welfare = {
+	if = {
+		limit = {
+			has_idea = low_welfare
+		}
+		swap_ideas = {
+			remove_idea = low_welfare
+			add_idea = lower_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_welfare
+		}
+		swap_ideas = {
+			remove_idea = medium_welfare
+			add_idea = low_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_welfare
+		}
+		swap_ideas = {
+			remove_idea = high_welfare
+			add_idea = medium_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_welfare
+		}
+		swap_ideas = {
+			remove_idea = higher_welfare
+			add_idea = high_welfare
+		}
+	}
+}
+
+increase_safety = {
+	if = {
+		limit = {
+			has_idea = high_safety
+		}
+		swap_ideas = {
+			remove_idea = high_safety
+			add_idea = higher_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_safety
+		}
+		swap_ideas = {
+			remove_idea = medium_safety
+			add_idea = high_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_safety
+		}
+		swap_ideas = {
+			remove_idea = low_safety
+			add_idea = medium_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_safety
+		}
+		swap_ideas = {
+			remove_idea = lower_safety
+			add_idea = low_safety
+		}
+	}
+}
+
+increase_safety_max = {
+	if = {
+		limit = {
+			has_idea = high_safety
+		}
+		swap_ideas = {
+			remove_idea = high_safety
+			add_idea = higher_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_safety
+		}
+		swap_ideas = {
+			remove_idea = medium_safety
+			add_idea = higher_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_safety
+		}
+		swap_ideas = {
+			remove_idea = low_safety
+			add_idea = higher_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_safety
+		}
+		swap_ideas = {
+			remove_idea = lower_safety
+			add_idea = higher_safety
+		}
+	}
+}
+
+decrease_safety_max = {
+	if = {
+		limit = {
+			has_idea = high_safety
+		}
+		swap_ideas = {
+			remove_idea = high_safety
+			add_idea = lower_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_safety
+		}
+		swap_ideas = {
+			remove_idea = medium_safety
+			add_idea = lower_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_safety
+		}
+		swap_ideas = {
+			remove_idea = low_safety
+			add_idea = lower_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_safety
+		}
+		swap_ideas = {
+			remove_idea = higher_safety
+			add_idea = lower_safety
+		}
+	}
+}
+
+decrease_safety = {
+	if = {
+		limit = {
+			has_idea = low_safety
+		}
+		swap_ideas = {
+			remove_idea = low_safety
+			add_idea = lower_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_safety
+		}
+		swap_ideas = {
+			remove_idea = medium_safety
+			add_idea = low_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_safety
+		}
+		swap_ideas = {
+			remove_idea = high_safety
+			add_idea = medium_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_safety
+		}
+		swap_ideas = {
+			remove_idea = higher_safety
+			add_idea = high_safety
+		}
+	}
+}
+
+increase_immigration = {
+	if = {
+		limit = {
+			has_idea = high_immigration
+		}
+		swap_ideas = {
+			remove_idea = high_immigration
+			add_idea = higher_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_immigration
+		}
+		swap_ideas = {
+			remove_idea = medium_immigration
+			add_idea = high_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_immigration
+		}
+		swap_ideas = {
+			remove_idea = low_immigration
+			add_idea = medium_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_immigration
+		}
+		swap_ideas = {
+			remove_idea = lower_immigration
+			add_idea = low_immigration
+		}
+	}
+}
+
+decrease_immigration = {
+	if = {
+		limit = {
+			has_idea = low_immigration
+		}
+		swap_ideas = {
+			remove_idea = low_immigration
+			add_idea = lower_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_immigration
+		}
+		swap_ideas = {
+			remove_idea = medium_immigration
+			add_idea = low_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_immigration
+		}
+		swap_ideas = {
+			remove_idea = high_immigration
+			add_idea = medium_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_immigration
+		}
+		swap_ideas = {
+			remove_idea = higher_immigration
+			add_idea = high_immigration
+		}
+	}
+}
+
+increase_conscription = {
+	if = {
+		limit = {
+			has_idea = higher_conscription
+		}
+		swap_ideas = {
+			remove_idea = higher_conscription
+			add_idea = highest_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_conscription
+		}
+		swap_ideas = {
+			remove_idea = high_conscription
+			add_idea = higher_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_conscription
+		}
+		swap_ideas = {
+			remove_idea = medium_conscription
+			add_idea = high_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_conscription
+		}
+		swap_ideas = {
+			remove_idea = low_conscription
+			add_idea = medium_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_conscription
+		}
+		swap_ideas = {
+			remove_idea = lower_conscription
+			add_idea = low_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lowest_conscription
+		}
+		swap_ideas = {
+			remove_idea = lowest_conscription
+			add_idea = lower_conscription
+		}
+	}
+}
+
+decrease_conscription = {
+	if = {
+		limit = {
+			has_idea = highest_conscription
+		}
+		swap_ideas = {
+			remove_idea = highest_conscription
+			add_idea = higher_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_conscription
+		}
+		swap_ideas = {
+			remove_idea = higher_conscription
+			add_idea = high_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_conscription
+		}
+		swap_ideas = {
+			remove_idea = high_conscription
+			add_idea = medium_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_conscription
+		}
+		swap_ideas = {
+			remove_idea = medium_conscription
+			add_idea = low_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_conscription
+		}
+		swap_ideas = {
+			remove_idea = low_conscription
+			add_idea = lower_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_conscription
+		}
+		swap_ideas = {
+			remove_idea = lower_conscription
+			add_idea = lowest_conscription
+		}
+	}
+}
+
+increase_police = {
+	if = {
+		limit = {
+			has_idea = higher_police
+		}
+		swap_ideas = {
+			remove_idea = higher_police
+			add_idea = highest_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_police
+		}
+		swap_ideas = {
+			remove_idea = high_police
+			add_idea = higher_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = medium_police
+		}
+		swap_ideas = {
+			remove_idea = medium_police
+			add_idea = high_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = low_police
+		}
+		swap_ideas = {
+			remove_idea = low_police
+			add_idea = medium_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = lower_police
+		}
+		swap_ideas = {
+			remove_idea = lower_police
+			add_idea = low_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = lowest_police
+		}
+		swap_ideas = {
+			remove_idea = lowest_police
+			add_idea = lower_police
+		}
+	}
+}
+
+increase_training = {
+	if = {
+		limit = {
+			has_idea = high_training
+		}
+		swap_ideas = {
+			remove_idea = high_training
+			add_idea = higher_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = medium_training
+		}
+		swap_ideas = {
+			remove_idea = medium_training
+			add_idea = high_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = low_training
+		}
+		swap_ideas = {
+			remove_idea = low_training
+			add_idea = medium_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = lower_training
+		}
+		swap_ideas = {
+			remove_idea = lower_training
+			add_idea = low_training
+		}
+	}
+}
+
+decrease_training = {
+	if = {
+		limit = {
+			has_idea = higher_training
+		}
+		swap_ideas = {
+			remove_idea = higher_training
+			add_idea = high_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_training
+		}
+		swap_ideas = {
+			remove_idea = high_training
+			add_idea = medium_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = medium_training
+		}
+		swap_ideas = {
+			remove_idea = medium_training
+			add_idea = low_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = low_training
+		}
+		swap_ideas = {
+			remove_idea = low_training
+			add_idea = lower_training
+		}
+	}
+}
+
+increase_exemptions = {
+	if = {
+		limit = {
+			has_idea = religious_exemptions
+		}
+		swap_ideas = {
+			remove_idea = religious_exemptions
+			add_idea = general_exemptions
+		}
+	}
+	if = {
+		limit = {
+			has_idea = civil_service_exemptions
+		}
+		swap_ideas = {
+			remove_idea = civil_service_exemptions
+			add_idea = religious_exemptions
+		}
+	}
+	if = {
+		limit = {
+			has_idea = education_exemptions
+		}
+		swap_ideas = {
+			remove_idea = education_exemptions
+			add_idea = civil_service_exemptions
+		}
+	}
+	if = {
+		limit = {
+			has_idea = no_draft_exemptions
+		}
+		swap_ideas = {
+			remove_idea = no_draft_exemptions
+			add_idea = education_exemptions
+		}
+	}
+}
+
+decrease_exemptions = {
+	if = {
+		limit = {
+			has_idea = general_exemptions
+		}
+		swap_ideas = {
+			remove_idea = general_exemptions
+			add_idea = religious_exemptions
+		}
+	}
+	if = {
+		limit = {
+			has_idea = religious_exemptions
+		}
+		swap_ideas = {
+			remove_idea = religious_exemptions
+			add_idea = civil_service_exemptions
+		}
+	}
+	if = {
+		limit = {
+			has_idea = civil_service_exemptions
+		}
+		swap_ideas = {
+			remove_idea = civil_service_exemptions
+			add_idea = education_exemptions
+		}
+	}
+	if = {
+		limit = {
+			has_idea = education_exemptions
+		}
+		swap_ideas = {
+			remove_idea = education_exemptions
+			add_idea = no_draft_exemptions
+		}
+	}
+}
+
+increase_supervision = {
+	if = {
+		limit = {
+			has_idea = higher_supervision
+		}
+		swap_ideas = {
+			remove_idea = high_supervision
+			add_idea = higher_supervision
+		}
+	}
+	if = {
+		limit = {
+			has_idea = medium_supervision
+		}
+		swap_ideas = {
+			remove_idea = medium_supervision
+			add_idea = high_supervision
+		}
+	}
+	if = {
+		limit = {
+			has_idea = low_supervision
+		}
+		swap_ideas = {
+			remove_idea = low_supervision
+			add_idea = medium_supervision
+		}
+	}
+	if = {
+		limit = {
+			has_idea = lower_supervision
+		}
+		swap_ideas = {
+			remove_idea = lower_supervision
+			add_idea = low_supervision
+		}
+	}
+}
+
+#Economy Types Change
+
+remove_economy_types = {
+	remove_ideas = {
+		ZZZ_capitalist_economy
+		ZZZ_american_capitalism
+		ZZZ_collective_capitalism
+		ZZZ_oligopolistic_capitalism
+		ZZZ_welfare_capitalism
+		ZZZ_corporatism
+		ZZZ_managed_economy
+		ZZZ_command_economy
+		ZZZ_planned_economy
+		ZZZ_socialist_market
+		ZZZ_developed_socialism
+		ZZZ_military_controlled_economy
+		ZZZ_worker_controlled_economy
+		ZZZ_chaostic_economy
+		ZZZ_minarchism
+		ZZZ_ancap
+		ZZZ_hajimi_economy
+	}
+}
+change_economy_type_capitalism = {
+	custom_effect_tooltip = change_economy_type_capitalism_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_capitalist_economy
+	}
+}
+
+change_economy_type_collective_capitalism = {
+	custom_effect_tooltip = change_economy_type_collective_capitalism_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_collective_capitalism
+	}
+}
+
+change_economy_type_oligopolistic_capitalism = {
+	custom_effect_tooltip = change_economy_type_oligopolistic_capitalism_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_oligopolistic_capitalism
+	}
+}
+
+change_economy_type_welfare_capitalism = {
+	custom_effect_tooltip = change_economy_type_welfare_capitalism_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_welfare_capitalism
+	}
+}
+
+change_economy_type_managed_economy = {
+	custom_effect_tooltip = change_economy_type_managed_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_managed_economy
+	}
+}
+
+change_economy_type_command_economy = {
+	custom_effect_tooltip = change_economy_type_command_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_command_economy
+	}
+}
+
+change_economy_type_planned_economy = {
+	custom_effect_tooltip = change_economy_type_planned_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_planned_economy
+	}
+}
+
+change_economy_type_socialist_market = {
+	custom_effect_tooltip = change_economy_type_socialist_market_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_socialist_market
+	}
+}
+
+change_economy_type_developed_socialism = {
+	custom_effect_tooltip = change_economy_type_developed_socialism_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_developed_socialism
+	}
+}
+
+change_economy_type_military_controlled = {
+	custom_effect_tooltip = change_economy_type_military_controlled_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_military_controlled_economy
+	}
+}
+
+change_economy_type_worker_controlled = {
+	custom_effect_tooltip = change_economy_type_worker_controlled_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_worker_controlled_economy
+	}
+}
+
+change_economy_type_corporatism = {
+	custom_effect_tooltip = change_economy_type_corporatism_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_corporatism
+	}
+}
+
+change_economy_type_chaostic = {
+	custom_effect_tooltip = change_economy_type_chaostic_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_chaostic_economy
+	}
+}
+change_economy_type_minarchism = {
+	custom_effect_tooltip = change_economy_type_minarchism_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_minarchism
+	}
+}
+
+change_economy_type_ancap = {
+	custom_effect_tooltip = change_economy_type_ancap_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_ancap
+	}
+}
+
+change_economy_type_hajimi = {
+	custom_effect_tooltip = change_economy_type_hajimi_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_hajimi_economy
+	}
+}
+
+#Unlocks Decisions
+unlocks_industrial_renovation_decision = {
+	set_country_flag = unlock_industrial_renovation_decision
+	unlock_decision_tooltip = {
+		decision = infrastructure_building_slot
+		show_effect_tooltip = yes
+	}
+}
+
+unlocks_civilian_factory_commission_decision = {
+	set_country_flag = unlock_civilian_factory_commission_decision
+	unlock_decision_tooltip = {
+		decision = civilian_factory_commission
+		show_effect_tooltip = yes
+	}
+}
+
+unlocks_arms_factory_commission_decision = {
+	set_country_flag = unlock_arms_factory_commission_decision
+	unlock_decision_tooltip = {
+		decision = arms_factory_commission
+		show_effect_tooltip = yes
+	}
+}
+
+unlocks_dockyard_commission_decision = {
+	set_country_flag = unlock_dockyard_commission_decision
+	unlock_decision_tooltip = {
+		decision = dockyard_commission
+		show_effect_tooltip = yes
+	}
+}
+
+add_total_campaign_slot = {
+	custom_effect_tooltip = add_campaign_slot_tooltip
+	if = {
+		limit = {
+			check_variable = {
+				var = campaign_slot_total_var
+				value = 0
+				compare = less_than_or_equals
+			}
+		}
+		set_variable = {
+			var = campaign_slot_total_var
+			value = campaign_slot_total_var_temp
+		}
+		set_variable = {
+			var = campaign_slot_var
+			value = campaign_slot_total_var_temp
+		}
+		custom_effect_tooltip = unlocks_campaigns_tooltip
+	}
+	else = {
+		add_to_variable = {
+			var = campaign_slot_total_var
+			value = campaign_slot_total_var_temp
+		}
+		add_to_variable = {
+			var = campaign_slot_var
+			value = campaign_slot_total_var_temp
+		}
+	}
+}
+
+add_campaign_slot = {
+	hidden_effect = {
+		add_to_variable = {
+			var = campaign_slot_var
+			value = 1
+		}
+	}
+}
+
+remove_campaign_slot = {
+	hidden_effect = {
+		subtract_from_variable = {
+			var = campaign_slot_var
+			value = 1
+		}
+	}
+}
+
+#Civil War
+annex_faction = {
+	#Annex All Other Faction Members
+	every_other_country = {
+		limit = {
+			is_in_faction_with = ROOT
+		}
+		ROOT = {
+			annex_country = {
+				target = PREV
+			}
+		}
+	}
+}
+
+annex_core_faction = {
+	#Annex All Other Faction Members And Core Their Cores
+	every_other_country = {
+		limit = {
+			is_in_faction_with = ROOT
+		}
+		every_core_state = {
+			add_core_of = ROOT
+			if = {
+				limit = {
+					is_claimed_by = ROOT
+				}
+				remove_claim_by = ROOT
+			}
+		}
+	}
+	annex_faction = yes
+}
+
+add_legit = {
+	custom_effect_tooltip = add_legit_tooltip
+	add_to_variable = {
+		var = legit_var
+		value = legit_var_temp
+	}
+	clamp_variable = {
+		var = legit_var
+		min = -1
+		max = 1
+	}
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = USA_legitimacy_dynamic
+			}
+		}
+		multiply_temp_variable = {
+			var = legit_var_temp
+			value = 0.2
+		}
+		add_to_variable = {
+			var = legit_dynamic_var
+			value = legit_var_temp
+		}
+		clamp_variable = {
+			var = legit_dynamic_var
+			min = -0.2
+			max = 0.2
+		}
+	}
+}
+
+new_country = {
+	add_dynamic_modifier = {
+		modifier = gdp_debt_dynamic
+	}
+	add_dynamic_modifier = {
+		modifier = inflation_dynamic
+	}
+	set_variable = {
+		debt_var = 0
+	}
+	set_variable = {
+		gdp_var = 0
+	}
+	set_variable = {
+		inflation_var = 0
+	}
+	add_GDP = yes
+	update_development = yes
+	set_country_flag = auto_payment_flag
+	set_variable = {
+		var = auto_payment_var
+		value = 2
+	}
+	if = {
+		limit = {
+			is_ai = no
+		}
+		set_country_flag = bank_flag
+		set_variable = {
+			var = bank_var
+			value = 2
+		}
+	}
+	else = {
+		set_variable = {
+			var = bank_var
+			value = 1
+		}
+	}
+	every_controlled_state = {
+		limit = {
+			is_demilitarized_zone = yes
+		}
+		set_demilitarized_zone = no
+	}
+}
+
+#Coring
+add_coring_cost = {
+	custom_effect_tooltip = add_coring_cost_tooltip
+	if = {
+		limit = {
+			has_variable = recore_pp_old_var
+		}
+		add_to_variable = {
+			var = recore_pp_old_var
+			value = recore_pp_var_temp
+		}
+		clamp_variable = {
+			var = recore_pp_old_var
+			min = 0
+			max = 1000
+		}
+	}
+	else = {
+		add_to_variable = {
+			var = recore_pp_var
+			value = recore_pp_var_temp
+		}
+		clamp_variable = {
+			var = recore_pp_var
+			min = 0
+			max = 1000
+		}
+	}
+}
+
+add_coring_time = {
+	custom_effect_tooltip = add_coring_time_tooltip
+	add_to_variable = {
+		var = recore_time_var
+		value = recore_time_var_temp
+	}
+	clamp_variable = {
+		var = recore_time_var
+		min = 7
+		max = 1400
+	}
+}
+
+add_coring_cost_reduction = {
+	if = {
+		limit = {
+			check_variable = {
+				var = recore_pp_var
+				value = 0
+				compare = greater_than
+			}
+		}
+		set_variable = {
+			var = recore_pp_old_var
+			value = recore_pp_var
+		}
+	}
+	custom_effect_tooltip = add_coring_cost_reduction_tooltip
+	set_temp_variable = {
+		var = recore_cost_reduction_factor_var_temp
+		value = recore_pp_var
+	}
+	multiply_temp_variable = {
+		var = recore_cost_reduction_var_temp
+		value = recore_cost_reduction_factor_var_temp
+	}
+	subtract_from_variable = {
+		var = recore_pp_var
+		value = recore_cost_reduction_var_temp
+	}
+	add_to_variable = {
+		var = recore_cost_reduction_use_var
+		value = recore_cost_reduction_use_var_temp
+	}
+}
+
+use_coring_cost_reduction = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = {
+					var = recore_cost_reduction_use_var
+					value = 1
+					compare = greater_than_or_equals
+				}
+			}
+			subtract_from_variable = {
+				var = recore_cost_reduction_use_var
+				value = 1
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = recore_cost_reduction_use_var
+						value = 0
+						compare = less_than_or_equals
+					}
+				}
+				set_variable = {
+					var = recore_pp_var
+					value = recore_pp_old_var
+				}
+				clear_variable = recore_pp_old_var
+			}
+		}
+	}
+}
+
+focus_unlock = {
+	custom_effect_tooltip = focus_unlock_tooltip
+	hidden_effect = {
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+disband_units_fraction = {
+	SAX = {
+		set_temp_variable = {
+			old_manpower = manpower_k
+		}
+	}
+	random_state = {
+		limit = {
+			is_coastal = no
+			owner = {
+				PREV = {
+					is_fully_controlled_by = PREV
+				}
+			}
+		}
+		owner = {
+			save_event_target_as = disband_state_owner
+		}
+		save_event_target_as = disband_state
+		SAX = {
+			set_state_owner = PREV
+		}
+	}
+	transfer_units_fraction = {
+		target = SAX
+		size = 0
+		army_ratio = var:disband_fraction
+		keep_unit_leaders_trigger = {
+			always = yes
+		}
+	}
+	SAX = {
+		every_state = {
+			SAX = {
+				delete_unit = {
+					state = PREV
+					disband = yes
+				}
+			}
+		}
+		set_temp_variable = {
+			manpower_diff = manpower_k
+		}
+		subtract_from_temp_variable = {
+			manpower_diff = old_manpower
+		}
+		while_loop_effect = {
+			#avoid overflows
+			limit = {
+				check_variable = {
+					manpower_diff > 1
+				}
+			}
+			subtract_from_temp_variable = {
+				manpower_diff = 1
+			}
+			ROOT = {
+				add_manpower = 1000
+			}
+			add_manpower = -1000
+		}
+		multiply_temp_variable = {
+			manpower_diff = 1000
+		}
+		ROOT = {
+			add_manpower = PREV.manpower_diff
+		}
+		multiply_temp_variable = {
+			manpower_diff = -1
+		}
+		add_manpower = manpower_diff
+		transfer_units_fraction = {
+			target = ROOT
+			size = 0
+			stockpile_ratio = 1
+			keep_unit_leaders_trigger = {
+				always = yes
+			}
+		}
+	}
+	event_target:disband_state = {
+		event_target:disband_state_owner = {
+			set_state_owner = PREV
+		}
+	}
+	annex_country = {
+		target = SAX
+	}
+}
+
+#War
+war_with_FROM = {
+	ROOT = {
+		if = {
+			limit = {
+				USA_is_civil_war_faction = yes
+			}
+			declare_war_on = {
+				target = FROM
+				type = civil_war
+			}
+		}
+		else = {
+			declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}
+		}
+	}
+	hidden_effect = {
+		every_other_country = {
+			limit = {
+				OR = {
+					is_in_faction_with = ROOT
+					is_subject_of = ROOT
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						USA_is_civil_war_faction = yes
+					}
+				}
+				declare_war_on = {
+					target = FROM
+					type = civil_war
+				}
+			}
+			else = {
+				declare_war_on = {
+					target = FROM
+					type = civil_war
+				}
+			}
+		}
+		every_other_country = {
+			limit = {
+				OR = {
+					is_in_faction_with = FROM
+					is_subject_of = FROM
+				}
+			}
+			ROOT = {
+				if = {
+					limit = {
+						USA_is_civil_war_faction = yes
+					}
+					declare_war_on = {
+						target = PREV
+						type = civil_war
+					}
+				}
+				else = {
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+				}
+			}
+		}
+	}
+}
+
+war_with_PREV = {
+	effect_tooltip = {
+		ROOT = {
+			if = {
+				limit = {
+					USA_is_civil_war_faction = yes
+				}
+				declare_war_on = {
+					target = PREV
+					type = civil_war
+				}
+			}
+			else = {
+				declare_war_on = {
+					target = PREV
+					type = annex_everything
+				}
+			}
+		}	
+	}
+	hidden_effect = {
+		every_country = {
+			limit = {
+				OR = {
+					tag = PREV
+					is_in_faction_with = PREV
+					is_subject_of = PREV
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = ROOT
+						is_in_faction_with = ROOT
+						is_subject_of = ROOT
+					}
+				}
+				if = {
+					limit = {
+						ROOT = {
+							USA_is_civil_war_faction = yes
+						}
+					}
+					declare_war_on = {
+						target = PREV
+						type = civil_war
+					}
+				}
+				else = {
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+				}
+			}
+		}
+	}
+}
+
+#Misc (From vanilla scripted effects file
+#	Example:
+#
+#	example_effect = {
+#		add_political_power = 66
+#		add_popularity = {
+#			ideology = fascism
+#			popularity = 0.33
+#		}
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		example_effect = yes
+#	}
+#
+#####################################
+### emergency_factory_conversion ####
+#####################################
+#This is going to give misleading and ugly tooltips. Making it nice will take effort. TODO_WTT_CD make nice or ignore and remove comment. Easiest solution is just making a custom tooltip that says "5 civilian factories will be converted to military factories" and ignore telling the player the states where it will happen.
+replace_civ_with_arms_factories = {
+	random_owned_controlled_state = {
+		limit = {
+			is_fully_controlled_by = ROOT
+			industrial_complex > 0
+		}
+		remove_building = {
+			type = industrial_complex
+			level = 1
+		}
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+	random_owned_controlled_state = {
+		limit = {
+			is_fully_controlled_by = ROOT
+			industrial_complex > 0
+		}
+		remove_building = {
+			type = industrial_complex
+			level = 1
+		}
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+	random_owned_controlled_state = {
+		limit = {
+			is_fully_controlled_by = ROOT
+			industrial_complex > 0
+		}
+		remove_building = {
+			type = industrial_complex
+			level = 1
+		}
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+	random_owned_controlled_state = {
+		limit = {
+			is_fully_controlled_by = ROOT
+			industrial_complex > 0
+		}
+		remove_building = {
+			type = industrial_complex
+			level = 1
+		}
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+	random_owned_controlled_state = {
+		limit = {
+			is_fully_controlled_by = ROOT
+			industrial_complex > 0
+		}
+		remove_building = {
+			type = industrial_complex
+			level = 1
+		}
+		add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+}
+
+#Country scope
+ROOT_inherit_current_scope_wars_effect = {
+	custom_effect_tooltip = ROOT_inherit_current_scope_wars_effect
+	hidden_effect = {
+		every_country = {
+			limit = {
+				has_defensive_war_with = PREV
+			}
+			ROOT = {
+				declare_war_on = {
+					target = PREV
+					type = annex_everything
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_offensive_war_with = PREV
+			}
+			declare_war_on = {
+				target = ROOT
+				type = annex_everything
+			}
+		}
+	}
+}
+
+get_best_alliance_match_democratic_effect = {
+	#arguably a trigger, but it does stuff so we keep it in here. If this is your first time seeing this, welcome to my personal hell.
+	if = {
+		limit = {
+			any_other_country = {
+				is_faction_leader = yes
+				is_major = yes
+				OR = {
+					has_government = social_democrat
+					has_government = social_liberal
+					has_government = market_liberal
+					has_government = conservative
+					has_government = authoritarian_democrat
+				}
+				not = {
+					has_war_with = ROOT
+				}
+				set_temp_variable = {
+					ROOT.best_leader = this
+				}
+				set_temp_variable = {
+					ROOT.best_leader_score = 0
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			all_other_country = {
+				is_faction_leader = yes
+				is_major = yes
+				OR = {
+					has_government = social_democrat
+					has_government = social_liberal
+					has_government = market_liberal
+					has_government = conservative
+					has_government = authoritarian_democrat
+				}
+				not = {
+					has_war_with = ROOT
+				}
+				set_temp_variable = {
+					this.leader_score = num_of_factories
+				}
+				add_to_temp_variable = {
+					this.leader_score = num_battalions
+				}
+				all_of_scopes = {
+					array = allies
+					add_to_temp_variable = {
+						PREV.leader_score = num_of_factories
+					}
+					add_to_temp_variable = {
+						PREV.leader_score = num_battalions
+					}
+				}
+				if = {
+					limit = {
+						capital_scope = {
+							is_on_continent = ROOT
+						}
+					}
+					multiply_temp_variable = {
+						leader_score = 2
+					}
+				}
+				if = {
+					limit = {
+						any_neighbor_country = {
+							tag = ROOT
+						}
+					}
+					multiply_temp_variable = {
+						leader_score = 1.25
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							ROOT.best_leader_score < leader_score
+						}
+						set_temp_variable = {
+							ROOT.best_leader = this
+						}
+						set_temp_variable = {
+							ROOT.best_leader_score = leader_score
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+get_best_alliance_match_fascism_effect = {
+	#arguably a trigger, but it does stuff so we keep it in here. If this is your first time seeing this, welcome to my personal hell.
+	if = {
+		limit = {
+			any_other_country = {
+				is_faction_leader = yes
+				is_major = yes
+				OR = {
+					has_government = nationalist
+					has_government = fascist
+					has_government = national_socialist
+				}
+				not = {
+					has_war_with = ROOT
+				}
+				set_temp_variable = {
+					ROOT.best_leader = this
+				}
+				set_temp_variable = {
+					ROOT.best_leader_score = 0
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			all_other_country = {
+				is_faction_leader = yes
+				is_major = yes
+				OR = {
+					has_government = nationalist
+					has_government = fascist
+					has_government = national_socialist
+				}
+				not = {
+					has_war_with = ROOT
+				}
+				set_temp_variable = {
+					this.leader_score = num_of_factories
+				}
+				add_to_temp_variable = {
+					this.leader_score = num_battalions
+				}
+				all_of_scopes = {
+					array = allies
+					add_to_temp_variable = {
+						PREV.leader_score = num_of_factories
+					}
+					add_to_temp_variable = {
+						PREV.leader_score = num_battalions
+					}
+				}
+				if = {
+					limit = {
+						capital_scope = {
+							is_on_continent = ROOT
+						}
+					}
+					multiply_temp_variable = {
+						this.leader_score = 2
+					}
+				}
+				if = {
+					limit = {
+						any_neighbor_country = {
+							tag = ROOT
+						}
+					}
+					multiply_temp_variable = {
+						this.leader_score = 1.25
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							ROOT.best_leader_score < this.leader_score
+						}
+					}
+					set_temp_variable = {
+						ROOT.best_leader = this
+					}
+					set_temp_variable = {
+						ROOT.best_leader_score = this.leader_score
+					}
+				}
+			}
+		}
+	}
+}
+
+get_best_alliance_match_communism_effect = {
+	#arguably a trigger, but it does stuff so we keep it in here. If this is your first time seeing this, welcome to my personal hell.
+	if = {
+		limit = {
+			any_other_country = {
+				is_faction_leader = yes
+				is_major = yes
+				OR = {
+					has_government = totalitarian_socialist
+					has_government = communist
+					has_government = libertarian_socialist
+				}
+				not = {
+					has_war_with = ROOT
+				}
+				set_temp_variable = {
+					ROOT.best_leader = this
+				}
+				set_temp_variable = {
+					ROOT.best_leader_score = 0
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			all_other_country = {
+				is_faction_leader = yes
+				is_major = yes
+				OR = {
+					has_government = totalitarian_socialist
+					has_government = communist
+					has_government = libertarian_socialist
+				}
+				not = {
+					has_war_with = ROOT
+				}
+				set_temp_variable = {
+					this.leader_score = num_of_factories
+				}
+				add_to_temp_variable = {
+					this.leader_score = num_battalions
+				}
+				all_of_scopes = {
+					array = allies
+					add_to_temp_variable = {
+						PREV.leader_score = num_of_factories
+					}
+					add_to_temp_variable = {
+						PREV.leader_score = num_battalions
+					}
+				}
+				if = {
+					limit = {
+						capital_scope = {
+							is_on_continent = ROOT
+						}
+					}
+					multiply_temp_variable = {
+						leader_score = 2
+					}
+				}
+				if = {
+					limit = {
+						any_neighbor_country = {
+							tag = ROOT
+						}
+					}
+					multiply_temp_variable = {
+						leader_score = 1.25
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							ROOT.best_leader_score < leader_score
+						}
+						set_temp_variable = {
+							ROOT.best_leader = this
+						}
+						set_temp_variable = {
+							ROOT.best_leader_score = leader_score
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+clear_sabotaged_resources_if_necesary = {
+	if = {
+		limit = {
+			not = {
+				has_dynamic_modifier = {
+					modifier = sabotaged_resources
+				}
+			}
+		}
+		clear_variable = sabotaged_oil
+		clear_variable = sabotaged_aluminium
+		clear_variable = sabotaged_rubber
+		clear_variable = sabotaged_tungsten
+		clear_variable = sabotaged_steel
+		clear_variable = sabotaged_chromium
+	}
+}
+
+remove_from_allowed_party = {
+	if = {
+		limit = {
+			has_government = totalitarian_socialist
+		}
+		set_temp_variable = {
+			allowed_party_totalitarian_socialist = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = communist
+		}
+		set_temp_variable = {
+			allowed_party_communist = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = libertarian_socialist
+		}
+		set_temp_variable = {
+			allowed_party_libertarian_socialist = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = social_democrat
+		}
+		set_temp_variable = {
+			allowed_party_social_democrat = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = social_liberal
+		}
+		set_temp_variable = {
+			allowed_party_social_liberal = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = market_liberal
+		}
+		set_temp_variable = {
+			allowed_party_market_liberal = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = conservative
+		}
+		set_temp_variable = {
+			allowed_party_conservative = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = authoritarian_democrat
+		}
+		set_temp_variable = {
+			allowed_party_authoritarian_democrat = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = nationalist
+		}
+		set_temp_variable = {
+			allowed_party_nationalist = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = fascist
+		}
+		set_temp_variable = {
+			allowed_party_fascist = 0
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = national_socialist
+		}
+		set_temp_variable = {
+			allowed_party_national_socialist = 0
+		}
+	}
+}
+
+#expectes a temp variable country_to_initiate which should contain original_tag to instantiate as a collabration government
+instantiate_collaboration_government = {
+	custom_effect_tooltip = compliance_80_effect_tooltip
+	hidden_effect = {
+		set_variable = {
+			collaboration_formed@var:country_to_initiate = 1
+		}
+		if = {
+			# if country_to_initiate does not exist, simply release it as a puppet
+			limit = {
+				var:country_to_initiate = {
+					exists = no
+				}
+			}
+			var:country_to_initiate = {
+				set_variable = {
+					collaboration_formed_by = PREV
+				}
+			}
+			release_autonomy = {
+				target = country_to_initiate
+				autonomy_state = autonomy_puppet
+				freedom_level = 0.5
+				release_non_owned_controlled = yes
+			}
+		}
+		else = {
+			# if country_to_initiate exists, create a dynamic country as our new puppet
+			create_dynamic_country = {
+				original_tag = country_to_initiate
+				set_variable = {
+					collaboration_formed_by = PREV
+				}
+				set_temp_variable = {
+					new_country = this
+				}
+				PREV = {
+					every_controlled_state = {
+						limit = {
+							occupied_country_tag = country_to_initiate
+						}
+						var:new_country = {
+							transfer_state = PREV
+						}
+					}
+					puppet = new_country
+					set_autonomy = {
+						target = new_country
+						autonomy_state = autonomy_puppet
+						freedom_level = 0.5
+					}
+				}
+			}
+		}
+	}
+}
+
+#upgrade_economy_law = { #unused
+#	if = {
+#		limit = {
+#			has_idea = mass_consumerism
+#		}
+#		add_ideas = civilian_mobilization
+#	}
+#	else_if = {
+#		limit = {
+#			has_idea = civilian_mobilization
+#		}
+#		add_ideas = early_mobilization
+#	}
+#	else_if = {
+#		limit = {
+#			has_idea = early_mobilization
+#		}
+#		add_ideas = partial_mobilization
+#	}
+#	else_if = {
+#		limit = {
+#			has_idea = partial_mobilization
+#		}
+#		add_ideas = war_mobilization
+#	}
+#	else_if = {
+#		limit = {
+#			has_idea = war_mobilization
+#		}
+#		add_ideas = total_mobilization
+#	}
+#	else = {
+#		add_political_power = 150
+#	}
+#}
+
+gain_random_agency_upgrade = {
+	#Gives a random agency upgrade or grants a free agency if one has not yet been established
+	custom_effect_tooltip = free_agency_upgrade_tt
+	hidden_effect = {
+		if = {
+			limit = {
+				has_intelligence_agency = no
+			}
+			create_intelligence_agency = yes
+		}
+		else = {
+			random_list = {
+				1 = {
+					upgrade_intelligence_agency = upgrade_foreign_intelligence
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_foreign_intelligence
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_domestic_intelligence
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_domestic_intelligence
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_military_intelligence
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_military_intelligence
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_planning_and_direction
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_planning_and_direction
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_collection
+					modifier = {
+						factor = 0
+						OR = {
+							NOT = {
+								has_done_agency_upgrade = upgrade_planning_and_direction
+							}
+							has_done_agency_upgrade = upgrade_collection
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_processing_and_exploitation
+					modifier = {
+						factor = 0
+						OR = {
+							NOT = {
+								has_done_agency_upgrade = upgrade_planning_and_direction
+								has_done_agency_upgrade = upgrade_collection
+							}
+							has_done_agency_upgrade = upgrade_processing_and_exploitation
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_analysis
+					modifier = {
+						factor = 0
+						OR = {
+							NOT = {
+								has_done_agency_upgrade = upgrade_planning_and_direction
+								has_done_agency_upgrade = upgrade_collection
+								has_done_agency_upgrade = upgrade_processing_and_exploitation
+							}
+							has_done_agency_upgrade = upgrade_analysis
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_dissemination
+					modifier = {
+						factor = 0
+						OR = {
+							NOT = {
+								has_done_agency_upgrade = upgrade_planning_and_direction
+								has_done_agency_upgrade = upgrade_collection
+								has_done_agency_upgrade = upgrade_processing_and_exploitation
+								has_done_agency_upgrade = upgrade_analysis
+							}
+							has_done_agency_upgrade = upgrade_dissemination
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_humint
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_humint
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_sigint
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_sigint
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_masint
+					modifier = {
+						factor = 0
+						NOT = {
+							has_tech = radio_detection
+						}
+						has_done_agency_upgrade = upgrade_masint
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_osint
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_osint
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_geoint
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_geoint
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_cell_system
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_cell_system
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_communication_security
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_communication_security
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_support_services
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_support_services
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_enhanced_interrogation_techniques
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_enhanced_interrogation_techniques
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_termination
+					modifier = {
+						factor = 0
+						has_done_agency_upgrade = upgrade_termination
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_comint
+					modifier = {
+						factor = 0
+						OR = {
+							has_done_agency_upgrade = upgrade_comint
+							NOT = {
+								has_done_agency_upgrade = upgrade_sigint
+								has_done_agency_upgrade = upgrade_humint
+								has_done_agency_upgrade = upgrade_elint
+							}
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_advanced_cryptoanalytical_attack_models
+					modifier = {
+						factor = 0
+						OR = {
+							has_done_agency_upgrade = upgrade_advanced_cryptoanalytical_attack_models
+							NOT = {
+								has_done_agency_upgrade = upgrade_sigint
+								has_done_agency_upgrade = upgrade_elint
+								OR = {
+									has_tech = petascale_computing
+									has_tech = early_quantum_computing
+								}
+							}
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_cryptosystem_algorithm_upgrade
+					modifier = {
+						factor = 0
+						OR = {
+							has_done_agency_upgrade = upgrade_cryptosystem_algorithm_upgrade
+							NOT = {
+								has_done_agency_upgrade = upgrade_sigint
+								has_done_agency_upgrade = upgrade_elint
+								OR = {
+									has_tech = petascale_computing
+									has_tech = early_quantum_computing
+								}
+							}
+						}
+					}
+				}
+				1 = {
+					upgrade_intelligence_agency = upgrade_quantum_cryptography
+					modifier = {
+						factor = 0
+						OR = {
+							has_done_agency_upgrade = upgrade_quantum_cryptography
+							NOT = {
+								has_done_agency_upgrade = upgrade_advanced_cryptoanalytical_attack_models
+								has_done_agency_upgrade = upgrade_cryptosystem_algorithm_upgrade
+								OR = {
+									has_tech = modern_supercomputers
+									has_tech = quantum_supremacy
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+##Adds current ruling popularity to a new ideology - useful to represent ideological shifts within the same party
+#add_ruling_to_dem = {
+#	custom_effect_tooltip = add_ruling_to_dem_tt
+#	hidden_effect = {
+#		if = {
+#			limit = {
+#				has_government = neutrality
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				democratic_support_var = neutrality_support_var
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = 0
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_government = communism
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				democratic_support_var = communism_support_var
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = 0
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_government = fascism
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				democratic_support_var = fascism_support_var
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = 0
+#			}
+#		}
+#		set_popularities = {
+#			democratic = democratic_support_var
+#			neutrality = neutrality_support_var
+#			fascism = fascism_support_var
+#			communism = communism_support_var
+#		}
+#	}
+#}
+#add_ruling_to_fas = {
+#	custom_effect_tooltip = add_ruling_to_fas_tt
+#	hidden_effect = {
+#		if = {
+#			limit = {
+#				has_government = neutrality
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				fascism_support_var = neutrality_support_var
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = 0
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_government = communism
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				fascism_support_var = communism_support_var
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = 0
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_government = democratic
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				fascism_support_var = democratic_support_var
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = 0
+#			}
+#		}
+#		set_popularities = {
+#			democratic = democratic_support_var
+#			neutrality = neutrality_support_var
+#			fascism = fascism_support_var
+#			communism = communism_support_var
+#		}
+#	}
+#}
+#add_ruling_to_com = {
+#	custom_effect_tooltip = add_ruling_to_com_tt
+#	hidden_effect = {
+#		if = {
+#			limit = {
+#				has_government = neutrality
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				communism_support_var = neutrality_support_var
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = 0
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_government = fascism
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				communism_support_var = fascism_support_var
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = 0
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_government = democratic
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				communism_support_var = democratic_support_var
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = 0
+#			}
+#		}
+#		set_popularities = {
+#			democratic = democratic_support_var
+#			neutrality = neutrality_support_var
+#			fascism = fascism_support_var
+#			communism = communism_support_var
+#		}
+#	}
+#}
+#add_ruling_to_neu = {
+#	custom_effect_tooltip = add_ruling_to_neu_tt
+#	hidden_effect = {
+#		if = {
+#			limit = {
+#				has_government = communism
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				neutrality_support_var = communism_support_var
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = 0
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_government = fascism
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				neutrality_support_var = fascism_support_var
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = 0
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_government = democratic
+#			}
+#			set_variable = {
+#				var = neutrality_support_var
+#				value = party_popularity_100@neutrality
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = party_popularity_100@democratic
+#			}
+#			set_variable = {
+#				var = communism_support_var
+#				value = party_popularity_100@communism
+#			}
+#			set_variable = {
+#				var = fascism_support_var
+#				value = party_popularity_100@fascism
+#			}
+#			add_to_variable = {
+#				neutrality_support_var = democratic_support_var
+#			}
+#			set_variable = {
+#				var = democratic_support_var
+#				value = 0
+#			}
+#		}
+#		set_popularities = {
+#			democratic = democratic_support_var
+#			neutrality = neutrality_support_var
+#			fascism = fascism_support_var
+#			communism = communism_support_var
+#		}
+#	}
+#}
+remove_any_country_role_from_character = {
+	#Expected to be used inside the character scope
+	#log = "I am [THIS.GetName]"
+	if = {
+		limit = {
+			is_character_slot = air_chief
+		}
+		remove_advisor_role = {
+			slot = air_chief
+		}
+	}
+	if = {
+		limit = {
+			is_character_slot = army_chief
+		}
+		remove_advisor_role = {
+			slot = army_chief
+		}
+	}
+	if = {
+		limit = {
+			is_character_slot = navy_chief
+		}
+		remove_advisor_role = {
+			slot = navy_chief
+		}
+	}
+	if = {
+		limit = {
+			is_character_slot = high_command
+		}
+		remove_advisor_role = {
+			slot = high_command
+		}
+	}
+	if = {
+		limit = {
+			is_character_slot = theorist
+		}
+		remove_advisor_role = {
+			slot = theorist
+		}
+	}
+	if = {
+		limit = {
+			is_character_slot = political_advisor
+		}
+		remove_advisor_role = {
+			slot = political_advisor
+		}
+	}
+}
+
+### Paratroopers
+SF_PARA_sabotage_effect = {
+	#When changing this, update the research tooltip
+	damage_building = {
+		type = infrastructure
+		damage = 2
+	}
+	damage_building = {
+		type = industrial_complex
+		damage = 1
+	}
+	damage_building = {
+		type = arms_factory
+		damage = 1
+	}
+	set_state_flag = {
+		flag = para_drop_effect
+		days = 30
+	}
+}
+
+SF_PARA_combat_effect = {
+	#When changing this, update the research tooltip
+	every_state_division = {
+		limit = {
+			OWNER = {
+				has_war_with = FROM
+			}
+		}
+		set_unit_organization = 0.5
+	}
+	set_state_flag = {
+		flag = para_drop_effect
+		days = 30
+	}
+}
+
+### Muuuurrrriiinnnnneeeeessssss
+SF_marine_demoliton_effect = {
+	#When changing this, update the research tooltip
+	damage_building = {
+		type = radar_station
+		damage = 1
+	}
+	damage_building = {
+		type = naval_base
+		damage = 1
+	}
+	damage_building = {
+		type = dockyard
+		damage = 1
+	}
+	damage_building = {
+		type = nuclear_reactor
+		damage = 1
+	}
+	damage_building = {
+		type = rocket_site
+		damage = 1
+	}
+	damage_building = {
+		type = fuel_silo
+		damage = 1
+	}
+	set_state_flag = {
+		flag = marines_commando_effect
+		days = 30
+	}
+}
+
+###########################################################################################
+###########################################################################################
+###########################################################################################
+########    ###       ###    ######## 
+##      ## ##     ## ##      ##    
+##     ##   ##   ##   ##     ##    
+##    ##     ## ##     ##    ##    
+##    ######### #########    ##    
+##    ##     ## ##     ##    ##    
+##    ##     ## ##     ##    ##    
+###########################################################################################
+###########################################################################################
+###########################################################################################
+find_global_platonic_countries = {
+	# Look for the countries that meet the best criteria for the different platonic countries we expect in HoI 
+	find_biggest_totalitarian_socialist = yes
+	find_biggest_communist = yes
+	find_biggest_libertarian_socialist = yes
+	find_biggest_social_democrat = yes
+	find_biggest_social_liberal = yes
+	find_biggest_market_liberal = yes
+	find_biggest_conservative = yes
+	find_biggest_authoritarian_democrat = yes
+	find_biggest_nationalist = yes
+	find_biggest_fascist = yes
+	find_biggest_national_socialist = yes
+	find_biggest_fascist_bully = yes
+	find_biggest_commie_bully = yes
+	find_best_democratic_ally_leader = yes
+	find_democratic_sleeping_giant = yes
+	#find_local_dangerous_fascist = yes 
+}
+
+find_biggest_fascist_bully = {
+	# Finds the biggest and/or meanest fascist country 
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_fascist_bully
+		scorer = nationalist_fascist_national_socialist_bully_scorer
+	}
+}
+
+find_biggest_commie_bully = {
+	# Finds the biggest and/or meanest commie country 
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_commie_bully
+		scorer = totalitarian_socialist_communist_bully_scorer
+	}
+}
+
+find_best_democratic_ally_leader = {
+	# Finds the most suitable democratic country to lead a faction
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_democratic_ally_leader
+		scorer = democratic_faction_leader_scorer
+	}
+}
+
+find_democratic_sleeping_giant = {
+	# Finds biggest desarmed democratic nation. Expected to be USA 
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_democratic_sleeping_giant
+		scorer = democratic_sleeping_giant_scorer
+	}
+}
+
+find_biggest_totalitarian_socialist = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_totalitarian_socialist
+		scorer = totalitarian_socialist_major_scorer
+	}
+}
+
+find_biggest_communist = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_communist
+		scorer = communist_major_scorer
+	}
+}
+
+find_biggest_libertarian_socialist = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_libertarian_socialist
+		scorer = libertarian_socialist_major_scorer
+	}
+}
+
+find_biggest_social_democrat = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_social_democrat
+		scorer = social_democrat_major_scorer
+	}
+}
+
+find_biggest_social_liberal = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_social_liberal
+		scorer = social_liberal_major_scorer
+	}
+}
+
+find_biggest_market_liberal = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_market_liberal
+		scorer = market_liberal_major_scorer
+	}
+}
+
+find_biggest_conservative = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_conservative
+		scorer = conservative_major_scorer
+	}
+}
+
+find_biggest_authoritarian_democrat = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_authoritarian_democrat
+		scorer = authoritarian_democrat_major_scorer
+	}
+}
+
+find_biggest_nationalist = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_nationalist
+		scorer = nationalist_major_scorer
+	}
+}
+
+find_biggest_fascist = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_fascist
+		scorer = fascist_major_scorer
+	}
+}
+
+find_biggest_national_socialist = {
+	#
+	get_highest_scored_country = {
+		var = GLOBAL.platonic_big_national_socialist
+		scorer = national_socialist_major_scorer
+	}
+}
+
+## There are ideology scorers for each continent. If you need more check the generic_platonic_scorers file and make a new scripted effect 
+#
+#find_local_dangerous_fascist = {
+#	get_highest_scored_country = {
+#		var = platonic_local_dangerous_fascist
+#		scorer = local_fascist_country
+#	}
+#}
+# The idea is that you can use these effects to store the party popularities (and, if desired, the ruling party) when puppeting or possibly when starting civil wars, and then use the "restore" effects to reset it after the puppeting has happened, so that you don't have to use the overlord's ideology if you don't want to. 
+get_current_ideology_popularities = {
+	set_variable = {
+		ROOT.totalitarian_socialist_support_before_change = ROOT.party_popularity_100@totalitarian_socialist
+	}
+	set_variable = {
+		ROOT.communist_support_before_change = ROOT.party_popularity_100@communist
+	}
+	set_variable = {
+		ROOT.libertarian_socialist_support_before_change = ROOT.party_popularity_100@libertarian_socialist
+	}
+	set_variable = {
+		ROOT.social_democrat_support_before_change = ROOT.party_popularity_100@social_democrat
+	}
+	set_variable = {
+		ROOT.social_liberal_support_before_change = ROOT.party_popularity_100@social_liberal
+	}
+	set_variable = {
+		ROOT.market_liberal_support_before_change = ROOT.party_popularity_100@market_liberal
+	}
+	set_variable = {
+		ROOT.conservative_support_before_change = ROOT.party_popularity_100@conservative
+	}
+	set_variable = {
+		ROOT.authoritarian_democrat_support_before_change = ROOT.party_popularity_100@authoritarian_democrat
+	}
+	set_variable = {
+		ROOT.nationalist_support_before_change = ROOT.party_popularity_100@nationalist
+	}
+	set_variable = {
+		ROOT.fascist_support_before_change = ROOT.party_popularity_100@fascist
+	}
+	set_variable = {
+		ROOT.national_socialist_support_before_change = ROOT.party_popularity_100@national_socialist
+	}
+}
+
+get_current_ruling_party = {
+	set_variable = {
+		ROOT.ruling_ideology_before_change = ROOT.current_party_ideology_group
+	}
+}
+
+restore_ideology_popularities = {
+	hidden_effect = {
+		# Reset popluarities to what they were before puppeting 
+		set_popularities = {
+			totalitarian_socialist = ROOT.totalitarian_socialist_support_before_change
+			communist = ROOT.communist_support_before_change
+			libertarian_socialist = ROOT.libertarian_socialist_support_before_change
+			social_democrat = ROOT.social_democrat_support_before_change
+			social_liberal = ROOT.social_liberal_support_before_change
+			market_liberal = ROOT.market_liberal_support_before_change
+			conservative = ROOT.conservative_support_before_change
+			authoritarian_democrat = ROOT.authoritarian_democrat_support_before_change
+			nationalist = ROOT.nationalist_support_before_change
+			fascist = ROOT.fascist_support_before_change
+			national_socialist = ROOT.national_socialist_support_before_change
+		}
+		clear_variable = ROOT.totalitarian_socialist_support_before_change
+		clear_variable = ROOT.communist_support_before_change
+		clear_variable = ROOT.libertarian_socialist_support_before_change
+		clear_variable = ROOT.social_democrat_support_before_change
+		clear_variable = ROOT.social_liberal_support_before_change
+		clear_variable = ROOT.market_liberal_support_before_change
+		clear_variable = ROOT.conservative_support_before_change
+		clear_variable = ROOT.authoritarian_democrat_support_before_change
+		clear_variable = ROOT.nationalist_support_before_change
+		clear_variable = ROOT.fascist_support_before_change
+		clear_variable = ROOT.national_socialist_support_before_change
+	}
+}
+
+restore_ruling_party = {
+	ROOT = {
+		set_politics = {
+			ruling_party = var:ROOT.ruling_ideology_before_change
+		}
+	}
+}
+
+add_potential_special_forces_tree = {
+	custom_effect_tooltip = add_potential_special_forces_tree_tt
+	if = {
+		limit = {
+			NOT = {
+				has_variable = sf_trees
+			}
+		}
+		set_variable = {
+			sf_trees = 2
+		}
+	}
+	else = {
+		add_to_variable = {
+			sf_trees = 1
+		}
+	}
+}
+
+remove_potential_special_forces_tree = {
+	if = {
+		limit = {
+			NOT = {
+				has_variable = sf_trees
+			}
+		}
+		set_variable = {
+			sf_trees = 0
+		}
+	}
+	else = {
+		subtract_from_variable = {
+			sf_trees = 1
+		}
+	}
+}
+
+store_core_states_on_game_start = {
+	#Should be called from history file
+	every_core_state = {
+		ROOT = {
+			add_to_array = {
+				array = core_states_at_game_start
+				value = PREV
+			}
+		}
+	}
+}
+decrease_state_category = {
+	if = {
+		limit = {
+			has_state_category = megalopolis
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = conurbation
+	}
+	else_if = {
+		limit = {
+			has_state_category = pastoral
+		}
+		set_state_category = wasteland
+	}
+	else_if = {
+		limit = {
+			has_state_category = rural
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = pastoral
+	}
+	else_if = {
+		limit = {
+			has_state_category = village
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = rural
+	}
+	else_if = {
+		limit = {
+			has_state_category = town
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = village
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_town
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = town
+	}
+	else_if = {
+		limit = {
+			has_state_category = suburb
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = large_town
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_suburb
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = suburb
+	}
+	else_if = {
+		limit = {
+			has_state_category = city
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = large_suburb
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_city
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = city
+	}
+	else_if = {
+		limit = {
+			has_state_category = metropolis
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = large_city
+	}
+	else_if = {
+		limit = {
+			has_state_category = conurbation
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = -1
+		}
+		set_state_category = metropolis
+	}
+	else_if = {
+		limit = {
+			has_state_category = wasteland
+		}
+		add_extra_state_shared_building_slots = -1
+	}
+	custom_effect_tooltip = decrease_state_category_by_one_level_tt
+}
+
+# the following effects are excellent for preserving a puppet's government so it doesn't change to the overlord
+# use the first command in the scope of the about-to-be-puppeted country right before the puppet command is executed
+# and then the second, also in the scope of the puppet, right after
+get_current_government_type = {
+	clear_variable = original_government_type
+	set_variable = { original_government_type = current_party_ideology_group }
+
+	if = {
+		limit = { has_elections = yes }
+		set_country_flag = original_government_type_had_elections
+	}
+
+	get_current_popularities = yes
+
+	if = {
+		limit = { has_coalition = yes }
+		for_each_loop = {
+			array = coalition_partners
+			add_to_array = { original_coalitions = v }
+		}
+	}
+
+	if = {
+		limit = { has_autonomy_state = colonial_government }
+		set_country_flag = colonial_government
+	}
+	else_if = {
+		limit = { has_autonomy_state = integrated_puppet }
+		set_country_flag = integrated_puppet
+	}
+	else_if = {
+		limit = { has_autonomy_state = occupied_puppet }
+		set_country_flag = occupied_puppet
+	}
+	else_if = {
+		limit = { has_autonomy_state = autonomous_puppet }
+		set_country_flag = autonomous_puppet
+	}
+	else_if = {
+		limit = { has_autonomy_state = nominal_puppet }
+		set_country_flag = nominal_puppet
+	}
+	else_if = {
+		limit = { is_subject = yes }
+		set_country_flag = default_puppet
+	}
+}
+
+get_current_popularities = {
+	clear_array = original_popularities
+	add_to_array = { original_popularities = party_popularity_100@totalitarian_socialist }
+	add_to_array = { original_popularities = party_popularity_100@communist }
+	add_to_array = { original_popularities = party_popularity_100@libertarian_socialist }
+	add_to_array = { original_popularities = party_popularity_100@social_democrat }
+	add_to_array = { original_popularities = party_popularity_100@social_liberal }
+	add_to_array = { original_popularities = party_popularity_100@market_liberal }
+	add_to_array = { original_popularities = party_popularity_100@conservative }
+	add_to_array = { original_popularities = party_popularity_100@authoritarian_democrat }
+	add_to_array = { original_popularities = party_popularity_100@nationalist }
+	add_to_array = { original_popularities = party_popularity_100@fascist }
+
+	set_temp_variable = { sum = 100 }
+	for_each_loop = {
+		array = original_popularities
+		subtract_from_temp_variable = { sum = v }
+	}
+	add_to_array = { original_popularities = sum } #last value (natsoc), calculated directly to avoid rounding errors
+}
+
+restore_previous_government_type = {
+	hidden_effect = {
+		if = {
+			limit = { has_variable = original_government_type } #needed to avoid a CTD
+			if = {
+				limit = { has_country_flag = original_government_type_had_elections }
+				clr_country_flag = original_government_type_had_elections
+				set_politics = {
+					ruling_party = var:original_government_type
+					elections_allowed = yes
+				}
+			}
+			else = {
+				set_politics = {
+					ruling_party = var:original_government_type
+					elections_allowed = no
+				}
+			}
+		}
+		clear_variable = original_government_type
+
+		if = {
+			limit = { check_variable = { original_popularities^num > 0 } }
+			set_popularities = {
+				totalitarian_socialist = original_popularities^0
+				communist = original_popularities^1
+				libertarian_socialist = original_popularities^2
+				social_democrat = original_popularities^3
+				social_liberal = original_popularities^4
+				market_liberal = original_popularities^5
+				conservative = original_popularities^6
+				authoritarian_democrat = original_popularities^7
+				nationalist = original_popularities^8
+				fascist = original_popularities^9
+				national_socialist = original_popularities^10
+			}
+			clear_array = original_popularities
+		}
+
+		if = {
+			limit = { check_variable = { original_coalitions^num > 0 } }
+			for_each_loop = {
+				array = original_coalitions
+				set_temp_variable = { coalition_partner_var = v }
+				add_to_coalition = yes
+			}
+			clear_array = original_coalitions
+		}
+
+		clr_country_flag = colonial_government
+		clr_country_flag = integrated_puppet
+		clr_country_flag = occupied_puppet
+		clr_country_flag = autonomous_puppet
+		clr_country_flag = nominal_puppet
+	}
+}

@@ -1,0 +1,57 @@
+
+guiTypes = {
+	containerWindowType = { #超事件模板
+		name = "TFR_PRC_to_mars_event" #名称
+		size = { width = 982 height = 594 }
+		position = { x=0 y=0 }
+		Orientation = center
+		Origo = center
+		clipping = no
+		moveable = yes
+		
+		background = { #设置背景
+			name ="GFX_super_china_to_mars"
+			spriteType = "GFX_super_china_to_mars"
+			position = { x = 0 y = 30 }
+		}
+		
+		iconType = { #不要改
+			name = "Background"	
+			spriteType ="GFX_Super_event_bg"
+			position = { x = 0 y = 0 }
+		}
+		
+		instantTextBoxType = { #不要改
+			name = "Pax_Super_Event_Title_textbox"
+			position = { x = 260 y = 20 }
+			font = "VCR02_20"
+			borderSize = {x = 0 y = 0}
+			text = "[get_super_event_title]"
+			maxWidth = 490
+			maxHeight = 20
+			fixedsize = yes	
+			format = center
+		}
+		
+		instantTextBoxType = { #不要改
+			name = "Super_Event_Quote_textbox"
+			position = { x = 250 y = 435 }
+			font = "VCR02_16"
+			borderSize = {x = 0 y = 0}
+			text = "[get_superevent_quote]"
+			maxWidth = 500
+			maxHeight = 100
+			fixedsize = yes	
+			format = center
+		}
+
+		buttonType = { #不要改
+			name = "Super_Event_Close"
+			position = { x = 350 y = 585 }
+			buttonText = "[get_superevent_buton]"
+			buttonFont = "VCR02_16"
+			quadTextureSprite ="GFX_spacebar"
+			clicksound = click_ok
+		}
+	}
+}

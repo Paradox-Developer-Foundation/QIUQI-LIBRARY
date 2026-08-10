@@ -1,0 +1,974 @@
+#前言
+本模板是基于原“mod常用代码”的修订版，将一些老旧无效的代码删除，并补全了新增内容和重新分类排版。默认使用者拥有一定的mod制作经验.主要内容是一些在mod制作过程中经常会用到的代码，故省去了一些基础性代码和专用模板（比如available是什么，国策，决议，事件的模板是什么）如果缺少基础知识请先前往B战搜索带带杨白给的钢4mod教程学习，专用模板在下面两个推荐群聊里都有，欢迎前来交流。
+修订人：dream
+修订日期：2025.5.14
+推荐群聊：钢4mod交流群：77482797  白雪老师的完美教室：768450264
+	
+#条件种类(包括国策的和事件的和决议的)  Triggers
+	#外交
+	is_major = yes 是主要国家
+	is_in_faction_with = TAG 与某国在同一阵营的国家代码
+	is_faction_leader = yes 是阵营的领导者
+	has_military_access_to = TAG 拥有某国的军事通行权
+	is_neighbor_of = TAG 和某个是邻居（接壤）
+	has_war_with = TAG 与某国战争中
+	has_war = yes 是否处于战争 yes = 是
+	has_offensive_war = yes 处于侵略他国的战争中
+	has_defensive_war = yes 处于防御性战争中
+	has_war_together_with = TAG 和某国作为盟友一起处于战争
+	has_capitulated = yes 已停止抵抗
+	has_war_with_major = yes 与主要国家交战
+	has_border_war_with = TAG 和某国处于边境战争中
+	is_subject = 是否是其他国附庸 yes = 是 no = 否
+	is_subject_of = TAG 是哪个国家的附庸
+	has_subject = TAG 有某个国家作为自己的附庸
+	num_subjects = 附庸数量
+		#ROOT对TAG的关系
+		has_opinion = { 
+			target = TAG
+			value > 59 
+		} 	
+		#比较关系
+		available = {
+			要比较的国家(国家代码) = {
+				has_opinion = {  
+					target = 对谁的关系(国家代码) value > 大于多少
+				}
+			}
+		}
+	#国家
+	tag = 国家代码
+	has_government = 意识形态 = 当前意识形态是什么
+	has_stability < = 稳定度大于或小于多少
+	has_war_support < = 战争支持度大于或小于多少
+	is_ai = yes = 是ai，no则反之
+	original_tag = TAG 原本国家是什么
+	has_country_leader = { ruling_only = yes name = "国家领袖名称" } = 某人为国家领袖
+	NOT = { country_exists = TAG } TAG国家不存在
+	surrender_progress > 0.1 投降倾向大于10%
+	controls_state = 要求控制省份的代码
+	has_full_control_of_state = 要求完全控制的省份代码
+	owns_state = 要求拥有省份的代码
+	意识形态 > 意识形态大于多少 意识形态 = ( 民主 = democratic  法西斯 = fascism  共产主义 = communism  中立 = neutrality )
+	has_completed_focus = 已完成国策
+	country_exists = TAG 某国存在
+	has_idea = 民族精神 = 要求拥有民族精神
+	NOT = { has_idea = 民族精神 } = 要求没有民族精神
+	has_tech = 拥有科技
+		#某个国策完成进度条件
+		focus_progress = {
+			focus = 国策代码
+			progress > 进度大于多少
+		}
+		#要求战前控制某省份，且战时控制权在此国家手上代码
+		要求控制的地区代码 = {
+			is_owned_and_controlled_by = 受哪国控制的国家代码 
+		}
+		#某地区控制国条件
+		地区代码 = {
+			controller = {		
+				条件
+			}
+		}	
+		#首都位置(可以加入or、NOT等代码)
+		capital_scope = {
+			state = 省份代码
+		}
+	#变量 Variables
+	has_global_flag = 要求有的全球标记名称	( 加NOT = { } 就是要求没有有全球标记 )
+	has_country_flag = 要求有的国家标记名称	( 加NOT = { } 就是要求没有国家标记 )
+	date > 1937.7.7 = 时间大于1937.7.7（要定某天弹出需要往前打一天，例如 >1937.7.7日实际弹出日期为1937.7.8）
+	is_historical_focus_on = yes = 是否使用历史国策
+	threat > 全球紧张度大于多少(也可以打小于，0.1 = 1%)
+	compare_autonomy_progress_ratio > 自治度进程大于多少 例如60% = 0.60
+	num_of_factories > 工厂数大于多少
+	industrial_complex > 民用工厂大于多少
+	arms_factory > 军用工厂大于多少
+	dockyard > 海军船坞大于多少
+	has_manpower > 人力大于多少
+	has = 有（可以试着加在变量前，编出代码，比如 has_manpower > 人力大于多少）
+	has_army_manpower = { size > 兵力人数 } = 陆军现役兵力大于或小于多少 
+	has_deployed_air_force_size { size > 兵力人数 } = 部署的飞机数量大于或少于多少	
+
+#国策、决议基础代码
+	#决议、内阁是否看得见的代码(仅开局检测)
+		allowed = {
+			条件
+		}
+		#获得国策、决议的条件(是否可以点)代码
+		available = {
+			条件
+		}
+		#国策、决议可见的条件代码
+		visible= {
+			条件
+		}
+		#需要其中之一条件符合的代码(加在available条件中)(事件触发条件也可用)
+		or = {
+			条件
+		}
+		#需要全部条件都符合的代码(加在available条件中)(事件触发条件也可用)
+		and ={
+
+		}
+		#跳过国策条件代码
+		bypass = {
+			条件
+		}
+		fire_only_once = 决议是否只能点一次yes 或者 no
+		days_re_enable = 决议完成后会再次出现的间隔天数
+		days_remove = 决议持续天数
+		complete_effect = { 决议点击时的效果 } = 决议点击时要实现的效果代码
+		remove_effect = { 决议移除后的效果 } = 决议移除后要实现的效果代码		
+		mutually_exclusive = { focus = 相互排斥的国策代码 }
+		prerequisite = { focus = 要求完成的国策代码 } = （国策线连接）
+		available_if_capitulated = yes 投降可以点 no则反之
+		completion_reward = { 完成国策的奖励 }
+		continuous_focus_position = { x =  y =  } = 持续性国策位置 一般为这样:continuous_focus_position = { x = 20 y = 1200 } 不要惊讶，就是这样
+		relative_position_id = 相对的国策id = 相对国策位置
+		modifier = 修正效果，放在民族精神下面，或者直接放在决议下面，决议未移除时会一直加成（代码见下面#民族精神效果）
+		highlight_state_targets = { state = 219 } = 鼠标移到此决议时，目标地区省份会亮起，可打多个省份
+		complete_tooltip = { 国策完成后显示的效果（直接复制国策效果代码进入）}	
+		#以下代码可放在国家代码位置
+		ROOT = 当前国家，比如当前事件触发的国家、使用此国策树的国家
+		FROM = 让这个事件触发的国家(例如某国的某个事件触发了在另一个国家发生的某个事件)
+
+#国策效果、决议、事件效果 	Effects
+	set_global_flag = 名字 = 添加全球标记
+	set_global_flag = { flag = 添加全球标记 value = 1 days = 天数 } = 添加限时全球标记
+	clr_global_flag = 名字 = 移除全球标记
+	set_country_flag = 名字 = 添加国家标记
+	set_country_flag = { flag = 添加国家标记 value = 1 days = 天数 } = 添加限时国家标记
+	clr_country_flag = 名字 = 移除国家标记		
+	set_technology = { 要添加的科技代码 = 1 } = 添加科技
+	set_party_name = { ideology = 意识形态 long_name = 要改成的名称 name = 要改成的名称 } = 修改政党名称
+	本地化打 = 要改成什么名称_long
+	意识形态 = ( 民主 = democratic  法西斯 = fascism  共产主义 = communism  中立 = neutrality )
+	add_popularity = { ideology = 意识形态 popularity = 加多少 } = 增加支持率
+	add_named_threat = { threat = 添加多少紧张度 name = 名字（拿到本地化文件翻译）} = 添加全球紧张度
+	annex_country = { target = 要吞并的国家代码 transfer_troops = 是否吞并军队 yes or no }
+	set_state_controller = 要控制的省份代码(仅在战时会成为控制者，战争结束会还给拥有者，和平时期无效)
+	transfer_state = 要成为拥有者和控制者的省份代码
+	add_state_claim = 获得某省份宣称的省份代码
+	white_peace = 无条件和平的国家代码
+	add_stability = 添加稳定度
+	add_war_support = 添加战争支持度
+	add_research_slot = 增加研究槽数
+	add_political_power = 添加政治点数
+	army_experience = 陆军经验
+	navy_experience = 海军经验
+	air_experience = 空军经验
+	add_ideas = 添加的民族精神
+	remove_ideas = 除去的民族精神
+	add_timed_idea = { idea = 民族精神 days = 延续多少天 } = 添加持续天数的民族精神
+	news_event = { id = 要调出的新闻事件id }
+	country_event = { days = 延迟多少天弹出 random = 延迟多少小时弹出 id = 要调出国家事件id }
+	declare_war_on = { target = 宣战的国家 type = 类型 } = 立即宣战
+	create_wargoal = { target = 对哪个国家创建战争借口 type = 类型 } = 创建战争借口 
+	战争借口：puppet_wargoal_focus = 傀儡
+		  annex_everything = 吞并
+		  take_state_focus = 	征服(策略)
+		  take_state = 征服
+		  take_claimed_state = 割让领土
+	create_faction = 创建的阵营名 = 创建阵营
+	create_country_leader = 创造国家领袖(领袖格式去历史文件找)
+	remove_country_leader_trait = 领袖特质 = 移除领袖特质
+	set_capital = 省份代码 = 设置首都		
+	load_oob = "文件名（不用打后缀名）" 载入军队文件（爆兵用的，军队文件在\Hearts of Iron IV\history\units）
+	add_command_power = 添加指挥点数
+	add_state_core = 添加核心地区
+	add_core_of = TAG 添加TAG的核心
+	unlock_decision_category_tooltip = 解锁的决议代码（仅仅是提示一下解锁什么决议）
+	show_ideas_tooltip = （提示启用内阁（仅仅是提示，具体条件要去内阁进行条件设置）
+	custom_effect_tooltip = 效果特定提示代码(将效果特定提示代码拿到本地化文件翻译)
+	effect_tooltip = 效果工具提示，目前作用不明
+	remove_unit_leader = 要移除的将领id
+	
+	#国策加速卡 
+	add_tech_bonus = {
+		name = 名字	随便取，最好和国策名一样
+		bonus = 加成多少 1.0就是100%
+		uses = 数量 2就是两张
+		ahead_reduction = 超前多少年 1就是超前1年，你超前100年都行
+		category = 加速的科技种类 具体看下面
+	}
+	#研究加成种类（可以是直接的科技，也可以是种类，直接的科技去科技文件复制，种类去科技tags找）
+	light_air = 轻型机身
+	medium_air = 中型机身
+	heavy_air = 重型机身
+	transport_planes_cat = 运输机
+	air_equipment = 空军装备（引擎，机炮，油箱什么的，也包括运输机）
+	armor = 所有装甲科技 （底盘和装甲引擎科技）
+	cat_light_armor = 轻坦底盘
+	cat_medium_armor = 中坦底盘
+	cat_heavy_armor = 重坦底盘
+	infantry_weapons = 所有步兵武器 （包括机械化设备，卡车）
+	motorized_equipment = 卡车科技（包括机械化设备，装甲车）
+	mountaineers_tech = 山地步兵科技
+	marine_tech = 两栖部队科技
+	para_tech = 伞兵科技
+	cat_special_forces_generic = 所有特种步兵科技
+	support_tech = 支援连科技
+	train_tech = 火车科技（包括列车炮） 
+	artillery = 所有火炮科技 （包括反坦克炮，防空炮，火箭炮，火炮）
+	cat_anti_tank = 反坦克炮科技
+	cat_anti_air = 防空炮科技
+	rocketry = 喷气科技 （也是火箭炮科技）
+	electronics = 所有电子科技
+	radar_tech = 雷达科技
+	computing_tech = 计算机科技
+	cat_fortification = 要塞科技
+	nuclear = 核科技
+	industry = 所有工业科技
+	cat_production = 机床科技
+	concentrated_industry_category = 密集工业科技
+	dispersed_industry_category = 离散科技
+	construction_tech = 建筑科技
+	excavation_tech = 挖掘科技
+	synth_resources = 合成科技 （橡胶和燃油）
+	dd_tech = 驱逐舰
+	cl_tech = 轻巡
+	bc_tech = 战列巡洋舰
+	ca_tech = 重巡
+	ss_tech = 潜艇
+	cv_tech = 航母
+	bb_tech = 战列舰
+	naval_equipment = 所有海军武器科技（海军支援科技页面所有科技）
+
+	#国策学说花费减免卡
+	add_doctrine_cost_reduction = {
+		name = 名字
+		cost_reduction = 0.5 减少50%xp花费，最多减99%啊，别减成负数了
+		uses = 1 数量
+		category = 加成的学说
+	}
+	#学说加成种类
+	land_doctrine = 陆军学说
+	air_doctrine = 海军学说
+	naval_doctrine = 空军学说
+	special_forces_doctrine = 特种学说
+	cat_mobile_warfare = 机动作战
+	cat_superior_firepower = 优势火力
+	cat_grand_battle_plan = 决战计划
+	cat_mass_assault = 人海突击
+	cat_base_strike = 基地打击
+	cat_trade_interdiction = 贸易袭击
+	cat_fleet_in_being = 存在舰队
+	cat_strategic_destruction = 战略轰炸
+	cat_battlefield_support = 战场支援
+	cat_operational_integrity = 连续作战
+	cat_mountaineers_doctrine = 山地步兵学说
+	cat_marines_doctrine = 两栖步兵学说
+	cat_paratroopers_doctrine = 伞兵学说
+
+	火星兵与编制设计相关
+	#发编制设计
+	division_template = {
+		name = "division_XXX" 名字，什么都行，我这就是示范，别啥都写成division_GER、division_SOV...这样了
+		is_locked = yes 要不要锁定（锁定后无法删除这个编制的部队，也无法训练这个编制）
+		priority = 0 倾向 （没什么用，真正的倾向要到ai策略里调）
+		regiments = { 主要编制
+			unit = { x = 0 y = 0 } 前一个0是第一列 后一个0是第一行 因为只有5行5列，所以最大填4
+			unit = { x = 0 y = 1 }
+			unit = { x = 0 y = 2 }
+			unit = { x = 0 y = 3 }
+			unit = { x = 0 y = 4 }
+
+			unit = { x = 1 y = 0 }
+			unit = { x = 1 y = 1 }
+			unit = { x = 1 y = 2 }
+			unit = { x = 1 y = 3 }
+			unit = { x = 1 y = 4 }
+
+			...... 以下省略，我总不能真写完吧，对吧（）
+		}
+		support = { 支援连
+			support_unit = { x = 0 y = 0 } 支援连没有第二列所以第一个都是0
+			support_unit = { x = 0 y = 1 }
+			support_unit = { x = 0 y = 2 }
+			support_unit = { x = 0 y = 3 }
+			support_unit = { x = 0 y = 4 }
+		} 
+	}
+	#unit 文件在\Hearts of Iron IV\common\units\
+		infantry = 步兵营
+		cavalry = 骑兵营
+		motorized = 摩托化
+		mechanized = 机械化
+		artillery_brigade = 炮兵营
+		light_armor = 轻型坦克
+		medium_armor = 中型坦克
+		heavy_armor = 重型坦克
+		modern_armor = 现代坦克
+		super_heavy_armor = 超重坦
+		marine = 海军突击队
+		paratrooper = 伞兵
+		amphibious_armor = 两栖坦克 （丁真坦克，就两栖螺旋桨上面的那个科技）
+		light_tank_amphibious_chassis  = 轻型两栖坦克
+		medium_tank_amphibious_chassis  = 中型两栖坦克
+		heavy_tank_amphibious_chassis  = 重型两栖坦克
+		amphibious_mechanized = 两栖机械化步兵
+		anti_tank_brigade = 反坦克炮
+		anti_air_brigade = 防空炮
+		armored_car = 装甲车
+		artillery_brigade = 火炮
+		mot_artillery_brigade = 摩托化火炮
+		rocket_artillery_brigade = 火箭炮
+		motorized_rocket_brigade = 摩托化火箭炮
+		mountaineers = 山地步兵
+		light_sp_anti_air_brigade = 轻防空
+		medium_sp_anti_air_brigade = 中防空
+		heavy_sp_anti_air_brigade = 重防空
+		super_heavy_sp_anti_air_brigade = 超重防空
+		modern_sp_anti_air_brigade = 现坦自行防空
+		light_sp_artillery_brigade = 轻自火
+		medium_sp_artillery_brigade = 中自火
+		heavy_sp_artillery_brigade = 重自火
+		super_heavy_sp_artillery_brigade = 超重自火
+		modern_sp_artillery_brigade = 现坦自火
+		light_tank_destroyer_brigade = 轻坦歼
+		medium_tank_destroyer_brigade = 中坦歼
+		heavy_tank_destroyer_brigade = 重坦歼
+		super_heavy_tank_destroyer_brigade = 超重坦歼
+		modern_tank_destroyer_brigade = 现坦坦歼
+	#support_unit 
+		engineer = 工兵连
+		artillery = 炮兵支援连
+		recon = 侦察连
+		military_police = 宪兵
+		mot_recon = 摩托侦查
+		armored_car_recon = 装甲车侦查
+		light_tank_recon = 轻坦克侦查
+		anti_air 防空
+		anti_tank 反坦
+		armored_car_recon 装甲车侦查
+		field_hospital 医院
+		logistics_company 后勤
+		maintenance_company 维修
+		rocket_artillery 火箭炮
+		signal_company 通讯
+
+	#在首都刷火星兵（记住！记住！记住！一定要先发编制再刷兵，不然刷空编制会直接闪退，你也不想你的CPU遭殃吧）
+	capital_scope = {
+		create_unit = {
+			division = "name = \"名字\" division_template = \"编制的名字（就上面你刷的编制的那division_XXX\" start_experience_factor = 0.5（经验，0.5就是银牌，1就是满级骷髅师） start_equipment_factor = 0.5（刷出来自带多少装备，1就是自带满装备，光合作用是吧）"
+			owner = ROOT
+			count = 1 数量 1就是1个，你写114514也行
+		}	
+	}
+
+	#傀儡国#
+	set_autonomy = {
+		target = TAG
+		autonomy_state = #autonomy_free #autonomy_colony（殖民地） #autonomy_dominion（自治领） #autonomy_puppet（傀儡） #autonomy_integrated_puppet（半吞傀儡）
+	}
+
+	#规则设定（可到ideologies意识形态文件找种类）
+		set_rule = { 规则种类 = yes 或者 no } = 规则设定格式
+		#规则种类
+		can_create_factions = 规则设定，是否可以创建阵营
+		can_send_volunteers = 规则设定，是否可以派遣志愿军
+		can_declare_war_on_same_ideology = 规则设定，是否可以对同意识形态国家宣战
+		can_only_justify_war_on_threat_country = 规则设定，是否只能对造成紧张度的国家宣战
+
+	#创建将领代码
+		#创建上将
+			create_corps_commander = {
+				name = "名字"
+				portrait_path = "gfx/leaders/XXX/XXX.jpg" = 肖像名称(也可以这样打：picture = XXX.jpg，但是容易乱)
+				traits = { 特质 }
+				skill = 技能等级
+				attack_skill = 进攻技能等级
+				defense_skill = 防御技能等级
+				planning_skill = 计划技能等级
+				logistics_skill = 后勤技能等级
+			}			
+		#创建元帅
+			create_field_marshal = {
+				name = "名字"
+				portrait_path = "gfx/leaders/XXX/XXX.jpg" = 肖像名称(也可以这样打：picture = XXX.jpg，但是容易乱)
+				traits = { 特质 }
+				skill = 技能等级
+				attack_skill = 进攻技能等级
+				defense_skill = 防御技能等级
+				planning_skill = 计划技能等级
+				logistics_skill = 后勤技能等级
+			}
+		#创建海军将领
+			create_navy_leader = {
+				name = "名字"
+				portrait_path = "gfx/leaders/XXX/XXX.jpg" = 肖像名称(也可以这样打：picture = XXX.jpg，但是容易乱)
+				traits = { 技能 }
+				skill = 技能等级
+				attack_skill = 进攻技能等级
+				defense_skill = 防御技能等级
+				maneuvering_skill = 机动技能等级
+				coordination_skill = 协同技能等级
+			}		
+
+	#全体将领增加技能代码
+		every_army_leader = { 陆军将领
+			添加的技能			
+		}
+		#技能代码
+		add_attack = 添加攻击技能
+		add_defense = 添加防御技能
+		add_planning = 添加计划技能
+		add_logistics = 添加后勤技能
+		add_skill_level = 增加等级
+		add_unit_leader_trait = 增加特质（特质文件在\Hearts of Iron IV\common\unit_leader\xx_traits）	
+		#原版将领特质(陆军)
+		#将领特性(天生的，不可在战斗中获得)
+		old_guard = 保守派
+		brilliant_strategist = 天才战略家
+		inflexible_strategist = 不灵活的战略家
+		politically_connected = 政治关联
+		war_hero = 战争英雄
+		career_officer = 职业军官
+		trait_cautious = 谨慎
+		trait_reckless = 鲁莽
+		media_personality = 媒体人物
+		harsh_leader = 严厉将领
+		bearer_of_artillery = 炮兵搬运工		
+		infantry_officer = 步兵军官
+		cavalry_officer = 骑兵军官
+		armor_officer = 装甲军官	
+		#将领特性(包括地形特质，可从战斗中获得)
+		organizer = 组织者
+		cavalry_leader = 骑兵将领
+		infantry_leader = 步兵将领
+		skilled_staffer = 熟练参谋
+		trickster = 奇袭专家
+		trait_engineer = 工兵
+		panzer_leader = 装甲专家
+		commando = 特战专家
+		naval_invader = 入侵者
+		desert_fox = 沙漠之狐
+		swamp_fox = 沼泽之狐
+		trait_mountaineer = 山地专家
+		hill_fighter = 丘陵专家
+		jungle_rat = 丛林之鼠
+		ranger = 巡林者
+		urban_assault_specialist = 巷战专家
+		winter_specialist = 冬季悍将		
+		winter_specialist = 冬季专家		
+		#可分配的特性(需要习得指定特性之后才可点)
+		adaptable = 强于适应
+		winter_expert = 冬季专家
+		panzer_expert = 装甲专家
+		combined_arms_expert = 协同作战专家
+		cavalry_expert = 骑兵专家
+		fortress_buster = 攻坚专家
+		scavenger = 拾荒者
+		infantry_expert = 步兵专家
+		ambusher = 伏击专家
+		invader_ii = 两栖专家
+		naval_liason = 海军联络者
+		skirmisher = 散兵作战
+		paratrooper = 伞兵
+		camouflage_expert = 伪装专家
+		expert_improviser = 随机应变的专家
+		guerilla_fighter = 游击战士		
+		#元帅特性
+		logistics_wizard = 后勤专家
+		offensive_doctrine = 进攻专家
+		defensive_doctrine = 防御专家
+		fast_planner = 快速规划者
+		thorough_planner = 全面规划者
+		unyielding_defender = 不屈的防守者
+		aggressive_assaulter = 咄咄逼人的进攻者
+		organisational_leader = 组织至上
+		inspirational_leader = 魅力非凡
+		expert_delegator = 专业委任者
+
+	#全体将领加入某国
+		哪个国家将领的国家代码 = {
+			every_unit_leader = {
+				set_nationality = 加入哪个国家的国家代码
+			}
+		}		
+
+	#加入阵营代码
+		阵营领导国家代码 = {
+			add_to_faction = 要加入的国家代码
+		}
+
+	#隐藏效果(加在国策效果下面或者事件选项下面)
+		hidden_effect = {
+			
+		}
+
+	#几率效果代码
+		random_list = { 70 = { add_political_power = 200 } 30 = { add_political_power = -100 } }
+						几率	 		效果				几率			效果	
+
+	#替换民族精神(民族精神附加效果)代码
+		swap_ideas = {
+			add_idea = 添加的民族精神
+			remove_idea = 除去的民族精神
+		}	
+
+	#国策独立代码
+		宗主国代码 = {
+			set_autonomy = {
+				target = 国家代码
+				autonomy_state = autonomy_free
+			}
+		}
+
+	#国策加自治度代码
+		add_autonomy_ratio = {
+			value = 加多少(0.1=100)
+			localization = 本地化(显示在自治度上的名称)
+		}
+
+	#国策设定政治现状
+		set_politics = { 
+			parties = { 	
+				democratic = { popularity = 0 } fascism = { popularity = 0 } communism = { popularity = 0 } neutrality = { popularity = 0 } 
+			} 
+			ruling_party = 执政党(意识形态) last_election = "最后一次选举日期" election_frequency = 选举频率(单位 = 月，一般48个月) elections_allowed = 是否允许选举 yes or no
+		}
+		不改的部分可以不打
+
+	#如果代码(可用于实现不同情况发生不同效果)
+		if = {
+			limit = {
+				条件
+			}
+			效果
+		}
+		else_if = {
+			limit = {
+				另一个条件
+			}
+			另一个效果
+		}
+		else = {
+			效果
+		}
+		#多个if是同时执行，else_if是否则执行另一种情况(如果if里面的条件不满足，则检测和执行else_if里面的)
+		#else里面只能放效果，如果if条件不满足，则直接执行else里面的效果（else = 否则）		
+
+	#添加装备
+        add_equipment_to_stockpile = {
+            type = 种类
+            amount = 数量
+            producer = 来自哪个国家
+        }
+		#装备种类
+		infantry_equipment = 步兵武器(步枪)
+		support_equipment = 支援装备
+		artillery_equipment = 火炮
+		light_tank_equipment = 轻型坦克
+		medium_tank_equipment = 中型坦克
+		heavy_tank_equipment = 重型坦克
+		super_heavy_tank_equipment = 超重坦克
+		modern_tank_equipment = 现代坦克
+		motorized_equipment = 摩托化装备
+		mechanized_equipment = 机械化装备
+		small_plane_airframe = 战斗机
+		small_plane_cas_airframe = 近距支援机
+
+	#添加地区建筑代码
+        地区代码 = {
+            add_extra_state_shared_building_slots = 添加建筑槽数量
+            add_building_construction = {
+                type = 建筑种类
+                level = 数量
+                instant_build = yes 立刻完成 no反之
+            }
+        }	
+
+	#特殊地区代码地区代码(放在地区代码位置,是全世界每一个地区，所以请加上限制范围)
+		random_state = 随机地区
+		every_state = 每一个州
+		random_owned_controlled_state 随机一个我们所控制的地区
+
+	#限制范围(可配合每一个地区代码使用)
+		limit = {
+			is_controlled_by = 哪个国家占领的地区
+			is_core_of = 哪个国家的核心
+		}
+		不用的可以不加，别的条件可到汉化文件找	
+
+	#省份种类
+		wasteland = 荒漠 0建筑槽
+		city = 城镇地区 6建筑槽
+		large_city = 密集城镇地区 8建筑槽
+		metropolis = 大城市地区 10建筑槽
+		megalopolis = 大都市地区 12建筑槽
+		town = 发达乡村地区 4建筑槽
+		large_town = 稀疏城镇地区 5建筑槽
+		rural = 乡村地区 2建筑槽
+		enclave = 飞地 0建筑槽
+		small_island = 小岛 1建筑槽
+		tiny_island = 极小岛屿 0建筑槽
+		pastoral = 牧区	1建筑槽
+
+	#添加地图外工厂
+		add_offsite_building = { type = 工厂种类 level = 数量 }
+		#地区建筑种类
+		arms_factory = 军工厂
+		industrial_complex = 民用工厂
+		infrastructure = 基础设施(铁路)
+		dockyard = 海军船坞
+		air_base = 空军基地(和海军基地不同，空军基地是地区建筑)
+	#添加省份建筑(小地块建筑)代码
+		省份代码 = {
+			add_building_construction = {
+				type = 建筑种类
+				level = 数量
+				instant_build = yes 立刻完成 no反之
+				province = 小地块代码
+			}
+		}
+		#省份建筑种类
+		naval_base = 海军基地
+		bunker = 堡垒
+	#添加资源代码
+		地区代码 = {
+			add_resource = {
+				type = 种类
+				amount = 数量
+			}
+		}
+		#资源种类
+		steel = 钢铁
+		oil = 石油
+		tungsten = 钨
+		chromium = 铬
+		aluminium = 铝
+		rubber = 橡胶
+
+#民族精神效果（加在modifier下面） Modifiers 
+	#情报机构与间谍
+		agency_upgrade_time = 升级情报机构所需的时间 -0.1 = 减10%时间
+		civilian/army/navy/airforce_intel_factor = 获得别国民用/陆军/海军/空军情报的百分比加成 10=10%
+		civilian/army/navy/airforce_intel_to_others = 民用/陆军/海军/空军泄露给别国的情报百分比 10=10%
+		operation_outcome = 任务效率
+		operation_risk = 任务风险	
+		crypto_strength	= 加密等级
+		decryption_power = 解密能力
+		intel_from_combat_factor = 从战斗中获得的情报 百分比
+		intel_from_operatives_factor = 特工渗透获得的情报 百分比
+		intelligence_agency_defense = 反间谍
+		subversive_activites_upkeep = 颠覆活动成本
+		operative_slot = 特工数量
+		enemy_operative_capture_chance_factor = 捕获敌方特工的几率 百分比修正
+		enemy_operative_detection_chance = 捕获敌方特工的几率 基础值（给一点都是质变） 10=10%
+		own_operative_capture_chance_factor = 我方特工被捕获的几率 百分比修正
+		own_operative_detection_chance = 我方特工被捕获的几率 基础值（给一点都是质变） -10=-10%
+	#外交
+		send_volunteer_divisions_required = 可以派遣志愿军的师数要求 百分比
+		send_volunteer_size = 可以派遣志愿军的师数量 1=1个师
+		send_volunteers_tension = 派遣志愿军所需的世界紧张度
+		generate_wargoal_tension = 制造战争目标的紧张度限制
+		justify_war_goal_time = 正当化战争目标所需时间
+		join_faction_tension = 加入阵营紧张度限制
+		opinion_gain_monthly_factor = 改善关系
+		trade_opinion_factor = 贸易协定关系修正
+	#国家（政治内阁与法案等）
+		political_power_factor = 政治点(以百分比形式增加 例0.25 = 25% )
+		political_power_gain = 政治点加多少打多少
+		political_power_cost = 政治点消耗 0.1就是每天多消耗0.1pp
+		stability_factor = 稳定度
+		stability_weekly = 每周稳定度增长
+		war_support_factor = 战争支持度
+		war_support_weekly = 每周战争支持度增长
+		defensive_war_stability_factor = 防御战争对稳定度修正
+		offensive_war_stability_factor = 侵略战争对稳定度修正
+		monthly_population = 月度人力(百分比形式 0.1 =10% )
+		civilian_factory_use = 需要暂时使用的民用工厂数量
+		surrender_limit = 投降界限
+		min_export = 可出口资源
+		mobilization_laws_cost_factor = 征兵法案花费
+		trade_laws_cost_factor  = 贸易法案花费
+		economy_cost_factor = 经济法案花费
+		political_advisor_cost_factor = 政治顾问花费
+		tank_manufacturer_cost_factor = 装甲制造商花费
+		naval_manufacturer_cost_factor = 海军制造商花费
+		aircraft_manufacturer_cost_factor = 飞机制造商花费
+		materiel_manufacturer_cost_factor = 军需品设计花费
+		industrial_concern_cost_factor = 工业企业花费
+		theorist_cost_factor = 理论家花费
+		army_chief_cost_factor = 陆军部长花费
+		navy_chief_cost_factor = 海军部长花费
+		air_chief_cost_factor = 空军部长花费
+		high_command_cost_factor = 总司令花费
+		research_speed_factor = 研究速度
+		autonomy_gain = 自治度每日增加(加多少打多少)
+		意识形态种类_drift = 意识形态每日增加(加多少打多少)
+		drift_defence_factor = 意识形态抵制力度
+	#工业
+		industrial_capacity_factory = 工厂产出
+		industrial_capacity_dockyard = 船坞产出
+		consumer_goods_factor = 生活消费品系数
+		consumer_goods_expected_value = 生活消费品期望
+		production_factory_max_efficiency_factor = 生产效率上限
+		production_factory_efficiency_gain_factor = 生产效率增长
+		line_change_production_efficiency_factor = 生产效率保持
+		production_factory_start_efficiency_factor = 基础生产效率
+		production_lack_of_resource_penalty_factor = 缺乏资源时的产线惩罚
+		local_resources_factor = 战略资源获取率
+		global_building_slots_factor = 地区最大工业值 （建筑槽）
+		production_speed_buildings_factor = 建造速度
+		production_speed_nuclear_reactor_factor = 核反应堆建造速度
+		production_speed_arms_factory_factor = 军用工厂建造速度
+		production_speed_industrial_complex_factor = 民用工厂建造速度
+		production_speed_synthetic_refinery_factor = 化学合成厂建造速度
+		production_speed_dockyard_factor = 海军船坞建造速度
+		production_speed_bunker_factor = 堡垒建造速度
+		production_speed_naval_base_factor = 海军基地建造速度
+		production_speed_infrastructure_factor = 基础设施建造速度
+		production_speed_建筑_factor = 对应建筑建造速度 （文件在\Hearts of Iron IV\common\buildings\中）
+	#燃油
+		fuel_gain_factor = 燃油获得（每日基础燃油获得和合成炼油厂提供的燃油）
+		fuel_gain_factor_from_states = 从我们控制的地块上石油资源所提供的燃油获得
+		max_fuel_factor = 燃油储存上限 百分比		
+		army_fuel_consumption_factor = 陆军燃油消耗减少 百分比
+		navy_fuel_consumption_factor = 海军燃油消耗减少 百分比
+		air_fuel_consumption_factor = 空军燃油消耗减少 百分比
+	#抵抗与顺从
+		resistance_target = 抵抗目标
+		resistance_target_on_our_occupied_states = 我们被敌人占领地区的抵抗目标
+		resistance_decay = 抵抗下降速度
+		resistance_decay_on_our_occupied_states = 我们被敌人占领地区的抵抗下降速度
+		resistance_growth = 抵抗增长速度
+		resistance_growth_on_our_occupied_states = 我们被敌人占领地区的抵抗增长速度
+		compliance_starting_value = 初始顺从度
+		compliance_growth = 顺从度增长速度
+		compliance_gain = 每日顺从度增长 1 = 1%
+		compliance_growth_on_our_occupied_states = 我们被敌人占领地区的顺从度增长速度
+		required_garrison_factor = 驻军需求
+	#陆军
+		command_power_gain = 每日指挥点增长
+		max_command_power = 最大指挥点数提高多少
+		command_power_gain_mult = 每日指挥点增长百分比(0.1 = 10%)
+		max_command_power_mult = 最大指挥点增长百分比(0.1 = 10%)
+		training_time_army_factor = 训练时间
+		attrition = 损耗
+		no_supply_grace = 随行补给(打小时数，1 = 1h)
+		supply_consumption_factor = 补给消耗
+		out_of_supply_factor = 补给耗尽时受到的惩罚降低
+		supply_combat_penalties_on_core_factor = 位于核心地块补给耗尽时的惩罚降低
+		supply_node_range = 补给范围
+		truck_attrition_factor = 卡车损耗		
+		army_org_factor = 陆军组织度
+		army_morale_factor = 组织度恢复
+		army_strength_factor = HP（黄条）
+		org_loss_when_moving = 陆军移动组织度损失
+		org_loss_at_low_org_factor = 组织度低于25%时的组织度损失
+		recon_factor = 陆军侦查
+		recon_factor_while_entrenched = 位于堑壕中的侦察值
+		land_reinforce_rate = 增援率
+		pocket_penalty = 部队被包围时受到的惩罚降低
+		combat_width_factor = 战场宽度 （-0.1就是-10%宽，如一个40宽的编制在战场中变成36宽）
+		coordination_bonus = 协同性
+		initiative_factor = 主动性 
+		conscription = 适役人口
+		conscription_factor = 适役人口修正
+		non_core_manpower = 非核心人力
+		mobilization_speed = 动员速度
+		army_infantry_attack_factor = 步兵攻击
+		army_infantry_defence_factor = 步兵防御
+		motorized_attack_factor = 摩托化步兵攻击
+		motorized_defence_factor = 摩托化步兵防御
+		mechanized_attack_factor = 机械化进攻
+		mechanized_defence_factor = 机械化防御
+		army_artillery_attack_factor = 炮兵攻击
+		army_artillery_defence_factor = 炮兵防御
+		army_armor_attack_factor = 坦克攻击
+		army_armor_defence_factor = 坦克防御
+		army_core_attack_factor = 陆军核心攻击
+		army_core_defence_factor = 陆军核心防御
+		army_attack_factor = 陆军攻击
+		army_defence_factor = 陆军防御
+		breakthrough_factor = 突破
+		army_speed_factor = 陆军师速度
+		land_night_attack = 夜间攻击
+		<单元类型>_attack_factor  = 具体某单位的攻击 （文件在\Hearts of Iron IV\common\units\中）
+		<单元类型>_defence_factor = 具体某单位的防御
+		<单元类型>_speed_factor = 具体某单位的速度
+		army_bonus_air_superiority_factor = 陆军空优
+		enemy_army_bonus_air_superiority_factor = 敌方空中支援（-0.1 = -10%敌方空中优势）
+		air_superiority_bonus_in_combat = 战斗过程中空优带来的战斗加成
+		cas_damage_reduction = 陆军对近距离支援机的伤害减免
+		dig_in_speed_factor = 堑壕速度
+		max_dig_in_factor = 最大堑壕 百分比
+		max_dig_in = 最大堑壕
+		planning_speed = 计划速度
+		max_planning_factor = 计划上限系数
+		max_planning = 计划上限
+		experience_loss_factor = 有经验的士兵损失
+		experience_gain_army_factor = 陆军经验增长 百分比
+		experience_gain_army = 每日陆军经验增长 
+		experience_gain_army_unit_factor = 师单位经验增长
+		experience_gain_factor = 将领经验增长
+		river_crossing_factor = 跨河速度惩罚
+		terrain_penalty_reduction = 地形惩罚降低
+		special_forces_min = 特种部队上限增加 （1就是+1上限）
+		special_forces_cap = 特种部队上限增加 百分比
+		special_forces_training_time_factor = 特种部队师训练时间
+		special_forces_no_supply_grace = 特种部队随行补给(打小时数，1 = 1h)
+		special_forces_out_of_supply_factor = 特种部队补给耗尽时受到的惩罚降低
+		special_forces_attack_factor = 特种攻击
+		special_forces_defence_factor = 特种防御
+		shore_bombardment_bonus = 对岸炮击
+	#海军
+		refit_ic_cost = 舰船改造花费
+		refit_speed = 舰船改造速度
+		repair_speed_factor = 舰船修理速度
+		experience_gain_navy_factor = 海军经验增长
+		experience_gain_navy = 每日海军经验增长
+		experience_gain_navy_unit_factor = 舰船经验增长
+		navy_org = 海军组织度(不是百分比，直接打数字)
+		navy_org_factor = 海军组织度 百分比
+		naval_morale_factor = 海军组织度恢复
+		navy_weather_penalty = 天气惩罚
+		navy_visibility = 可见度
+		spotting_chance = 索敌速度
+		naval_detection = 对海探测
+		night_spotting_chance = 夜间探测
+		positioning = 阵位
+		naval_hit_chance = 海军命中机会
+		naval_damage_factor = 海军伤害
+		naval_defense_factor = 海军防御
+		naval_speed_factor = 海军速度
+		navy_max_range_factor = 海军最大航程参数
+		navy_submarine_attack_factor = 潜艇攻击
+		navy_submarine_defence_factor = 潜艇防御
+		navy_capital_ship_attack_factor = 主力舰攻击
+		navy_capital_ship_defence_factor = 主力舰防御
+		navy_screen_attack_factor = 屏卫舰攻击
+		navy_screen_defence_factor = 屏卫舰防御
+		naval_strike = 海军打击（航母）
+		naval_critical_score_chance_factor 致命一击的概率
+		screening_efficiency = 屏卫效率
+		convoy_escort_efficiency = 护航效率
+		convoy_raiding_efficiency_factor = 袭击运输船任务效率
+		sortie_efficiency = 出击效率
+		navy_anti_air_attack_factor = 海军对空攻击 百分比
+		naval_torpedo_hit_chance_factor = 鱼雷命中几率
+		naval_torpedo_reveal_chance_factor = 鱼雷暴露几率
+		naval_torpedo_screen_penetration_factor = 鱼雷穿透屏卫舰几率
+		naval_torpedo_cooldown_factor = 鱼雷冷却时间
+		air_carrier_night_penalty_reduction_factor = 航母夜间惩罚减少
+		carrier_capacity_penalty_reduction = 航母超载惩罚减少
+		navy_carrier_air_attack_factor = 舰载机对空攻击
+		navy_carrier_air_targetting_factor = 舰载机对海瞄准
+		naval_invasion_capacity = 登陆部队上限
+		invasion_preparation = 登陆准备时间
+		naval_invasion_penalty = 登陆惩罚
+		amphibious_invasion_defence = 登陆防护
+		amphibious_invasion = 两栖登陆速度
+	#空军
+		experience_gain_air_factor = 空军经验增长 百分比
+		experience_gain_air = 空军经验增长
+		air_ace_generation_chance_factor = 王牌机师产生的概率
+		air_training_xp_gain_factor = 空中联队训练时获得的经验
+		air_mission_xp_gain_factor = USA_air_mission_xp_gain_factor 空军联队执行任务时的经验值提升
+		air_wing_xp_loss_when_killed_factor = 空中联队被击落时经验损失
+		air_attack_factor = 对空攻击
+		air_defence_factor = 空中防御
+		air_agility_factor = 空中机动
+		air_range_factor = 空军航程
+		air_maximum_speed_factor = 最大速度
+		air_accidents_factor = 空军事故概率
+		air_weather_penalty = 空军恶劣天气惩罚
+		air_night_penalty = 夜间行动惩罚
+		air_detection = 对空检测
+		air_home_defence_factor = 本空域修正系数
+		air_power_projection_factor = 跨空域修正系数
+		air_mission_efficiency = 空军任务效率
+		air_superiority_efficiency = 夺取制空权任务效率
+		air_intercept_efficiency = 拦截任务效率
+		air_cas_efficiency = 密接支援任务效率
+		air_escort_efficiency = 空军护航效率
+		air_nav_efficiency = 对海任务效率
+		air_cas_present_factor = 近地支援
+		ground_attack_factor = 对地攻击系数
+		air_strategic_bomber_bombing_factor = 战略轰炸
+		air_bombing_targetting = 战略轰炸瞄准
+		strategic_bomb_visibility = 战略轰炸能见度
+	#针对某种武器的加成(直接打不用加在modifier下面)
+		equipment_bonus = {
+			装备种类 = {
+				modifier = xxx
+				instant = yes
+			}
+		}
+	#modifier加成代码
+		#通用
+		build_cost_ic = 建造花费
+		reliability = 可靠性
+		maximum_speed = 最大速度
+		armor_value = 装甲厚度 （别给飞机，天上是不会飞坦克的）
+		#飞机等装备
+		air_attack = 空中攻击
+		air_defence = 空中防御
+		air_agility = 空中机动
+		air_bombing = 战略轰炸
+		air_range = 航程
+		air_ground_attack = 空军对地攻击
+		naval_strike_attack = 空军对海攻击
+		#舰船等装备
+		lg_attack = 海军轻炮攻击
+		hg_attack = 海军重炮攻击
+		naval_range = 海军航程
+		carrier_size = 机库容量
+		#陆地装备
+		defense = 防御
+		breakthrough = 突破
+		hardness = 装甲率
+		soft_attack = 对人员杀伤
+		hard_attack = 对装甲杀伤
+		ap_attack = 穿甲深度
+		air_attack = 对空攻击	
+	#装备种类	
+		#陆军
+		infantry_equipment = 步兵武器(步枪)
+		support_equipment = 支援装备
+		artillery_equipment = 火炮
+		rocket_artillery_equipment = 火箭炮
+		anti_air_equipment = 防空炮
+		anti_tank_equipment = 反坦克炮
+		light_tank_chassis = 轻型坦克
+		medium_tank_chassis = 中型坦克
+		heavy_tank_chassis = 重型坦克
+		super_heavy_tank_chassis = 超重坦克
+		modern_tank_chassis = 现代坦克
+		armor = 装甲科技 （可修正所有坦克类型）
+		motorized_equipment = 摩托化装备
+		mechanized_equipment = 机械化装备
+		#空军
+		small_plane_airframe = 轻型战斗机
+		small_plane_cas_airframe = 轻型近距离支援机
+		small_plane_naval_bomber_airframe = 轻型海军轰炸机
+		medium_plane_airframe = 中型机身
+		medium_plane_fighter_airframe = 重型战斗机
+		large_plane_airframe = 大型机身
+		large_plane_maritime_patrol_plane_airframe = 大型海军巡逻（轰炸）机
+		#海军-按具体舰船的名字分类
+		nrm_ship_hull_capital = 战列舰（包括战巡）
+		nrm_ship_hull_carrier = 航母（已包括轻型航母等）
+		nrm_ship_hull_cruiser = 巡洋舰（包括轻重巡洋）
+		nrm_ship_hull_destroyer = 驱逐舰
+		nrm_ship_hull_submarine = 潜艇（包括各种潜艇）
+		#海军-按舰船功能分类
+		capital_ship = 主力舰大类（包括战列舰、重巡洋舰）
+		screen_ship = 屏卫舰大类（包括轻巡洋舰、驱逐舰）
+		carrier = 航母（包括轻型航母等）
+		submarine = 潜艇（包括各种潜艇）
+		
+	#对某国定向修正(直接打不用加在modifier下面)
+		targeted_modifier = {
+			tag = 对哪个国家的战斗修正
+			attack_bonus_against = 攻击修正
+			defense_bonus_against = 防御修正
+			breakthrough_bonus_against = 突破修正
+			extra_trade_to_target_factor = 额外贸易资源出口
+			trade_cost_for_target_factor = 贸易成本花费（1民工能买8资源，减少后能买更多）
+			cic_to_target_factor = 给TAG国家自己民用工厂的百分比（就是TAG抽你厂）
+			mic_to_target_factor = 给TAG国家自己军用工厂的百分比（就是TAG抽你厂）
+		}

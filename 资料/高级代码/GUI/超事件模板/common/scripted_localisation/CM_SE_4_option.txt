@@ -1,0 +1,30 @@
+﻿#由 CMCMC 编写
+#本地化内容
+##CM_SE_1_title  重大事件标题（东亚防御倡议协定凯旋）
+##CM_SE_2_desc  主要特色文本内容（上下同欲者胜，风雨同舟者兴）
+##CM_SE_3_quote   特色文本的来源（————孙武）
+##CM_SE_4_btn  按钮文本（东方红）
+#纹理
+##CM_SE_getpicture 图片条目的脚本化本地化设置，超事件背景图（本地化键）需要在一个 .gfx 文件中定义
+
+defined_text = { 
+	name = CM_SE_btn
+		
+	    text = { trigger = { check_variable = { global.se_display = 0001 } } localization_key = CM_SE_btn_0001 }
+	text = { trigger = { check_variable = { global.se_display = 0002 } } localization_key = CM_SE_btn_0002 }
+	text = { trigger = { check_variable = { global.se_display = 0003 } } localization_key = CM_SE_btn_0003 }
+	text = { trigger = { check_variable = { global.se_display = 0004 } } localization_key = CM_SE_btn_0004 }
+	text = { trigger = { check_variable = { global.se_display = 0005 } } localization_key = CM_SE_btn_0005 }
+	text = { trigger = { check_variable = { global.se_display = 0006 } } localization_key = CM_SE_btn_0006 }
+	text = { trigger = { check_variable = { global.se_display = 0007 } } localization_key = CM_SE_btn_0007 }
+	text = { trigger = { check_variable = { global.se_display = 0008 } } localization_key = CM_SE_btn_0008 }
+	text = { trigger = { check_variable = { global.se_display = 0009 } } localization_key = CM_SE_btn_0009 }
+	text = { trigger = { check_variable = { global.se_display = 0010 } } localization_key = CM_SE_btn_0010 }
+	#根据需要添加更多内容
+	#通用按钮文本
+	text = {
+		trigger = { 
+		}
+		localization_key = CM_SE_btn_missing
+	}	
+}

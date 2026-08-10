@@ -1,0 +1,53 @@
+#路径common\bop\*.txt
+test = {
+	initial_value = 0 #初始位置
+	left_side = left_name #左侧名称
+	right_side = right_name #右侧名称
+
+	decision_category = test_decision #下面决议的大类别，决议和普通决议一样
+
+	range = { #中间点范围
+		id = mid_range
+		min = -0.1
+		max = 0.1
+		modifier = {
+			#效果
+		}
+	}
+	side = { #一侧（这里是左）
+		id = left_side
+		icon = tu_pian
+		range = { #判定点范围，每个代表一个判定点，可以写很多个range
+			id = left_range
+			min = -1
+			max = -0.1
+
+            on_activate = {
+				#进入这个range时，瞬间触发的效果
+			}
+			on_deactivate = {
+				#离开这个range时，瞬间触发的效果
+			}
+
+			modifier = {
+				#持续性效果
+			}
+			rule = {
+				#设定游戏规则
+			}
+		}
+	}
+	side = { #一侧（这里是右）
+		id = right_side
+		icon = tu_pian
+		range = { #判定点范围，每个代表一个判定点，可以写很多
+			id = right_side_range
+			min = 0.1
+			max = 1
+			modifier = {
+				#持续性效果
+			}
+		}
+	}
+}
+

@@ -1,0 +1,55 @@
+#阵营目标
+#ROOT的目标是阵营领导人(注意：英文注释中的原文是”ROOT is faction leader“，但不知道为什么ROOT似乎只是指代当前国家，请自行甄别），FROM是打开UI并查看目标的阵营成员，completed/cancel/complete_effect没有FROM作用域
+#阵营目标模板
+FAC_Maintain_stability_term = { #阵营目标的块
+	name = FAC_Maintain_stability_term #阵营目标的名字，如在这里是维持稳定。决定本地化键值。
+	description = FAC_Maintain_stability_term_desc #阵营目标的描述
+	category = short_term #目标类别，在这里是短期目标，类别有短期、中期、长期（category = short_term medium_term or long_term）
+	group = FOCUS_FILTER_INTERNAL_AFFAIRS #阵营目标的类别，在这里是内政。如果需要添加，只需在这上面写上写类别名字、并添加同名的带GFX前缀的图标和带_FACTION_GOAL_FILTER后缀的本地化即可（有意思的是，你甚至能直接写已经有的图标的名字上去。就像在这里这样）
+	allowed = { #初始可见条件。如果开局时不满足则之后都不可见。
+
+	}
+	visible = { #可见条件
+			tag = PRA #在这里的意思是，当阵营领导者是PRA时，这个阵营目标才可见。
+	}
+
+	available = { #启用条件
+
+		ROOT = {
+			has_war = no
+		}
+
+	}
+	completed = { #完成条件
+		PRA = {
+			has_country_flag = PRA_maintain_stability_complete
+		}
+
+	}
+
+	complete_effect = { #完成效果
+
+	}
+
+	cancel_effect = { #取消效果
+		# 效果 - 目标被取消时执行一次
+		#
+		# 作用域（SCOPE） = 派系领袖：国家（COUNTRY）
+	}
+
+	select_effect = { #选择效果
+		# 效果 - 目标被选中时执行一次，仅在游戏开始后选中目标时生效
+		#
+		# 作用域（SCOPE） = 派系领袖：国家（COUNTRY）
+	}
+	
+	remove_effect = { #移除效果
+		# 效果 - 目标被移除时执行一次，仅在游戏开始后移除目标时生效
+		#
+		# 作用域（SCOPE） = 派系领袖：国家（COUNTRY）
+	}
+
+	ai_will_do = { #AI选择目标的倾向
+		base = 1
+	}
+}

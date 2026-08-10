@@ -1,0 +1,11 @@
+on_actions = {
+  
+	on_startup = {
+		effect = {
+			###数组设置###
+			every_country = {	#开局全世界国家的id加入到数组
+				add_to_array = { global.Test_Arr = THIS.id }
+			}
+		}
+	}
+}

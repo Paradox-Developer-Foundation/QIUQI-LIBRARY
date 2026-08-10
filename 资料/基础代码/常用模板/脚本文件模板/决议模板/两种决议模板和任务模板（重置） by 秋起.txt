@@ -1,0 +1,421 @@
+本教程重置于2025年7月18日，对应钢铁雄心IV游戏中1.16.x版本 by 秋起. 霜泽图书馆
+
+#决议组txt文件位置common/decisions/categories/xxx_decision_category.txt
+
+决议组 = {
+	icon = 图标名 #显示在决议组标题框左侧的小图标
+	picture = 图片名 #决议配图，装饰作用居多
+	scripted_gui = <scripted_gui_name> #脚本化GUI
+	allowed = {
+		#条件,仅开局检测一次
+	}
+	available = {
+		#条件，持续检测
+	}
+	visible = {
+		#条件，持续检测,满足才显示决议
+	}
+	priority = { #优先级 优先度越大决议组越靠上
+		base = <value> #基础优先度
+		modifier = { #modifier则根据具体条件加减优先度。
+			add = <Value>
+			tag = <value>
+		}
+	}
+
+	#地块高亮显示，在大地图上显示决议
+	highlight_states = {
+		#第一种办法，特点：精但不广
+		highlight_state_targets = { #直接指定
+			state = <state_id>
+		}
+		highlight_provinces = { #省份突出显示（选择性添加）
+			<province_id> <province_id>  
+		}
+		#第二种办法，特点：广但不精
+		highlight_states_trigger = { #域:State
+		    #条件，作用域始终为State，可以限定State的范围
+		}
+
+		highlight_color_before_active = <value> #取值范围0~3，若没有特殊指定，则为白色轮廓
+		highlight_color_while_active = <value> #作用，在点击决议之前/当决议进行时，涵盖地块的轮廓
+
+	}
+
+	on_map_area = { #在决议列表的顶部设置一个专门用来查看地块的伪决议，单击该决议，相机移动至规定地
+
+		name = <loc_key> #本地化键，用于设置伪决议的本地化名
+		zoom = <value> #取值50~3000，相机的缩放远近，数值越小放大越大
+
+	    #选取省份：
+		#法一：直接指定
+		state = <state_id> #单击决议后，相机移动到的<state_id>
+		#法二：限定范围
+		target_root_trigger = {
+			#条件，限定要查看的省份，作用域为ROOT(本国)
+		}
+		target_trigger = {
+			#条件限定要查看的省份，作用域为country(全世界都可以查看)
+		}
+		target_array = <arry_id> #限定为数组范围内的省份，本质上和条件相同
+
+	}
+
+	visible_when_empty = yes/no #正常情况下，决议组是不可见的，除非其下至少有一个可见的决议，否则如果你想要显示该决议，可以添加该代码
+}
+
+
+#普通决议txt文件位置common/decisions/xxx.txt
+决议组 = {
+	普通决议 = {
+		
+		desc = <loc_key> #本地化键，用于设置决议的本地化描述
+        
+		priority = { #优先级 优先度越大决议越靠上
+			base = 3
+			modifier = {
+				add = 10
+				tag = PUM
+			}
+		}
+
+		#第一种：直接指定
+		icon = 图标名
+		#第二种：条件icon
+		icon = {
+			key = icon_name
+			trigger = {
+				#条件，满足条件显示icon_name图标
+			}
+		}
+		icon = icon2_name #否则显示icon2的图标
+
+		#基础花费
+		cost = <value>/<variable>
+		#自定义花费，其本质上是一个tt字符串，本身不会扣除任何东西，需要在complete_effect内进行扣除
+		custom_cost_trigger = {
+			#条件，满足条件显示custom_cost_text定义的tt字符
+		}
+		custom_cost_text = <loc_key> #当鼠标悬浮在花费上时，会显示<loc_ket>_tooltip的文本；当条件不满足时，则会显示<loc_key>_blocked
+
+		fire_only_once = 是否只可点/触发一次 #（yes/no）
+		days_re_enable = <value>/<variable> #几天后可以再点击
+		days_remove = <value>/<variable> #决议进行的天数，若为0，则为永久进行，直到满足remove_trigger条件
+		
+
+		#并且，针对地区的决议将在决议菜单打开时将图标显示在这些地区上。为了避免混淆，可以在决议类别中添加地图区域。
+		on_map_mode = map_only #将使决议仅出现在地图上。
+		on_map_mode = decision_view_only #将使决议仅出现在决议菜单中。
+		on_map_mode = map_and_decisions_view #将使决议同时出现在地图和决议菜单中。
+
+		#条件
+		allowed = {
+			#条件,仅开局检测一次
+		}
+		available = {
+			#条件，持续检测
+		}
+		visible = {
+			#条件，持续检测,满足才显示决议
+		}
+
+		remove_trigger = { 
+			满足条件立即移除正在进行的决议
+		}
+		cancel_trigger = { 
+			取消的条件，该条件优先度优先于remove_trigger
+		} 
+		
+		#修正
+		modifier = {
+			决议正在进行时候的修正（天数为days_remove设定的数）
+	   	}
+		targeted_modifier = { #决议正在进行时的修正，可以专门指向某国（天数为days_remove设定的数）
+			tag = <TAG>
+			<modifier>
+		}
+
+		#效果
+		complete_effect = {  
+			开始/点击决议时的效果
+		}
+		remove_effect = {
+			决议完成/结束时的效果
+		}
+		
+		cancel_effect = {
+			取消后的效果
+		}
+
+		#随机
+		fixed_random_seed = no/yes
+		#说明：在默认情况下，决议使用固定的随机种进行游戏。
+		#这也就意味着每次选择Random类的决议时，会指向同一结果。
+		#为了避免这种情况出现，可以使用fixed_random_seed=no这一代码
+		#使得不同结果变成可能
+
+		#战时警告（发出战争警告的音效，同时提醒AI开始做准备）
+		war_with_on_remove = <TAG> #对应remove_effect，假定在该决议移除时，本国向<TAG>国家宣战。
+		war_with_on_complete = <TAG> #对应complete_effect，假定在该决议开始时，本国向<TAG>国家宣战。
+        
+		#地块高亮显示，在大地图上显示决议
+		highlight_states = {
+			#第一种办法，特点：精但不广
+		    highlight_state_targets = { #直接指定
+			    state = <state_id>
+		    }
+		    highlight_provinces = { #省份突出显示（选择性添加）
+			    <province_id> <province_id>  
+		    }
+		    #第二种办法，特点：广但不精
+		    highlight_states_trigger = { #域:State
+		        #条件，作用域始终为State，可以限定State的范围
+		    }
+
+			highlight_color_before_active = <value> #取值范围0~3，若没有特殊指定，则为白色轮廓
+		    highlight_color_while_active = <value> #作用，在点击决议之前/当决议进行时，涵盖地块的轮廓
+		}
+		
+
+		ai_will_do = {
+			factor/base = X
+			modifier = {
+				add/factor = X
+				条件
+			}
+		}
+	}
+    
+	#注：ROOT（默认作用域）是获得该决议的国家，FROM 是决议的目标（指向TAG），在地区针对性决议下，则为state
+
+	针对性决议 = { #写决议代码可以批量生产决议。任务和常规决议都可以被定为针对性决议。
+		
+	    #成为针对性决议的方法，方法一：
+		#用Targets进行基础限定
+		targets = { #为其中的每一个scope(可以是state_id也可以是tag)生成潜在针对性决议
+			TAG 
+			TAG
+			#或者
+			state = 123
+		}
+		targets_dynamic = yes/no #当targets为TAG时可用，将检测范围扩展至Original_tag所衍生出来的TAG（例如意大利和南方王国，法国和维希法国）
+		
+		#进一步限定
+		target_trigger = {
+			#条件，在targets的范围内限定scope的范围
+		}
+		target_root_trigger = {
+			#条件，在targets的范围内限定scope的范围，在本国范围扫描
+		}
+		
+		target_non_existing = yes/no #默认情况下，无法将决议目标设为一个不存在的国家。可以使用target_non_existing=yes参数来解除这一限制。
+
+		#方法二
+		#使用Target_array 进行基础限定
+        target_array = <array_id> #指定数组进行限制范围，具体的array_id可以移步于wiki百科查找
+
+		targets_dynamic = yes/no #当targets为TAG时可用，将检测范围扩展至Original_tag所衍生出来的TAG（例如意大利和南方王国，法国和维希法国）
+		
+		#进一步限定
+		target_trigger = {
+			#条件，在array的范围内限定scope的范围
+		}
+		target_root_trigger = {
+			#条件，在array的范围内限定scope的范围，在本国范围扫描
+		}
+
+		#方法三，不加基础限定
+		#使用trigger进行全范围扫描
+		target_trigger = {
+			#条件，在全scopes的范围内限定scope的范围
+		}
+		target_root_trigger = {
+			#条件，在全scopes的范围内限定scope的范围，在root范围扫描
+		}
+
+		#注意如果为地区针对性决议，则需要添加state_target = yes ，可能的值为：yes、no、any、any_owned_state、any_controlled_state、continent_key（例如欧洲、非洲、北美等）
+		#诚然，这只会在没有设置targets的情况下才会生效，否则则应将其设置为 'any'（或 'yes'）。除非省略或设置为 "no"，否则使决议成为地区/state目标决策。将检测哪些地区/state取决于值
+		#any (或 yes)：将根据 'target_trigger' 检测游戏中的每个地区/state。应尽量避免使用这种方式，因为它在性能方面代价高昂。
+		#any_owned_state：将检测该国家拥有的每个地区/state。这相当于（但速度更快）在 target_trigger 中添加 'owner = ROOT'。
+		#any_controlled_state：将检测由该国家控制的每个地区/state。这相当于（但速度更快）在 target_trigger 中添加 'is_controlled_by = ROOT'。
+		#continent_key（例如欧洲、非洲、北美等）：将检测该大陆上的每个地区/state。这相当于（但速度更快）在 target_trigger 中添加 'is_on_continent = xxx'。
+
+		#并且，针对地区的决议将在决议菜单打开时将图标显示在这些地区上。为了避免混淆，可以在决议类别中添加地图区域。
+		on_map_mode = map_only #将使针对性决议仅出现在地图上。
+		on_map_mode = decision_view_only #将使针对性决议仅出现在决议菜单中。
+		on_map_mode = map_and_decisions_view #将使针对性决议同时出现在地图和决议菜单中。
+	
+	    priority = { #优先级 优先度越大决议越靠上
+			base = 3
+			modifier = {
+				add = 10
+				tag = PUM
+			}
+		}
+
+		#第一种：直接指定
+		icon = 图标名
+		#第二种：条件icon
+		icon = {
+			key = icon_name
+			trigger = {
+				#条件，满足条件显示icon_name图标
+			}
+		}
+		icon = icon2_name #否则显示icon2的图标
+
+		desc = <loc_key> #本地化键，用于设置决议的本地化描述
+
+		#基础花费
+		cost = <value>/<variable>
+		#自定义花费，其本质上是一个tt字符串，本身不会扣除任何东西，需要在complete_effect内进行扣除
+		custom_cost_trigger = {
+			#条件，满足条件显示custom_cost_text定义的tt字符
+		}
+		custom_cost_text = <loc_key> #当鼠标悬浮在花费上时，会显示<loc_ket>_tooltip的文本；当条件不满足时，则会显示<loc_key>_blocked
+
+		days_remove = <value>/<variable>
+		fire_only_once = 是否对某国只触发一次
+		days_re_enable = 几天之后可以再点
+
+		#条件
+		allowed = {
+			#条件,仅开局检测一次
+		}
+		available = {
+			#条件，持续检测，同时检测FROM和ROOT
+		}
+		visible = {
+			#条件，持续检测,满足才显示决议，同时检测FROM和ROOT
+		}
+		remove_trigger = {
+			满足条件立即移除正在进行的决议
+		}
+		cancel_trigger = {
+			取消任务的条件，该条件优先度优于remove_trigger
+		}
+		
+		#修正
+		modifier = {
+			决议正在进行时候的修正（天数为days_remove设定的数）
+	   	}
+		targeted_modifier = { #决议正在进行时的修正，可以专门指向某国（天数为days_remove设定的数）
+			tag = <TAG>
+			<modifier>
+		}
+
+		#效果
+		complete_effect = {  
+			开始/点击决议时的效果
+		}
+		remove_effect = {
+			决议完成/结束时的效果
+		}
+		
+		cancel_effect = {
+			取消后的效果
+		}
+
+		#战争警告，针对性决议的战争警告和原有的战争警告有所差别
+		#常规决议转针对性决议
+		war_with_on_complete = FORM #等效于war_with_target_on_complete = yes
+		war_with_on_remove = FROM #等效于war_with_target_on_remove = yes
+
+		#任务型决议转针对性决议
+		war_with_on_timeout = FROM #等效于war_with_target_on_timeout = yes
+
+		cancel_trigger = {
+			取消任务的条件
+		}
+		cancel_effect = {
+			取消任务后的效果
+		}
+
+		#地块高亮显示，在大地图上显示决议
+		highlight_states = {
+			#第一种办法，特点：精但不广
+		    highlight_state_targets = { #直接指定
+			    state = <state_id>
+		    }
+		    highlight_provinces = { #省份突出显示（选择性添加）
+			    <province_id> <province_id>  
+		    }
+		    #第二种办法，特点：广但不精
+		    highlight_states_trigger = { #域:State
+		        #条件，作用域始终为State，可以限定State的范围
+		    }
+
+			highlight_color_before_active = <value> #取值范围0~3，若没有特殊指定，则为白色轮廓
+		    highlight_color_while_active = <value> #作用，在点击决议之前/当决议进行时，涵盖地块的轮廓
+		}
+
+		ai_will_do = {
+			factor/base = X
+			modifier = {
+				add/factor = X
+				条件
+			}
+		}
+
+		#针对性决议激活，wiki建议手动激活，使用如下效果串
+		activate_targeted_decision = { target = TAG decision = my_decision }
+
+	}
+	
+
+	任务模板 = {
+
+		#第一种：直接指定
+		icon = 图标名
+		#第二种：条件icon
+		icon = {
+			key = icon_name
+			trigger = {
+				#条件，满足条件显示icon_name图标
+			}
+		}
+		icon = icon2_name #否则显示icon2的图标
+		
+		desc = <loc_key> #本地化键，用于设置决议的本地化描述
+		     
+
+		allowed = {
+			#仅开局检测一次，任务展示条件
+		}
+
+		available = {                           
+		    #任务完成条件
+		}
+		visible = {
+			#条件，持续检测,满足才显示决议
+		}
+		activation = {                
+			#激活任务的条件
+		}
+
+		cancel_trigger = {
+			取消任务的条件
+		}
+		
+		
+		days_mission_timeout = <value>/<variable> #任务时限天数
+		cancel_if_not_visible = yes/no #yes为当任务不满足visible条件时，自动取消任务；no为不取消任务，持续检测visible条件
+		selectable_mission = yes/no # 如果设置，会将任务转换为玩家必须选择按钮的任务。默认为no
+		is_good = yes/no #决定任务进度条的颜色 yes为绿色；no为红色                  
+	
+		war_with_on_timeout = TAG
+		#可选，将使游戏假设任务在其范围内将向指定国家宣战。这用于让AI为宣战做准备并在边境集结军队,这也将向目标及其所有盟友发出通知。
+
+
+		timeout_effect = {                      
+			#超时未完成任务的效果          
+		}       
+		complete_effect = {                    
+			#任务完成（满足上方available条件）的效果          
+		}
+		cancel_effect = {
+			#取消任务后的效果
+		}
+		
+	}
+}

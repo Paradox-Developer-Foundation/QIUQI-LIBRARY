@@ -1,0 +1,464 @@
+#####################################
+###如何自定义剧本界面和有趣的国家界面###
+#####################################
+
+###########################
+# #BY 卜一儿 #FROM TNO:SFFH #
+###########################
+
+#此部分属于GUI修改范畴
+#故适合具有一定GUI基础的Modder参考
+#本文件对应的后端文件不开放，但通过bookmarks可以进行效果修改
+#修改该部分文件与修改gui前端同理，可以自己制作背景图注册到文件中并使用，同样可以增加或删除部件
+#文件地址"<mod名>\interface\frontendgamesetupview.gui"
+#注册地址"<mod名>\interface\frontendgamesetupview.gfx" #当然其他gfx文件也行
+#图像可参考Hearts of Iron IV\gfx\interface中的相关文件
+#本教程基于Heart of Iron IV原版文件
+
+guiTypes = {
+
+	###########################################################################
+	#该文件为整个开始界面至进入游戏为止的前端文件，故在此处略去一部分，请不要删除它们#
+	###########################################################################
+
+	#请找到如下片段#对应原版文件504行
+	#此片段为剧本文件
+	containerWindowType = { #剧本选择界面主窗口
+		name ="gamesetup_scenario_window"
+		size = { width = 579 height = 512 }
+		clipping = no
+		orientation = center
+		origo = center
+		moveable = yes
+
+		instantTextBoxType = { #上端标题，原版中即为“选择剧本”四字
+			name = "title"
+			position = { x = 120 y = 14 }
+			textureFile = ""
+			font = "hoi_20b"
+			borderSize = {x = 0 y = 0}
+			text = "FE_SELECT_SCENARIO"
+			maxWidth = 340
+			maxHeight = 30
+			format = center
+		}
+
+		background = { #背景文件，可在gfx文件中自行注册
+			name = "single_player_date_bg"
+			quadTextureSprite ="GFX_select_date_bg"
+		}
+
+		containerWindowType = { #此为gridbox的容器窗口
+			name ="bookmarks"
+			position = { x = 43 y = 55 }  #gribox请以该坐标为准
+			size = { width = -10 height = 120 }
+
+#################################重点：################################
+
+			gridboxType = { #此为剧本的gridbox，根据bookmarks中的剧本文件按开始时间顺序读取
+				name ="bookmarks_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 260 height = 0 }
+				add_horizontal = yes
+				max_slots_vertical = 1
+				format = "UPPER_LEFT"
+			}
+		}
+		#原版的两个剧本是强制加载的#
+		#所以你想要把他们覆盖掉只能通过GUI而不是bookmarks来实现了#
+		#如果你想要创建单个剧本，请在gridbox的代码中添加max_slots_horizontal = 1一行#
+		#这行代码会使gridbox的横向生成窗口数仅为1个#
+		#此时对bookmarks文件夹中原版的两个文件的日期进行修改，其中一个日期改为你想要的，另一个的日期改为晚于你所想要的日期#
+		#这样就可以实现单个剧本的效果，对bookmarks进行修改请在你所想要的日期的文件中进行修改#
+		#如果你想要实现多个剧本，就通过修改gridbox的max_slots_horizontal和max_slots_vertical来实现#
+		#前者为横向生成最大窗口数，后者为纵向生成最大窗口数#
+		#此时将你的想要的剧本按日期先后排序，最早的两个直接通过修改原有的两个文件来实现#
+		#其余的新增剧本直接在bookmarks文件夹中添加新的txt文档即可#
+
+
+		instantTextBoxType = { #此为剧本选择界面下方的标题，对应原版中该界面的“历史简介”四字
+			name = "history_title"
+			position = { x = 110 y = 274 }
+			font = "hoi_20b"
+			borderSize = {x = 0 y = 0}
+			text = "BM_HISTORY_TITLE"
+			maxWidth = 340
+			maxHeight = 30
+			format = centre
+		}
+
+		instantTextBoxType = { #此为剧本标题，根据你所选择的剧本展示，本地化名为bookmarks文件中的name
+			name = "bookmark_title"
+			position = { x = 25 y = 305 }
+			font = "hoi4_typewriter22"
+			borderSize = {x = 0 y = 0}
+			maxWidth = 340
+			maxHeight = 30
+			format = left
+		}
+
+		instantTextBoxType = { #此为剧本简介，根据你所选择的剧本展示，本地化名为bookmarks文件中的desc
+			name = "bookmark_desc"
+			position = { x = 25 y = 330 }
+			font = "hoi4_typewriter16"
+			borderSize = {x = 0 y = 0}
+			maxWidth = 540
+			maxHeight = 30
+			format = left
+		}
+
+		ButtonType = { #返回按钮
+			name = "back_button"
+			position = { x = 30 y = -57 }
+			quadTextureSprite ="GFX_button_221x34"
+			buttonText = "BACK"
+			buttonFont = "hoi_18mbs"
+			Orientation = "LOWER_LEFT"
+			clicksound = click_close
+			oversound = ui_menu_over
+			shortcut = "ESCAPE"
+		}
+
+		ButtonType = { #确认选择的按钮
+			name = "select_button"
+			position = { x = -252 y = -57 }
+			quadTextureSprite ="GFX_button_221x34"
+			buttonText = "FE_SELECT_SCENARIO"
+			buttonFont = "hoi_18mbs"
+			Orientation = "LOWER_RIGHT"
+			clicksound = click_ok
+			oversound = ui_menu_over
+			shortcut = "RETURN"
+		}
+	}
+
+	containerWindowType = { #有趣的国家界面主窗口
+		name ="gamesetup_interesting_countries_window"
+		size = { width=1225 height=717 }
+		Orientation = center
+		origo = center
+		clipping = no
+		moveable = yes
+
+		instantTextBoxType = { #对应原版该界面中“选择国家”四字
+			name = "title"
+			position = { x = 435 y = 12 }
+			textureFile = ""
+			font = "hoi_24header"
+			borderSize = {x = 0 y = 0}
+			text = "FE_SELECT_COUNTRY"
+			maxWidth = 340
+			maxHeight = 30
+			format = centre
+		}
+
+		background = { #背景图片，同理，可在gfx中注册并替换
+			name = "single_player_country_bg"
+			quadTextureSprite ="GFX_country_selection_bg"
+		}
+
+		ButtonType = { #返回按钮
+			name = "back_button"
+			position = { x = -158 y = -52 }
+			quadTextureSprite ="GFX_button_148x34"
+			buttonText = "BACK"
+			buttonFont = "hoi_18mbs"
+			Orientation = "CENTER_DOWN"
+			clicksound = click_close
+			oversound = ui_menu_over
+			shortcut = "ESCAPE"
+		}
+
+		ButtonType = { #确认选择的按钮
+			name = "select_button"
+			position = { x = 10 y = -52 }
+			quadTextureSprite ="GFX_button_148x34"
+			buttonText = "FE_SELECT_COUNTRY"
+			buttonFont = "hoi_18mbs"
+			Orientation = "CENTER_DOWN"
+			clicksound = click_default
+			oversound = ui_menu_over
+			shortcut = "RETURN"
+		}
+
+		###重点来了，有趣的国家的展示通过多个gridbox实现
+		###其读取是按bookmarks中各剧本文件内的tag的顺序的
+
+		containerWindowType = { #gridbox的容器窗口
+			name ="countries"
+			position = { x = 15 y = 45 }  #请以该坐标为准
+			size = { width = -15 height = 120}
+
+			gridboxType = { #主要国家对应的gridbox
+				name ="countries_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100% height = 100% }
+				slotsize = { width = 150 height = 0 }
+				add_horizontal = yes #横向添加 #= no 即为纵向
+				max_slots_vertical = 1
+				format = "UPPER_LEFT"
+			}
+
+		}
+
+		containerWindowType = { #此部分作用暂不明确
+			name ="countries_medium"
+			position = { x = 15 y = 330 }
+			size = { width = -15 height = 120}
+
+			gridboxType = {
+				name ="countries_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100% height = 100% }
+				slotsize = { width = 150 height = 0 }
+				add_horizontal = yes
+				max_slots_vertical = 1
+				format = "UPPER_LEFT"
+			}
+		}
+
+		containerWindowType = { #次要国家对应的gridbox #写上minor = yes后读取至本gridbox
+			name ="countries_mini"
+			position = { x = 15 y = 340 }  #请以该坐标为准
+			size = { width = -15 height = 120}
+
+			gridboxType = {
+				name ="countries_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100% height = 100% }
+				slotsize = { width = 53 height = 40 }
+				max_slots_horizontal = 22
+				add_horizontal = yes
+				max_slots_horizontal = 22
+				max_slots_vertical = 2
+				format = "UPPER_LEFT"
+			}
+		}
+
+		####接下来的部分与history和bookmarks的文件的内容一一对应
+		###国家领导人、民族精神、国策……巴拉巴拉
+
+		iconType = { #国家领导人图像底图
+			name = "minor_country_leader"
+			quadTextureSprite ="GFX_leader_unknown"
+			position = { x = 289 y = 441 }
+			scale=0.696
+			rotation=-0.04 #让它转起来的代码，负值即为顺时针
+		}
+
+		iconType = { #国家领导人图像
+				name ="minor_portrait_overlay"
+				spriteType = "GFX_minor_portrait_overlay"
+				position = { x= 280 y = 430 }
+		}
+
+
+		instantTextBoxType = { #对应原版该界面左下角信息栏中的“信息”二字
+			name = "info_title"
+			position = { x = 10 y = 450 }
+			font = "hoi4_typewriter22"
+			borderSize = {x = 0 y = 0}
+			text = "FE_COUNTRY_INFO_TITLE"
+			maxWidth = 340
+			maxHeight = 30
+			format = centre
+		}
+
+		containerWindowType = { #左下角信息栏的窗口
+			name = "info" 
+			position = { x = 35 y = 485 }
+
+			instantTextBoxType = { #领袖标签 对应“领袖”二字
+				name = "leader_label"
+				position = { x = 0 y = -5 }
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				text = "LEADER"
+				maxWidth = 340
+				format = left
+			}
+
+			instantTextBoxType = { #领袖名称
+				name = "leader"
+				position = { x = 0 y = 12 }
+				textureFile = ""
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				text = ""
+				maxWidth = 340
+				format = left
+			}
+
+			instantTextBoxType = { #意识形态标签，对应“意识形态”四字
+				name = "ideology_label"
+				position = { x = 0 y = 35 }
+				textureFile = ""
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				text = "IDEOLOGY"
+				maxWidth = 340
+				format = left
+			}
+
+			instantTextBoxType = { #意识形态名称
+				name = "ideology"
+				position = { x = 0 y = 52 }
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				maxWidth = 340
+				format = left
+			}
+
+			instantTextBoxType = { #政府标签，对应“政府”二字
+				name = "government_label"
+				position = { x = 0 y = 75 }
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				text = "GOVERNMENT"
+				maxWidth = 340
+				format = left
+			}
+
+			instantTextBoxType = { #政府体制名；如：极权政体
+				name = "government"
+				position = { x = 0 y = 92 }
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				text = "FE_INTERESTING_COUNTRIES"
+				maxWidth = 340
+				format = left
+			}
+
+			instantTextBoxType = { #选举标签，对应“选举”二字
+				name = "elections_label" 
+				position = { x = 0 y = 115 }
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				text = "ELECTIONS"
+				maxWidth = 340
+				format = left
+			}
+
+			instantTextBoxType = { #选举情况（原版为有或无）
+				name = "elections" 
+				position = { x = 0 y = 132 }
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				maxWidth = 340
+				format = left
+			}
+
+			instantTextBoxType = { #执政党标签，对应“执政党”三字
+				name = "party_label"
+				position = { x = 0 y = 155 }
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				text = "RULING_PARTY"
+				maxWidth = 340
+				format = left
+			}
+
+			instantTextBoxType = { #执政党名称
+				name = "party" 
+				position = { x = 0 y = 172 }
+				font = "hoi4_typewriter16"
+				borderSize = {x = 0 y = 0}
+				maxWidth = 340
+				format = left
+			}
+		}
+
+		instantTextBoxType = { #对应整个信息栏的标题，为当前所选国家名称
+			name = "nation_title"
+			position = { x = 442 y = 421 }
+			font = "hoi_24header"
+			borderSize = {x = 0 y = 0}
+			maxWidth = 340
+			maxHeight = 48
+			format = centre
+			vertical_alignment = center
+		}
+
+		containerWindowType = { #阵营
+			name = "spirit"
+			position = { x = 451 y = 475 }
+
+			iconType ={ #阵营图标
+				name ="pol_faction_icon"
+				spriteType = "GFX_pol_factions_strip"
+				position = { x= 0 y = 0 }
+				frame = 1
+			}
+
+			#以下部分与bookmarks对应
+
+			containerWindowType = { #民族精神，依旧顺序读取
+				name ="ideas"
+				position = { x = 91 y = -1 } #请以该坐标为准
+				size = { width = 100%% height = 70 }
+
+				gridboxType = {
+					name ="ideas_grid"
+					position = { x = 0 y = 0 }
+					size = { width = 100% height = 70 }
+					slotsize = { width = 60 height = 66 }
+					max_slots = { x = 3 y = 1 } #栏位数
+					add_horizontal = yes
+					format = "UPPER_LEFT"
+				}
+			}
+
+			containerWindowType = { #国策，已经顺序读取
+				name ="focus"
+				position = { x = 9 y = 85 } #请以该坐标为准
+				size = { width = 100% height = 100 }
+
+				gridboxType = {
+					name ="focus_grid"
+					position = { x = 17 y = 8 }
+					size = { width = 100% height = 100 }
+					slotsize = { width = 105 height = 100 }
+					max_slots = { x = 4 y = 1 } #栏位数
+					add_horizontal = yes
+					format = "UPPER_LEFT"
+				}
+			}
+		}
+
+		instantTextBoxType = { #历史简介标签，对应该界面右下角“历史简介”四字
+			name = "history_title"
+			position = { x = 830 y = 450 }
+			font = "hoi4_typewriter22"
+			borderSize = {x = 0 y = 0}
+			text = "FE_COUNTRY_HISTORY_TITLE"
+			maxWidth = 340
+			maxHeight = 30
+			format = centre
+		}
+
+		instantTextBoxType = { #历史简介内容
+			name = "history"
+			position = { x = 810 y = 490 }
+			font = "hoi4_typewriter16"
+			borderSize = {x = 0 y = 0}
+			maxWidth = 380
+			maxHeight = 30
+			format = left
+		}
+	}
+}
+
+#一些骚操作，爱来自TNO
+
+#相信你也发现了，直接使用gridbox的话，想要达到tno那样的效果是不可能的
+#那么TNO是怎么做到的呢？
+#秘诀就是，截取底图中的一部分图像，并单独制作一个icon进行覆盖，在被覆盖处填上无关紧要的tag，从而实现“跳格”
+#同理，TNO中的“待更新内容”也是通过icon覆盖得到的无法点击的效果
+#参见"2438003901interface\frontendgamesetupview.gui"（创意工坊文件路径）文件751至810行
+#参见"2438003901\gfx\interface\country_selection_cover.dds"
+
+#作者QQ：2918755276
+#霜泽图书馆（主馆）群号：378525932
+#霜泽图书馆（雪煤馆）群号：1026294736
+#新秩序：离乡甚远水群群号：1004649701

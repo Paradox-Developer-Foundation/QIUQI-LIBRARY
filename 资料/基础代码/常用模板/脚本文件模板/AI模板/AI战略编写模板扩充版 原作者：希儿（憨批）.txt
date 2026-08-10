@@ -1,0 +1,257 @@
+#ai_strategy设定ai战略
+	#在国策、事件、决议里加战略
+	添加战略的国家代码 = {
+		add_ai_strategy = {
+			type = 
+			#种类
+			id = 
+			#根据种类而定(有些可能要打双引号，如:结盟的战略，结盟对象国家代码要打双引号)
+			value = 
+			#数值
+		}
+	}
+	随便打个id不重要 = {
+		enable = { #开启战略的条件（只要满足条件且当前未开启就可以无限重复）
+		}
+		abort = { #战略终止的条件
+		}
+		#未满足启用条件时终止（只要满足条件且当前已经开启此战略就可以无限重复，根据情况与"abort"战略终止的条件来选择使用）
+		abort_when_not_enabled = yes 
+		战略
+	}	
+	#战略格式	
+	ai_strategy = {
+		type = 战略种类
+		id = 战略里要执行的种类(如装备，兵种，模板等)
+		value = ai倾向值
+		target = 外交行动修改
+	}
+		#战略种类			
+			#与外交行动有关的战略
+			alliance=  使外交AI与另一特定国家结盟，如果可能会加入同一个阵营
+			antagonize	= 使外交AI对另一个特定国家更敌意，拒绝与他们的大多数外交行动
+			asking_foreign_garrison = 请求外国人力完成驻军，从一个特点国家，如果指定的话
+			befriend = 使外交人工智能对另一个特定国家更友好，接受大多数外交行动
+			conquer	 = 鼓励军事AI征服特定国家。
+			consider_weak = 将AI倾向于认为指定国家较弱。减少对宣战或结盟的犹豫
+			contain = ai将试图遏制一个国家，保护任何它试图对抗或入侵的国家
+			declare_war	= 如果一个国家已经存在战争目标，那么ai将会对其宣战
+			diplo_action_acceptance = 接受外交行动，使用 target 来定义目标外交行动
+			diplo_action_desire = 希望特定国家的外交行动，使用 target 来定义目标外交行动
+			dont_join_wars_with = 使ai不太可能与特定国家一起对抗特定国家。使用target_country定义目标国家/地区。
+			ignore = 使AI倾向于不太可能接受或希望这个国家采取任何外交行动
+			ignore_claim = 使ai忽略它对指定国家的任何主张
+			protect	= 使ai保护某个国家，保证他们或加入同一阵营
+			support	= 在战争中，通过派遣租借，志愿军，远征军等方式，使ai支援特定国家
+			send_lend_lease_desire  = 改变AI向指定标签发送租借的倾向。
+			send_volunteers_desire = 改变AI向指定标签发送志愿者的倾向。
+			#与陆军管理相关的战略
+			invade	= 追求人工智能对指定国家发动海上入侵
+			naval_invasion_focus = 使ai更倾向发动海上入侵，不针对任何国家地区
+			prepare_for_war	= 它促使人工智能提前计划攻击，准备对指定国家发动战争，将部队调往其边境。
+			area_priority = 在指定的人工智能区域内部署更多单位，区域由 AI area 定义
+			dont_defend_ally_borders = 使人工智能永远不会在指定国家和与其交战的国家之间的边界上部署军队。
+			force_defend_ally_borders = 使人工智能在指定国家与交战国之间的边界部署军队，也可以指定区域，区域由 AI area 定义
+			front_armor_score = 使人工智能投入更多坦克部队入侵指定国家。
+			front_control = 修改 AI 向指定前线各师下达的命令一次可使用多个目标类型，在这种情况下，每个类型都必须满足。这只会改变分配给已存在前线的命令，不会改变分配给任何特定前线的部队数量，也不会强制创建任何前线。
+			ai_strategy = {
+				type = front_control
+				state = 目标省份
+				tag = 目标国家
+				strategic_region = 目标战略区域
+				area = 区域由 AI area 定义
+				country_trigger = 触发省份检查状态，将其作为目标。
+				state_trigger = 触发国家检查状态，将其作为目标。
+				ratio = 要启用该策略，指定前线的前线比率必须达到多少。默认为0。
+				priority = 设置该前置控制策略的优先级。如果存在相互矛盾的前置控制策略，则遵循优先级更高的策略。
+				ordertype = 如果设置了这一选项，人工智能战略将分别只适用于陆地前线或海上入侵。#front,前线 invasion,入侵
+				execution_type = 如果设置了该选项，人工智能就会使前线计划具有所设置的执行类型。仅适用于前线。#careful,谨慎 balanced，均衡 rush，激进 rush_weak，仓促
+				execute_order = 如果设置了该选项，人工智能就会强制执行前线命令或强制从不执行命令。#yes/no
+				manual_attack = 如果设置为 false，将阻止人工智能进行不属于前线计划的小规模交战。默认为 true，仅适用于前线。
+			}
+			ai_strategy = {
+				type = front_control
+				state_trigger = {
+					industrial_complex > 1
+					is_owned_by = ENG
+				}
+				ratio = 0.1
+				ordertype = front
+				execution_type = rush
+				manual_attack = no
+			}
+			ai_strategy = {
+				type = front_control
+				area = suez
+				priority = 1
+				ratio = 0.2
+				ordertype = invasion
+				execute_order = yes
+			}
+
+			front_unit_request = 使人工智能在指定陆地前线部署更多部队,可以同时使用多个目标类型，在这种情况下，每个类型都必须符合要求。
+			ai_strategy = {
+				type = front_control
+				state = 目标省份
+				tag = 目标国家
+				strategic_region = 目标战略区域
+				area = 区域由 AI area 定义
+				country_trigger = 触发省份检查状态，将其作为目标。
+				state_trigger = 触发国家检查状态，将其作为目标。
+				value = 100
+			}
+
+			invasion_unit_request = 使人工智能为指定目标的海上入侵行动投入更多部队,可以同时使用多个目标类型，在这种情况下，每个类型都必须符合要求。
+			ai_strategy = {
+				type = front_control
+				state = 目标省份
+				tag = 目标国家
+				strategic_region = 目标战略区域
+				area = 区域由 AI area 定义
+				country_trigger = 触发省份检查状态，将其作为目标。
+				state_trigger = 触发国家检查状态，将其作为目标。
+				value = 100
+			}
+
+			garrison = （100分制）控制用于防守胜利点和港口而不是活跃在前线的部队数量。
+			garrison_reinforcement_priority = 使人工智能以更高的优先级增援驻军单位，保护胜利点和海军基地。
+			ignore_army_incompetence = 使人工智能忽略除法计算经验不足所带来的影响
+			put_unit_buffers = 使人工智能在指定地区保持一定比例的驻防师。
+			ai_strategy = {
+				type = put_unit_buffers
+				ratio = 驻防的比例
+				order_id = 如果两个 put_unit_buffers 策略使用相同的 ID，它们使用的比率将共享，而不是相加。
+				states = 缓冲区所在省份
+				area = <AI area>
+				subtract_invasions_from_need = 如果为 "true"，该区域内的海军入侵将不计入比例。默认为假。
+				subtract_fronts_from_need = 如果为 "true"，区域内的陆地前线将不计入比例。默认为假。
+			}
+
+			spare_unit_factor = 使人工智能使其分出更多的部队去保卫盟友。
+			theatre_distribution_demand_increase = 通过人工智能向指定国家的战区投放更多部队。
+			ai_strategy = {
+				type = theatre_distribution_demand_increase
+				value = 具体单位数量
+				id = 省份
+			}
+
+			#与海军管理有关的人工智能战略
+			naval_avoid_region = 使人工智能使其舰船避开特定战略区域
+			naval_convoy_raid_region = 使人工智能袭击指定战略区域内的运输船
+			naval_mission_threshold = 让人工智能有更高的门槛来执行海军任务，数值越大，表示人工智能执行任务的可能性越小。
+			任务名称可在 /Hearts of Iron IV/localisation/english/core_l_english.yml 中找到，
+			其中 NAVAL_MISSION_NAME_CONVOY_RAIDING 的本地化键表示任务名为 MISSION_CONVOY_RAIDING
+
+			strike_force_home_base = 使人工智能在指定战略区域内执行打击舰队任务
+
+			#与情报有关的人工智能战略
+
+			agency_ai_base_num_factories_factor = 更改用于计算机构升级的人工指数的基线，百分制
+			agency_ai_per_upgrade_factories_factor = 修改人工智能进行机构升级时计算所需的工厂数量。百分制
+			intelligence_agency_branch_desire_factor = 修改人工智能进行机构分支升级时计算所需的工厂数量，分支定义在 /Hearts of Iron IV/common/intelligence_agency_upgrades/*.txt 文件中。
+			intelligence_agency_usable_factories = 修改人工智能用于情报机构的工厂数量
+			operation_equipment_priority = 使人工智能将装备优先用于情报任务而不是其他用途。
+			operative_mission = 使人工智能在目标上空执行指定任务。可以定义多个状态，从而优先考虑其中一个。
+			任务名称可在 /Hearts of Iron IV/localisation/english/operatives_l_english.yml 中查看。
+			例如，OPERATIVE_MISSION_BOOST_IDOLOGY_TITLE:0 "提升意识形态 "表示提升意识形态为 boost_ideology。
+			ai_strategy = {
+				type = operative_mission
+				value = 80
+				mission = 确定优先事项的任务
+				mission_target  = 目标国家
+				state = 在目标国家内优先考虑的省份及地块（如果有效）。可选
+				priority = 如果定义了相互矛盾的人工智能策略，则会选择优先级最高的策略。
+			}
+
+			operative_operation = 使人工智能对目标执行指定操作，可定义多个状态，从而优先处理其中一个状态。
+			操作定义在 /Hearts of Iron IV/common/operations/*.txt 文件中。
+			ai_strategy = {
+				type = operative_operation
+				value = 80
+				operation = 确定优先事项的任务
+				operation_target = 目标国家
+				state = 在目标国家内优先考虑的省份及地块（如果有效）。可选
+				region = 在目标国家内优先考虑的战略地区（如果有效）。可选
+				priority = 如果定义了相互矛盾的人工智能策略，则会选择优先级最高的策略。
+			}
+
+			#与生产、建设和招聘有关的人工智能战略
+			added_military_to_civilian_factory_ratio = 更改军用与民用工厂的比例，正值意味着更多的军事工厂
+			air_factory_balance = 修改人工智能希望保留的空军与工厂的比例。正值表示有更多的空军。
+			dockyard_to_military_factory_ratio = 改变船坞与军工厂的比例，正值意味着更多的船坞
+			railway_gun_divisions_ratio = 修改 AI 希望保留的列车炮与师的比例，定义中的基本比率为 RAILWAY_GUN_PRODUCTION_BASE_DIVISIONS_RATIO_PERCENT，默认为 0。在 0-100 的范围内，这个比例会被加到其中。
+			build_building = 命令AI在特定位置建造特定的建筑。使用目标指定状态位置。数值决定了人工智能希望同时在该省份建造多少座建筑。
+			ai_strategy = {
+				type = build_building
+				id = 建筑种类
+				target = 省份
+				value = 数量
+			}
+
+			building_target = 使人工智能对指定建筑物保持更高的期望目标。不需要目标省份
+			factory_build_score_factor = 使人工智能在指定状态下建造建筑物。不指定固定建筑
+			equipment_production_factor = 生产指定类型的设备。在 /Hearts of Iron IV/common/units/equipment/*.txt 文件 types = { ... 中为每种装备原型定义了类型。}.
+			equipment_production_min_factories = 使更多工厂在生产线上生产指定类型的设备。数值 1 对应 1 个军事工厂。
+			equipment_variant_production_factor = 使人工智能生产更多指定装备原型。装备原型定义在 /Hearts of Iron IV/common/units/equipment/*.txt 文件中。
+			equipment_stockpile_surplus_ratio = 改变人工智能储备而非立即使用的装备比例。
+			build_army = 命令AI建造一种属于指定部队角色的师或装备（如飞机或舰艇）。使用的目标是 AI templates.中的角色。
+			force_build_armies = 以强制人工智能构建军队
+			production_upgrade_desire_offset = 命令AI将生产线升级为指定设备类型。装备类型在 /Hearts of Iron IV/common/units/equipment/*.txt 文件中定义。
+			role_ratio = 修改人工智能为指定角色制作的模板数量。单位模板的 AI templates 以及舰船和坦克变体的 AI equipment 都定义了角色。
+			unit_ratio = 修改人工智能使用指定单位制作模板的数量。单位定义在 /Hearts of Iron IV/common/units/*.txt 文件中。其中包括空军、海军和陆军。
+			min_wanted_supply_trains = 覆盖人工智能所需的最低补给火车数量。
+			min_wanted_supply_trucks = 覆盖人工智能所需的最低补给卡车数量。
+			#其他人工智能战略
+			scorched_earth_prio = 使人工智能在指定状态下使用焦土战术。
+			ai_strategy = {
+				type = scorched_earth_prio
+				value = 100
+				id = ENG
+				states = 省份
+			}
+
+			land_xp_spend_priority = 修改人工智能花费陆军经验的优先级。填 division_template 单位模板， upgrade_xp_cutoff
+			pp_spend_amount = 修改人工智能应为指定目的保留的政治权力。填 decision 决议， idea 民族精神
+			pp_spend_priority = 修改人工智能应在哪些方面优先使用政治力量 admiral guarantee 保独 relation 关系 decision 决议
+
+			equipment_design_priority = 设备设计优先级	
+			occupation_policy = 确定针对指定国家的占用策略。接受0到3的值。
+			research_tech = 如果可能的话，命令人工智能研究特定的技术。
+			save_equipment = 使AI将指定类型的装备保存为设定值。
+			template_prio = 某种兵种模板的训练倾向
+			template_xp_reserve= 设置AI考虑模板更改所需的保留XP。
+			unit_ratio = 兵种的比率(AI训练部队的倾向)
+	#其它模板的战略种类		
+		ai_strategy = {
+			type = alliance 									 --联盟(可用于防止不同意识形态ai退出阵营)
+			id = "结盟对象国家代码"
+			value = ai倾向值
+		}
+		ai_strategy = {      
+			type = equipment_stockpile_surplus_ratio             -- 装备储存因数
+			value = ai倾向值
+		}
+		ai_strategy = {                                          -- 给某国派志愿兵因数
+			type = send_volunteers_desire
+			id = "给哪个国家派"
+			value = ai倾向值
+		}
+		ai_strategy = {
+			type = spare_unit_factor                              -- 备用设备因素(应该是ai留库存因素)
+			value = 50
+		}
+		ai_strategy = {											  -- 与某国结盟倾向值
+			type = 种类
+			id = "战略对象国家代码"
+			value = 数值
+		}
+		ai_strategy = {											 -- 强制造兵值(装备不足时强制造兵)
+			type = force_build_armies
+			value = 100
+		}
+		ai_strategy = {											-- 对某国准备战争
+			type = prepare_for_war
+			id = "国家代码"
+			value = 数值
+		}
+	

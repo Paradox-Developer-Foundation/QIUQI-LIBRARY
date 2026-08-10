@@ -1,0 +1,2700 @@
+spriteTypes = {
+
+
+	#Economy
+	spriteType = {
+		name = "GFX_ZZZ_american_capitalism_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_american_capitalism_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_update_banner"
+		texturefile = "gfx/texticons/banners/update_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_capitalism_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_capitalism_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_chaostic_economy_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_chaostic_economy_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_command_economy_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_command_economy_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ZZZ_corporatism_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_corporatism_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_developed_socialism_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_developed_socialism_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_managed_economy_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_managed_economy_banner.png"
+		legacy_lazy_load = no
+	}		
+	spriteType = {
+		name = "GFX_ZZZ_military_controlled_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_military_controlled_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_collective_capitalism_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_collective_capitalism_banner.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = {
+		name = "GFX_ZZZ_oligopolistic_capitalism_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_oligopolistic_capitalism_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_planned_economy_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_planned_economy_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ZZZ_socialist_market_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_socialist_market_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ZZZ_ZZZ_hajimi_economy_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_hajimi_economy_banner.png"
+		legacy_lazy_load = no
+	}			
+	spriteType = {
+		name = "GFX_ZZZ_welfare_capitalism_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_welfare_capitalism_banner.png"
+		legacy_lazy_load = no
+	}		
+	spriteType = {
+		name = "GFX_ZZZ_worker_controlled_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_worker_controlled_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_minarchism_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_minarchism_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ZZZ_ancap_banner"
+		texturefile = "gfx/texticons/banners/economy_type/ZZZ_ancap_banner.png"
+		legacy_lazy_load = no
+	}	
+
+	#Decisions
+	spriteType = {
+		name = "GFX_GER_bundestag_banner"
+		texturefile = "gfx/texticons/banners/decisions/GER_bundestag_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_npc_category_banner"
+		texturefile = "gfx/texticons/banners/decisions/PRC_npc_category_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_maoist_politburo_banner"
+		texturefile = "gfx/texticons/banners/decisions/PRC_maoist_politburo_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_the_red_dragon_banner"
+		texturefile = "gfx/texticons/banners/decisions/PRC_the_red_dragon_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_socialist_democratization_banner"
+		texturefile = "gfx/texticons/banners/decisions/PRC_socialist_democratization_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_chinese_century_banner"
+		texturefile = "gfx/texticons/banners/decisions/PRC_chinese_century_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_loji_banner"
+		texturefile = "gfx/texticons/banners/decisions/PRC_loji_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_the_rebellious_west_cat_banner"
+		texturefile = "gfx/texticons/banners/decisions/PRC_the_rebellious_west_cat_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USA_american_elections_banner"
+		texturefile = "gfx/texticons/banners/decisions/USA_american_elections.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_treason_trials_picture"
+		texturefile = "gfx/texticons/banners/USB/USB_treason_trials_picture.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_megapolis_picture"
+		texturefile = "gfx/texticons/banners/USB/USB_megapolis_picture.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_USB_Victory_All"
+		texturefile = "gfx/texticons/banners/USB/USB_Victory_All.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_til_death_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_til_death_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_always_watching_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_always_watching_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_victory_position_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_victory_position_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_bad_1_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_bad_1_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_bad_2_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_bad_2_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_bad_3_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_bad_3_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_bad_4_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_bad_4_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_bad_5_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_bad_5_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_bad_6_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_bad_6_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_bad_7_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_bad_7_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_Biden_confused_category_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_Biden_confused_category_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_good_1_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_good_1_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_good_2_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_good_2_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_good_3_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_good_3_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_good_4_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_good_4_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_good_5_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_good_5_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_biden_good_6_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_biden_good_6_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_beto_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_beto_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_VOTEBETO"
+		texturefile = "gfx/texticons/banners/USB/USB_VOTEBETO.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_kennedy_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_kennedy_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_bloomberg_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_bloomberg_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_sanders_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_sanders_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_hillary_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_hillary_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_harris_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_harris_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_pete_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_pete_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_klobuchar_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_klobuchar_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_yang_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_yang_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_aoc_banner"
+		texturefile = "gfx/texticons/banners/USB/USB_AOC_banner_2.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USB_congress_cat"
+		texturefile = "gfx/texticons/banners/USB/USB_congress_cat.png"
+		legacy_lazy_load = no
+	}
+	
+	spriteType = {
+		name = "GFX_JAP_national_diet_banner"
+		texturefile = "gfx/texticons/banners/JAP/JAP_national_diet_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_JAP_ldp_nationalists_banner"
+		texturefile = "gfx/texticons/banners/JAP/JAP_ldp_nationalists_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_JAP_ldp_conservatives_banner"
+		texturefile = "gfx/texticons/banners/JAP/JAP_ldp_conservatives_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_JAP_ldp_liberals_banner"
+		texturefile = "gfx/texticons/banners/JAP/JAP_ldp_liberals_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_JAP_ldp_centrists_banner"
+		texturefile = "gfx/texticons/banners/JAP/JAP_ldp_centrists_banner.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = {
+		name = "GFX_JAP_political_monopoly"
+		texturefile = "gfx/texticons/banners/JAP/JAP_political_monopoly.png"
+		legacy_lazy_load = no
+	}
+	spriteType = { 
+		name = "GFX_JAP_build_japan"
+		texturefile = "gfx/texticons/banners/JAP/JAP_build_japan.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {  
+		name = "GFX_JAP_gender_equality"
+		texturefile = "gfx/texticons/banners/JAP/JAP_gender_equality.png"
+		legacy_lazy_load = no
+	}
+	spriteType = { 
+		name = "GFX_JAP_economic_populism"
+		texturefile = "gfx/texticons/banners/JAP/JAP_economic_populism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_JAP_technological_advancement"
+		texturefile = "gfx/texticons/banners/JAP/JAP_technological_advancement.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = {
+		name = "GFX_JAP_people_cooperation"
+		texturefile = "gfx/texticons/banners/JAP/JAP_people_cooperation.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_JAP_increase_productivity"
+		texturefile = "gfx/texticons/banners/JAP/JAP_increase_productivity.png"
+		legacy_lazy_load = no
+	}
+	spriteType = { 
+		name = "GFX_JAP_promote_family_values"
+		texturefile = "gfx/texticons/banners/JAP/JAP_promote_family_values.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = {  
+		name = "GFX_JAP_ecology_campaign"
+		texturefile = "gfx/texticons/banners/JAP/JAP_ecology_campaign.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = {   
+		name = "GFX_JAP_glorification_past"
+		texturefile = "gfx/texticons/banners/JAP/JAP_glorification_past.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = { 
+		name = "GFX_JAP_army_popularization"
+		texturefile = "gfx/texticons/banners/JAP/JAP_army_popularization.png"
+		legacy_lazy_load = no
+	}
+	spriteType = { 
+		name = "GFX_JAP_new_working_culture"
+		texturefile = "gfx/texticons/banners/JAP/JAP_new_working_culture.png"
+		legacy_lazy_load = no
+	}
+	spriteType = { 
+		name = "GFX_JAP_promote_japanese_nationalism"
+		texturefile = "gfx/texticons/banners/JAP/promote_japanese_nationalism.png"
+		legacy_lazy_load = no 
+	}
+	spriteType = {  
+		name = "GFX_JAP_ending"
+		texturefile = "gfx/texticons/banners/JAP/JAP_ending.png"
+		legacy_lazy_load = no 
+	} 
+	spriteType = {  
+		name = "GFX_JAP_new_japan_mission"
+		texturefile = "gfx/texticons/banners/JAP/JAP_new_japan_mission.png"
+		legacy_lazy_load = no 
+	}
+	spriteType = {
+		name = "GFX_GER_eu_federalization_banner"
+		texturefile = "gfx/texticons/banners/decisions/GER_eu_federalization_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_grand_reformation_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_grand_reformation_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_party_resource_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_party_resource.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_party_resource_2_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_party_resource_2.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_peoples_entrepreneurs_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_peoples_entrepreneurs.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_oligarchs_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_oligarchs.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_red_directors_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_red_directors.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_new_oligarchs_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_new_oligarchs.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_politburo_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_politburo.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_dugin_directives_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_dugin_directives.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_russian_house_of_cards_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_russian_house_of_cards.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_suraykin_politburo_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_suraykin_politburo_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_federal_assembly_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_federal_assembly.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_federal_assembly_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_federal_assembly.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_new_russian_army_banner"
+		texturefile = "gfx/texticons/banners/decisions/new_russian_army_texticon.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_russian_economic_miracle_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_Russian_Economic_Miracle.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_Drone_strike_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_Drone_strike_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_Navalnomics_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_Navalnomics.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Dugin_Ending"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Dugin_Ending.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_Navalny_Ending"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Navalny_Ending.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_Navalny_Unfinished"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Navalny_Unfinished.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_zolotov_unfinished"
+		texturefile = "gfx/texticons/banners/SOV/GFX_zolotov_unfinished.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "SOV_Utilize_The_Youth"
+		texturefile = "gfx/texticons/banners/SOV/SOV_Utilize_The_Youth.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "SOV_Change_Petrograd_Name"
+		texturefile = "gfx/texticons/banners/SOV/SOV_Change_Petrograd_Name.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "SOV_Banner_FSK"
+		texturefile = "gfx/texticons/banners/SOV/SOV_Banner_FSK.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "SOV_Patriotism_Banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_Patriotism_Banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "SOV_Fire_All_The_Guns"
+		texturefile = "gfx/texticons/banners/SOV/SOV_Fire_All_The_Guns.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "SOV_Send_In_The_FSK"
+		texturefile = "gfx/texticons/banners/SOV/SOV_Send_In_The_FSK.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_Jap_Soc_Unfinished"
+		texturefile = "gfx/texticons/banners/JAP/GFX_Jap_Soc_Unfinished.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Putinist_Ending"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Putinist_Ending.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Planned_Ending"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Planned_Ending.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_Dengist_Ending"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Dengist_Ending.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Reformist_Ending"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Reformist_Ending.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_Slutsky_Ending"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Slutsky_Ending.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_Hardliner_Ending"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Hardliner_Ending.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_Tsar_Ending"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Tsar_Ending.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_vtb_eto_klassika"
+		texturefile = "gfx/texticons/banners/SOV/GFX_vtb_eto_klassika.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_Self_Defence_Forces_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_Self_Defence_Forces_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_beautiful_russia_of_the_future_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_beautiful_russia_of_the_future_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_banner_traitors_nav"
+		texturefile = "gfx/texticons/banners/SOV/SOV_banner_traitors_nav.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_inner_affairs_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_inner_affairs.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_russian_empire_banner"
+		texturefile = "gfx/texticons/banners/decisions/SOV_russian_empire.png"
+		legacy_lazy_load = no
+	}
+	#Ideologies
+	spriteType = {
+		name = "GFX_ideology_trumpism_conservative_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_trumpism_conservative_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ideology_trumpism_market_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_trumpism_market_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_ideology_trumpism_authdem_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_trumpism_authdem_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_assadist_baathism_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_assadist_baathism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_ideology_anocracy_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_anocracy_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_left_baathism_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_left_baathism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_green_liberalism_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_green_liberalism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_strasserism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_strasserism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_patriotic_democracy_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_patriotic_democracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_patriotic_democracy_blr_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_patriotic_democracy_blr.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_patriotic_democracy_fra_banner"
+		texturefile = "gfx/texticons/banners/ideology/GFX_Ideology_patriotic_democracy_fra_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_patriotic_democracy_tra_banner"
+		texturefile = "gfx/texticons/banners/ideology/GFX_Ideology_patriotic_democracy_tra_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_patriotic_democracy_banner_generic"
+		texturefile = "gfx/texticons/banners/ideology/GFX_Ideology_patriotic_democracy_banner_generic.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_russian_syncretism_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_russian_syncretism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_reformist_socialism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_reformist_socialism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_social_patriotism_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_social_patriotism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_eurocommunism_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_eurocommunism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_ultranationalism_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_ultranationalism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_neo_eurasianism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_neo_eurasianism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_identitarianism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_identitarianism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Dengism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Dengism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Xiism"
+		texturefile =  "gfx/texticons/banners/ideology/Ideology_Xiism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_ML"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_ML.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_zhir_thought"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_zhir_thought.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_national_bolshevism_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_national_bolshevism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_eth_nat"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_eth_nat.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Fascist"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Fascist.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_national_syndicalism_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_national_syndicalism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Ecofascist"
+		texturefile = "gfx/texticons/banners/ideology/ideology_ecofascist.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_social_fascism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_social_fascism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Ancom"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Ancom.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Nat_Soc"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Nat_Soc.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Accelerationist"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Accelerationist.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_left_nationalist"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_left_nationalist.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Satanic_Nazism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Satanic_Nazism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_sharia_democracy"
+		texturefile = "gfx/texticons/banners/ideology/ideology_sharia_democracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_mafia"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Mafia.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_theocracy"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_theocracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_constitutionalism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_constitutionalism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_wahabi_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_wahabi.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Satanic_Nazism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Satanic_Nazism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_salafism_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_salafism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_iraq_baathism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_iraq_baathism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_chirstian_democracy"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_chirstian_democracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_classical_conservatismsub"
+		texturefile = "gfx/texticons/banners/ideology/ideology_classical_conservatism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_progressivism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_progressivism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_clerical_fascism_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_clerical_fascism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_falun"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_falun.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_enforced_democracy"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_enforced_democracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_caligula"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_caligula.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_dark_maga"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_dark_maga.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_left_wing_junta"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_left_wing_junta.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_neomarxist_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_neo_marxist.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_neo_stalinism_bannner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_neo_stalinism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_eco_socialism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_eco_socialism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_death_cult"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_death_cult.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_military_democracysub"
+		texturefile = "gfx/texticons/banners/ideology/ideology_military_democracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_left_accelerationist"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_left_accelerationist.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_national_spartanismsub"
+		texturefile = "gfx/texticons/banners/ideology/ideology_national_spartanism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_corp"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_corp.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_esoteric_nazism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_esoteric_nazism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_obliteration_of_self"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_obliteration_of_self.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_neo_socialismsub"
+		texturefile = "gfx/texticons/banners/ideology/ideology_neo_socialism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_left_populism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_left_populism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_green_politics"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_green_politics.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_liberal_socialism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_liberal_socialism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_technocracy"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_technocracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_left_centrism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_left_centrism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_radical_nationalism_subid"
+		texturefile = "gfx/texticons/banners/ideology/ideology_radical_nationalism_subid.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Chinese_Exceptionalism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Chinese_Exceptionalism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Falangism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Falangism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Confucian_Hyperconservatism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Confucian_Hyperconservatism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Conservative_Socialism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Conservative_Socialism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Christian_Conservatism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Christian_Conservatism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Right_Centrism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Right_Centrism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_ultra_liberalism_banner"
+		texturefile = "gfx/texticons/banners/ideology/ideology_ultra_liberalism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_neo_luddism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_neo_luddism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_ancap"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_ancap.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_theocracy"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_theocracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_islamic_democracy"
+		texturefile = "gfx/texticons/banners/ideology/ideology_islamic_democracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_monarchy"
+		texturefile = "gfx/texticons/banners/ideology/ideology_monarchy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_oligarchy"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_oligarchy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_neo_conservative"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_neo_conservative.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_neo_liberalism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_neo_liberalism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_jacobin"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_jacobin.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_juche"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_juche.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_totalist"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_totalist.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_ancap"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_ancap.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_Libertarian"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_Libertarian.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_ultra_conservatism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_ultra_conservatism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_right_populist"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_right_populist.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_sovdem"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_sovereign_democracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_left_sovdem"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_sovereign_democracy_left.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_left_sovdem_liberal"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_sovereign_democracy_liberal.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_putinism_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_putinism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_patriotic_socialism_banner"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_patriotic_socialism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_maoist"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_maoist.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ideology_transitional_democracy"
+		texturefile = "gfx/texticons/banners/ideology/ideology_transitional_democracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_classical_liberal"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_classical_liberal.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_military_junta"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_military_junta.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_social_democracy"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_social_democracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_trotskyismsub"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_trotskyism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_autocracy"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_autocracy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_centrism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_centrism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_civic_nationalism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_civic_nationalism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Ideology_transhumanism"
+		texturefile = "gfx/texticons/banners/ideology/Ideology_transhumanism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Samson_Nukes"
+		texturefile = "gfx/texticons/banners/Samson_Nukes.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ATW_volunteers"
+		texturefile = "gfx/texticons/banners/ATW_volunteers.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Syrian_Generals"
+		texturefile = "gfx/texticons/banners/SOV/Syrian_Generals.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Political_Division"
+		texturefile = "gfx/texticons/banners/Political_Division.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_chinese_communist_party"
+		texturefile = "gfx/texticons/banners/chinese_communist_party.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_low_civil_unrest"
+		texturefile = "gfx/texticons/banners/low_civil_unrest.png"
+		legacy_lazy_load = no
+	}
+	#APA
+	spriteType = {
+		name = "GFX_APA_cabinet_crisis"
+		texturefile = "gfx/texticons/banners/APA_cabinet_crisis.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_APA_leftist_unity_banner"
+		texturefile = "gfx/texticons/banners/APA/APA_leftist_unity.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_APA_popular_support_banner"
+		texturefile = "gfx/texticons/banners/APA/APA_banner_popular_support.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_APA_insecure_industry_banner"
+		texturefile = "gfx/texticons/banners/APA/APA_banner_insecure_industry.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_1"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_1.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_2"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_2.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_3"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_3.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_4"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_4.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_5"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_5.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_6"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_6.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_7"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_7.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_8"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_8.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_9"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_9.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_generic_10"
+		texturefile = "gfx/texticons/banners/APA/apla_generic_10.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_octoberist"
+		texturefile = "gfx/texticons/banners/APA/octoberist_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_anarchist"
+		texturefile = "gfx/texticons/banners/APA/anarchist_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_jacobin"
+		texturefile = "gfx/texticons/banners/APA/jacobin_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_apla_neosoc"
+		texturefile = "gfx/texticons/banners/APA/neosoc_banner.png"
+		legacy_lazy_load = no
+	}
+	#PRK
+	spriteType = {
+		name = "GFX_PKR_Total_Control"
+		texturefile = "gfx/texticons/banners/PRK_Total_Control.png"
+		legacy_lazy_load = no
+	}
+	#PTF
+	spriteType = {
+		name = "GFX_PTF_DEC_new_american_man"
+		texturefile = "gfx/texticons/banners/PTF/PTF_new_american_man.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_generic1"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_generic1.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_generic2"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_generic2.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_generic3"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_generic3.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_generic4"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_generic4.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_NYPD"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_NYPD.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_logistics"
+		texturefile = "gfx/texticons/banners/PTF/PTF_logistics.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_NSC131"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_NSC131.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_LOS"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_LOS.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_W2R"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_W2R.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_blade_runner"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_blade_runner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_classical_city"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_classical_city.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_futurism"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_futurism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_recruitment"
+		texturefile = "gfx/texticons/banners/PTF/PTF_recruitment.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_Banner_Campaigns"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_Banner_Campaigns.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_Banner_National_Front"
+		texturefile = "gfx/texticons/banners/PTF/PTF_National_Front_Banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_Banner_PF"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_Banner_PF.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_DEC_Banner_Renaissance"
+		texturefile = "gfx/texticons/banners/PTF/PTF_DEC_Banner_Renaissance.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_Banner_NS_Beef"
+		texturefile = "gfx/texticons/banners/PTF/PTF_Banner_NS_Beef.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_Banner_2nd_Rev"
+		texturefile = "gfx/texticons/banners/PTF/PTF_Banner_2nd_Rev.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_Banner_Patriotic_Harmony"
+		texturefile = "gfx/texticons/banners/PTF/PTF_Banner_Patriotic_Harmony.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_reclaim_america"
+		texturefile = "gfx/texticons/banners/PTF/PTF_reclaim_america.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_battle_of_new_york"
+		texturefile = "gfx/texticons/banners/PTF/battle_of_new_york.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PTF_Banner_Tragedy_of_Rousseau"
+		texturefile = "gfx/texticons/banners/PTF/PTF_Banner_Tragedy_of_Rousseau.png"
+		legacy_lazy_load = no
+	}
+	#Generic
+	spriteType = {
+		name = "GFX_generic_us_bombing_banner"
+		texturefile = "gfx/texticons/banners/generic/generic_us_bombing.png"
+		legacy_lazy_load = no
+	}
+	#HUN
+	spriteType = {
+		name = "GFX_HUN_orbans_playground"
+		texturefile = "gfx/texticons/banners/HUN_orbans_playground.png"
+		legacy_lazy_load = no
+	}
+	#UKR
+	spriteType = {
+		name = "GFX_UKR_minsk_protocol"
+		texturefile = "gfx/texticons/banners/SOV/UKR_minsk_protocol.png"
+		legacy_lazy_load = no
+	}
+	#BLR
+	spriteType = { 
+		name = "GFX_BLR_Lukashenko_rule"
+		texturefile = "gfx/texticons/banners/SOV/BLR_Lukashenko_rule.png"
+		legacy_lazy_load = no
+	}
+	#SOV
+	spriteType = {
+		name = "GFX_SOV_ldpr_zhirinovsky_will_listen_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_ldpr_zhirinovsky_will_listen_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_ldpr_always_only_truth_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_ldpr_always_only_truth_banner.png"
+		legacy_lazy_load = no
+	}		
+	spriteType = {
+		name = "GFX_SOV_ldpr_always_for_the_people_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_ldpr_always_for_the_people_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_the_future_is_ours_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_the_future_is_ours_banner.png"
+		legacy_lazy_load = no
+	}		
+	spriteType = {
+		name = "GFX_SOV_we_trust_in_medvedev_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_we_trust_in_medvedev_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_victories_of_socialism_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_victories_of_socialism_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_youth_for_communism_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_youth_for_communism_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_march_through_moscow_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_march_through_moscow_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_expose_medvedev_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_expose_medvedev_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_we_are_united_russia_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_we_are_united_russia_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_prop_bastion_of_stability_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_prop_bastion_of_stability_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_autocracy_orthodoxy_nationality_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_autocracy_orthodoxy_nationality_banner.png"
+		legacy_lazy_load = no
+	}		
+	spriteType = {
+		name = "GFX_SOV_unity_of_tsar_and_people_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_unity_of_tsar_and_people_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_we_will_protect_our_own_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_we_will_protect_our_own_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_for_our_holy_motherland_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_for_our_holy_motherland_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_rise_up_russian_people_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_rise_up_russian_people_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_beat_the_satanic_scum_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_beat_the_satanic_scum_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_together_will_win" 
+		texturefile = "gfx/texticons/banners/SOV/SOV_together_will_win.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_everything_working_man" 
+		texturefile = "gfx/texticons/banners/SOV/SOV_everything_working_man.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_stalin_methods" 
+		texturefile = "gfx/texticons/banners/SOV/SOV_stalin_methods.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = { 
+		name = "GFX_SOV_people_matter"   
+		texturefile = "gfx/texticons/banners/SOV/SOV_people_matter.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_working_man"  
+		texturefile = "gfx/texticons/banners/SOV/SOV_working_man.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {  
+		name = "GFX_SOV_freedom_justice_progress" 
+		texturefile = "gfx/texticons/banners/SOV/SOV_freedom_justice_progress.png"
+		legacy_lazy_load = no 
+	}	
+	spriteType = {  
+		name = "GFX_SOV_for_our_president_banner" 
+		texturefile = "gfx/texticons/banners/SOV/SOV_for_our_president_banner.png"
+		legacy_lazy_load = no 
+	}	 
+	spriteType = {
+		name = "GFX_SOV_za_nami_strana" 
+		texturefile = "gfx/texticons/banners/SOV/SOV_za_nami_strana.png"
+		legacy_lazy_load = no 
+	}	
+	spriteType = {
+		name = "GFX_SOV_molodezh"
+		texturefile = "gfx/texticons/banners/SOV/SOV_molodezh.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_unity_strength"
+		texturefile = "gfx/texticons/banners/SOV/SOV_unity_strength.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_vpered"
+		texturefile = "gfx/texticons/banners/SOV/SOV_vpered.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_unite_against_evil_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_unite_against_evil_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_SOV_we_will_repeat_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_we_will_repeat_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = { 
+		name = "SOV_thunders_rossiyi_png"
+		texturefile = "gfx/texticons/banners/SOV/SOV_thunders_rossiyi_png.png"
+		legacy_lazy_load = no
+	}
+	spriteType = { 
+		name = "GFX_destroy_european_plutocracy"
+		texturefile = "gfx/texticons/banners/SOV/GFX_destroy_european_plutocracy.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = { 
+		name = "GFX_redirect"
+		texturefile = "gfx/texticons/banners/SOV/GFX_redirect.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = { 
+		name = "GFX_navalny_ultranationalist_idk"
+		texturefile = "gfx/texticons/banners/SOV/GFX_navalny_ultranationalist_idk.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = { 
+		name = "GFX_triumph"
+		texturefile = "gfx/texticons/banners/SOV/GFX_triumph.png"
+		legacy_lazy_load = no
+	}  
+	spriteType = { 
+		name = "GFX_navalny_cult_2"
+		texturefile = "gfx/texticons/banners/SOV/GFX_navalny_cult_2.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = { 
+		name = "GFX_last_war"
+		texturefile = "gfx/texticons/banners/SOV/GFX_last_war.png"
+		legacy_lazy_load = no
+	}  
+	spriteType = { 
+		name = "GFX_eternal_navalny"
+		texturefile = "gfx/texticons/banners/SOV/GFX_eternal_navalny.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = { 
+		name = "GFX_big_nuke" 
+		texturefile = "gfx/texticons/banners/SOV/GFX_big_nuke.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = { 
+		name = "GFX_last_war3"
+		texturefile = "gfx/texticons/banners/SOV/GFX_last_war3.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = { 
+		name = "GFX_cleanse_europe"
+		texturefile = "gfx/texticons/banners/SOV/GFX_cleanse_europe.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = { 
+		name = "GFX_victory_by_any_means"
+		texturefile = "gfx/texticons/banners/SOV/GFX_victory_by_any_means.png"
+		legacy_lazy_load = no
+	}
+	spriteType = { 
+		name = "GFX_truly_free_europe"
+		texturefile = "gfx/texticons/banners/SOV/GFX_truly_free_europe.png"
+		legacy_lazy_load = no 
+	}
+	spriteType = { 
+		name = "GFX_together_against_oligarchy"
+		texturefile = "gfx/texticons/banners/SOV/GFX_together_against_oligarchy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_support_social_well_being_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_support_social_well_being.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_oligarch_support_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_oligarch_support_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_wrangle_oligarchs_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_wrangle_oligarchs.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_conscripts_railways_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_conscripts_railways.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_utilize_the_church_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_utilize_the_church_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_militarize_the_church_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_militarize_the_church.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_five_year_plan_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_five_year_plan_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_canonize_stalin_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_canonize_stalin_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_WTWR_Banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_WTWR.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_constitution_referendum_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_constitution_referendum_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_consolidate_russian_society_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_consolidate_russian_society_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_lukashenko_our_comrade_father"
+		texturefile = "gfx/texticons/banners/SOV/SOV_lukashenko_our_comrade_father.png"
+		legacy_lazy_load = no
+	} 
+	spriteType = {
+		name = "GFX_SOV_invincible_and_legendary"
+		texturefile = "gfx/texticons/banners/SOV/invincible_and_legendary.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_navalny_protest_banner"
+		texturefile = "gfx/texticons/banners/SOV/navalny_protest_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_zhirinovsky_tour_banner"
+		texturefile = "gfx/texticons/banners/SOV/zhirinovsky_tour_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_red_belt_banner"
+		texturefile = "gfx/texticons/banners/SOV/red_belt_zyuganov_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_putin_doska_banner"
+		texturefile = "gfx/texticons/banners/SOV/putin_doska_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_rne"
+		texturefile = "gfx/texticons/banners/SOV/SOV_rne.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_SOV_new_era_socialism"
+		texturefile = "gfx/texticons/banners/SOV/SOV_new_era_socialism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_together_against_corruption"
+		texturefile = "gfx/texticons/banners/SOV/SOV_together_against_corruption.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_rekindle_soviet_patriotism_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_rekindle_soviet_patriotism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_enforce_soviet_nationalism_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_enforce_soviet_nationalism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_thousand_of_banners"
+		texturefile = "gfx/texticons/banners/SOV/SOV_thousand_of_banners.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_permanent_defense_readiness"
+		texturefile = "gfx/texticons/banners/SOV/SOV_permanent_defense_readiness.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_russian_orthodox_church"
+		texturefile = "gfx/texticons/banners/SOV/SOV_russian_orthodox_church.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_russian_soldier_always_wins"
+		texturefile = "gfx/texticons/banners/SOV/SOV_russian_soldier_always_wins.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_russians_forward"
+		texturefile = "gfx/texticons/banners/SOV/SOV_russians_forward.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_unity_of_russians"
+		texturefile = "gfx/texticons/banners/SOV/SOV_unity_of_russians.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_malorossiya_liberation_is_near"
+		texturefile = "gfx/texticons/banners/SOV/SOV_malorossiya_liberation_is_near.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_glory_to_soviet_army"
+		texturefile = "gfx/texticons/banners/SOV/SOV_glory_to_soviet_army.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_serving_soviet_union"
+		texturefile = "gfx/texticons/banners/SOV/SOV_serving_soviet_union.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_putin_medvedev_russia"
+		texturefile = "gfx/texticons/banners/SOV/SOV_putin_medvedev_russia.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_crusade_against_globalism_banner"
+		texturefile = "gfx/texticons/banners/SOV/crusade_against_globalism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_forward_russia"
+		texturefile = "gfx/texticons/banners/SOV/SOV_forward_russia.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_navalny_nash_president"
+		texturefile = "gfx/texticons/banners/SOV/SOV_navalny_nash_president.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_glory_to_great_revolutionaries"
+		texturefile = "gfx/texticons/banners/SOV/SOV_glory_to_great_revolutionaries.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_navalny_nash_geroi"
+		texturefile = "gfx/texticons/banners/SOV/SOV_navalny_nash_geroi.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Operation_Mistress_Luck"
+		texturefile = "gfx/texticons/banners/SOV/Operation_Mistress_Luck.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Operation_Light_Beam"
+		texturefile = "gfx/texticons/banners/SOV/Operation_Light_Beam.png"
+		legacy_lazy_load = no
+	}   
+	spriteType = {
+		name = "GFX_Operation_Judge"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Operation_Judge.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Operation_Jury"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Operation_Jury.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Operation_Executioner"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Operation_Executioner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Operation_Petrs_Legacy"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Operation_Petrs_Legacy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Operation_Window_To_Europe"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Operation_Window_To_Europe.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Operation_Levski"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Operation_Levski.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_Operation_Bella_Ciao"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Operation_Bella_Ciao.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Operation_Kick_Back"
+		texturefile = "gfx/texticons/banners/SOV/GFX_Operation_Kick_Back.png"
+		legacy_lazy_load = no
+	}
+		spriteType = {
+			name = "GFX_SOV_russian_national_guard_banner"
+			texturefile = "gfx/texticons/banners/SOV/SOV_russian_national_guard_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_join_the_national_guard_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_join_the_national_guard_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_new_generations_of_russian_patriots"
+		texturefile = "gfx/texticons/banners/SOV/SOV_new_generations_of_russian_patriots.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_zhirinovsky_leader_of_the_people"
+		texturefile = "gfx/texticons/banners/SOV/SOV_zhirinovsky_leader_of_the_people.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_enshrine_state_forming_people"
+		texturefile = "gfx/texticons/banners/SOV/SOV_enshrine_state_forming_people.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_retarget_russian_menace_hysteria"
+		texturefile = "gfx/texticons/banners/SOV/SOV_retarget_russian_menace_hysteria.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_apotheosis_of_history"
+		texturefile = "gfx/texticons/banners/SOV/SOV_apotheosis_of_history.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_you_are_the_future"
+		texturefile = "gfx/texticons/banners/SOV/SOV_you_are_the_future.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_medvedev_strong"
+		texturefile = "gfx/texticons/banners/SOV/SOV_medvedev_strong.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_moscow_never_sleeps"
+		texturefile = "gfx/texticons/banners/SOV/SOV_moscow_never_sleeps.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_ONF_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_ONF_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_CPRF_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_CPRF_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_smo_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_smo_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_LDPR_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_LDPR_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_UR_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_UR_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_SRZP_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_SRZP_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_ldpr_aid_to_america"
+		texturefile = "gfx/texticons/banners/SOV/SOV_ldpr_aid_to_america.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_ldpr_deadly_shitpost"
+		texturefile = "gfx/texticons/banners/SOV/SOV_ldpr_deadly_shitpost.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Russian_Rebels"
+		texturefile = "gfx/texticons/banners/SOV/RUS_Rebs.dds"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_convoy"
+		texturefile = "gfx/texticons/banners/SOV/SOV_convoy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_airbase"
+		texturefile = "gfx/texticons/banners/SOV/SOV_airbase.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_we_beat_them_before"
+		texturefile = "gfx/texticons/banners/SOV/SOV_we_beat_them_before.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_raise_victory_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_raise_victory_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_ukraine_we_are_your_liberators"
+		texturefile = "gfx/texticons/banners/SOV/SOV_ukraine_we_are_your_liberators.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_our_tanks_march_forward"
+		texturefile = "gfx/texticons/banners/SOV/SOV_our_tanks_march_forward.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_partocracy_banner"
+		texturefile = "gfx/texticons/banners/SOV/partocracy_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_rashkinism_banner"
+		texturefile = "gfx/texticons/banners/SOV/rashkinism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_zyuganovism_banner"
+		texturefile = "gfx/texticons/banners/SOV/zyuganovism_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_russian_supremacy_banner"
+		texturefile = "gfx/texticons/banners/SOV/russian_supremacy_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_putinism_hardline_banner"
+		texturefile = "gfx/texticons/banners/SOV/putinism_hardline_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_putinism_human_face_banner"
+		texturefile = "gfx/texticons/banners/SOV/putinism_human_face_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_long_lasting_state_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_long_lasting_state_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_putinism_faltering"
+		texturefile = "gfx/texticons/banners/SOV/putinism_faltering.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_socialism_human_face_banner"
+		texturefile = "gfx/texticons/banners/SOV/socialism_human_face_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ogas_banner"
+		texturefile = "gfx/texticons/banners/SOV/ogas_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_spirit_of_1242"
+		texturefile = "gfx/texticons/banners/SOV/SOV_spirit_of_1242.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_sons"
+		texturefile = "gfx/texticons/banners/SOV/SOV_sons.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_casualties"
+		texturefile = "gfx/texticons/banners/SOV/SOV_casualties.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_rally_population"
+		texturefile = "gfx/texticons/banners/SOV/SOV_rally_the_population.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_promote_contract_service"
+		texturefile = "gfx/texticons/banners/SOV/SOV_promote_contract_service.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_spread_christianity"
+		texturefile = "gfx/texticons/banners/SOV/SOV_spread_christianity.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_russian_heritage"
+		texturefile = "gfx/texticons/banners/SOV/SOV_russian_heritage.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_work_for_your_bread"
+		texturefile = "gfx/texticons/banners/SOV/SOV_work_for_your_bread.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_reindustrialization"
+		texturefile = "gfx/texticons/banners/SOV/SOV_reindustrialization.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_old_guard_party_agitation"
+		texturefile = "gfx/texticons/banners/SOV/SOV_old_guard_party_agitation.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_way_to_the_young"
+		texturefile = "gfx/texticons/banners/SOV/SOV_way_to_the_young.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_operation_torch_banner"
+		texturefile = "gfx/texticons/banners/SOV/operation_torch.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_death_brigades_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_death_brigades.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_mother_russia_bleeds_banner"
+		texturefile = "gfx/texticons/banners/SOV/SOV_mother_russia_bleeds_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_neotsarists"
+		texturefile = "gfx/texticons/banners/SOV/SOV_neotsarists.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_state_liberals"
+		texturefile = "gfx/texticons/banners/SOV/SOV_state_liberals.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_technocratic"
+		texturefile = "gfx/texticons/banners/SOV/SOV_technocratic.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_siloviki"
+		texturefile = "gfx/texticons/banners/SOV/SOV_siloviki.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_we_are_all_soviets"
+		texturefile = "gfx/texticons/banners/SOV/SOV_we_are_all_soviets.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_remember_our_history"
+		texturefile = "gfx/texticons/banners/SOV/SOV_remember_our_history.png"
+		legacy_lazy_load = no
+	}
+	#GER
+	spriteType = {
+		name = "GFX_GER_bundeswehr_recruitment"
+		texturefile = "gfx/texticons/banners/GER/GER_bundeswehr_recruitment_campaign.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_the_great_inheritor_banner"
+		texturefile = "gfx/texticons/banners/GER/GER_the_great_inheritor_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_our_righteous_ambitions_banner"
+		texturefile = "gfx/texticons/banners/GER/GER_our_righteous_ambitions_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_literally_hitler"
+		texturefile = "gfx/texticons/banners/GER/GER_literally_hitler.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_towards_ideal_man_banner"
+		texturefile = "gfx/texticons/banners/GER/GER_towards_ideal_man_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_destroy_their_conspiracy_banner"
+		texturefile = "gfx/texticons/banners/GER/GER_destroy_their_conspiracy_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_panzer_sturm"
+		texturefile = "gfx/texticons/banners/GER/GER_panzer_sturm.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_pan_euro"
+		texturefile = "gfx/texticons/banners/GER/Pan Euro Propaganda.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_old_glory"
+		texturefile = "gfx/texticons/banners/GER/GER_old_glory.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_was_wollen_wir_trinken"
+		texturefile = "gfx/texticons/banners/GER/GER_was_wollen_wir_trinken.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_we_are_the_cure"
+		texturefile = "gfx/texticons/banners/GER/GER_we_are_the_cure.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_your_future"
+		texturefile = "gfx/texticons/banners/GER/GER_your_future.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_tolerance_was_their_undoing"
+		texturefile = "gfx/texticons/banners/GER/GER_tolerance_was_their_undoing.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_why_they_fought"
+		texturefile = "gfx/texticons/banners/GER/GER_why_they_fought.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_german_revolutionary_history"
+		texturefile = "gfx/texticons/banners/GER/GER_german_revolutionary_history.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_unsere_panzerdivision"
+		texturefile = "gfx/texticons/banners/GER/GER_unsere_panzerdivision.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_new_political_sphere_banner"
+		texturefile = "gfx/texticons/banners/GER/GER_new_german_political_sphere.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_SOV_NATO_war_category"
+		texturefile = "gfx/texticons/banners/GER/SOV_NATO_war_category.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_ICE_Ecological_Disaster_Banner"
+		texturefile = "gfx/texticons/banners/ICE/Ecological_Disaster_Banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_auferstanden_aus_ruinen_category"
+		texturefile = "gfx/texticons/banners/GER/GER_auferstanden_aus_ruinen_cat.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_anti_modernist_revolution_pr"
+		texturefile = "gfx/texticons/banners/GER/GER_anti_modernist_revolution.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_our_beautiful_liberty"
+		texturefile = "gfx/texticons/banners/GER/GER_Our_Beautiful_Liberty.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_GER_we_bring_the_storm"
+		texturefile = "gfx/texticons/banners/GER/GER_we_bring_the_storm.png"
+		legacy_lazy_load = no
+	}
+	# FRA
+	spriteType = {
+		name = "GFX_FRA_Military_Loyalty_category"
+		texturefile = "gfx/texticons/banners/FRA/FRA_Military_Loyalty_category.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_FRA_France_World_Stage_category"
+		texturefile = "gfx/texticons/banners/FRA/FRA_France_World_Stage_category.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_FRA_democracy_progress_and_unity"
+		texturefile = "gfx/texticons/banners/FRA/FRA_democracy_progress_and_unity.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_FRA_another_europe_is_possible"
+		texturefile = "gfx/texticons/banners/FRA/FRA_another_europe_is_possible.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_FRA_Recruitment_campaign"
+		texturefile = "gfx/texticons/banners/FRA/FRA_Recruitment_campaign.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_FRA_Foreign_Recruitment_campaign"
+		texturefile = "gfx/texticons/banners/FRA/FRA_Foreign_Recruitment_campaign.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_FRA_naval_Recruitment_campaign"
+		texturefile = "gfx/texticons/banners/FRA/FRA_naval_Recruitment_campaign.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_FRA_space_Recruitment_campaign"
+		texturefile = "gfx/texticons/banners/FRA/FRA_space_Recruitment_campaign.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_FRA_air_Recruitment_campaign"
+		texturefile = "gfx/texticons/banners/FRA/FRA_air_Recruitment_campaign.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_FRA_french_spirit"
+		texturefile = "gfx/texticons/banners/FRA/FRA_french_spirit.png"
+		legacy_lazy_load = no
+	}
+	# NSM
+	spriteType = {
+		name = "GFX_banner_NSM_fractured_movement"
+		texturefile = "gfx/texticons/banners/NSM/NSM_fractured_movement.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_NSM_militia_infighting"
+		texturefile = "gfx/texticons/banners/NSM/NSM_militia_infighting.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_NSM_our_cause"
+		texturefile = "gfx/texticons/banners/NSM/NSM_our_cause.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_NSM_rust_belt_industry"
+		texturefile = "gfx/texticons/banners/NSM/NSM_rust_belt_industry.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_NSM_national_front"
+		texturefile = "gfx/texticons/banners/NSM/NSM_national_front.png"
+		legacy_lazy_load = no
+	}
+	#USC
+	spriteType = {
+		name = "GFX_USC_afonin_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_afonin_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_USC_medvedev_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_medvedev_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_mishustin_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_mishustin_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_USC_naryshkin_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_naryshkin_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_putin_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_putin_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_rashkin_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_rashkin_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_USC_zhirinovsky_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_zhirinovsky_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_USC_zyuganov_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_zyuganov_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_bibi_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_bibi_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_modi_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_modi_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_abe_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_abe_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_abe_dead_banner"
+		texturefile = "gfx/texticons/banners/USC/leader_banners/USC_abe_dead_banner.png"
+		legacy_lazy_load = no
+	}
+	
+	spriteType = {
+		name = "GFX_USC_dod_category"
+		texturefile = "gfx/texticons/banners/USC/USC_dod_category.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_USC_congress_category"
+		texturefile = "gfx/texticons/banners/USC/USC_congress_category.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_USC_the_people_banner"
+		texturefile = "gfx/texticons/banners/USC/USC_the_people_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_bureaucrats_banner"
+		texturefile = "gfx/texticons/banners/USC/USC_bureaucrats_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_USC_reject_globalism_banner"
+		texturefile = "gfx/texticons/banners/USC/USC_reject_globalism_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_USC_american_order_banner"
+		texturefile = "gfx/texticons/banners/USC/USC_american_order_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Trump_Victory_Con"
+		texturefile = "gfx/texticons/banners/USC/USC_ending_conservative.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_Trump_Victory_Auth"
+		texturefile = "gfx/texticons/banners/USC/USC_ending_auth.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_Trump_Victory_Marlib"
+		texturefile = "gfx/texticons/banners/USC/USC_ending_marlib.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_rural_economy_category"
+		texturefile = "gfx/texticons/banners/USC/USC_rural_economy_category.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_militia_loyalty"
+		texturefile = "gfx/texticons/banners/USC/USC_militia_loyalty.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_USC_constitutional_congress"
+		texturefile = "gfx/texticons/banners/USC/USC_constitutional_congress.png"
+		legacy_lazy_load = no
+	}
+	#PRC
+	spriteType = {
+		name = "GFX_PRC_study_theories_of_chairman_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_study_theories_of_chairman_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_new_era_for_china_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_new_era_for_china_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_down_with_bureaucracy_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_down_with_bureaucracy_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_power_to_the_people_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_power_to_the_people_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_power_to_the_people_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_power_to_the_people_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_let_flowers_grow_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_let_flowers_grow_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_glory_the_party_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_glory_the_party_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_dare_to_dream_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_dare_to_dream_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_we_build_for_china_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_we_build_for_china_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_we_will_prevail_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_we_will_prevail_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_we_are_invincible_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_we_are_invincible_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_destroy_china_enemies_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_destroy_china_enemies_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_dare_to_fight_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_dare_to_fight_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_dare_to_work_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_dare_to_work_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_forwards_to_the_future_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_forwards_to_the_future.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_watch_your_social_credit_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_watch_your_social_credit_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_improve_party_discipline_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_improve_party_discipline_banner.png"
+		legacy_lazy_load = no
+	}	
+	spriteType = {
+		name = "GFX_PRC_glory_the_paramount_leader_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_glory_the_paramount_leader_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_socialism_with_chinese_characteristics_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_socialism_with_chinese_characteristics_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_serve_the_people_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_serve_the_people_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_follow_lei_feng_example_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_follow_lei_feng_example_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_masses_mobilize_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_masses_mobilize_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_defend_of_maos_homeland_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_defend_of_maos_homeland_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_korean_war_banner"
+		texturefile = "gfx/texticons/banners/PRC/PRC_korean_war_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_ideology_left_nationalism"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_left_nationalism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_ideology_totalism"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_totalism.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_15_reform"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_15_reform.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_15_reform_army"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_15_reform_army.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_15_reform_navy"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_15_reform_navy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_15_reform_airforce"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_15_reform_airforce.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_24_reform"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_24_reform.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_24_reform_army"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_24_reform_army.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_24_reform_navy"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_24_reform_navy.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_PRC_24_reform_airforce"
+		texturefile =  "gfx/texticons/banners/ideology/PRC_24_reform_airforce.png"
+		legacy_lazy_load = no
+	}
+	#CHI
+	spriteType = {
+		name = "GFX_CHI_taiwanese_independence_movement_banner"
+		texturefile = "gfx/texticons/banners/CHI_taiwanese_independence_movement_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_CHI_terrible_mainland_influence_banner"
+		texturefile = "gfx/texticons/banners/CHI_terrible_mainland_influence_banner.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_CHI_ideology_market_socialism"
+		texturefile =  "gfx/texticons/banners/ideology/CHI_market_socialism.png"
+		legacy_lazy_load = no
+	}
+	#ATW
+	spriteType = {
+		name = "GFX_banner_ATW_fascism_is_the_solution"
+		texturefile = "gfx/texticons/banners/ATW/ATW_fascism_is_the_solution.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_ATW_from_the_belly_of_the_beast"
+		texturefile = "gfx/texticons/banners/ATW/ATW_from_the_belly_of_the_beast.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_ATW_the_final_revolution"
+		texturefile = "gfx/texticons/banners/ATW/ATW_the_final_revolution.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_ATW_harolds_of_the_apocolypse"
+		texturefile = "gfx/texticons/banners/ATW/ATW_harolds_of_the_apocolypse.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_ATW_honor_armageddon"
+		texturefile = "gfx/texticons/banners/ATW/ATW_honor_armageddon.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_ATW_organize_propogate_operate"
+		texturefile = "gfx/texticons/banners/ATW/ATW_organize_propogate_operate.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_ATW_our_patience_has_limits"
+		texturefile = "gfx/texticons/banners/ATW/ATW_our_patience_has_limits.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_ATW_pure_unadulterated_destruction"
+		texturefile = "gfx/texticons/banners/ATW/ATW_pure_unadulterated_destruction.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_ATW_the_aryan_revolution"
+		texturefile = "gfx/texticons/banners/ATW/ATW_the_aryan_revolution.png"
+		legacy_lazy_load = no
+	}
+	spriteType = {
+		name = "GFX_banner_ATW_harrowing_devastation_decision"
+		texturefile = "gfx/texticons/banners/ATW/ATW_harrowing_devastation_decision.png"
+		legacy_lazy_load = no
+	}
+}

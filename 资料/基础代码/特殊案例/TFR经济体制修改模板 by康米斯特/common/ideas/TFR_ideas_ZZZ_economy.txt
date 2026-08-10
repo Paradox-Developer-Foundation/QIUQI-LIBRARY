@@ -1,0 +1,301 @@
+	ideas = {
+		hidden_ideas = {
+			ZZZ_capitalist_economy = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.02
+					production_factory_efficiency_gain_factor = 0.02
+					production_speed_infrastructure_factor = -0.015
+					production_speed_office_park_factor = 0.015
+					business_value_factor = 0.05
+					personal_value_factor = -0.05
+				}
+			}
+			ZZZ_american_capitalism = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.03
+					production_factory_efficiency_gain_factor = 0.035
+					production_speed_infrastructure_factor = -0.035
+					production_speed_office_park_factor = 0.05
+					business_value_factor = 0.1
+					personal_value_factor = -0.1
+				}
+			}	
+			ZZZ_collective_capitalism = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.02
+					industrial_capacity_dockyard = 0.05
+					production_speed_infrastructure_factor = -0.05
+					production_speed_office_park_factor = 0.075
+					business_value_factor = 0.1
+					personal_value_factor = -0.05
+				}
+			}
+			ZZZ_collective_capitalism2 = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.04
+					industrial_capacity_dockyard = 0.05
+					industrial_capacity_factory = 0.05
+					production_speed_infrastructure_factor = -0.1
+					production_speed_office_park_factor = 0.025
+					business_value_factor = 0.05
+				}
+			}
+			ZZZ_oligopolistic_capitalism = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.04
+					production_speed_infrastructure_factor = -0.06
+					production_factory_max_efficiency_factor = 0.035
+					production_speed_synthetic_refinery_factor = 0.1
+					business_value_factor = 0.15
+					personal_value_factor = -0.15
+				}
+			}
+			ZZZ_welfare_capitalism = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = 0.025
+					production_speed_infrastructure_factor = 0.05
+					production_factory_efficiency_gain_factor = -0.065
+					production_speed_industrial_complex_factor = 0.05
+					personal_expense_factor = 0.035
+					business_value_factor = -0.1
+					personal_value_factor = 0.1
+				}
+			}	
+			
+			ZZZ_corporatism = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.025
+					production_speed_infrastructure_factor = 0.1
+					industrial_capacity_factory = 0.06
+					line_change_production_efficiency_factor = -0.05
+					production_lack_of_resource_penalty_factor = 0.035
+					income_growth_factor = -0.1
+					personal_expense_factor = -0.1
+				}
+			}		
+			ZZZ_managed_economy = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.05
+					production_speed_arms_factory_factor = 0.05
+					industrial_capacity_factory = 0.06
+					line_change_production_efficiency_factor = -0.1
+					poverty_development_monthly = -0.015
+					income_growth_factor = -0.15
+					personal_expense_factor = -0.1
+				}
+			}	
+			ZZZ_command_economy = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.03
+					production_speed_infrastructure_factor = 0.1
+					industrial_capacity_factory = 0.056
+					production_factory_start_efficiency_factor = 0.1
+					production_factory_efficiency_gain_factor = -0.1
+					income_growth_factor = -0.15
+					personal_expense_factor = -0.15
+				}
+			}	
+			ZZZ_planned_economy = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.05
+					production_speed_infrastructure_factor = 0.1
+					industrial_capacity_factory = 0.1
+					production_factory_start_efficiency_factor = 0.075
+					line_change_production_efficiency_factor = -0.05
+					production_factory_efficiency_gain_factor = -0.1
+					income_growth_factor = -0.25
+					personal_expense_factor = 0.1
+				}
+			}
+			ZZZ_socialist_market = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = 0.025
+					production_speed_infrastructure_factor = 0.05
+					industrial_capacity_factory = 0.035
+					production_factory_start_efficiency_factor = 0.05
+					production_factory_efficiency_gain_factor = -0.035
+					income_growth_factor = 0.1
+					personal_expense_factor = 0.1
+				}
+			}
+
+			ZZZ_hajimi_economy = {#哈基米经济模式
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.025
+					production_factory_start_efficiency = 0.02
+				}
+			}
+			ZZZ_developed_socialism = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.03
+					production_speed_industrial_complex_factor = 0.1
+					industrial_capacity_factory = 0.05
+					production_lack_of_resource_penalty_factor = -0.05
+					line_change_production_efficiency_factor = -0.1
+					production_factory_efficiency_gain_factor = -0.1
+					personal_expense_factor = 0.05
+					personal_value_factor = 0.05
+				}
+			}
+			ZZZ_military_controlled_economy = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.05
+					production_speed_arms_factory_factor = 0.1
+					industrial_capacity_factory = 0.05
+					production_lack_of_resource_penalty_factor = -0.1
+					production_factory_efficiency_gain_factor = 0.1
+					production_factory_start_efficiency_factor = -0.075
+					personal_expense_factor = -0.1
+					poverty_development_monthly = -0.025
+				}
+			}	
+			ZZZ_worker_controlled_economy = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = 0.02
+					production_speed_industrial_complex_factor = 0.1
+					industrial_capacity_factory = 0.05
+					personal_expense_factor = 0.1
+					personal_value_factor = 0.1
+					production_factory_max_efficiency_factor = 0.05
+					line_change_production_efficiency_factor = -0.1
+				}
+			}	
+			ZZZ_minarchism = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.05
+					production_factory_efficiency_gain_factor = 0.03
+					production_speed_infrastructure_factor = -0.1
+					production_speed_office_park_factor = 0.1
+					business_value_factor = 0.05
+					personal_value_factor = -0.05
+				}
+			}
+			ZZZ_ancap = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.15
+					production_factory_efficiency_gain_factor = 0.15
+					production_speed_infrastructure_factor = -0.35
+					production_speed_office_park_factor = 0.25
+					business_value_factor = 0.15
+					personal_value_factor = -0.15
+					stability_factor = -0.1
+				}
+			}
+			ZZZ_chaostic_economy = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = 0.05
+					production_speed_buildings_factor = -0.1
+					industrial_capacity_factory = -0.1
+				}
+			}
+		}
+		
+	}

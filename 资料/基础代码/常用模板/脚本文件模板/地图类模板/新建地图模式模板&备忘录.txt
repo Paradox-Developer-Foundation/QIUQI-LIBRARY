@@ -1,0 +1,88 @@
+ # 脚本化地图模式 可用于在游戏地图模式选项中 添加新的地图模式
+ Example: #示例
+
+scripted_map_modes = { #前缀
+	test_map_mode = { #新地图模式名字
+ 		# 游戏将 对某些字符串 使用 地图模式 的 名称 ：（人话：要进行本地化翻译）
+		# MAPMODE_TEST_MAP_MODE		←←←作为模式的名字
+		# MAPMODE_TEST_MAP_MODE_NAME 	←←←作为名字
+		# MAPMODE_TEST_MAP_MODE_DESCRIPTION 	←←←作为解释
+		# test_map_mode_tooltip 	←←←用于提示
+		# test_map_mode_tooltip_delayed 用于提示 	←←←用于延迟的提示
+
+		# 用于图标
+		# GFX_mapmode_buttons_selected_small_test_map_mode 选中（地图模式的）图标
+		# GFX_mapmode_buttons_deselected_small_test_map_mode 取消选中（地图模式的）图标
+
+		# 地图模式有两个图层。 底部 和 顶部 。两者相同，只是在渲染期间它们将按该顺序渲染
+ 		# 对于每个图层，游戏将确定要渲染的边界，并要求脚本为这些边界选择颜色
+		top = {
+			# type 表示将用于渲染此层的边框,或者它可以表示硬编码的地图模式图层之一。
+			# 必须是一下其中之一：
+			# none		将不为此层渲染任何内容
+			# country		将使用国家进行渲染
+			# state		将使用大地快进行渲染
+			# state_controller		将使用控制的大地快进行渲染。如果一个省份在多个国家之间共享，则将为每个国家调用。
+			# 这些是硬编码的地图模式图层。如果使用这些条目，则忽略所有其他层条目：
+			# game_map_mode_country 国家
+			# game_map_mode_states 省份
+			# game_map_mode_diplomacy 外交
+			# game_map_mode_players 玩家
+			# game_map_mode_factions 阵营
+			# game_map_mode_ideology 意识形态
+			
+			type = 以上列举的类型
+
+			# 此条件将用于设置特定边框的颜色，如果条件满足，则它将呈现该边框。
+			# 范围取决于层的类型，范围是玩家操控的国家。
+			# FROM的范围取决于类型：
+			# country		将呈现当前国家
+			# state		当前省份
+			# state_controller	省份控制者
+			# 如果值变为了真的，则您需要设置一些temp变量，这些变量将用作边境的颜色
+
+			color = {
+				set_temp_variable = { red = 0.0 } #红色
+				set_temp_variable = { blue = 1.0 } #蓝色
+				set_temp_variable = { green = 0.0 } #绿色
+				set_temp_variable = { alpha = 1.0 } #阿尔法
+
+				# 仅当父级上的 thickness = yes 时才需要
+				# 指定透明度↓
+				set_temp_variable = { thickness = 10.0 }
+
+				# 如果设置，边境将高亮
+				set_temp_variable = { highlighted = 1.0 }
+
+				#always = yes
+			}
+			# 一个目标列表，可用于限制将在地图上呈现的范围，类似于针对性决议。
+			# 强烈建议用于性能，否则它将尝试为每个范围渲染
+			targets = {
+				#target_array = robot_map_icon_array
+				#targets
+				#target_trigger
+				#针对性决议可用的这里都可用
+			}
+
+		}
+		
+		bottom = {
+			# 与顶端图层同样的结构写法
+
+		}
+
+		# 如果想在地图上显示文本，您可以设置far_text & near_text
+		# 必须要是以下其中之一：
+		#  none
+		#  country
+		#  state
+		#  faction
+		#  player
+		far_text = none #示例
+		near_text = none #示例
+
+		#如果是，游戏将每日更新地图模式，否则可以使用 force_update_map_mode 效果
+		update_daily = yes
+	}
+}

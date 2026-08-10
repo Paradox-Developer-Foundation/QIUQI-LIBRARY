@@ -1,0 +1,1250 @@
+#非常好的笔记#
+#By 里脊#
+#感谢Crys7aL_L1nE大佬开源#
+#活爹#
+#特浓这个逼东西真恶心#
+#####----最后修订日期:2025/1/5----#####
+
+#目录
+
+#Part 1 经济类 第23行
+#Part 2 社会发展 第250行
+#Part 3 社会法规 第356行
+#Part 4 原版内容 第689行
+#Part 5 杂项 第717行
+
+#附件 特浓社会法规和社会发展表 第885行
+#附件2：TNO经济制度列表及经济制度更改方式#by mugi 
+
+#法兰克福我爱你#
+
+
+
+#Part 1 经济类#
+#正数为上升#
+#负数为降低#
+#高 high#
+#中 med#
+#低 low#
+
+#通胀率#
+set_temp_variable = { inflation_temp = -1.00 }
+econ_inflation_change = yes
+
+#GDP增长率#
+set_temp_variable = { gdp_growth_temp = 1 }
+econ_gdp_growth_change = yes
+update_economy_tab = yes
+
+##mugi的补充##
+地区GDP增长率：
+省份代码 = {
+			set_temp_variable = { state_value_multiplier_temp =  }
+			econ_state_value_change_multiply_specified_state = yes
+		}
+
+#GDP增长#
+set_temp_variable = { temp_econ_GDP_boost_percentage = 0.01 }
+econ_GDP_boost_once_percentage = yes
+
+#准备金#
+set_temp_variable = { money_reserves_temp = 1 }
+econ_money_reserves_change_raw_money = yes
+update_economy_tab = yes
+
+#债务#
+set_temp_variable = { temp_econ_spending_amount = 0.5 } 
+econ_spend_money_once_effect_raw_money = yes
+update_economy_tab = yes
+
+#一次性开销（花费）#
+set_temp_variable = { temp_econ_spending_amount = 0.05 } 
+econ_spend_money_once_effect_raw_money = yes
+update_economy_tab = yes
+
+#信用等级上升#
+econ_raise_credit_rating = yes
+update_economy_tab = yes
+
+#信用等级下降#
+econ_lower_credit_rating = yes
+update_economy_tab = yes
+
+#信用上限上升#
+econ_raise_max_credit_rating = yes
+update_economy_tab = yes
+
+#信用上限下降#
+econ_lower_max_credit_rating = yes
+update_economy_tab = yes
+
+#信用下限上升#
+econ_raise_min_credit_rating = yes
+update_economy_tab = yes
+
+#信用下限下降#
+econ_lower_min_credit_rating = yes
+update_economy_tab = yes
+
+##mugi的修复及补充---经济面板开支系列
+
+#社会开支上限上升#
+social_funding_maximal_increase_high = yes
+update_economy_tab = yes
+
+#社会开支下限降低#
+social_funding_minimal_decrease_high = yes
+update_economy_tab = yes
+
+#行政开支上限上升#
+admin_funding_maximal_increase_high = yes
+update_economy_tab = yes
+
+#行政开支下限降低#
+admin_funding_minimal_decrease_high = yes
+update_economy_tab = yes
+
+#科研开支上限上升#
+research_funding_maximal_increase_high = yes
+update_economy_tab = yes
+
+#科研开支下限降低#
+research_funding_minimal_decrease_high = yes
+update_economy_tab = yes
+
+#陆军开支上限上升#
+army_funding_maximal_increase_high = yes
+update_economy_tab = yes
+
+#陆军开支下限降低#
+army_funding_minimal_decrease_high = yes
+update_economy_tab = yes
+
+#海军开支上限上升#
+naval_funding_maximal_increase_high = yes
+update_economy_tab = yes
+
+#海军开支下限降低#
+naval_funding_minimal_decrease_high = yes
+update_economy_tab = yes
+
+#核能开支上限上升#
+nuclear_funding_maximal_increase_high = yes
+update_economy_tab = yes
+
+#核能开支下限降低#
+nuclear_funding_minimal_decrease_high = yes
+update_economy_tab = yes
+
+#社会开支上限降低#
+social_funding_maximal_decrease_high = yes
+update_economy_tab = yes
+
+#社会开支下限提高#
+social_funding_minimal_increase_high = yes
+update_economy_tab = yes
+
+#行政开支上限降低#
+admin_funding_maximal_decrease_high = yes
+update_economy_tab = yes
+
+#行政开支下限提高#
+admin_funding_minimal_increase_high = yes
+update_economy_tab = yes
+
+#科研开支上限降低#
+research_funding_maximal_decrease_high = yes
+update_economy_tab = yes
+
+#科研开支下限提高#
+research_funding_minimal_increase_high = yes
+update_economy_tab = yes
+
+#陆军开支上限降低#
+army_funding_maximal_decrease_high = yes
+update_economy_tab = yes
+
+#陆军开支下限提高#
+army_funding_minimal_increase_high = yes
+update_economy_tab = yes
+
+#海军开支上限降低#
+naval_funding_maximal_decrease_high = yes
+update_economy_tab = yes
+
+#海军开支下限提高#
+naval_funding_minimal_increase_high = yes
+update_economy_tab = yes
+
+#核能开支上限降低#
+nuclear_funding_maximal_decrease_high = yes
+update_economy_tab = yes
+
+#核能开支下限提高#
+nuclear_funding_minimal_increase_high = yes
+update_economy_tab = yes
+
+###自定义开支上限下限的脚本写法---写在scripted_effects下
+脚本名称 = {
+	custom_effect_tooltip = 效果介绍#起名后写在本地化内
+	add_to_variable = { econ_(开支类型#注)_expenditures_maximal_pct = <数值> }
+	update_economy_tab = yes
+}
+#注:army 陆军  navy 海军  nuclear 核能 researcg 科研 admin 行政 social 社会
+
+###mugi完成了他的补充###
+
+#所得税上升#
+set_temp_variable = { income_tax_temp = 0.05 }
+econ_income_tax_rate_change = yes
+update_economy_tab = yes
+
+#所得税减少#
+set_temp_variable = { income_tax_temp = -0.05 }
+econ_income_tax_rate_change = yes
+update_economy_tab = yes
+
+#商业税上升#
+set_temp_variable = { business_tax_temp = 0.05 }
+econ_business_tax_rate_change = yes
+update_economy_tab = yes
+
+#商业税减少#
+set_temp_variable = { business_tax_temp = -0.05 }
+econ_business_tax_rate_change = yes
+update_economy_tab = yes
+
+#生产单位#
+set_temp_variable = { pus_temp = 1 }
+econ_pus_change = yes
+update_economy_tab = yes
+
+####开支上限下限设定####
+####    By:mugi    ####
+
+#low为5 med为10 high为15#
+#increase为提高 decrease为降低
+
+#陆军开支上限提高 及 降低
+army_funding_maximal_increase_high = yes
+#陆军开支下限降低
+
+
+#杂项收入#（用于民族精神的）
+                misc_income_modifier
+ 
+#实在不会抄
+###mugi的补充###
+#此部分勿用，属于修改器内容#
+#我后面会补的#
+
+if = {
+	limit = { NOT = { has_dynamic_modifier = { modifier = TCM_misc_income_modifier } } }
+	add_dynamic_modifier = {
+		modifier = TCM_misc_income_modifier
+	}
+}
+add_to_variable = { TCM_misc_income = 1 }
+calculate_total_income = yes
+update_economy_tab = yes
+
+
+#Part 2 社会发展#
+#急速# high
+#中速# med
+#缓速# low
+
+#贫困率#
+
+#每月减少#
+add_to_variable = { poverty_monthly_change = 1 }
+#每月增加#
+add_to_variable = { poverty_monthly_change = -1 }
+#降低#
+TNO_improve_poverty_big = yes
+#增加#
+TNO_worsen_poverty_big = yes
+#灾难性增加#
+TNO_worsen_poverty_catastrophic = yes
+
+#教育水平#
+
+#直接升级#
+tno_improve_academic_base = yes
+#直接降级#
+tno_worsen_academic_base = yes
+#增加#
+TNO_improve_academic_base_high = yes
+#降低#
+TNO_worsen_academic_base_high = yes
+
+#研究设施#
+
+#直接升级#
+tno_improve_research_facilities = yes
+#直接降级#
+tno_worsen_research_facilities = yes
+#增加#
+TNO_improve_research_facilities_high = yes
+#降低#
+TNO_worsen_research_facilities_high = yes
+
+#农业技术#
+
+#直接升级#
+tno_improve_agriculture = yes
+#直接降级#
+tno_worsen_agriculture = yes
+#增加#
+TNO_improve_agriculture_high = yes
+#降低#
+TNO_worsen_agriculture_high = yes
+
+#行政效率#
+
+#直接升级#
+tno_improve_admin_efficiency = yes
+#直接降低#
+tno_worsen_admin_efficiency = yes
+#增加#
+TNO_improve_admin_efficiency_high = yes
+#降低#
+TNO_worsen_admin_efficiency_high = yes
+
+#工业专业知识#
+
+#直接增加#
+tno_improve_industrial_expertise = yes
+#直接降低#
+tno_worsen_industrial_expertise = yes
+#增加#
+TNO_improve_industrial_expertise_high = yes
+#降低#
+TNO_worsen_industrial_expertise_high = yes
+
+#工业设备#
+
+#直接增加#
+tno_improve_industrial_equipment = yes
+#直接降低#
+tno_worsen_industrial_equipment = yes
+#增加#
+TNO_improve_industrial_equipment_high = yes
+#降低#
+TNO_worsen_industrial_equipment_high = yes
+
+#军队职业度#
+
+#直接增加#
+tno_improve_army_professionalism = yes
+#直接降低#
+tno_worsen_army_professionalism = yes
+#增加#
+TNO_improve_army_professionalism_high = yes
+#降低#
+TNO_worsen_army_professionalism_high = yes
+
+#医保水平#
+
+#直接增加#
+tno_improve_healthcare = yes
+#直接降低#
+tno_worsen_healthcare = yes
+#增加#
+TNO_improve_healthcare_high = yes
+#降低#
+TNO_worsen_healthcare_high = yes
+
+#Part 3 社会法规#
+#落实度#
+#high 高#
+#med 中#
+#low 低#
+
+#政党制度#
+#注：这玩意实在论不出进步还是退步，只能按特浓的来
+
+#直接进步#
+tno_political_parties_improve = yes
+#直接退步#
+tno_political_parties_worsen = yes
+#落实度上升#
+TNO_improve_political_parties_policy_effectiveness_high = yes
+#落实度降低#
+TNO_worsen_political_parties_policy_effectiveness_high = yes
+
+#宗教权利#
+#注：这玩意实在论不出进步还是退步，只能按特浓的来
+
+#直接进步#
+tno_religious_rights_improve = yes
+#直接退步#
+tno_religious_rights_worsen = yes
+#落实度上升#
+TNO_improve_religious_rights_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_religious_rights_policy_effectiveness_high = yes
+
+#工会法规#
+
+#直接进步#
+tno_trade_unions_improve = yes
+#直接退步#
+tno_trade_unions_worsen = yes
+#落实度上升#
+TNO_improve_trade_unions_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_trade_unions_policy_effectiveness_high = yes
+
+#移民政策#
+
+#直接进步#
+tno_immigration_improve = yes
+#直接退步#
+tno_immigration_worsen = yes
+#落实度上升#
+TNO_improve_immigration_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_immigration_policy_effectiveness_high = yes
+
+#强制劳动#
+
+#直接进步#
+tno_slavery_improve = yes
+#直接退步#
+tno_slavery_worsen = yes
+#落实度上升#
+TNO_improve_slavery_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_slavery_policy_effectiveness_high = yes
+
+#公众集会#
+
+#直接进步#
+tno_public_meetings_improve = yes
+#直接退步#
+tno_public_meetings_worsen = yes
+#落实度上升#
+TNO_improve_public_meetings_policy_effectiveness_high = ye
+#落实度下降#
+TNO_worsen_public_meetings_policy_effectiveness_high = yes
+
+#出版权#
+
+#直接进步#
+tno_press_rights_improve = yes
+#直接退步#
+tno_press_rights_worsen = yes
+#落实度上升#
+TNO_improve_press_rights_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_press_rights_policy_effectiveness_high = yes
+
+#投票权#
+
+#直接进步#
+tno_vote_franchise_improve = yes
+#直接退步#
+tno_vote_franchise_worsen = yes
+#落实度上升#
+TNO_improve_vote_franchise_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_vote_franchise_policy_effectiveness_high = yes
+
+#兵役制度#
+#注：进步多了会变成非军事化国家
+
+#直接进步#
+tno_conscription_improve = yes
+#直接退步#
+tno_conscription_worsen = yes
+#落实度上升#
+TNO_improve_conscription_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_conscription_policy_effectiveness_high = yes
+
+#军事监管#
+
+#直接进步#
+tno_military_supervision_improve = yes
+#直接退步#
+tno_military_supervision_worsen = yes
+#落实度上升#
+TNO_improve_military_supervision_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_military_supervision_policy_effectiveness_high = yes
+
+#军事训练#
+
+#直接进步#
+tno_training_improve = yes
+#直接退步#
+tno_training_worsen = yes
+#落实度上升#
+TNO_improve_training_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_training_policy_effectiveness_high = yes
+
+#兵役豁免#
+#注：这个好像也论不出进步退步
+
+#直接进步#
+tno_draft_exemptions_improve = yes
+#直接退步#
+tno_draft_exemptions_worsen = yes
+#落实度上升#
+TNO_improve_draft_exemptions_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_draft_exemptions_policy_effectiveness_high = yes
+
+#贸易法#
+#注：好吧，看来世界并不是非黑即白的
+
+#直接进步#
+tno_trade_laws_improve = yes
+#直接退步#
+tno_trade_laws_worsen = yes
+#落实度上升#
+TNO_improve_trade_laws_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_trade_laws_policy_effectiveness_high = yes
+
+#所得税#
+
+#直接进步#
+tno_income_taxation_improve = yes
+#直接退步#
+tno_income_taxation_worsen = yes
+#落实度上升#
+TNO_improve_income_taxation_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_income_taxation_policy_effectiveness_high = yes
+
+#最低工资#
+
+#直接进步#
+tno_minimum_wage_improve = yes
+#直接退步#
+tno_minimum_wage_worsen = yes
+#落实度上升#
+TNO_improve_minimum_wage_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_minimum_wage_policy_effectiveness_high = yes
+
+#最高工时#
+
+#直接进步#
+tno_max_workhours_improve = yes
+#直接退步#
+tno_max_workhours_worsen = yes
+#落实度上升#
+TNO_improve_max_workhours_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_max_workhours_policy_effectiveness_high = yes
+
+#失业救济#
+
+#直接进步#
+tno_unemployment_improve = yes
+#直接退步#
+tno_unemployment_worsen = yes
+#落实度上升#
+TNO_improve_unemployment_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_unemployment_policy_effectiveness_high = yes
+
+#退休金#
+
+#直接进步#
+tno_pensions_improve = yes
+#直接退步#
+tno_pensions_worsen = yes
+#落实度上升#
+TNO_improve_pensions_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_pensions_policy_effectiveness_high = yes
+
+#医保政策#
+
+#直接进步#
+tno_health_care_improve = yes
+#直接退步#
+tno_health_care_worsen = yes
+#落实度上升#
+TNO_improve_health_care_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_health_care_policy_effectiveness_high = yes
+
+#教育政策#
+
+#直接进步#
+tno_education_improve = yes
+#直接退步#
+tno_education_worsen = yes
+#落实度上升#
+TNO_improve_education_policy_effectiveness_high = yes
+#落实度下降#
+tno_education_worsen = yes
+
+#刑罚制度#
+
+#直接进步#
+tno_penal_system_improve = yes
+#直接退步#
+tno_penal_system_worsen = yes
+#落实度上升#
+TNO_improve_penal_system_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_penal_system_policy_effectiveness_high = yes
+
+#安保政策#
+
+#直接进步#
+tno_security_improve = yes
+#直接退步#
+tno_security_worsen = yes
+#落实度上升#
+TNO_improve_security_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_security_policy_effectiveness_high = yes
+
+#工业规章#
+
+#直接进步#
+tno_regulations_improve = yes
+#直接退步#
+tno_regulations_worsen = yes
+#落实度上升#
+TNO_improve_regulations_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_regulations_policy_effectiveness_high = yes
+
+#性别权利#
+
+#直接进步#
+tno_gender_rights_improve = yes
+#直接退步#
+tno_gender_rights_worsen = yes
+#落实度上升#
+TNO_improve_gender_rights_policy_effectiveness_high = yes
+#落实度下降#
+TNO_worsen_gender_rights_policy_effectiveness_high = yes
+
+#注：以下皆为杂项法律，因此不支持落实度变化#
+
+#污染管控#
+
+#直接进步#
+tno_pollution_improve = yes
+#直接退步#
+tno_pollution_worsen = yes
+
+#安全规章#
+
+#直接进步#
+tno_safety_improve = yes
+#直接退步#
+tno_safety_worsen = yes
+
+#童工#
+
+#直接进步#
+tno_child_labor_improve = yes
+#直接退步#
+tno_child_labor_worsen = yes
+
+#难民制度#
+
+#直接进步#
+tno_refugees_improve = yes
+#直接退步#
+tno_refugees_worsen = yes
+
+#少数族裔#
+
+#直接进步#
+tno_minorities_improve = yes
+#直接退步#
+tno_minorities_worsen = yes
+
+#种族整合#
+
+#直接进步#
+tno_racial_integration_improve = yes
+#直接退步#
+tno_racial_integration_worsen = yes
+
+#女性角色#
+
+#直接进步#
+tno_women_improve = yes
+#直接退步#
+tno_women_worsen = yes
+
+#性少数政策#
+
+#直接进步#
+tno_lgbt_rights_improve = yes
+#直接退步#
+tno_lgbt_rights_worsen = yes
+
+#Part 4 原版内容#
+#正数为增加#
+#负数为减少#
+
+#政治点数#
+add_political_power = 50
+
+#稳定度#
+add_stability = 0.1
+
+#战争支持度#
+add_war_support = 0.1
+
+#人力#
+add_manpower = 1000
+
+#指挥点数#
+add_command_power = 100
+
+#陆军经验#
+army_experience = 100
+
+#海军经验#
+navy_experience = 100
+
+#空军经验#
+air_experience = 100
+
+#Part 5 杂项#
+#什么乱七八糟的#
+
+#建筑#
+#前面要加地块
+#例如：578 = {
+#			add_building_construction = {
+#				type = offices
+#				level = 2
+#				instant_build = yes
+#			}
+#		}
+#
+#如果想移除建筑就把add改成remove
+
+#行政大楼#
+add_building_construction = {
+	type = offices
+	level = 1
+	instant_build = yes
+}
+#学校#
+add_building_construction = {
+	type = schools
+	level = 1
+	instant_build = yes
+}
+#医院#
+add_building_construction = {
+	type = hospitals
+	level = 1
+	instant_build = yes
+}
+#监狱#
+add_building_construction = {
+	type = prisons
+	level = 1
+	instant_build = yes
+}
+#军事基地#
+add_building_construction = {
+	type = schools
+	level = 1
+	instant_build = yes
+}
+#空军基地#
+add_building_construction = {
+	type = air_base
+	level = 1
+	instant_build = yes
+}
+#基础设施#
+add_building_construction = {
+	type = infrastructure
+	level = 1
+	instant_build = yes
+}
+#雷达站#
+add_building_construction = {
+	type = radar_station
+	level = 1
+	instant_build = yes
+}
+#防空建筑#
+add_building_construction = {
+	type = infrastructure
+	level = 1
+	instant_build = yes
+}
+#海军船坞#
+add_offsite_building = {
+	type = dockyard
+	level = 1
+}
+#导弹发射井#
+add_building_construction = {
+	type = missile_silo
+	level = 1
+	instant_build = yes
+}
+#核反应堆#
+add_building_construction = {
+	type = nuclear_reactor
+	level = 1
+	instant_build = yes
+}
+#浓缩厂#
+add_building_construction = {
+	type = enrichment_plant
+	level = 1
+	instant_build = yes
+}
+#建筑槽#
+add_extra_state_shared_building_slots = 5
+
+#资源#
+#老样子，还是前面加地块#
+
+#橡胶#
+add_resource = { type = rubber amount = 50 }
+#石油#
+add_resource = { type = oil amount = 50 }
+#铝#
+add_resource = { type = aluminium amount = 50 }
+#钨#
+add_resource = { type = tungsten amount = 50 }
+#钢铁#
+add_resource = { type = steel amount = 50 }
+#铬#
+add_resource = { type = chromium amount = 50 }
+#铀矿#
+add_resource = { type = uranium amount = 50 }
+#电力#
+add_resource = { type = power amount = 50 }
+
+#科研槽#
+add_research_slot = 1
+
+#意识形态#
+
+#communist 共产主义
+#socialist 社会主义
+#progressivism 进步主义
+#liberalism 自由主义
+#conservatism 保守主义
+#liberal_conservatism 自由保守主义
+#paternalism 家长制
+#despotism 专制主义
+#fascism 法西斯主义
+#national_socialism 国家社会主义
+#ultranationalism 极端民族主义
+
+#正数增加支持率 负数降低支持率#
+
+#例如：add_popularity = {
+#	ideology = national_socialism
+#	popularity = 0.05
+#}
+
+#只需要修改意识形态名称和数字#
+
+#核弹#
+#正数为增加 负数为降低#
+
+add_to_variable = { nuclear_stockpile = 10 }
+clamp_variable = {
+	var = nuclear_stockpile
+	min = 0
+}
+set_variable = { nuclear_stockpile_k = nuclear_stockpile }
+divide_variable = { nuclear_stockpile_k = 1000 }
+calculate_strike_capability = yes
+
+#成为超级大国#
+
+TNO_unlock_nuclear_tech = yes
+set_technology = {
+	nuclear_technology_1 = 1
+}
+add_to_variable = { nuclear_stockpile = 10 }
+add_to_variable = { nuclear_stockpile_change = 1 }
+set_variable = { nuclear_stockpile_k = nuclear_stockpile }
+divide_variable = { nuclear_stockpile_k = 1000 }
+add_to_variable = { nuclear_global_coverage = 0.2 }
+calculate_strike_capability = yes
+hidden_effect = { set_superpower = yes }
+#set_country_flag = TCM_options_soc_9_clicked #remove it please
+
+#附件：特浓社会法规表#
+#从上到下对应从退步到进步#
+#其实可以直接 add_ideas = 加政策名来改政策 但是不显示效果
+
+#军事政策#
+
+#征募制度#
+ tno_conscription_scraping_the_barrel: "全民服役"
+ tno_conscription_all_adults_serve: "所有成人服役" 
+ tno_conscription_service_by_requirement: "按需服役"
+ tno_conscription_extensive_conscription: "广泛征兵"
+ tno_conscription_broadened_conscription: "扩充征兵"
+ tno_conscription_limited_conscription: "有限征兵"
+ tno_conscription_volunteer_only: "志愿兵役"
+ tno_conscription_disarmed_nation: "非军事化国家"
+
+#女性服役#
+ tno_women_banned: "女性禁止参军"
+ tno_women_military_assistance: "女性仅限军事支援"
+ tno_women_noncombat_only: "女性仅限非战斗任务"
+ tno_women_combat_roles: "女性参与战斗"
+ tno_women_total_equality: "性别完全平等"
+
+#军事监督#
+ tno_military_supervision_kill_em_all: "鼓励暴行"
+ tno_military_supervision_no_supervision: "没有限制"
+ tno_military_supervision_rules_of_engagement: "交战准则"
+ tno_military_supervision_watchdog_groups: "监督组织"
+ tno_military_supervision_total_supervision: "全面监督"
+
+#军事训练#
+ tno_training_none: "临阵磨枪"
+ tno_training_minimal_training: "最低训练"
+ tno_training_basic_training: "基础训练"
+ tno_training_combat_schooling: "战斗培育"
+ tno_training_advanced_training_methods: "先进训练方式"
+
+#种族融合#
+ tno_racial_integration_none: "无种族融合"
+ tno_racial_integration_segregated_regiments: "种族隔离兵团"
+ tno_racial_integration_integrated_military: "种族混编部队"
+ tno_racial_integration_enforced_integration: "少数族裔保护"
+
+#兵役豁免#
+ tno_draft_exemptions_none: "无兵役豁免"
+ tno_draft_exemptions_educational_deferment: "学生缓征"
+ tno_draft_exemptions_civil_service_deferment: "公务员豁免"
+ tno_draft_exemptions_generous_exemptions: "宽松兵役豁免"
+
+#政治政策#
+
+#政党制度#
+ tno_political_parties_nonpartisan_system: "无党制"
+ tno_political_parties_one_party_state: "一党制"
+ tno_political_parties_controlled_opposition: "象征性多党"
+ tno_political_parties_multiparty_system: "多党制"
+
+#宗教权利#
+ tno_religious_rights_suppression_of_churches: "镇压教会"
+ tno_religious_rights_state_religion: "国立宗教"
+ tno_religious_rights_pluralism: "多元主义"
+ tno_religious_rights_secularism: "世俗主义"
+ tno_religious_rights_state_atheism: "国家无神论"
+
+#工会#
+ tno_trade_unions_illegal: "工会非法"
+ tno_trade_unions_state_controlled: "国家控制工会"
+ tno_trade_unions_nonsocialist_allowed: "允许非政治性工会"
+ tno_trade_unions_all_allowed: "允许所有工会"
+
+#移民制度#
+ tno_immigration_you_will_never_leave: "密闭国境"
+ tno_immigration_closed_borders: "关闭边境"
+ tno_immigration_skilled_labor_only: "仅限技术移民"
+ tno_immigration_quota_immigration: "限额移民"
+ tno_immigration_open_immigration: "开放移民"
+ tno_immigration_encouraged_immigration: "鼓励移民"
+ tno_immigration_subsidized_immigration: "移民补贴"
+ tno_immigration_give_me_your_poor: "自由灯塔"
+
+#强制劳动#
+ tno_slavery_caste_systems: "种姓制度"
+ tno_slavery_institutionalized: "制度化奴隶制"
+ tno_slavery_corvee: "农奴徭役"
+ tno_slavery_penal_labor: "囚犯劳动"
+ tno_slavery_work_programs: "就业项目"
+ tno_slavery_pow_only: "仅限战俘"
+ tno_slavery_outlawed: "全面取缔"
+
+#公众集会#
+ tno_public_meetings_outlawed: "取缔公众集会"
+ tno_public_meetings_regulated: "管控公众集会"
+ tno_public_meetings_allowed: "允许公众集会"
+
+#出版权#
+ tno_press_rights_propaganda_press: "政治宣传"
+ tno_press_rights_state_press_only: "仅限官办"
+ tno_press_rights_censored_press: "出版审查"
+ tno_press_rights_free_press: "出版自由"
+
+#选举权#
+ tno_vote_franchise_no_voting: "无选举"
+ tno_vote_franchise_elite_voting: "精英选举"
+ tno_vote_franchise_inequal_voting: "不平等投票"
+ tno_vote_franchise_registered_voting: "登记选民选举"
+ tno_vote_franchise_universal: "普遍选举"
+ tno_vote_franchise_promoted_voting: "鼓励投票"
+
+#难民制度#
+ tno_refugees_banned: "禁止难民入境"
+ tno_refugees_skilled: "仅限技术难民"
+ tno_refugees_vetted_entry: "难民准入审查"
+ tno_refugees_open: "开放难民计划"
+ tno_refugees_give_me_your_poor: "自由灯塔"
+
+#经济法规#
+
+#贸易制度#
+ tno_trade_laws_free_trade: "自由贸易"
+ tno_trade_laws_export_focus: "战略性关税"
+ tno_trade_laws_limited_exports: "加重保护关税"
+ tno_trade_laws_closed_economy: "封闭经济"
+
+#所得税#
+ tno_income_taxation_not_applicable: "不适用"
+ tno_income_taxation_low_income_weighted: "累退税"
+ tno_income_taxation_flat_taxes: "单一税"
+ tno_income_taxation_high_income_weighted: "累进税"
+ tno_income_taxation_negative_taxation: "负所得税"
+ tno_income_taxation_no_income_taxation: "无所得税"
+
+#最低工资#
+ tno_minimum_wage_no_minimum_wage: "无最低工资"
+ tno_minimum_wage_trinket_minimum_wage: "象征性最低工资"
+ tno_minimum_wage_low_minimum_wage: "低最低工资"
+ tno_minimum_wage_acceptable_minimum: "中最低工资"
+ tno_minimum_wage_good_minimum_wage: "高最低工资"
+ tno_minimum_wage_annual_wage: "年薪"
+
+#最高工时#
+ tno_max_workhours_unlimited_work_day: "无限制工时"
+ tno_max_workhours_14_hour_work_day: "14小时工作制"
+ tno_max_workhours_12_hour_work_day: "12小时工作制"
+ tno_max_workhours_10_hour_work_day: "10小时工作制"
+ tno_max_workhours_8_hour_work_day: "8小时工作制"
+ tno_max_workhours_6_hour_work_day: "6小时工作制"
+
+#童工#
+ tno_child_labor_legal: "童工合法"
+ tno_child_labor_restricted: "童工受限"
+ tno_child_labor_illegal: "童工非法"
+
+#退休金#
+ tno_pensions_no_pensions: "无退休金"
+ tno_pensions_trinket_pensions: "象征性退休金"
+ tno_pensions_low_pensions: "低退休金"
+ tno_pensions_acceptable_pensions: "中退休金"
+ tno_pensions_good_pensions: "高退休金"
+
+#失业救济#
+ tno_unemployment_no_subsidies: "无失业救济"
+ tno_unemployment_trinket_subsidies: "象征性失业救济"
+ tno_unemployment_low_subsidies: "低失业救济"
+ tno_unemployment_moderate_subsidies: "适度失业救济"
+ tno_unemployment_generous_subsidies: "高额失业救济"
+ tno_unemployment_full_employment_policy: "充分就业政策"
+
+#工业监管#
+ tno_regulations_utterly_unregulated: "完全无监管"
+ tno_regulations_token_regulations: "象征性监管"
+ tno_regulations_moderate_regulations: "适度监管"
+ tno_regulations_strict_regulations: "严格监管"
+ tno_regulations_harsh_regulations: "苛刻监管"
+
+#社会政策#
+
+#安全生产#
+ tno_safety_no_regulations: "无安全规章"
+ tno_safety_minimal_regulations: "最低安全规章"
+ tno_safety_limited_regulations: "低安全规章"
+ tno_safety_acceptable_regulations: "标准安全规章"
+ tno_safety_excellent_regulations: "高安全规章"
+
+#医保制度#
+ tno_health_care_no_government_support: "无政府支持"
+ tno_health_care_service_for_care: "仅限军人"
+ tno_health_care_support_for_emergencies: "应急援助"
+ tno_health_care_negotiated_coverage: "协商承保"
+ tno_health_care_low_income_protections: "低收入保障"
+ tno_health_care_universal_health_care: "普遍医保"
+ tno_health_care_free_universal_care: "全民医保"
+
+#污染管控#
+ tno_pollution_no_controls: "无污染管控"
+ tno_pollution_few_regulations: "宽松污染管控"
+ tno_pollution_some_regulations: "部分污染管控"
+ tno_pollution_good_regulations: "良好污染管控"
+ tno_pollution_strict_regulations: "严格污染管控"
+
+#教育制度#
+ tno_education_restricted_education: "教育受限"
+ tno_education_stratified_education: "教育分层"
+ tno_education_public_education: "公共教育"
+ tno_education_subsidised_higher_education: "补贴高等教育"
+ tno_education_public_higher_education: "公立高等教育"
+ tno_education_free_education: "免费教育"
+
+#刑罚制度#
+ tno_penal_system_draconian_brutality: "残暴无羁"
+ tno_penal_system_overt_oppression: "公然压迫"
+ tno_penal_system_military_justice: "军法处置"
+ tno_penal_system_frontier_justice: "私刑泛滥"
+ tno_penal_system_politicized_penal_system: "刑罚政治化"
+ tno_penal_system_harsh_penal_code: "严刑峻法"
+ tno_penal_system_incarceration: "监禁刑主导"
+ tno_penal_system_rehabilitation: "感化矫治"
+
+#性少数群体#
+ tno_lgbt_rights_lgbt_outlawed: "犯罪行为"
+ tno_lgbt_rights_partially_deciminalized: "部分除罪化"
+ tno_lgbt_rights_lgbt_allowed: "除罪化"
+ tno_lgbt_rights_equal_rights: "法律保护"
+ tno_lgbt_rights_lgbt_normality: "社会常态"
+
+#性别权利#
+ tno_gender_rights_heavily_restricted: "严格受限"
+ tno_gender_rights_traditional_roles: "传统性别角色"
+ tno_gender_rights_women_in_the_workplace: "允许女性工作"
+ tno_gender_rights_gender_equality: "法律地位平等"
+ tno_gender_rights_promoted_equality: "性别积极平权"
+ tno_gender_rights_enforced_equality: "强制落实平权"
+
+#少数族裔#
+ tno_minorities_oppression: "国家迫害"
+ tno_minorities_segregation: "法律歧视"
+ tno_minorities_institutional_discrimination: "公共保护"
+ tno_minorities_equal_rights: "族裔平权"
+ tno_minorities_affirmative_action: "族裔积极平权"
+
+#安保制度#
+ tno_security_anarchic: "无安保措施"
+ tno_security_resource_extraction: "资源开采"
+ tno_security_crime_prevention: "犯罪预防"
+ tno_security_maintenance_of_order: "维持秩序"
+ tno_security_political_control: "政治控制"
+
+#社会发展#
+
+#教育水平#
+ tno_academic_base_mass_illiteracy: "文盲遍地"
+ tno_academic_base_basic_literacy: "基本识字"
+ tno_academic_base_primary_schooling: "初等教育"
+ tno_academic_base_secondary_schooling: "中等教育"
+ tno_academic_base_tertiary_schooling: "高等教育"
+ tno_academic_base_golden_age: "学术黄金时代"
+
+#研究设施#
+ tno_research_facilities_makeshift: "临时实验室"
+ tno_research_facilities_basic: "基本研究设施"
+ tno_research_facilities_outdated: "过时研究设施"
+ tno_research_facilities_modern: "现代研究设施"
+ tno_research_facilities_advanced: "先进研究设施"
+ tno_research_facilities_cutting_edge: "尖端研究设施"
+
+#农业技术#
+ tno_agriculture_subsistence: "自给农业"
+ tno_agriculture_centralized: "集中化农业"
+ tno_agriculture_basic_mechanized: "基础机械化"
+ tno_agriculture_mass_mechanized: "大规模机械化"
+ tno_agriculture_modern: "现代农业"
+
+#行政效率#
+ tno_admin_efficiency_organized_chaos: "混乱之秩"
+ tno_admin_efficiency_nonexistent_state_apparatus: "国家机构形同虚设"
+ tno_admin_efficiency_illegitimate_administration: "政府合法性不足"
+ tno_admin_efficiency_deficient_administrative_systems: "行政体制存在瑕疵"
+ tno_admin_efficiency_functional_administrative_systems: "行政体制运转正常"
+ tno_admin_efficiency_streamlined_bureaucracy: "官僚制度高效化"
+ tno_admin_efficiency_well_oiled_machine: "国家机器高效运转"
+
+#工业设备#
+ tno_industrial_equipment_hand_tools: "手工工具"
+ tno_industrial_equipment_power_tools: "电动工具"
+ tno_industrial_equipment_manufacturing_lines: "基本生产线"
+ tno_industrial_equipment_factory_complexes: "工厂联合体"
+ tno_industrial_equipment_modern: "现代工业设备"
+ tno_industrial_equipment_cutting_edge: "先进工业设备"
+
+#医保水平#
+ tno_healthcare_makeshift: "象征性医保"
+ tno_healthcare_rudimentary: "基础医保"
+ tno_healthcare_nascent: "新生医保"
+ tno_healthcare_developed: "发达医保"
+ tno_healthcare_advanced: "先进医保"
+ tno_healthcare_world_class: "世界级医保"
+
+#工业专业知识#
+ tno_industrial_expertise_pre_industrial: "前工业时代方式"
+ tno_industrial_expertise_incompetent: "落后的工业"
+ tno_industrial_expertise_nascent: "新兴工业基地"
+ tno_industrial_expertise_experienced: "老牌工业基地"
+ tno_industrial_expertise_innovative: "创新型工业"
+
+#军事职业度#
+ tno_army_professionalism_untrained: "乌合之众"
+ tno_army_professionalism_reluctant_conscripts: "怠惰的军官团"
+ tno_army_professionalism_disgruntled_veterans: "失调的统帅部"
+ tno_army_professionalism_cronyism: "裙带关系普遍"
+ tno_army_professionalism_political_interference: "政治干预"
+ tno_army_professionalism_professional: "职业军队"
+ tno_army_professionalism_spartan_discipline: "团队精神"
+
+
+#附件2：TNO经济制度列表及经济制度更改方式
+###基本经济类型###
+		Econ_Type_Capitalism					    	# Free Market Capitalism自由市场资本主义
+		Econ_Type_Corporatism					    	# Corporatism法团主义
+		Econ_Type_Planned						        # Planned Economy计划经济
+###资本主义类###
+		Econ_Subtype_American_Capitalism		    	# American Capitalism美式资本主义
+		Econ_Subtype_Corporate_Oligopoly				# Corporate Oligopoly寡头经济
+		Econ_Subtype_Permit_Raj					    	# Permit Raj许可证经济
+		Econ_Subtype_Social_Market				    	# Social Market社会市场   #太伟大了施佩尔，法西斯资本主义
+		Econ_Subtype_Yagoda						    	# System of Khozraschyot经济核算系统   #太伟大了亚戈达，红色资本主义
+		Econ_Subtype_Colonial_Economy_Free_Market		# Autonomous Colonial Economy自治殖民地经济
+###法团主义类###
+		Econ_Subtype_Crown_Corporatism				    # Crown Corporatism王权法团主义
+		Econ_Subtype_Gelenkte_Wirtschaft				# Gelenkte Wirtschaft混合经济
+		Econ_Subtype_Dirigisme						    # Dirigisme统制经济
+		Econ_Subtype_Socialized_Economy				    # Socialized Economy社会化经济
+		Econ_Subtype_Colonial_Economy_Corporatism		# Corporativist Colonial Economy法团殖民地经济
+		Econ_Subtype_Crown_Credit_Corporatism			# Crown Credit王权信用
+		Econ_Subtype_Stabilizing_Development			# Stabilizing Development稳定发展   #墨西哥湾航行靠舵手
+###计划经济类###
+		Econ_Subtype_Worker_Directed					# Worker Directed工人指导型经济
+		Econ_Subtype_Anarchic						    # Anarchic无序经济
+		Econ_Subtype_Military_Directed					# Military Directed军事导向型经济
+		Econ_Subtype_Burgsys							# Burgundian System勃艮第体制
+		Econ_Subtype_Banditry							# Banditry土匪经济
+		Econ_Subtype_Anarcho_Communism					# Anarachist Communism无政府共产主义经济
+		Econ_Subtype_Deytsch_Economics					# Deytsch Economics德异忌经济
+		Econ_Subtype_War_Communism						# War Communism战时共产主义
+		Econ_Subtype_Christian_Anarchism				# Christian Anarchism基督教无政府主义
+		Econ_Subtype_Colonial_Economy_Planned			# Centralized Colonial Economy集中殖民地经济
+
+###经济制度更改方式###
+		set_temp_variable = { TNO_economy_subtype_temp = token:对应的经济制度 }
+		econ_subtype_change = yes
+
+#END#
+
+#暂时的#
+
+#：D#
+
+#法兰克福我爱你#
+
+#能看到这#
+
+#我也喜欢你#
+
+#By 里脊#
+
+#未竟作者允许禁止搬运#

@@ -1,0 +1,8 @@
+﻿l_simp_chinese:
+ get_super_event_title: "-"
+#标题
+ PRC_china_to_mars_super: "中国航天时代"
+#引言
+ PRC_china_to_mars_super_text: "“为有牺牲多壮志，敢教日月换新天。”\n- 毛泽东"
+#按钮文字
+ PRC_china_to_mars_super_button: "光荣啊，展望未来的人"

@@ -1,0 +1,9 @@
+
+ #阵营规则组
+	some_rules = { #规则组的块，同时也是本地化键值
+		rules = { #规则内容
+			rules1 #规则名字。参见factions_rules.txt
+			rules2
+			rules3
+		}
+	}

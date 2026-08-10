@@ -1,0 +1,35 @@
+#文件路径：MOD文件夹/common/ideas/ideas文本文档.txt
+ideas = {
+	法案类型（如经济法案，兵役法案等） = {	 #有如下几种类型 economy（经济法案） trade_laws（贸易法案） mobilization_laws（兵役【动员】法案） 
+	    law = yes
+		use_list_view = yes
+		
+	    经济法案名称 = {
+		    cost = 150 #切换花费
+		    removal_cost = -1 #更换该经济法案的花费（不是切换花费，一般为-1）
+
+		    available = { #启用条件
+		    }
+
+		    on_add = { #添加时的效果（瞬时触发）
+		    }	
+
+		    on_remove = { #移除时的效果（瞬时触发）
+		    }
+
+		    modifier = { #效果（修正）
+		    }
+
+		    ai_will_do = { #AI选择该经济法案的倾向
+		    }
+
+		    default = yes #是否为默认经济法案
+
+		    cancel_if_invalid = no #如果该经济法案的条件不被满足，则no为不取消，yes为取消
+		}	
+	}
+}
+
+        #以此类推
+		#注意：如果是新建法案类型，记得在00_idea(位置：common/ideas_tag)里加上“slot = 法案类型” 共有三种可选：government（政府页面 最常用） research_production（研究生产）
+		#若觉得叙述的很抽象，各位读者不妨一步步试试看

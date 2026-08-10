@@ -1,0 +1,87 @@
+create_scripted_decision_category = {
+	scripted_decision_initiate = yes
+	add_to_variable = {
+		global.scripted_decision_category_last_id = 1
+	}
+	add_to_variable = {
+		global.scripted_decision_category_icon_last_id = 1
+	}
+	set_variable = {
+		new_scripted_decision_category = -1
+	}
+	meta_effect = {
+		text = {
+			generate_character = {
+				token_base = character_scripted_decision_category_[tid]
+			}
+			generate_character = {
+				token_base = character_scripted_decision_category_icon_[tid2]
+			}
+			set_variable = {
+				new_scripted_decision_category = character_scripted_decision_category_[tid]
+			}
+			set_variable = {
+				global.new_scripted_decision_category_icon = character_scripted_decision_category_icon_[tid2]
+			}
+		}
+		tid = "[?global.scripted_decision_category_last_id]"
+		tid2 = "[?global.scripted_decision_category_icon_last_id]"
+	}
+	var:new_scripted_decision_category = {
+		set_variable = {
+			icon = global.new_scripted_decision_category_icon
+		}
+		set_variable = {
+			category_status = global.scripted_decision_category_show
+		}
+		set_variable = {
+			priority = 0
+		}
+		clear_array = decision_lists
+		var:icon = {
+			set_character_name = "GFX_decision_category_generic"
+		}
+	}
+}
+add_to_category = {
+	PREV = {
+		add_to_array = {
+			decision_lists = PREV
+		}
+	}
+	set_variable = {
+		category = PREV
+	}
+}
+visible_when_empty = {
+	set_character_flag = scripted_decision_category_visible_when_empty
+}
+collapse_scripted_decision_category = {
+	set_variable = {
+		category_status = global.scripted_decision_category_collapse
+	}
+}
+uncollapse_scripted_decision_category = {
+	set_variable = {
+		category_status = global.scripted_decision_category_show
+	}
+}
+scripted_category_decision_collapse_buttom_effect = {
+	var:scripted_decision_category_entry = {
+		if = {
+			limit = {
+				check_variable = {
+					category_status = global.scripted_decision_category_collapse
+				}
+			}
+			set_variable = {
+				category_status = global.scripted_decision_category_show
+			}
+		}
+		else = {
+			set_variable = {
+				category_status = global.scripted_decision_category_collapse
+			}
+		}
+	}
+}

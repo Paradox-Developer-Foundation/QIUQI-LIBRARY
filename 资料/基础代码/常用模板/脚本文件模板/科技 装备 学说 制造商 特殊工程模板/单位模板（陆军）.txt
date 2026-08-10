@@ -1,0 +1,144 @@
+文件位置：common/units/xxx.txt
+sub_units = {
+	新单位名字 = {
+		sprite = infantry
+		map_icon_category = infantry
+		active = yes/no 写no就是需要科技激活兵种，写yes就是开局就有 
+        cavalry = yes/no 是不是骑兵
+        special_forces = yes/no 是不是特种部队
+        marines = yes/no 是不是海军陆战队
+        mountaineers = yes/no 是不是山地师
+        can_be_parachuted = yes/no 能不能空投
+        affects_speed = yes/no  是否影响速度，多用于支援连
+		transport = motorized_equipment/mechanized_equipment 坐什么交通工具（貌似只有摩托化和机械化步兵需要用）
+
+		priority = 3000 一个营占整个师的权重，影响兵牌图标
+		ai_priority = 3000 暂不明确
+
+		暂不明确的类型，可多选
+		type = {
+			mechanized 机械化
+			motorized 摩托化
+			infantry 步兵
+			support 支援
+			flame 喷火
+			armor 装甲
+			anti_air 防空
+		}
+		
+		group = infantry/mobile/armor/support 选单位时在哪个分类里，从左到右依次是 步兵/机动化/装甲/支援连
+
+		该单位各种标签分类，用于鉴定该单位吃哪些加成，可以自己在common/unit_tag里面新建分类
+		categories = {
+			category_army 陆军
+			category_front_line 所有前线部队
+			category_all_infantry 所有普通步兵及摩托化/机械化步兵
+			category_light_infantry 徒步步兵
+			category_support_battalions 支援连
+			category_recon 侦查
+			category_line_artillery 牵引火炮
+			category_artillery 牵引火炮及轻型火炮
+
+			category_all_armor 坦克及衍生装甲车辆
+			category_tanks 坦克
+			
+			category_special_forces 特种部队
+			
+			category_fighter 战斗机
+			category_heavy_fighter 重型战斗机
+			category_cas 近距支援机
+			category_nav_bomber 海军轰炸机
+			category_tac_bomber 战术轰炸机
+			category_strat_bomber 战略轰炸机
+		}
+		
+		
+		combat_width = 2 战场宽度
+		
+
+		max_strength = 25 HP
+		max_organisation = 70 组织度
+		default_morale = 0.3 组织度恢复
+		manpower = 300 一个营的人力
+
+		#Misc Abilities
+		training_time = 120 训练时间
+		suppression = 5.0 镇压值
+		weight = 0.5 重量，1=需要1艘运输船
+
+		supply_consumption = 0.20 补给消耗
+	
+		need = {
+			需要的装备名字 = 需要的数量
+			如artillery_equipment = 12
+		}
+
+		其他加成，多用于支援连
+		defense = -0.4 防御
+		breakthrough = -0.4 突破
+		soft_attack = -0.4 软攻
+		hard_attack = -0.4 硬攻
+		air_attack = -0.2 对空攻击
+		还可以写一些其他的属性加成
+
+		山地
+		mountain = {
+			attack = 0.05 攻击加成，0.05=5%
+			defence = 0.05 防御加成，0.05=5%
+			movement = 0.05 移动加成，0.05=5%
+		}
+		丘陵
+		hills = {
+			defence = 0.1
+		}
+		河流
+		river = {
+			attack = 0.2
+			movement = 0.5
+		}
+		两栖
+		amphibious = {
+			attack = 0.4
+			movement = 0.5
+		}
+		森林
+		forest = {
+			movement = -0.2
+		}
+		城市
+		urban = {
+			attack = 0.25
+		}
+		要塞
+		fort = {
+			attack = 0.2
+		}
+		沼泽
+		marsh = {
+			movement = 0.2	
+		}
+		丛林
+		jungle = {
+			movement = -0.2
+		}
+	}
+}
+
+####################
+GFX文件命名格式
+spriteType = {
+	name = "GFX_unit_单位名_icon_medium"
+	texturefile = "gfx/interface/counters/divisions_large/xxx.png" #路径无所谓，随便写
+	noOfFrames = 2
+}
+spriteType = {
+	name = "GFX_unit_单位名_icon_medium_white"
+	texturefile = "路径无所谓，随便写"  
+	noOfFrames = 2
+}
+spriteType = {
+	name = "GFX_unit_单位名_icon_small"
+	texturefile = "路径无所谓，随便写"  
+	legacy_lazy_load = no
+	noOfFrames = 2
+}

@@ -1,0 +1,101 @@
+"""
+export — zh 翻译
+
+本文件由 tools/migrate_i18n.py 生成。后续手动维护。
+"""
+
+STRINGS: dict[str, str] = {
+    "export_auto_assign_states": "将 {count} 个无主 State 分配给 {tag}",
+    "export_auto_create_continent": "自动创建默认大陆 default_continent",
+    "export_auto_create_country": "自动创建默认国家 AAA",
+    "export_auto_gen_sr": "自动生成 {count} 个战略区域",
+    "export_auto_gen_states": "自动生成 {count} 个 State（每组约15省份）",
+    "export_auto_no_provinces": "错误：没有省份数据，无法补全",
+    "export_auto_set_capital": "国家 {tag} 自动设首都为省份 {pid}",
+    "export_btn_auto": "自动补全并导出",
+    "export_btn_direct": "直接导出（不补全）",
+    "export_btn_export": "导出",
+    "export_can_auto": "可自动补全",
+    "export_check_assets": "美术资产",
+    "export_check_assets_all_clean": "共 {total} 个导入的原始资产全部保留（导出不会覆盖）",
+    "export_check_assets_dirty": """共 {total} 个导入资产：{clean} 个保留、{dirty} 个将重新生成
+（因为相关地图数据被编辑过）""",
+    "export_check_continent": "大陆",
+    "export_check_continent_ok": "共 {count} 个大陆",
+    "export_check_country": "国家",
+    "export_check_country_ok": "共 {count} 个国家",
+    "export_check_country_unowned": "有 {count} 个国家，但 {unowned} 个 State 未分配所有者",
+    "export_check_heightmap": "高度图",
+    "export_check_heightmap_ok": "高度数据已设置",
+    "export_check_land": "陆地",
+    "export_check_no_continent": "没有大陆定义 — 导出时使用默认大陆",
+    "export_check_no_country": "没有国家 — 至少需要一个国家，否则无法进入游戏",
+    "export_check_no_heightmap": "没有高度数据 — 导出时自动生成默认高度",
+    "export_check_no_land": "没有陆地像素，请先在 Land 模式画地图",
+    "export_check_no_provinces": "没有省份数据，请先画地图并生成省份",
+    "export_check_no_state": "没有 State — 每个陆地省份必须属于一个 State，否则崩溃",
+    "export_check_no_strategic_region": "没有战略区域 — 每个省份必须属于一个战略区域，否则崩溃",
+    "export_check_no_terrain": "没有地形数据 — 导出时自动从 tile_map 生成",
+    "export_check_province_gaps": "共 {total} 个省份，但 ID 有 {gaps} 个空洞（被吞并的省份需要用切割或增量生成补回来，否则导出后 HOI4 属性会错位）",
+    "export_check_province_ok": "共 {count} 个省份",
+    "export_check_provinces": "省份",
+    "export_check_state": "State (州)",
+    "export_check_state_ok": "共 {count} 个 State",
+    "export_check_state_orphans": "有 {count} 个 State，但 {orphans} 个陆地省份未分配（导出时自动领养）",
+    "export_check_strategic_region": "战略区域",
+    "export_check_strategic_region_ok": "共 {count} 个战略区域",
+    "export_check_terrain": "地形",
+    "export_check_terrain_ok": "地形数据已设置",
+    "export_choose_dir": "选择导出目录",
+    "export_confirm_skip": """以下数据缺失：{names}
+
+缺失的数据会导致 HOI4 加载崩溃。确定要跳过补全直接导出吗？""",
+    "export_dlg_title": "导出 MOD",
+    "export_done_all_pass": "导出成功，验证全部通过！",
+    "export_done_has_errors": "导出成功，但验证发现问题（进游戏可能崩溃）",
+    "export_exporting": "正在导出...",
+    "export_failed": "导出失败: {}",
+    "export_failed_title": "导出失败",
+    "export_log": "操作日志",
+    "export_log_prefix": "补全",
+    "export_pre_check_title": "导出前检查",
+    "export_project_readiness": "项目完成度",
+    "export_result_close": "关闭",
+    "export_result_fixed_header": """
+── 自动修复 ──""",
+    "export_result_fixed_tag": "已修复",
+    "export_result_stats_header": "── 统计 ──",
+    "export_result_success": """MOD 导出成功！
+路径: {path}
+""",
+    "export_result_title_errors": "导出完成（有问题）",
+    "export_result_title_ok": "导出完成",
+    "export_result_warning_tag": "警告",
+    "export_result_warnings_header": """
+── 导出警告 ──""",
+    "export_scope": "导出范围",
+    "export_scope_countries": "国家 (country_tags/countries/history)",
+    "export_scope_gfx": "图形资源 (国旗/肖像)",
+    "export_scope_localisation": "本地化 (localisation/)",
+    "export_scope_map": "地图文件 (BMP/CSV/positions/buildings)",
+    "export_scope_replace_path": "replace_path + descriptor.mod",
+    "export_scope_states": "States (history/states/)",
+    "export_scope_strategic_regions": "战略区域 (strategicregions/weatherpositions)",
+    "export_scope_supply": "补给系统 (supply_nodes/railways/supply_areas)",
+    "export_separator": "、",
+    "export_stat_countries": "国家",
+    "export_stat_files": "文件",
+    "export_stat_provinces": "省份",
+    "export_stat_states": "State",
+    "export_success": """MOD 导出成功！
+路径: {}""",
+    "export_title": "导出 MOD",
+    "export_verify_all_pass": "  ✅ 所有检查通过，可以进游戏了！",
+    "export_verify_errors_header": """
+── MOD 验证：{count} 个错误（可能导致崩溃）──""",
+    "export_verify_header": """
+── MOD 验证 ──""",
+    "export_verify_warnings_header": """
+── MOD 验证：{count} 个警告 ──""",
+    "export_worker_pre_check": "正在执行导出前检查和修复...",
+}

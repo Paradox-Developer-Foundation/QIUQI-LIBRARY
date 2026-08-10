@@ -1,0 +1,85 @@
+###  修改原版剧本描述模板（临时版）【作者：Bstarh-Tao(胡桃)，修改：秋起. 】  所有人可以使用、修改，祝所有mod制作者的制作道理顺利！
+###  特别鸣谢  杀老师（寂静风使）  ###  
+#原版文件位置：Hearts of Iron IV\common\bookmarks
+#开局文件blitzkrieg.txt为闪电战剧本（1939），the_gathering_storm.txt为迫近的风暴剧本（1936），各位可以尝试添加新的剧本
+
+#有趣的国家：只要在bookmark内定义，且国策树非默认国策树，即认为是有趣的国家
+#主要国家（在上面用大旗帜的国家）：只要非次要国家即可（不写，或写mirror = no）。主要国家强制成为有趣的国家
+bookmarks = {
+    bookmark = {
+        name = XXX #剧本名字，在本地化中汉化
+		desc = XXX_DESC  #都是在本地化文件中汉化
+		date = <YY.MM.DD.HH> #开始时间（年、月、日、时，YY.MM.DD.HH 格式。默认为 2.1.1.1，且不能使用更早的日期。）
+		picture = "GFX_select_date_1936" #剧本图片
+		default_country = "GER" #默认选择的国家（开局点击开始游戏后，默认选择的TAG，这个TAG必须是“有趣的国家”之一）
+		default = yes/no #定义是否默认
+
+		#排序法一，填写已经定义完成的array
+		filters = { new_content continent } #排序列表，按大洲排列
+		#排序法二，自定义排序
+		label_order = { label_1 label_2 }   #定义label顺序，这里进入游戏后，filters会显示lable_1、label_2（原版按照大洲排序，是按照其基本定义进行:欧洲、北美、南美....）
+
+		sort_unplayed_first = no/yes            #默认为yes，是否启用排序（就是原版按照大洲排序那种的）
+		include_majors_in_minor_list = no/yes #默认为yes，当排序启用时，是否将主要国家（有趣的国家）加入排序列表（下面的表）
+		apply_filter_to_majors = yes/no        #默认为no，当启用（yes）时，主要国家将会遵循filter进行排列（只有当主要国家匹配filter时，才会展示）
+		apply_filter_to_other_country = yes/no #默认为no，是否将“其他国家”加入到排列当中
+		scrollable_country_list = yes/no       #默认为no，filters是否垂直排列，yes为是，反之为横排
+
+		#主要国家 
+        TAG = { 
+            history = "TAG_GATHERING_STORM_DESC" #剧本的描述
+			ideology = <ideology_id> #默认初始意识形态
+			available = { 
+                #条件块，满足条件才可显示（通常用于检索DLC）
+            }
+			label = { #为该tag分配的label，打开游戏后，会被分配在label_1的filters（排列）中,label_1要进行本地化
+			    label_1
+			}
+			required_dlc = { #要求的DLC，条件块
+				"La Resistance"
+			}
+			version = la_resistance #标记DLC（默认为base_game）
+
+			override_leader_portrait = GFX_.gfx下定义的图片 #将bookmark中显示的国家领导人是override_leader_portrait所定义的头像（如果不写，默认为leader）
+
+			assume_not_played_if_missing_data = yes\no #无论玩家是否游玩，都认为是未游玩过的国家（写yes） - 此举的目的大概是P社更新DLC后，鼓励玩家多游玩DLC国家
+
+			ideas = { #展示的民族精神
+				<ideas_id> #直接写ideas（民族精神）的名字，只能写3个
+			}
+			focuses = { #展示的国策
+				<focuses_id> #直接写国策的id（名字），只能写3个
+			}
+        }
+
+		#其他国家 这个国家类型允许你不选择任何国家（选择那个黑色空旗子）进入游戏
+		"---" = {
+            history = OTHER_SCENARIO2_DESC
+        }
+
+
+        #次要国家
+        TAG = { 
+            history = "TAG_GATHERING_STORM_DESC" #剧本描述
+			ideology = <ideology_id>  #定义意识形态
+			available = { 
+				#条件块，满足条件才可显示（通常用于检索DLC）
+            } 
+            minor = yes/no #是否是次要国家，填yes就是次要国家，不写此代码或写no就是主要国家，不过国家排序好像是按这个文件tag写的顺序排的
+						#维基百科描述：用于将国家/地区标记为次要国家/地区，使其以小旗帜显示在下方菜单中，而不是显示领导者的顶部菜单中。这也要求国家/地区从没有默认 = yes, 
+						#的国家焦点树开始显示在选择中，在基础游戏中使用，以使有趣的国家/地区选择取决于 DLC。
+			ideas = {
+				<ideas_id> #维基百科描述：是选择国家时应该向玩家展示的民族精神清单。
+						   #这不会改变或取决于国家在启动时的实际精神，这通常在国家历史或州历史中处理。默认情况下，限制为 3 个条目。)
+			}
+			focuses = {
+				<focuses_id> #维基百科描述:是选择国家/地区时应向玩家显示的国家重点列表。默认情况下，限制为 3 个条目。)
+			}
+        }
+
+        effect = { #选择剧本时执行的效果
+			randomize_weather = 22345 # <- Obligatory in every bookmark ! 貌似是必须写的
+			#123 = { rain_light = yes } 不知道什么意思
+		}
+    }
+}

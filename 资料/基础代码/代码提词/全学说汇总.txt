@@ -1,0 +1,186 @@
+#您可以使用灵活的过滤器，将此效果应用于匹配指定文件夹、主学说、子学说或特定轨道的所有轨道。
+#如果某个过滤器不存在，则会被视为通过。
+#例如，您可以通过完全不指定任何过滤器，将精通度添加到所有文件夹中所有“激活的轨道”。
+#注，这些效果只能在给已经激活的子学说轨道上使用才能实际生效。——胡桃提醒
+
+add_mastery = { #增加学说精通。
+	amount = 100						# 要增加的精通度的量
+
+	# 过滤器:
+	folder = land						# 可选 - 将在 指定文件夹 内筛选 轨道
+	grand_doctrine = mobile_warfare		# 可选 - 将在文件夹内用指定的 主学说 筛选 轨道
+	sub_doctrine = mobile_infantry		# 可选 - 将用指定的 子学说 筛选 轨道
+	track = infantry					# 可选 - 将根据 指定类型 筛选 轨道
+	index = 1							# 可选 - 将在文件夹内筛选的轨道数量（从0开始计数）。
+}
+
+add_mastery_bonus = { #在一定时间内获得学说精通提升奖励。
+	bonus = 0.1							# 增益百分比，比如0.1为正10%
+    days = 90							# 天数
+    name = [loc]                        # 键值 - 将会用于描述精通度增长增益的来源
+
+    # 过滤器:
+    folder = land						# 可选 - 将在 指定文件夹 内筛选 轨道
+    grand_doctrine = mobile_warfare		# 可选 - 将在文件夹内用指定的 主学说 筛选 轨道
+    sub_doctrine = mobile_infantry		# 可选 - 将用指定的 子学说 筛选 轨道
+    track = infantry					# 可选 - 将根据 指定类型 筛选 轨道
+    index = 1							# 可选 - 将在文件夹内筛选的轨道数量（从0开始计数）。
+}
+
+add_daily_mastery = { #在一定时间内每天增加学说精通度。
+	amount = 0.1						# 每日增加的精通度数量
+    days = 90							# 天数
+    name = [loc]                        # 键值 - 将会用于描述精通度每日增加的来源
+
+    # 过滤器:
+    folder = land						# 可选 - 将在 指定文件夹 内筛选 轨道
+    grand_doctrine = mobile_warfare		# 可选 - 将在文件夹内用指定的 主学说 筛选 轨道
+    sub_doctrine = mobile_infantry		# 可选 - 将用指定的 子学说 筛选 轨道
+    track = infantry					# 可选 - 将根据 指定类型 筛选 轨道
+    index = 1							# 可选 - 将在文件夹内筛选的轨道数量（从0开始计数）。
+}
+
+## 空军子学说
+#战斗机
+air_subdoctrine_fighter_homeland_defense = 国土空中防御
+air_subdoctrine_escort_fighter = 中程护航
+air_subdoctrine_fighter_bombers = 战斗轰炸机
+air_subdoctrine_tactical_flexibility = 空域主导权
+air_subdoctrine_dogfighting_mastery = 凌空骑士
+air_subdoctrine_fighter_central_field = 空战巡逻
+#攻击机
+air_subdoctrine_flying_artillery = 空中火炮
+air_subdoctrine_dive_bombers = 精确打击
+air_subdoctrine_flexible_fire_support = 地海协调
+air_subdoctrine_carrier_strikes = 海对陆空中支援
+air_subdoctrine_naval_strike_tactics = 精准对海轰炸
+air_subdoctrine_naval_torpedo_tactics = 群雷战术
+#中型飞机
+air_subdoctrine_bomber_interception = 重型截击机
+air_subdoctrine_long_range_escort = 长程护航
+air_subdoctrine_operational_air_support = 作战空中支援
+air_subdoctrine_tactical_battlefield_support = 战术级战场支援
+air_subdoctrine_theater_interdiction = 战区封锁
+air_subdoctrine_aerial_reconnaissance = 空中侦察
+#重型飞机
+air_subdoctrine_night_bombing = 夜间战略轰炸
+air_subdoctrine_carpet_bombing = 地毯式轰炸
+air_subdoctrine_deep_air_raids = 敌后空中突袭
+air_subdoctrine_flying_fortresses = 飞行堡垒
+air_subdoctrine_coastal_air_patrol = 海岸空中巡逻
+air_subdoctrine_open_ocean_air_patrol = 远洋空中巡逻
+air_subdoctrine_heavy_aircraft_focus = 多用途重型飞行器重心
+
+## 陆军子学说
+#步兵
+mobile_infantry = 机动步兵
+defensive_postures = 防御态势
+large_unit_tactics = 大规模部队战术
+assault_infantry = 突击步兵
+mounted_infantry = 骑乘步兵
+commandos = 卓越单兵
+irregulars = 非正规军
+peoples_war = 人民民兵
+great_war_infantry = 大战步兵
+#炮兵与战斗支援
+fire_concentration = 集中火力
+anti_tank_frontline = 反坦克前线
+flying_batteries = 机动炮组
+air_cavalry = 空中骑兵
+mobile_recon_and_assault = 机动侦察与突击
+mobile_recon_and_assault_no_lar = 机动侦察与突击 #（无抵抗运动版）
+self_propelled_support = 自行式支援
+siege_artillery = 攻坚火力
+field_engineering = 野战工程
+#装甲
+armored_spearhead = 装甲先锋
+armored_spearhead_no_lar = 装甲先锋 #（无抵抗运动版）
+armored_infantry_support = 装甲步兵支援
+streamlined_deployment = 精简部署
+mobile_defense = 机动防御
+armored_cavalry = 装甲骑兵
+armored_cavalry_no_lar = 装甲骑兵 #（无抵抗运动版）
+tank_destroyer_force = 自行反坦克炮部队
+#作战
+mission_type_tactics = 任务型战术
+last_stand = 殊死防御
+infiltration_tactics = 渗透战术
+grand_assault = 大规模强袭
+deep_battle = 纵深战斗
+deep_battle_no_lar = 纵深战斗 #（无抵抗运动版）
+guerilla_war = 游击战
+rapid_domination = 快速主导
+expeditionary_warfare = 远征作战
+
+##海军子学说
+#潜艇
+wolfpacks = 狼群战术
+submarine_fleet_operations = 对舰群作战
+capital_hunters = 主力舰猎手
+submarine_coastal_defense = 海防潜艇
+coastal_minelaying = 海岸布雷
+long_range_submarines = 远程潜艇
+#屏卫舰
+convoy_escort = 运输船队护航
+support_integrated_operations = 联合作战
+hunter_killers = 猎杀狼群
+torpedo_primacy = 鱼雷至上
+anti_aircraft_cruisers = 防空巡洋舰
+screen_support_focus = 重视屏卫支援
+jeune_ecole = 新战术学派
+patrol_boats = 巡逻舰艇
+#航空母舰
+carrier_battlegroups = 航母战斗群
+floating_airfields = 海上机场
+escort_carrier_support = 护航航母支援
+broad_naval_support = 综合作战支援
+massed_carrier_fleet = 航母舰队集群
+light_task_forces = 轻型特遣舰队
+#主力舰
+line_of_battle = 战列线
+battlecruiser_supremacy = 快速战列舰
+armored_raiders = 装甲袭击舰
+coastal_defence_fleet = 岸防舰艇
+naval_gunfire_support = 海军炮火支援
+battleship_antiair_screen = 防空战列舰
+
+##原版全母学说类型
+#陆军
+new_mobile_warfare = 机动作战
+superior_firepower = 优势火力
+grand_battleplan = 决战计划
+mass_assault = 人海突击
+#海军
+new_fleet_in_being = 存在舰队
+new_convoy_raiding = 贸易阻断
+new_base_strike = 基地打击
+#空军
+new_operational_integrity = 连续作战
+new_battlefield_support = 战场支援
+new_strategic_destruction = 战略破坏
+
+##原版轨道全类型:
+#陆军
+infantry = 步兵子学说
+combat_support = 战场支援子学说
+armor = 装甲子学说
+operations = 作战子学说
+#海军
+submarines = 潜艇子学说
+screens = 屏卫舰子学说
+carriers = 航母子学说
+capital_ships = 主力舰子学说
+#空军
+fighter_aircraft = 战斗机子学说
+strike_aircraft = 攻击机子学说
+medium_aircraft = 中型飞机子学说
+heavy_aircraft = 重型飞机子学说
+
+
+
+
+#作者：幸好无声（8小时速冻水饺、胡桃）
+#作者Q号：1803770293
+#群：950718988
+#欢迎把该文件存在的问题反馈给我
+

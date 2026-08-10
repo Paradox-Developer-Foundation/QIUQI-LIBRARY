@@ -1,0 +1,99 @@
+render_graph = {
+	# 以TNO的债务曲线为例，这里用来储存函数shader的使用
+
+	set_temp_variable = { range = max }#这两个数字是用来定义经济曲线的显示上限的，可以不管。
+	subtract_from_temp_variable = { range = min }#这两个数字是用来定义经济曲线的显示上限的，可以不管。
+
+	set_temp_variable = { range = 100 }#因此使用临时措施，直接设其为100.
+
+	#核心部分
+#	clear_array = line_frames #这里的line_frames对应script_gui中的line_frames
+#	for_loop_effect = {
+#		start = 0 #起始点（line_frames^0)
+#		end = 16 #一共多少条曲线（line_frames^16)
+#		value = i
+#
+#		set_temp_variable = { j = i } 
+#		add_to_temp_variable = { j = 1 }
+#
+#		set_temp_variable = { hi = debt_to_gdp_numbers^j } #该段函数起始点
+#		set_temp_variable = { lo = debt_to_gdp_numbers^i } #该段函数最终点
+#
+#
+#		subtract_from_temp_variable = { hi = min } #这里在TNO是用来减少渲染的一些bug的，如：若该曲线的值为30B-35B,且最低点为20B，最高点为33B,则这两个点就需要减去渲染允许的最低点(20x0.9=18B)从而确保不会超出范围。 注：0.9可以自己设计，只是原TNO代码在range处有x0.9.
+#		subtract_from_temp_variable = { lo = min } #这里在TNO是用来减少渲染的一些bug的，如：若该曲线的值为30B-35B,且最低点为20B，最高点为33B,则这两个点就需要减去渲染允许的最低点(20x0.9=18B)从而确保不会超出范围。
+#		divide_temp_variable = { hi = range } #对于这两个点，需要除以当前范围从而得到确切的起点，终点占的百分比。
+#		divide_temp_variable = { lo = range } #对于这两个点，需要除以当前范围从而得到确切的起点，终点占的百分比。
+#
+#		round_temp_variable = hi #取整，函数shader不支持小数。
+#		round_temp_variable = lo #取整，函数shader不支持小数。
+#
+#		set_temp_variable = { endpoints = lo } #设置起点
+#		multiply_temp_variable = { endpoints = 1000 } #设置起点（注意，其渲染形式为xxxyyy,其中xxx为左侧的函数点，yyy为右侧。如当变量为000100时，为从0点到点100.同理，若值为50100，就是从50到100.)
+#		add_to_temp_variable = { endpoints = hi } #设置终点
+#		add_to_array = { line_frames = endpoints } #设置实际渲染值
+#
+#	}
+#
+#
+#	add_to_variable = { TNO_economy_GUI_dirty = 1 }
+
+
+	#hi: 最高点
+	#lo: 最低点
+	#range: 函数渲染的动态范围，其定义为你需要渲染的最大数值减最小值，但要注意，这不是控制实际渲染的长，高的数值。
+	#特殊值：0,1001,2002等:水平直线。1000000：垂直直线。
+
+	#一般地，如要模拟一个一次函数y=kx+b,则我们需要：寻找范围（总不能无限延长吧），找到具体点。以下为示例：
+
+	#设表达式为y=kx+b,且不考虑动态取值范围，则
+
+	set_temp_variable = { k = 10 }
+	set_temp_variable = { b = 0 }
+	set_temp_variable = { x_rate = 16 }
+	clamp_temp_variable = {
+		var = x_rate
+		min = 0
+		max = 16
+	}
+	set_temp_variable = { function_b = b }
+	multiply_temp_variable = { function_b = 1000 }
+	add_to_temp_variable = { function_b = b }
+	clear_array = line_frames
+	for_loop_effect = {
+		start = 0 
+		end = x_rate #x取值范围，最大为16
+		value = x
+
+
+		set_temp_variable = { next_y_value = x } 
+		add_to_temp_variable = { next_y_value = 1 }
+
+		multiply_temp_variable = { next_y_value = k }
+
+		set_temp_variable = { y = x }
+
+		multiply_temp_variable = { y = k }
+
+		set_temp_variable = { lo = y }
+		set_temp_variable = { hi = next_y_value }
+
+
+		#		subtract_from_temp_variable = { hi = min } 
+		#		subtract_from_temp_variable = { lo = min } 
+		#		divide_temp_variable = { hi = range }
+		#		divide_temp_variable = { lo = range }
+
+		round_temp_variable = hi
+		round_temp_variable = lo
+
+		set_temp_variable = { endpoints = lo }
+		multiply_temp_variable = { endpoints = 1000 }
+		add_to_temp_variable = { endpoints = hi }
+		add_to_temp_variable = { endpoints = function_b }
+		add_to_array = { line_frames = endpoints }
+
+	}
+	add_to_variable = { TNO_economy_GUI_dirty = 1 }
+	
+}

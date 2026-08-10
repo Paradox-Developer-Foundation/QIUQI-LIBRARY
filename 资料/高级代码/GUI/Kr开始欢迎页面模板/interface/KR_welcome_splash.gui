@@ -1,0 +1,86 @@
+guiTypes = {
+
+	containerWindowType = {
+		name = "KR_welcome_splash_container"
+		position = { x = 0 y = 0 }
+		size = { width = 800 height = 720 }
+		moveable = yes
+		orientation = CENTER
+		origo = center
+
+		background = {
+			name = "logo"
+			spriteType = "GFX_splash_intro"
+		}
+
+		## checkerboard backfill
+
+		containerWindowType = {
+			name = "splash_backfill"
+			position = { x = 0 y = 128 }
+			size = { width = 720 height = 260 } ## INCREASE HERE IF MORE LINES ARE NEEDED
+			orientation = CENTER
+			origo = center
+
+			background = {
+				name = "splash_backfill"
+				quadTextureSprite = "GFX_tiled_window_thin_border"
+			}
+		}
+
+		## border texture & textboxes
+
+		containerWindowType = {
+			name = "splash_border"
+			position = { x = 0 y = 128 }
+			size = { width = 712 height = 252 } ## INCREASE HERE IF MORE LINES ARE NEEDED
+			orientation = CENTER
+			origo = center
+
+			background = {
+				name = "splash_border"
+				quadTextureSprite = "GFX_tiled_generic_bg_1"
+			}
+
+			instantTextboxType = {
+				name = "welcome_title"
+				position = { x = -200 y = 8 }
+				orientation = CENTER_UP
+				font = "hoi_36header"
+				borderSize = {x = 0 y = 0}
+				text = "welcome_title_text"
+				format = centre
+				maxWidth = 400
+				maxHeight = 20
+				fixedsize = yes
+			}
+
+			instantTextboxType = {
+				name = "welcome_text"
+				position = { x = -330 y = 48 }
+				orientation = center_up
+				font = "hoi_20bs"
+				text = "welcome_text"
+				format = centre
+				maxWidth = 660
+			}
+
+			buttonType = {
+				name = "options_button"
+				position = { x = -144 y = -52 }
+				orientation = center_down
+
+				quadTextureSprite = "GFX_main_lobby_button"
+				buttonText = "options_button_text"
+				buttonFont = "hoi_24header"
+				clicksound = click_default
+				oversound = ui_menu_over
+
+				shortcut = "ESCAPE"
+				shortcut = "RETURN"
+				shortcut = "SPACE"
+			}
+		}
+	}
+}
+

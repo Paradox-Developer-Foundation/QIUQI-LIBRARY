@@ -1,0 +1,1340 @@
+guiTypes = {
+
+	#Economy Tab
+	containerWindowType = {
+		name = "TFR_economy_button_container"
+		size = { width = 550 height = 950 }
+		position = { x=0  y=0 }
+		
+		buttonType = {
+			name = "open_econ_button"
+			position = { x = 13 y = 7 }
+			quadTextureSprite ="GFX_econ_switch_button"
+			Orientation = "UPPER_LEFT"
+			pdx_tooltip = "open_econ_button_tt"
+			#shortcut = "TAB"
+			clicksound = click_action
+		}
+	}
+
+	containerWindowType = {
+		name = "countrytradeview"
+		position = { x=-606 y=78}	
+		show_position = { x=-6 y =78 }
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 300	
+		size = { width=550 height=100%% }
+		
+		#hide_sound = menu_close_window
+		show_sound = menu_open_window
+		
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_window_1b_border"
+		}
+
+		iconType ={
+			name ="production_header_bg"
+			spriteType = "GFX_header_bg"
+			position = { x= -248 y = 07 }
+			Orientation = "UPPER_LEFT"
+		}
+
+		instantTextboxType = {
+			name = "trade_title"
+			position = { x = 275 y = 8 }
+			textureFile = ""
+			font = "VCR02_24"
+			borderSize = {x = 0 y = 0}
+			text = "TRADE_TRADE"
+			maxWidth = 217
+			maxHeight = 25
+			format = center
+		}
+
+		iconType = {
+			name = "trade_header"
+			position = { x = 12 y = 43 }
+			quadTextureSprite = "GFX_trade_header"
+		}	
+
+		iconType = {
+			name = "civilian_factory_icon"
+			position = { x = 185 y = 49 }
+			spriteType = "GFX_non_available_factory_icon"
+			alwaystransparent = yes
+		}
+		
+		instantTextboxType = {
+			name = "civ_factories"
+			position = { x = 28 y = 53 }
+			font = "VCR02_12"
+			text = "TRADE_CIV_FACTORIES"
+			maxWidth = 150
+			maxHeight = 18
+			fixedsize = yes
+			format = right
+			alwaystransparent = yes
+		}
+		
+		instantTextboxType = {
+			name = "factories_total"
+			position = { x = 216 y = 53 }
+			font = "VCR02_12"
+			maxWidth = 45
+			maxHeight = 18
+			format = left
+			alwaystransparent = yes			
+		}
+
+		instantTextboxType = {
+			name = "factories_used"
+			position = { x = 268 y = 53 }
+			font = "VCR02_12"
+			maxWidth = 120
+			maxHeight = 18
+			format = center	
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "factories_available"
+			position = { x = 388 y = 53 }
+			font = "VCR02_12"
+			maxWidth = 120
+			maxHeight = 18
+			format = center	
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "econ_title"
+			position = { x = 18 y = 8 }
+			textureFile = ""
+			font = "VCR02_24"
+			borderSize = {x = 0 y = 0}
+			text = "TRADE_ECON"
+			maxWidth = 217
+			maxHeight = 25
+			format = center
+		}
+
+		containerWindowType = {
+			name = "resources"
+			position = { x = 11 y = 75 }	
+			size = { width = 518 height = 156 }
+			verticalScrollbar = "right_vertical_slider"
+
+			iconType = { 
+				name ="resources_bg"
+				spriteType = "GFX_trade_resource_bg"
+				position = {x=0 y=0}
+			}
+
+			instantTextboxType = {
+				name = "produced_title"
+				position = { x=12 y=38 }
+				font = "VCR02_12"
+				text = "TRADEVIEW_RES_PRODUCED"
+				maxWidth = 78
+				maxHeight = 18
+				format = right
+				#alwaystransparent = yes
+			}
+		
+			instantTextboxType = {
+				name = "imported_title"
+				position = { x=12 y=57 }
+				font = "VCR02_12"
+				text = "TRADEVIEW_RES_IMPORTED"
+				maxWidth = 78
+				maxHeight = 18
+				format = right
+				#alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "exported_title"
+				position = { x=12 y=76 }
+				font = "VCR02_12"
+				text = "TRADEVIEW_RES_EXPORTED"
+				maxWidth = 78
+				maxHeight = 18
+				format = right
+				#alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "special_project_title"
+				position = { x=12 y=95 }
+				font = "VCR02_12"
+				text = "TRADEVIEW_RES_SPECIAL_PROJECT"
+				maxWidth = 78
+				maxHeight = 18
+				format = right
+				#alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "production_line_title"
+				position = { x=12 y=114 }
+				font = "VCR02_12"
+				text = "TRADEVIEW_RES_PRODUCTION_LINES"
+				maxWidth = 78
+				maxHeight = 18
+				format = right
+				#alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "needed_title"
+				position = { x=12 y=136 }
+				font = "VCR02_12"
+				text = "TRADEVIEW_RES_SURPLUS"
+				maxWidth = 78
+				maxHeight = 18
+				format = right
+				#alwaystransparent = yes
+			}
+
+			gridBoxType = {
+				name = "resources_grid"
+				position = { x = 90 y = 0 }
+				size = { width = 422 height = 100%% }
+				slotsize = { width = 68 height = 156 }
+				max_slots = { x = 6 y = 1 }
+				format = "UPPER_LEFT"
+			}
+		}
+
+		iconType ={
+			name ="trade_divider"
+			spriteType = "GFX_divider"
+			position = { x= -647 y = 347 }
+			Orientation = "UPPER_LEFT"
+		}
+		
+		iconType ={
+			name ="trade_filter_bg"
+			spriteType = "GFX_trade_filter_bg"
+			position = { x= 18 y = 318 }
+			Orientation = "UPPER_LEFT"
+		}
+		
+		buttonType = {
+			name = "sort_country"
+			position = {x=17 y=440}
+			quadTextureSprite ="GFX_trade_filter_btn_country"
+			clicksound = click_scroll
+		}
+
+		instantTextboxType = {
+			name = "name"
+			position = { x = 21 y = 447 }
+			font = "VCR02_12"
+			text = "TRADE_SORT_COUNTRY"
+			maxWidth = 160
+			maxHeight = 18
+			format = center		
+			fixedsize = yes
+		}
+		
+		buttonType = {
+			name = "sort_export"
+			position = {x=187 y=440}
+			quadTextureSprite ="GFX_trade_filter_btn_export"
+			clicksound = click_scroll
+		}
+
+		instantTextboxType = {
+			name = "export_label"
+			position = { x = 190 y = 447 }
+			font = "VCR02_12"
+			text = "TRADE_SORT_EXPORT"
+			maxWidth = 90
+			maxHeight = 18
+			format = center	
+			fixedsize = yes
+			alwaystransparent = yes
+		}
+		
+		buttonType = {
+			name = "sort_request"
+			position = {x=285 y=440}
+			quadTextureSprite ="GFX_trade_filter_btn_delivered"
+			clicksound = click_scroll
+		}
+
+		instantTextboxType = {
+			name = "request_label"
+			position = { x = 285 y = 447 }
+			font = "VCR02_12"
+			text = "TRADE_SORT_REQUEST"
+			maxWidth = 100
+			maxHeight = 18
+			format = center		
+			fixedsize = yes
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "sort_convoys"
+			position = {x=389 y=440}
+			quadTextureSprite ="GFX_trade_filter_btn_convoy"
+			clicksound = click_scroll
+		}
+
+		instantTextboxType = {
+			name = "convoys_label"
+			position = { x=403 y=447 }
+			font = "VCR02_12"
+			text = "TRADE_SORT_CONVOYS"
+			maxWidth = 66
+			maxHeight = 18
+			format = center	
+			fixedsize = yes	
+			alwaystransparent = yes
+		}
+		
+		containerWindowType = {
+			name = "filters"
+			position = { x = 12 y = 268 }	
+			size = { width = 450 height = 50 }
+			verticalScrollbar = "right_vertical_slider"
+			
+			gridBoxType = {
+				name = "resources_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 400 height = 100%% }
+				slotsize = { width = 85 height = 50 }
+				max_slots_vertical = 1
+				format = "UPPER_LEFT"
+			}
+		}
+		
+		containerWindowType = {
+			name = "country_filters"
+			position = { x = 10 y = 318 }	
+			size = { width = 520 height = 50 }
+			verticalScrollbar = "right_vertical_slider"
+				
+			
+			gridBoxType = {
+				name = "country_filters_grid"
+				position = { x = 7 y = 12 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 150 height = 35 }
+				max_slots_horizontal = 3
+				format = "UPPER_LEFT"
+			}
+		}
+		
+		containerWindowType = {
+			name = "trade"
+			position = { x = 15 y = 467 }	
+			size = { width = 535 height = 100%% }
+			verticalScrollbar = "right_vertical_slider"
+			scroll_wheel_factor = 45
+			smooth_scrolling = yes
+			margin = {top = 1 bottom = 13 }			
+				
+			background = {
+				name = "Background"		
+				quadTextureSprite ="GFX_tiled_window_transparent"
+			}
+			
+			gridBoxType = {
+				name = "trade_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 511 height = 45 }
+				max_slots_horizontal = 1
+				format = "UPPER_LEFT"
+			}
+		}
+		
+		buttonType = {
+			name = "close_button"
+			position = { x = -43 y = 9 }
+			quadTextureSprite ="GFX_closebutton"
+			buttonFont = "VCR02_12"
+			shortcut = "ESCAPE"
+			Orientation = "UPPER_RIGHT"
+			clicksound = click_close
+			pdx_tooltip = "CLOSE"
+		}
+		
+	}
+	
+	containerWindowType = {
+		name = "tradeoffer_window"
+		position = { x= -263 y= -218}	
+		size = { width=527 height=437 }
+		moveable = yes
+		click_to_front = yes
+		orientation= center	
+		fade_time = 200
+		fade_type = linear
+		
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_trade_offer_popup_win"
+		}
+
+		iconType = {
+			name = "player_flag"
+			quadTextureSprite ="GFX_shield_medium"
+			position = { x = -98 y = 13 }
+			Orientation = upper_right
+		}
+			
+		iconType = {
+			name = "large_flag_frame"
+			position = { x = -102 y = 11 }
+			spriteType = "GFX_large_flag_frame"
+			orientation = upper_right
+		}	
+			
+		instantTextboxType = {
+			name = "country"
+			position = { x = 132 y = 32 }
+			font = "VCR02_20"
+			text = "country"
+			maxWidth = 260
+			maxHeight = 18
+			vertical_alignment = center 			
+			format = center			
+		}
+		
+		iconType ={
+			name ="resources_icon"
+			spriteType = "GFX_resources_strip"
+			position = { x = 31 y = 110 }
+		}
+		
+		instantTextboxType = {
+			name = "trade"
+			position = { x = 69 y = 90 }
+			font = "VCR02_12"
+			text = ""
+			maxWidth = 230
+			maxHeight = 100
+			format = left			
+		}
+			
+		containerWindowType = {
+			name = "flags"
+			position = { x = 294 y = 80 }	
+			size = { width = 220 height = 176 }
+				
+			background = {
+				name = "Background"		
+				quadTextureSprite ="GFX_tiled_plain_bg"
+				alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "traded_nations_label"
+				position = { x = 15 y = 10 }
+				font = "VCR02_12"
+				text = "TRADED_NATIONS"
+				fixedsize = yes
+				maxWidth = 190
+				maxHeight = 80
+				format = left
+			}
+			
+			gridBoxType = {
+				name = "flags_grid"
+				position = { x = 10 y = 30 }
+				size = { width = 100% height = 100% }
+				slotsize = { width=45 height=31 }
+				max_slots_horizontal = 4
+				format = "UPPER_LEFT"
+			}
+		}
+			
+		buttonType = {
+			name = "buy_needed_amount_button"
+			position = {x=350 y=260}
+			spriteType = "GFX_set_need_amount_button"
+			pdx_tooltip = "SET_NEEDED_AMOUNT"
+		}
+			
+		instantTextboxType = {
+			name = "trade_reset"
+			position = { x = 124 y = 348 }
+			font = "VCR02_12"
+			text = "TRADE_RESET"
+			maxWidth = 290
+			maxHeight = 80
+			format = center
+		}
+
+		iconType ={
+			name ="convoys_icon"
+			spriteType = "GFX_topbar_convoys"
+			position = {x=30 y=211}
+		}
+			
+		instantTextboxType = {
+			name = "convoys_description"
+			position = { x = 69 y = 200 }
+			font = "VCR02_12"
+			text = ""
+			maxWidth = 230
+			maxHeight = 80
+			format = left
+		}
+			
+		iconType = {
+			name = "civilian_factory_icon"
+			position = { x = 70 y = 274 }
+			spriteType = "GFX_non_available_factory_icon"
+		}
+			
+		instantTextboxType = {
+			name = "factories_description"
+			position = { x = 104 y = 265 }
+			font = "VCR02_12"
+			text = ""
+			maxWidth = 240
+			maxHeight = 80
+			format = left
+			fixedsize = yes
+		}
+			
+		extendedScrollbarType = {
+			name = "buy_slider"
+			position = { x = 116 y = 320 }
+			size = { width = 300 height = 18 }
+			tileSize = { width = 12 height = 12}
+			maxValue = 1
+			minValue = 0
+			stepSize = 1
+			startValue = 0
+			horizontal = yes
+			clickonly = yes
+				
+			background = {
+				name = "Background"	
+				quadTextureSprite = "GFX_slider_bg"
+				position = { x= -52 y = -13 }
+			}
+			
+			slider = {
+				name = "Slider"	
+				quadTextureSprite = "GFX_scroll_drager"
+				position = { x=0 y = -2 }			
+			}
+	
+			track = {
+				name = "Track"
+				quadTextureSprite = "GFX_scroll_track_horisontal"
+				position = { x=0 y = 4 }
+				alwaystransparent = yes
+			}	
+	
+			decreaseButton = {
+				name = "Decrease"
+				quadTextureSprite = "GFX_scroll_left"
+				position = { x=3 y = 1 }
+				clicksound = click_scroll
+			}
+			
+			increaseButton = {
+				name = "Increase"
+				quadTextureSprite = "GFX_scroll_right"
+				position = { x=-19 y = -17 }
+				clicksound = click_scroll
+			}
+		}
+			
+		instantTextboxType = {
+			name = "min_amount"
+			position = { x = 74 y = 320 }
+			font = "VCR02_12"
+			text = "0"
+			maxWidth = 35
+			maxHeight = 18
+			format = center
+		}
+			
+		instantTextboxType = {
+			name = "max_amount"
+			position = { x = 424 y = 320 }
+			font = "VCR02_12"
+			text = "max"
+			maxWidth = 35
+			maxHeight = 18
+			format = center			
+		}
+			
+		iconType ={
+			name ="warning_icon"
+			spriteType = "GFX_warning_icon"
+			position = { x = 277 y = 270 }	
+		}
+			
+		iconType ={
+			name ="convoys_icon_bg"
+			spriteType = "GFX_diplo_action_bottom"
+			position = {x=7 y=-70}
+			Orientation = "LOWER_LEFT"			
+		}
+			
+		buttonType = {
+			name = "send_button"
+			position = { x = 350 y = -55 }
+			quadTextureSprite ="GFX_button_123x34"
+			buttonFont = "VCR02_12"
+			buttonText = "SEND"
+			Orientation = "LOWER_LEFT"
+			clicksound = click_send
+			pdx_tooltip = "SEND"
+			shortcut = "RETURN"
+		}
+			
+		buttonType = {
+			name = "cancel_button"
+			position = { x = 70 y = -55 }
+			quadTextureSprite ="GFX_button_123x34"
+			buttonFont = "VCR02_12"
+			buttonText = "CLOSE"
+			shortcut = "ESCAPE"
+			Orientation = "LOWER_LEFT"
+			clicksound = click_close
+			pdx_tooltip = "CANCEL"
+		}
+	}
+	
+	containerWindowType = {
+		name = "resources_info_entry"
+		position = { x = 0 y = 0 }	
+		size = { width = 150 height = 100 }
+		clipping = no
+		
+		buttonType ={
+			name ="resources_icon"
+			spriteType = "GFX_resources_strip"
+			position = { x= 14 y = 5 }
+		}		
+		
+		instantTextboxType = {
+			name = "balance"
+			position = { x=15 y=9 }
+			font = "VCR02_16"
+			maxWidth = 57
+			maxHeight = 18
+			format = right
+		}
+
+		instantTextboxType = {
+			name = "produced"
+			position = { x=20 y=38 }
+			font = "VCR02_12"
+			maxWidth = 50
+			maxHeight = 18
+			format = right
+		}
+		
+		instantTextboxType = {
+			name = "imported"
+			position = { x=20 y=57 }
+			font = "VCR02_12"
+			maxWidth = 50
+			maxHeight = 18
+			format = right
+		}
+
+		instantTextboxType = {
+			name = "exported"
+			font = "VCR02_12"
+			position = { x=20 y=76 }
+			maxWidth = 50
+			maxHeight = 18
+			format = right
+		}
+		
+		instantTextboxType = {
+			name = "special_project"
+			font = "VCR02_12"
+			position = { x=20 y=95 }
+			maxWidth = 50
+			maxHeight = 18
+			format = right
+		}
+		
+		instantTextboxType = {
+			name = "production_line"
+			font = "VCR02_12"
+			position = { x=20 y=114 }
+			maxWidth = 50
+			maxHeight = 18
+			format = right
+		}
+		
+		instantTextboxType = {
+			name = "needed"
+			position = { x=20 y=138 }
+			font = "VCR02_12"
+			maxWidth = 50
+			maxHeight = 28
+			format = right
+		}
+		
+		instantTextboxType = {
+			name = "neededType"
+			position = { x=10 y=138 }
+			font = "VCR02_12"
+			maxWidth = 50
+			maxHeight = 28
+			format = left
+		}
+		
+		buttonType = {
+			name = "cancel_imports"
+			position = { x= 28 y= 173 }
+			pdx_tooltip = "CANCEL_RESOURCE_IMPORT"
+			quadTextureSprite ="GFX_cancel_import_button"
+			clicksound = click_default
+		}
+	}
+	
+	containerWindowType = {
+		name = "resources_filter_entry"
+		position = { x = 0 y = 11 }
+		size = { width = 75 height = 50 }
+		clipping = no
+		
+		buttonType = {
+			name = "background"
+			position = {x=0 y=0}
+			quadTextureSprite ="GFX_TRADE_resource_btn"
+			clicksound = click_checkbox
+		}
+
+		iconType = {
+			name ="icon"
+			spriteType = "GFX_resources_strip"
+			position = { x= 32 y = 12 }
+			alwaystransparent = yes
+		}
+	}
+	
+	containerWindowType = {
+		name = "filter_entry"
+		position = { x = 45 y = -04 }
+		size = { width = 168 height = 50 }
+		clipping = no
+
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_diplo_filter_entry"
+			clicksound = click_scroll
+		}
+		
+		instantTextboxType = {
+			name = "name"
+			position = { x = 6 y = 8 }
+			font = "VCR02_12"
+			text = "name"
+			maxWidth = 110
+			maxHeight = 18
+			fixedsize = yes
+			format = center
+			alwaystransparent = yes			
+		}
+	}
+	
+	containerWindowType = {
+		name = "country_trade_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 511 height = 45 }
+		clipping = no
+
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_country_trade_entry_bg"
+			clicksound = click_action
+		}
+		
+		buttonType = {
+			name = "country_flag"
+			quadTextureSprite ="GFX_flag_small2"
+			position = { x= 7 y = 8}
+			#alwaystransparent = yes
+		}
+		
+		iconType ={
+			name ="country_flag_frame"
+			spriteType = "GFX_small_flag_frame_thin"
+			position = { x= 4 y = 6 }
+			Orientation = "UPPER_LEFT"
+			alwaystransparent = yes
+		}			
+		
+		instantTextboxType = {
+			name = "country"
+			position = { x = 53 y = 8 }
+			font = "VCR02_12"
+			text = "name"
+			vertical_alignment = center 			
+			maxWidth = 130
+			maxHeight = 28
+			fixedsize = yes
+			alwaystransparent = yes
+		}
+		
+		instantTextboxType = {
+			name = "exported"
+			position = { x = 272 y = 14 }
+			font = "VCR02_12"
+			text = ""
+			format = center
+			maxWidth = 100
+			maxHeight = 18
+		}
+		
+		instantTextboxType = {
+			name = "available_export"
+			position = { x = 169 y = 14 }
+			font = "VCR02_12"
+			text = ""
+			format = center
+			maxWidth = 110
+			maxHeight = 18
+		}
+		
+		instantTextboxType = {
+			name = "convoys"
+			position = { x = 390 y = 14 }
+			font = "VCR02_12"
+			text = ""
+			format = center
+			maxWidth = 100
+			maxHeight = 18
+		}
+	}
+	
+	containerWindowType = {
+		name = "econ_tab_window"
+		size = { width = 540 height = 1000}
+		position = { x=10  y=40 }
+		
+		background = {
+			name = "Background"		
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+			
+		iconType ={
+			name ="econ_tab_gdp_frame_2"
+			spriteType = "GFX_focus_popup_bg"
+			position = {x=-270 y=10}
+			Orientation = "UPPER_RIGHT"
+			scale = 0.55
+		}
+			
+		iconType ={
+			name ="econ_tab_gdp_frame_1"
+			spriteType = "GFX_focus_popup_bg"
+			position = {x=11 y=10}
+			Orientation = "UPPER_LEFT"
+			scale = 0.55
+		}
+			
+		iconType ={
+			name ="econ_tab_gdp_frame_3"
+			spriteType = "GFX_diplo_action_bottom"
+			position = {x=9 y=82}
+			Orientation = "UPPER_LEFT"
+			#scale = 0.55
+		}
+		
+		instantTextboxType = {
+			name = "nominal_gdp"
+			position = { x = 30 y = 18 }
+			textureFile = ""
+			font = "VCR02_18"
+			borderSize = {x = 0 y = 0}
+			text = "nominal_gdp"
+			pdx_tooltip = "nominal_gdp_tooltip"
+			pdx_tooltip_delayed = "nominal_gdp_tooltip_desc"
+			maxWidth = 220
+			maxHeight = 20
+			format = left
+		}
+		
+		instantTextboxType = {
+			name = "total_gdp"
+			position = { x = 30 y = 48 }
+			textureFile = ""
+			font = "VCR02_18"
+			borderSize = {x = 0 y = 0}
+			text = "total_gdp"
+			pdx_tooltip = "total_gdp_tooltip"
+			pdx_tooltip_delayed = "total_gdp_tooltip_desc"
+			maxWidth = 220
+			maxHeight = 20
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "total_debt"
+			position = { x = 290 y = 18 }
+			textureFile = ""
+			font = "VCR02_18"
+			borderSize = {x = 0 y = 0}
+			text = "total_debt"
+			pdx_tooltip = "DEBT_TOOLTIP"
+			pdx_tooltip_delayed = "DEBT_TOOLTIP_DESC"
+			maxWidth = 220
+			maxHeight = 20
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "total_inflation"
+			position = { x = 290 y = 48 }
+			textureFile = ""
+			font = "VCR02_18"
+			borderSize = {x = 0 y = 0}
+			text = "total_inflation"
+			pdx_tooltip = "total_inflation_tooltip"
+			pdx_tooltip_delayed = "total_inflation_tooltip_desc"
+			maxWidth = 220
+			maxHeight = 20
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "total_liquidity"
+			position = { x = 30 y = 100 }
+			textureFile = ""
+			font = "VCR02_18"
+			borderSize = {x = 0 y = 0}
+			text = "total_liquidity"
+			pdx_tooltip = "total_liquidity_tooltip"
+			pdx_tooltip_delayed = "total_liquidity_tooltip_desc"
+			maxWidth = 220
+			maxHeight = 20
+			format = left
+		}
+
+		buttonType = {
+			name = "auto_payment_checkbox"
+			position = { x = 230 y = 98 }
+			quadTextureSprite = "GFX_generic_checkbox"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "auto_payment_checkbox_tooltip"
+			pdx_tooltip_delayed = "auto_payment_checkbox_tooltip_desc"
+		}
+
+		instantTextboxType = {
+			name = "auto_payment_text"
+			position = { x = 265 y = 108 }
+			textureFile = ""
+			font = "VCR02_14"
+			borderSize = { x = 0 y = 0 }
+			text = "auto_payment_text"
+			maxWidth = 110
+			maxHeight = 10
+			format = left
+		}
+
+		buttonType = {
+			name = "bank_checkbox"
+			position = { x = 370 y = 98 }
+			quadTextureSprite = "GFX_generic_checkbox"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "bank_checkbox_tooltip"
+			pdx_tooltip_delayed = "bank_checkbox_tooltip_desc"
+		}
+
+		instantTextboxType = {
+			name = "bank_text"
+			position = { x = 405 y = 108 }
+			textureFile = ""
+			font = "VCR02_14"
+			borderSize = { x = 0 y = 0 }
+			text = "bank_text"
+			maxWidth = 110
+			maxHeight = 10
+			format = left
+		}
+			
+		iconType ={
+			name ="econ_tab_gdp_background_1"
+			spriteType = "GFX_economic_action_loan_background"
+			position = {x=17 y=134}
+			Orientation = "UPPER_LEFT"
+		}
+			
+		iconType ={
+			name ="econ_tab_gdp_frame_4"
+			spriteType = "GFX_province_header"
+			position = {x=17 y=132}
+			Orientation = "UPPER_LEFT"
+			scale = 1.205
+		}
+
+		instantTextboxType = {
+			name = "loans_text"
+			position = { x = 30 y = 137 }
+			textureFile = ""
+			font = "VCR02_18"
+			borderSize = {x = 0 y = 0}
+			text = "loans_text"
+			maxWidth = 200
+			maxHeight = 20
+			format = center
+		}
+
+		ButtonType = {
+			name = "gdp_1b_loan_button"
+			position = { x = 275 y = 140 }
+			quadTextureSprite ="button_type_4"
+			buttonText = "gdp_1b_loan_button"
+			buttonFont = "VCR02_14"
+			clicksound = click_default
+			pdx_tooltip = "gdp_1b_loan_button_tooltip"
+		}
+
+		ButtonType = {
+			name = "gdp_10b_loan_button"
+			position = { x = 275 y = 175 }
+			quadTextureSprite ="button_type_4"
+			buttonText = "gdp_10b_loan_button"
+			buttonFont = "VCR02_14"
+			clicksound = click_default
+			pdx_tooltip = "gdp_10b_loan_button_tooltip"
+		}
+
+		ButtonType = {
+			name = "gdp_50b_loan_button"
+			position = { x = 275 y = 210 }
+			quadTextureSprite ="button_type_4"
+			buttonText = "gdp_50b_loan_button"
+			buttonFont = "VCR02_14"
+			clicksound = click_default
+			pdx_tooltip = "gdp_50b_loan_button_tooltip"
+		}
+			
+		iconType ={
+			name ="econ_tab_gdp_background_2"
+			spriteType = "GFX_economic_action_debt_background"
+			position = {x=17 y=244}
+			Orientation = "UPPER_LEFT"
+		}
+			
+		iconType ={
+			name ="econ_tab_gdp_frame_5"
+			spriteType = "GFX_province_header"
+			position = {x=17 y=242}
+			Orientation = "UPPER_LEFT"
+			scale = 1.205
+		}
+
+		instantTextboxType = {
+			name = "debt_payment_text"
+			position = { x = 30 y = 247 }
+			textureFile = ""
+			font = "VCR02_18"
+			borderSize = {x = 0 y = 0}
+			text = "debt_payment_text"
+			maxWidth = 200
+			maxHeight = 20
+			format = center
+		}
+
+		ButtonType = {
+			name = "gdp_1b_debt_payment_button"
+			position = { x = 275 y = 250 }
+			quadTextureSprite ="button_type_4"
+			buttonText = "gdp_1b_debt_payment_button"
+			buttonFont = "VCR02_14"
+			clicksound = click_default
+			pdx_tooltip = "gdp_1b_debt_payment_button_tooltip"
+		}
+
+		ButtonType = {
+			name = "gdp_10b_debt_payment_button"
+			position = { x = 275 y = 285 }
+			quadTextureSprite ="button_type_4"
+			buttonText = "gdp_10b_debt_payment_button"
+			buttonFont = "VCR02_14"
+			clicksound = click_default
+			pdx_tooltip = "gdp_10b_debt_payment_button_tooltip"
+		}
+
+		ButtonType = {
+			name = "gdp_50b_debt_payment_button"
+			position = { x = 275 y = 320 }
+			quadTextureSprite ="button_type_4"
+			buttonText = "gdp_50b_debt_payment_button"
+			buttonFont = "VCR02_14"
+			clicksound = click_default
+			pdx_tooltip = "gdp_50b_debt_payment_button_tooltip"
+		}
+		#Economic Actions
+		
+		iconType ={
+			name ="econ_tab_gdp_frame_6"
+			spriteType = "GFX_province_header"
+			position = {x=17 y=352}
+			Orientation = "UPPER_LEFT"
+			scale = 1.205
+		}
+		
+		#Economic Types
+		
+		containerWindowType = {
+			name = "TFR_economy_type_econ_tab_container"
+			position = { x = 445 y = 357 }
+			size = { width = 68 height = 68 }
+			clipping = yes
+			
+			iconType = {
+				name = "TFR_no_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_Faction_Member"
+				pdx_tooltip = "TFR_NO_ECONOMY_TT"
+				pdx_tooltip_delayed = "TFR_NO_ECONOMY_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_capitalism_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_capitalism_economy"
+				pdx_tooltip = "TFR_CAPITALISM_TT"
+				pdx_tooltip_delayed = "TFR_CAPITALISM_TT_LONG"
+			}		
+			iconType = {
+				name = "TFR_american_capitalism_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_american_capitalism_economy"
+				pdx_tooltip = "TFR_AMERICAN_CAPITALISM_TT"
+				pdx_tooltip_delayed = "TFR_AMERICAN_CAPITALISM_TT_LONG"
+			} 
+			iconType = {
+				name = "TFR_collective_capitalism_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_collective_capitalism_economy"
+				pdx_tooltip = "TFR_COLLECTIVE_CAPITALISM_TT"
+				pdx_tooltip_delayed = "TFR_COLLECTIVE_CAPITALISM_TT_LONG"
+			} 	
+			iconType = {
+				name = "TFR_oligopolistic_capitalism_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_oligopolistic_capitalism_economy"
+				pdx_tooltip = "TFR_OLIGOPOLY_CAPITALISM_TT"
+				pdx_tooltip_delayed = "TFR_OLIGOPOLY_CAPITALISM_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_welfare_capitalism_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_welfare_capitalism_economy"
+				pdx_tooltip = "TFR_WELFARE_CAPITALISM_TT"
+				pdx_tooltip_delayed = "TFR_WELFARE_CAPITALISM_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_corporatism_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_corporatism_economy"
+				pdx_tooltip = "TFR_CORPORATISM_TT"
+				pdx_tooltip_delayed = "TFR_CORPORATISM_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_managed_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_managed_economy"
+				pdx_tooltip = "TFR_MANAGED_ECONOMY_TT"
+				pdx_tooltip_delayed = "TFR_MANAGED_ECONOMY_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_command_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_command_economy"
+				pdx_tooltip = "TFR_COMMAND_ECONOMY_TT"
+				pdx_tooltip_delayed = "TFR_COMMAND_ECONOMY_TT_LONG"
+			}		
+			iconType = {
+				name = "TFR_planned_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_planned_economy"
+				pdx_tooltip = "TFR_PLANNED_ECONOMY_TT"
+				pdx_tooltip_delayed = "TFR_PLANNED_ECONOMY_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_socialist_market_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_socialist_market"
+				pdx_tooltip = "TFR_SOCIALIST_MARKET_TT"
+				pdx_tooltip_delayed = "TFR_SOCIALIST_MARKET_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_ZZZ_hajimi_economy_type_politics_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_ZZZ_hajimi_economy"
+				pdx_tooltip = "TFR_ZZZ_HAJIMI_ECONOMY_TT"
+				pdx_tooltip_delayed = "TFR_ZZZ_HAJIMI_ECONOMY_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_developed_socialism_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_developed_socialism"
+				pdx_tooltip = "TFR_DEVELOPED_SOCIALISM_TT"
+				pdx_tooltip_delayed = "TFR_DEVELOPED_SOCIALISM_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_military_controlled_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_military_controlled_economy"
+				pdx_tooltip = "TFR_MILITARY_CONTROLLED_TT"
+				pdx_tooltip_delayed = "TFR_MILITARY_CONTROLLED_TT_LONG"
+			}	
+			iconType = {
+				name = "TFR_worker_controlled_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_worker_controlled_economy"
+				pdx_tooltip = "TFR_WORKER_CONTROLLED_TT"
+				pdx_tooltip_delayed = "TFR_WORKER_CONTROLLED_TT_LONG"
+			}
+			iconType = {
+				name = "TFR_chaostic_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_chaostic_economy"
+				pdx_tooltip = "TFR_CHAOSTIC_TT"
+				pdx_tooltip_delayed = "TFR_CHAOSTIC_TT_LONG"
+			}
+			iconType = {
+				name = "TFR_minarchism_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_minarchism_economy"
+				pdx_tooltip = "TFR_MINARCHISM_TT"
+				pdx_tooltip_delayed = "TFR_MINARCHISM_TT_LONG"
+			}
+			iconType = {
+				name = "TFR_ancap_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_ancap_economy"
+				pdx_tooltip = "TFR_ANCAP_TT"
+				pdx_tooltip_delayed = "TFR_ANCAP_TT_LONG"
+			}
+		}
+		
+		containerWindowType = {
+			name = "economy_type_loc_container"
+			position = { x = 245 y = 350 }
+			
+			instantTextboxType = {
+				name = "economy_type"
+				position = { x = 12 y = 7 }
+				font = "VCR02_14"
+				text = "economy_type"
+				maxWidth = 175
+				maxHeight = 45
+				fixedsize = yes
+				format = center
+				alwaystransparent = yes
+			}
+		}
+		containerWindowType = {
+			name = "economy_type_name_container"
+			position = { x = 245 y = 375 }
+			
+			instantTextboxType = {
+				name = "economy_name"
+				position = { x = 12 y = 7 }
+				font = "VCR02_14"
+				text = "[GetEconomyType]"
+				maxWidth = 175
+				maxHeight = 45
+				fixedsize = yes
+				format = center
+				alwaystransparent = yes
+			}
+		}
+		
+		instantTextboxType = {
+			name = "economic_actions_text"
+			position = { x = 30 y = 357 }
+			textureFile = ""
+			font = "VCR02_18"
+			borderSize = {x = 0 y = 0}
+			text = "economic_actions_text"
+			maxWidth = 200
+			maxHeight = 20
+			format = center
+		}
+
+		#ButtonType = {
+		#	name = "gdp_printer_button"
+		#	position = { x = 275 y = 360 }
+		#	quadTextureSprite ="button_type_4"
+		#	buttonText = "Print Money"
+		#	buttonFont = "VCR02_14"
+		#	clicksound = click_default
+		#	pdx_tooltip = "gdp_printer_button_tooltip"
+		#}
+		
+		containerWindowType = {
+			name = "economic_actions_window"
+			position = { x = 0 y = 400 }
+			size = { width=520 height=100%% }
+			
+			containerWindowType = {
+				name = "economic_actions_list"
+				position = { x = 10 y = 10 }
+				size = { width=100% height=-4 }
+				verticalScrollbar = "right_vertical_slider"
+				scroll_wheel_factor = 37
+				smooth_scrolling = yes
+				margin = { top = 2 bottom = 22 }
+				
+				background = {
+					name = "Background"
+					quadTextureSprite ="GFX_tiled_window_transparent"
+				}
+			
+				gridBoxType = {
+					name = "economic_actions_gridbox"
+					position = { x = 0 y = 10 }
+					size = { width = 500 height = 1 }
+					slotsize = { width = 500 height = 57 }
+					max_slots_horizontal = 1
+					add_horizontal = yes
+					format = "UPPER_LEFT"
+				}
+			
+			}
+		}
+	}
+		
+	containerWindowType = {
+		name = "economic_actions_window_item_grid"
+		position = { x = 0 y = 0 }
+		size = { width = 100 height = 74 }
+		clipping = no
+		
+		buttonType = {
+			name = "action_button"
+			position = { x = 0 y = 0 }
+			size = { width = 500 height = 62 }
+			quadTextureSprite = "GFX_tiled_peace_upper_bar"
+			pdx_tooltip = "economic_action_tooltip"
+			#pdx_tooltip_delayed = "economicaction_tt_delay"
+		}
+		
+		instantTextboxType = {
+			name = "name"
+			position = { x = 0 y = 13 }
+			font = "VCR02_18"
+			fixedsize = yes
+			text = "economic_action"
+			maxWidth = 500
+			format = center
+			alwaystransparent = yes
+		}
+	}
+}

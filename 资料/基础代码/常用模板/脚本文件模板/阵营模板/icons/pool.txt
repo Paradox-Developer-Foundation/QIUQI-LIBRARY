@@ -1,0 +1,24 @@
+faction_icon_pool = { #阵营图标池。如果没有定义阵营的图标，则会从阵营池里随机采用图标。
+    icons={ #这里填在GFX文件里注册的图标的名字。这里直接沿用原版。
+        GFX_faction_logo_generic_democratic 
+        GFX_faction_logo_generic_fascist
+        GFX_faction_logo_generic
+        GFX_faction_logo_generic_2
+        GFX_faction_logo_generic_3
+        GFX_faction_logo_generic_4
+        GFX_faction_logo_generic_5
+        GFX_faction_logo_generic_6
+        GFX_faction_logo_generic_7
+		GFX_faction_logo_generic_8
+        GFX_faction_logo_generic_9
+		GFX_faction_logo_generic_10
+		GFX_faction_logo_generic_11
+		GFX_faction_logo_generic_12
+		GFX_faction_logo_generic_13
+		GFX_faction_logo_generic_14
+		GFX_faction_logo_generic_15
+		GFX_faction_logo_generic_16
+		GFX_faction_logo_generic_17
+		GFX_faction_logo_generic_18
+    }
+}

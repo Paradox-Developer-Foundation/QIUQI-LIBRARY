@@ -1,0 +1,468 @@
+#########################################################
+#########################################################
+【理论家】
+#########################################################
+#########################################################
+advisor = {
+			cost = 100 #所花费PP点
+			slot = theorist #理论家标签
+			idea_token = boris_shaposhnikov #人物字段名
+			ledger = army #军种类别
+			allowed = {
+				original_tag = SOV #对应国家
+			}
+			traits = {
+				military_theorist #理论家种类
+			}
+		}
+
+军事理论家=military_theorist
+	陆军学说花费-10%
+空战理论家=air_warfare_theorist
+	空军学说花费-10%
+海军理论家=naval_theorist
+	海军学说花费-10%
+机动作战学说=mobile_warfare_expert
+	机动作战学说花费-15%
+闪电战理论家=blitzkrieg_theorist
+	机动作战学说花费-15%
+	装甲科技最大速度+10%
+优势火力学说专家=superior_firepower_expert
+	优势火力学说花费-15%
+决战计划学说专家=grand_battle_plan_expert
+	决战计划学说花费-10%
+人海突击学说专家=mass_assault_expert
+	人海突击学说花费-15%
+潜艇专家=submarine_specialist
+	贸易封锁学说花费-15%
+密接支援拥护者=close_air_support_proponent
+	战场支援学说花费-15%
+空中制胜=victory_through_airpower
+	战略破坏学说花费-15%
+俯冲轰炸高手=dive_bomber
+	近距支援机对地攻击+10%
+海军航空先驱=naval_aviation_pioneer
+	基地打击学说花费-10%
+大舰队拥护者=grand_fleet_proponent
+	存在舰队学说花费-15%
+侵袭航空学=assault_avaition
+	连续作战学说花费-10%
+核物理学家=nuclear_scientist
+	原子能研究速度+15%
+火箭科学家=rocket_scientist
+	火箭研究速度+15%
+
+
+#########################################################
+#########################################################
+【总司令】
+#########################################################
+#########################################################
+###陆军###
+advisor={
+			slot = high_command #陆军司令标签
+			idea_token = PRC_zhu_de
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				army_chief_morale_3 #最后的数字代表顾问等级。1、2、3分别对应专家、大师、奇才
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+
+陆军重组=	army_regrouping_2
+	陆军组织度恢复+4/8/10%
+骑兵部队=	army_cavalry_3
+	骑兵攻击+5/10/15%
+	骑兵防御+5/10/15%
+步兵部队=	army_infantry_2
+	陆军经验增长+0.06/0.09/0.12
+	步兵单位攻击+5/10/15%
+	步兵单位防御+10/15/20%
+陆军后勤=	army_logistics_2
+	陆军经验增长+0.06/0.09/0.12
+	陆军损耗-4/8/12%
+堑壕作战=	army_entrenchment_2
+	陆军经验增长+0.06/0.09/0.12
+	堑壕速度+8/16/24%
+装甲部队=	army_armored_2
+	陆军经验增长+0.06/0.09/0.12
+	装甲单位攻击+5/10/15%
+	装甲单位防御+5/10/15%
+特种部队=	army_commando_2
+	陆军经验增长+0.06/0.09/0.12
+	特种攻击+10/15/20%
+	特种防御+10/15/20%
+两栖作战=	navy_amphibious_assault_2
+	两栖登陆速度+5/10/15%
+步坦协同=	army_CombinedArms_1
+	摩托化步兵攻击+5/10/15%
+	摩托化步兵防御+5/10/15%
+	机械化步兵攻击+5/10/15%
+	机械化步兵防御+5/10/15%
+炮兵部队=	army_artillery_3
+	陆军经验增长+0.06/0.09/0.12
+	炮兵攻击+10/15/20%
+	炮兵防御+5/10/15%
+陆军隐匿=	army_concealment_2
+	敌方空中支援-5/10/15%
+
+###海军###
+advisor={
+			slot = navy_command #海军司令标签
+			idea_token = PRC_zhu_de
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				army_chief_morale_3
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+
+舰队后勤= navy_fleet_logistics_2
+	海军经验增长+0.06/0.09/0.12
+	海军最大航程参数+5/10/15%
+海军袭击= air_naval_strike_2
+	对海攻击+2/3/5%
+	对海攻击瞄准+2/3/5%
+	海军机动+2/3/5%
+航空母舰作战= navy_carrier_2
+	出击效率+10/15/20%
+主力舰作战= navy_capital_ship_1
+	海军经验增长+0.06/0.09/0.12
+	主力舰攻击+5/10/15%
+	主力舰装甲+5/10/15%
+潜艇作战= navy_submarine_2
+	潜艇攻击+10/15/20%
+	潜艇防御+5/10/15%
+海军对空防御= navy_naval_air_defense_2
+	海军经验增长+0.06/0.09/0.12
+	海军对空攻击+8/15/20%
+屏卫舰作战= navy_screen_2
+	海军经验增长+0.06/0.09/0.12
+	屏卫舰攻击+5/10/15%
+	屏卫舰防御+10/15/20%
+反潜作战= navy_anti_submarine_1
+	对潜探测+10/15/20%
+
+###空军###
+advisor={
+			slot = air_command #空军司令标签
+			idea_token = PRC_zhu_de
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				army_chief_morale_3
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+
+轰炸机拦截= air_bomber_interception_2
+	空军经验增长+0.06/0.09/0.12
+	拦截任务攻击+2/3/5%
+	拦截任务防御+2/3/5%
+	拦截任务机动+2/3/5%
+空军战斗训练= air_air_combat_training_2
+	空军经验增长+0.06/0.09/0.12
+	王牌机师产生概率 +5/10/15%
+密接支援= air_close_air_support_2
+	空军经验增长+0.06/0.09/0.12
+	密接支援任务攻击+2/3/5%
+	密接支援任务防御+2/3/5%
+	密接支援任务机动+2/3/5%
+战术轰炸=air_tactical_bombing_2
+	地面支援+15%
+战略轰炸= air_strategic_bombing_2
+	空军经验增长+0.06/0.09/0.12
+	战略轰炸+3/5/7%
+	轰炸任务攻击+1/2/3%
+	轰炸任务防御+1/2/3%
+	轰炸任务机动+1/2/3%
+空中优势= air_air_superiority_3
+	空军经验增长+0.06/0.09/0.12
+	夺取制空权任务攻击+2/3/5%
+	夺取制空权任务防御+2/3/5%
+	夺取制空权任务机动+2/3/5%
+空降作战= air_airborne_2
+	空投任务攻击+1/2/3
+	空投任务防御+3/5/7
+	空投任务机动+3/5/7
+飞行员训练=air_pilot_training_3
+	空军训练经验增长+15%
+
+#########################################################
+#########################################################
+【部长】
+#########################################################
+#########################################################
+
+###陆军###
+advisor={
+			slot = army_chief #陆军部长
+			idea_token = PRC_peng_dehuai
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				army_chief_reform_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+
+陆军进攻=	army_chief_offensive_2
+	陆军经验增长+0.06/0.09/0.12
+	单位攻击+5/10/15%
+堑壕专家=	army_chief_entrenchment_1
+	陆军经验增长+0.06/0.09/0.12
+	动员速度-2/4/6%
+	堑壕上限+3/5/7
+陆军改革=	army_chief_reform_2
+	陆军经验增长+0.12/0.16/0.20
+陆军计划=	army_chief_planning_2
+	陆军经验增长+0.06/0.09/0.12
+	计划速度+5/10/15%
+陆军防御=	army_chief_defensive_3
+	陆军经验增长+0.06/0.09/0.12
+	单位防御+5/10/15%
+陆军机动=	army_chief_maneuver_2
+	陆军经验增长+0.06/0.09/0.12
+	陆军速度+5/10/15%
+陆军组织=	army_chief_organizational_2
+	陆军经验增长+0.06/0.09/0.12
+	陆军组织度+4/8/12%
+陆军士气=	army_chief_morale_3
+	陆军经验增长+0.06/0.09/0.12
+	非战斗补给耗尽惩罚-3/6/9%
+陆军演习=	army_chief_drill_2
+	陆军经验增长+0.06/0.09/0.12
+	陆军师训练时间-5/10/15%
+
+###海军###
+advisor={
+			slot = navy_chief #海军部长
+			idea_token = PRC_peng_dehuai
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				navy_chief_decisive_battle_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+海军航空=	navy_chief_naval_aviation_1
+	海军经验增长+0.06/0.09/0.12
+	航母舰载机空中攻击+3/6/10%
+	航母舰载机空中防御+3/7/12
+	航母舰载机机动性+4/8/15
+舰队决战=	navy_chief_decisive_battle_2
+	海军经验增长+0.06/0.09/0.12
+	主力舰攻击+5/10/15%
+	主力舰防御+5/10/15%
+	屏卫舰攻击+5/10/15%
+	屏卫舰防御+5/10/15%
+海军改革=	navy_chief_reform_2
+	海军经验增长+0.1/0.3/0.5
+	海军经验增长+5/10/15%
+贸易袭击=	navy_chief_commerce_raiding_2
+	海军经验增长+0.06/0.09/0.12
+	袭击运输船任务效率+10/15/20%
+海军机动=	navy_chief_maneuver_2
+	海军经验增长+0.06/0.09/0.12
+	海军速度+5/10/15%
+
+###空军###
+advisor={
+			slot = air_chief #空军部长
+			idea_token = PRC_peng_dehuai
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				air_chief_safety_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+
+航空安全= air_chief_safety_2
+	空军经验增长+0.06/0.09/0.12
+	空军事故概率-5/10/15%
+战场支援= air_chief_ground_support_2
+	空军经验增长+0.06/0.09/0.12
+	空优+5/10/15% 
+夜间行动= air_chief_night_operations_2
+	夜间行动惩罚-10/20/30%
+空军改革= air_chief_reform_2
+	空军经验增长+0.12/0.16/0.20
+全天候作战= air_chief_all_weather_2
+	空军经验增长+0.12/0.16/0.20
+	空军恶劣天气惩罚-10/20/30%
+保守派=	air_chief_old_guard
+	空军经验增长+0.3
+	最大指挥点数+10
+
+
+#########################################################
+#########################################################
+【政治顾问】
+#########################################################
+#########################################################
+advisor={
+			slot = political_advisor #顾问标签
+			idea_token = PRC_zhou_enlai #人物字段名
+			allowed  = {
+				original_tag  = PRC #国家
+			}
+			traits  = {
+				ideological_crusader #顾问类别
+			}
+		}
+
+意识形态的十字军=ideological_crusader 
+	党派支持度对稳定度修正+10%
+	相同意识形态每月关系变化+100%
+诡谲的绅士=head_of_intelligence
+	特工位+1
+	情报机构升级时间-15%
+筑垒工程师=fortification_engineer 
+	陆上要塞建造速度+20%
+	海岸要塞建造速度+20%
+	防空阵地建造速度+20%
+军备组织者=armaments_organizer 
+	民转军消耗-20%
+	补给中心建造速度+10%
+沉默的实干家=silent_workhorse 
+	政治点数+15%
+受欢迎的名誉领袖=popular_figurehead 
+	稳定度+15%
+教育改革家=education_reformer
+	科研速度+5%
+金融专家=financial_expert
+	生活消费品工厂-5%
+战争实业家=war_industrialist 
+	军用工厂建造速度+10%
+	海军船坞建造速度+10%
+	储油罐建造速度+10%
+工业领袖=captain_of_industry 
+	基础设施建造速度+10%
+	民用工厂建造速度+10%
+	铁路建造速度+10%
+	合成炼油厂建造速度+10%
+慈悲的绅士=compassionate_gentleman 
+	改善关系+15%
+	对驻军伤害-15%
+法西斯煽动者=fascist_demagogue
+	法西斯主义每日新增支持率+0.10
+民主改革家=democratic_reformer 
+	民主主义每日新增支持率+0.10
+巧言的魔术师=smooth_talking_charmer 
+	改善关系花费-50%
+	贸易协定关系修正+10%
+反共斗士=anti_communist_crusader 
+	稳定度+5%
+	法西斯主义每日新增支持率-0.10
+社论撰稿人=editor
+	政治点数+5%
+	稳定度+5%
+经济学家=economist 
+	生产效率上限+5%
+恐怖的巨头=prince_of_terror 
+	非核心人力+2%
+	来自外国的颠覆效率-30%
+	对驻军伤害-25%
+密谋的暗害者=backroom_backstabber 
+	意识形态变化抵抗力度+25%
+	颠覆活动成本-25%
+第一夫人=first_lady 
+	稳定度+5%
+	战争支持度+5%
+经济改革家=economic_organizer 
+	稳定度+5%
+	生活消费品工厂-5%
+军需将军=quartermaster_general 
+	空军基地建造速度+15%
+	海军基地建造速度+15%
+	雷达站建造速度+15%
+	核反应堆建造速度+15%
+	火箭基地建造速度+15%
+译码骨干=mastermind_code_cracker 
+	破译能力+15%
+社会主义小说家=socialist_novelist 
+	战争支持度+10%
+	社会主义每日新增支持率+0.10
+红色女权斗士=red_suffragette 
+	适役人口+2%
+	稳定度-10%
+鹰派人士=hawk
+	战争支持度+10%
+	稳定度-5%
+谦逊的调解者=appeaser 
+	稳定度+10%
+	战争支持度-5%
+国家整合者=national_integralist 
+	政治点数+15%
+	每周稳定度+0.10%
+技术官僚=technocrat 
+	科研速度+5%
+	民用工厂建造速度+5%
+反法西斯特工=anti_fascist_agent 
+	稳定度+10%
+	法西斯主义每日新增支持率-0.02
+人民联络家=connected_citizen 
+	政治点数+5%
+	稳定度+5%
+自由记者=liberal_journalist 
+	政治点数+5%
+	民主主义每日新增支持率+0.05
+政治委员=political_commissar 
+	最大指挥点数+30
+	共产主义每日新增支持率+0.10
+	政治点数+5
+钢铁拉扎尔=iron_lazar
+	火车可靠性+15%
+	火车建造花费+5%
+	石油转换效率+5%
+	补给中心建造速度+5
+	铁路建造速度+5%
+NKVD首脑=head_of_the_nkvd_yezhov_initial 
+	稳定度-5%
+	情报网强度增长率+10%
+	敌方特工被发现几率抵消+0.10
+	敌方特工被捕几率+15%
+	泄露给他国的民政情报-10%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

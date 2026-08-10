@@ -1,0 +1,101 @@
+"""
+export — en 翻译
+
+本文件由 tools/migrate_i18n.py 生成。后续手动维护。
+"""
+
+STRINGS: dict[str, str] = {
+    "export_auto_assign_states": "Assigned {count} unowned states to {tag}",
+    "export_auto_create_continent": "Auto-created default continent 'default_continent'",
+    "export_auto_create_country": "Auto-created default country AAA",
+    "export_auto_gen_sr": "Auto-generated {count} strategic regions",
+    "export_auto_gen_states": "Auto-generated {count} states (~15 provinces each)",
+    "export_auto_no_provinces": "Error: no province data, cannot auto-complete",
+    "export_auto_set_capital": "Country {tag} auto-set capital to province {pid}",
+    "export_btn_auto": "Auto-Complete & Export",
+    "export_btn_direct": "Export Directly (No Auto-Complete)",
+    "export_btn_export": "Export",
+    "export_can_auto": "can be auto-completed",
+    "export_check_assets": "Art Assets",
+    "export_check_assets_all_clean": "All {total} imported assets preserved (export will not overwrite)",
+    "export_check_assets_dirty": """{total} imported assets: {clean} preserved, {dirty} will be regenerated
+(related map data was edited)""",
+    "export_check_continent": "Continent",
+    "export_check_continent_ok": "{count} continents total",
+    "export_check_country": "Country",
+    "export_check_country_ok": "{count} countries total",
+    "export_check_country_unowned": "{count} countries, but {unowned} states have no owner",
+    "export_check_heightmap": "Heightmap",
+    "export_check_heightmap_ok": "Height data is set",
+    "export_check_land": "Land",
+    "export_check_no_continent": "No continent defined — default continent will be used on export",
+    "export_check_no_country": "No countries — at least one country is needed to enter the game",
+    "export_check_no_heightmap": "No height data — default heightmap will be auto-generated on export",
+    "export_check_no_land": "No land pixels. Please draw the map in Land mode first",
+    "export_check_no_provinces": "No province data. Please draw the map and generate provinces first",
+    "export_check_no_state": "No states — every land province must belong to a state, or the game will crash",
+    "export_check_no_strategic_region": "No strategic regions — every province must belong to a strategic region, or the game will crash",
+    "export_check_no_terrain": "No terrain data — will be auto-generated from tile_map on export",
+    "export_check_province_gaps": "{total} provinces total, but {gaps} ID gaps found (merged provinces need to be re-split or incrementally regenerated, otherwise HOI4 attributes will be misaligned)",
+    "export_check_province_ok": "{count} provinces total",
+    "export_check_provinces": "Provinces",
+    "export_check_state": "State",
+    "export_check_state_ok": "{count} states total",
+    "export_check_state_orphans": "{count} states, but {orphans} land provinces unassigned (will be auto-adopted on export)",
+    "export_check_strategic_region": "Strategic Region",
+    "export_check_strategic_region_ok": "{count} strategic regions total",
+    "export_check_terrain": "Terrain",
+    "export_check_terrain_ok": "Terrain data is set",
+    "export_choose_dir": "Choose Export Directory",
+    "export_confirm_skip": """The following data is missing: {names}
+
+Missing data will cause HOI4 to crash on load. Are you sure you want to skip auto-complete and export anyway?""",
+    "export_dlg_title": "Export MOD",
+    "export_done_all_pass": "Export succeeded, all checks passed!",
+    "export_done_has_errors": "Export succeeded, but verification found issues (may crash in game)",
+    "export_exporting": "Exporting...",
+    "export_failed": "Export failed: {}",
+    "export_failed_title": "Export Failed",
+    "export_log": "Operation Log",
+    "export_log_prefix": "Auto",
+    "export_pre_check_title": "Pre-Export Check",
+    "export_project_readiness": "Project Readiness",
+    "export_result_close": "Close",
+    "export_result_fixed_header": """
+── Auto-Fixed ──""",
+    "export_result_fixed_tag": "Fixed",
+    "export_result_stats_header": "── Statistics ──",
+    "export_result_success": """MOD exported successfully!
+Path: {path}
+""",
+    "export_result_title_errors": "Export Complete (Issues Found)",
+    "export_result_title_ok": "Export Complete",
+    "export_result_warning_tag": "Warning",
+    "export_result_warnings_header": """
+── Export Warnings ──""",
+    "export_scope": "Export Scope",
+    "export_scope_countries": "Countries (country_tags/countries/history)",
+    "export_scope_gfx": "Graphics (flags/portraits)",
+    "export_scope_localisation": "Localisation (localisation/)",
+    "export_scope_map": "Map files (BMP/CSV/positions/buildings)",
+    "export_scope_replace_path": "replace_path + descriptor.mod",
+    "export_scope_states": "States (history/states/)",
+    "export_scope_strategic_regions": "Strategic regions (strategicregions/weatherpositions)",
+    "export_scope_supply": "Supply system (supply_nodes/railways/supply_areas)",
+    "export_separator": ", ",
+    "export_stat_countries": "Countries",
+    "export_stat_files": "Files",
+    "export_stat_provinces": "Provinces",
+    "export_stat_states": "States",
+    "export_success": """MOD exported successfully!
+Path: {}""",
+    "export_title": "Export MOD",
+    "export_verify_all_pass": "  ✅ All checks passed. Ready to play!",
+    "export_verify_errors_header": """
+── MOD Verification: {count} errors (may cause crash) ──""",
+    "export_verify_header": """
+── MOD Verification ──""",
+    "export_verify_warnings_header": """
+── MOD Verification: {count} warnings ──""",
+    "export_worker_pre_check": "Running pre-export checks and fixes...",
+}

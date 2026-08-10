@@ -1,0 +1,95 @@
+【作者：幸好无声】  所有人可以使用、修改，祝所有mod制作者的制作道理顺利！
+建筑(buildings)在 /Hearts of Iron IV/common/buildings/*.txt 中定义。
+Hutao ----by 2025.4.2 14:32
+
+buildings = {
+    xxx = {
+		#注：以下定义大部分为可选选项，部分为互斥，请注意仔细筛选。
+		base_cost = 基础建造花费
+        per_level_extra_cost = 每一级增加的建造花费 #不写默认没有。
+		infrastructure_construction_effect = yes #是否受到基建等级的建造速度修正。
+        provincial = yes #是否只能在小格子上建造（如要塞），这些不能组合在一起（指shares_slots = yes）。
+        shares_slots = yes #是否使用建筑槽位。
+		value = 1 #决定建筑物在空中轰炸行动中的基础生命值，该生命值会随着建筑物的每一层而成倍增加。此外，这也决定了和平会议期间获得的分数。
+        damage_factor = 0.3 #修改该建筑在空袭或陆战中受到的伤害。正值会增加它，而负值会减少它。
+		allied_build = yes #如果定义，则使该建筑算作盟军建筑（意为盟友可以在你的领土建造，你也可以在盟友领土上建造）。
+        only_costal = yes #如果定义，则根据建筑的类型，将只能在沿海省份建造。
+        disabled_in_dmz = yes #如果添加，则该建筑物无法在非军事区建造或使用。
+		icon_frame = 3 #建筑物图标定义。整数显示 GFX_buildings_strip Sprite 中的哪个帧用于此建筑物。
+        base_cost_conversion = 3000 #转换花费。
+		show_modifier = yes #显示建造该建筑所会带来的修正。
+		per_controlled_building_extra_cost = 数字 #每多一个建筑就增加的建造花费。（与 per_level_extra_cost 不一样）
+		spawn_point = 生成点 #需要专门设定，下有。
+		hide_if_missing_tech = yes #没有被允许建造时是否隐藏。
+		special_icon = GFX_dam_icon_small #图标(参考地标)。
+		repair_speed_factor = 小数点后2位 #修复速率。(默认为1.0)
+		air_defence = 对空防御
+
+        show_on_map = 1 #确定每个州或每个省 （取决于建筑物类型） 为建筑物定义的建筑物模型数量。每个建筑构造将再添加一个模型。如果未指定，则没有地图模型。
+		show_on_map_meshes = 2 #确定每个建筑模型使用多少个图元。默认情况下，假定为 1。
+		always_shown = yes #如果指定，则无论建筑模型是否被战争迷雾覆盖，都将显示该模型。
+		has_destroyed_mesh = yes #如果指定，如果建筑物已被空袭或占领摧毁，将使游戏使用单独的模型。
+		centered = yes #不知道是什么（字面意思是“居中的”，可能和模型有关。）
+
+		military_production = 将指定数量的军工厂添加到控制器
+		general_production = 将指定数量的民用工厂添加到控制器
+		naval_production = 将指定数量的船坞添加到控制器
+		infrastructure =  yes #使建筑物被标记为基础设施（包括施工速度加成和额外资源）
+		air_base = yes #使建筑物被标记为空军基地
+		supply_node = yes #使建筑物被标记为供应节点
+		is_port = yes #使建筑物被标记为海军港口
+		land_fort = 数字，为该省增加了许多陆地堡垒
+		naval_fort = 数字，为该省增加了许多沿海堡垒
+		refinery = yes #使建筑物被标记为合成精炼厂
+		fuel_silo = yes #使建筑物被标记为燃料筒仓
+		radar = yes #使建筑物被标记为雷达站
+		rocket_production = 数字，定义每天在火箭生产方面取得了多少进展
+		rocket_launch_capacity = 数字，定义构建每天可以发射多少枚火箭
+		nuclear_reactor = yes #使建筑物被标记为核反应堆
+		gun_emplacement = yes #使建筑物被标记为多级加速大口径火炮
+
+		only_display_if_exists = yes #只有当（建筑）存在时才显示
+		is_buildable = no #能否建造
+		need_detection = yes #是否需要检测
+		need_supply = yes #是否需要补给
+		disable_grow_animation = yes # 禁用建筑物的建造动画，默认为no。
+		missing_tech_loc = 自定义本地化 #所需技术尚未被研究时，自定义本地化提示。(scripted_localization)
+		tags = { facility } #建筑标签，用于在突袭中以建筑物为目标，并damage_building效果。
+
+		#以下是未证实其作用的定义选项，请慎重尝试：
+		specialization = { specialization_naval }
+		detecting_intel_type = navy
+
+
+		country_modifiers = { #对于国家的修正
+			enable_for_controllers = { #什么国家控制的情况下修正才生效，不写则没有这个限制
+				TAG
+			}
+			modifiers = {
+				max_fuel_building = 1.5 #k（每级增加的储存石油上限）
+			}
+		}
+		level_cap = {
+			shares_slots = yes #是否和其他建筑共享该地区的格子（如军工民工共享一个地区的建筑槽）
+			#以下两个互斥
+			state_max = 数字 #建造上限（一块地）
+			province_max = 数字 #建造上限（一个小地块）
+			group_by = 随便写一个名字 #将此建筑归类到一个“建筑组”。限制同一类别的所有建筑使用相同的最大插槽。
+			exclusive_with = rocket_site #与指定建筑互斥（同一地块内）
+		}
+		state_modifiers = {
+			#填修正
+		}
+	}
+    
+}
+#每种地形类型的省级建筑的额外最高等级限制可以在 /Hearts of Iron IV/common/terrain/*.txt 文件中设置。（参考堡垒）
+
+spawn_points = { #生成点
+	xxx = {
+		type = state/province #大地块或小地块
+		max = 1 #应该有多少个生成点。
+		only_costal = yes #是否沿海。
+		disable_auto_nudging = yes #使用nudge工具时禁用自动定位。
+	}
+}

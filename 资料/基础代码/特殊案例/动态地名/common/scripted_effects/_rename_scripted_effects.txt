@@ -1,0 +1,308 @@
+enable_renaming = {  #开启动态地名
+	set_global_flag = allowrenaming_flag
+	do_all_renames = yes #自定义效果
+}
+
+disable_renaming = {  #取消动态地名
+	clr_global_flag = allowrenaming_flag
+
+	### reset endo states ###
+	every_state = { reset_state_name = yes } #重新设置所有省份名
+
+	### reset endo vps ###
+	reset_province_name = 13250  #重设胜利点名
+	reset_province_name = 11932
+	reset_province_name = 7115
+	reset_province_name = 957
+	reset_province_name = 12189
+	reset_province_name = 7868
+	reset_province_name = 4801
+	reset_province_name = 13250
+	reset_province_name = 11932
+	reset_province_name = 7115
+	reset_province_name = 12299
+	reset_province_name = 11531
+	reset_province_name = 587
+	reset_province_name = 495
+	reset_province_name = 11388
+	reset_province_name = 3326
+	reset_province_name = 6377
+	reset_province_name = 6521
+	reset_province_name = 3522
+	reset_province_name = 3473
+	reset_province_name = 3535
+	reset_province_name = 514
+	reset_province_name = 3561
+	reset_province_name = 11544
+	reset_province_name = 692
+	reset_province_name = 708
+	reset_province_name = 9515
+	reset_province_name = 9517
+	reset_province_name = 6780
+	reset_province_name = 7081
+	reset_province_name = 11666
+	reset_province_name = 3576
+	reset_province_name = 6560
+	reset_province_name = 3516
+	reset_province_name = 9620
+	reset_province_name = 6013
+	reset_province_name = 6711
+	reset_province_name = 9692
+	reset_province_name = 3581
+	reset_province_name = 4111
+	reset_province_name = 1056
+	reset_province_name = 11610
+	reset_province_name = 3152
+	reset_province_name = 9221
+	reset_province_name = 3569
+	reset_province_name = 6562
+	reset_province_name = 11564
+	reset_province_name = 3924
+	reset_province_name = 3868
+	reset_province_name = 6536
+	reset_province_name = 9495
+	reset_province_name = 279
+	reset_province_name = 3295
+	reset_province_name = 6558
+	reset_province_name = 9508
+	reset_province_name = 3230
+	reset_province_name = 11301
+	reset_province_name = 3254
+	reset_province_name = 3393
+	reset_province_name = 9304
+	reset_province_name = 3320
+	reset_province_name = 3392
+	reset_province_name = 6464
+	reset_province_name = 9427
+	reset_province_name = 442
+	reset_province_name = 11479
+	reset_province_name = 11411
+	reset_province_name = 3544
+	reset_province_name = 9559
+	reset_province_name = 678
+	reset_province_name = 9503
+	reset_province_name = 11516
+	reset_province_name = 9642
+	reset_province_name = 3560
+	reset_province_name = 13011
+	reset_province_name = 9490
+	reset_province_name = 11420
+	reset_province_name = 11548
+	reset_province_name = 575
+	reset_province_name = 9434
+	reset_province_name = 11563
+	reset_province_name = 485
+	reset_province_name = 3652
+	reset_province_name = 6613
+	reset_province_name = 3768
+	reset_province_name = 11465
+	reset_province_name = 3594
+	reset_province_name = 56
+	reset_province_name = 11519
+	reset_province_name = 3569
+	reset_province_name = 6418
+	reset_province_name = 9483
+	reset_province_name = 6314
+	reset_province_name = 6296
+	reset_province_name = 9262
+	reset_province_name = 310
+	reset_province_name = 3152
+	reset_province_name = 9221
+	reset_province_name = 3151
+	reset_province_name = 9098
+	reset_province_name = 11202
+	reset_province_name = 11241
+	reset_province_name = 9289
+	reset_province_name = 6232
+	reset_province_name = 6593
+	reset_province_name = 3457
+	reset_province_name = 476
+	reset_province_name = 721
+	reset_province_name = 3686
+	reset_province_name = 11683
+	reset_province_name = 488
+	reset_province_name = 11336
+	reset_province_name = 11349
+	reset_province_name = 117
+	reset_province_name = 3140
+	reset_province_name = 6245
+	reset_province_name = 3335
+	reset_province_name = 11437
+	reset_province_name = 11561
+	reset_province_name = 11405
+	reset_province_name = 6474
+	reset_province_name = 9461
+	reset_province_name = 418
+	reset_province_name = 3580
+	reset_province_name = 9355
+	reset_province_name = 11248
+	reset_province_name = 6269
+	reset_province_name = 487
+	reset_province_name = 11476
+	reset_province_name = 3529
+	reset_province_name = 3734
+	reset_province_name = 3672
+	reset_province_name = 9628
+	reset_province_name = 1599
+	reset_province_name = 11610
+	reset_province_name = 11659
+	reset_province_name = 9627
+	reset_province_name = 11581
+	reset_province_name = 3614
+	reset_province_name = 577
+	reset_province_name = 6711
+	reset_province_name = 6682
+	reset_province_name = 9606
+	reset_province_name = 690
+	reset_province_name = 11598
+	reset_province_name = 9620
+	reset_province_name = 914
+	reset_province_name = 11767
+	reset_province_name = 11842
+	reset_province_name = 9833
+	reset_province_name = 947
+	reset_province_name = 9799
+	reset_province_name = 11811
+	reset_province_name = 904
+	reset_province_name = 3951
+	reset_province_name = 3856
+	reset_province_name = 9878
+	reset_province_name = 10041
+	reset_province_name = 4112
+	reset_province_name = 928
+	reset_province_name = 9861
+	reset_province_name = 6807
+	reset_province_name = 10056
+	reset_province_name = 11881
+	reset_province_name = 9777
+	reset_province_name = 3870
+	reset_province_name = 9932
+	reset_province_name = 3979
+	reset_province_name = 11853
+	reset_province_name = 9868
+	reset_province_name = 6813
+	reset_province_name = 11746
+	reset_province_name = 10497
+	reset_province_name = 4512
+	reset_province_name = 9823
+	reset_province_name = 12029
+	reset_province_name = 12473
+	reset_province_name = 1056
+	reset_province_name = 3942
+	reset_province_name = 6883
+	reset_province_name = 1549
+	reset_province_name = 4111
+	reset_province_name = 792
+	reset_province_name = 10106
+	reset_province_name = 1086
+	reset_province_name = 7151
+	reset_province_name = 7011
+	reset_province_name = 9989
+	reset_province_name = 1130
+	reset_province_name = 11954
+	reset_province_name = 7005
+	reset_province_name = 11921
+	reset_province_name = 9994
+	reset_province_name = 7081
+	reset_province_name = 1145
+	reset_province_name = 9945
+	reset_province_name = 3882
+	reset_province_name = 6923
+	reset_province_name = 9902
+	reset_province_name = 9888
+	reset_province_name = 6967
+	reset_province_name = 9783
+	reset_province_name = 9612
+	reset_province_name = 3796
+	reset_province_name = 949
+	reset_province_name = 9771
+	reset_province_name = 6282
+	reset_province_name = 11372
+	reset_province_name = 362
+	reset_province_name = 6375
+	reset_province_name = 6332
+	reset_province_name = 3288
+	reset_province_name = 9570
+	reset_province_name = 11467
+	reset_province_name = 4180
+	reset_province_name = 9713
+	reset_province_name = 9671
+	reset_province_name = 3957
+	reset_province_name = 4180
+	reset_province_name = 10547
+	reset_province_name = 10187
+	reset_province_name = 4572
+	reset_province_name = 11905
+	reset_province_name = 11818
+	
+}
+
+do_all_renames = {  #自定义效果，进行所有命名
+	every_state = {
+		### Chinese ###
+		if = {
+			limit = { #判断省份控制国
+				controller = { is_independent_china_or_warlord = yes }
+			}
+			do_chinese_renames_in_asia = yes #进行对应的重命名
+		}
+		else_if = {
+			limit = { controller = { tag = RYU } }
+			do_ryukyuan_renames_in_asia = yes
+		}
+		else_if = {
+			limit = { controller = { tag = JAP } }
+			do_japanese_renames = yes
+		}
+		### France ###
+		else_if = {
+			limit = {
+				controller = { tag = FRA }
+			}
+			do_france_renames = yes
+		}
+		else_if = {
+			limit = {
+				controller = { tag = BRI }
+			}
+			do_breizh_renames_in_breizh = yes
+		}
+		### Germany ###
+		else_if = {
+			limit = {
+				controller = {
+					tag = GER
+					has_government = fascism
+				}
+			}
+			do_nazi_germany_renames = yes
+		}
+		### Greece ###
+		else_if = {
+			limit = {
+				controller = { tag = GRE }
+			}
+			do_greek_renames = yes
+		}
+
+		### Poland ###
+		else_if = {
+			limit = {
+				controller = { tag = POL }
+			}
+			do_polish_renames = yes
+		}
+
+		### Ottoman ###
+		else_if = {
+			limit = {
+				controller = {
+					tag = TUR
+					has_completed_focus = TUR_return_of_the_sultan
+				}				
+			}
+			do_ottoman_renames = yes
+		}
+	}
+}
+

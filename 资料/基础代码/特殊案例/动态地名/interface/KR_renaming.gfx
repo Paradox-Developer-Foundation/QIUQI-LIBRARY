@@ -1,0 +1,7 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_toggle_renaming_button"
+		texturefile = "gfx/interface/toggle_renaming_button.png"
+		noOfFrames = 2
+	}
+}

@@ -1,0 +1,152 @@
+
+# 自定义外交行动模板 #
+
+
+#scripted_diplomatic_actions = { #总文件结构，必须要加的
+#
+#	action_key = { #外交行动的名字，也会被用在大多数情况下关于这个外交行动的本地化上作为基本的本地化键。你可以在它的后面加上如_desc这样的后缀来添加它的描述之类的东西。
+#	
+#		# ROOT在这个文件中目前的部分指代外交行动的发送国家，THIS则是目标国家
+#		allowed = { #外交行动可用的条件，如果开局时条件不满足则永远不会启用
+#			always = yes
+#		}
+#		visible = { #外交行动可见的条件，不满足条件时不显示
+#			always = yes
+#		}
+#		selectable = { #外交行动可以被选择的条件。由于脚本外交条件只能设定原版硬编码的外交行动的条件，所以这里单独开了一个块。
+#			always = yes
+#		}
+#
+#		requires_acceptance = yes # 如果为yes，这个外交行动就需要目标国家接受才能有效（请求军事通行权这种）；为no或者不写则不需要（取消军事通行权、宣战这种）
+#		cost = 10 # 该行动的政治点数花费
+#		command_power = 10 # 该行动的指挥点数花费
+#
+#		cost_string = loc_key # 可以通过这个来设置自定义的成本文本
+#		show_acceptance_on_action_button = yes # 如果为yes，则显示目标国家的该外交行动接受度
+#
+#		icon = 1 # 通知图标在定义通知的图片中的序列帧位置。比如外交行动给目标国家后，目标国家显示的通知图标。
+#
+#       #对于这个文件中接下来的部分，的效果/触发器/变量，ROOT是发送国家，而THIS是目标国家（注：尽管没有变化，但原版注释依然强调了其在效果、触发器、变量中的这些作用域的指代情况）
+#
+#		# 外交行动发起之后执行的效果
+        ＃碎碎念：蠢驴为什么不在on_action里面做一个类似的效果？
+#		on_sent_effect = {
+#		}
+#
+#		# 如果外交行动可以被接受且被接受时执行的效果
+#		complete_effect = {
+#		}
+#
+#		# 如果外交行动可以被拒绝且被拒绝时执行的效果
+#		reject_effect = {
+#		}
+#
+#		# 自定义外交行动发送窗口
+#		# 在脚本GUI中使用diplomatic_action作为上下文（指context）
+#		# send_scripted_gui = send_scripted_gui_name # 设定发送时的外交行动窗口gui。如果设定了，外交行动将在发起之前使用这个脚本GUI。玩家（或ai）可以调整gui上的选项（如果有的话），并将内容存储为变量（如果有的话）以定制他们的行动（举个例子——宣战界面、正当化界面和发送军事顾问界面）
+#		reset_send_effect = { # 用于初始化脚本gui。内含初始化的条件。设计这个应该是为了让ai初始化gui的。
+#			# clear action
+#			if = {
+#				limit = { 
+#					root = {
+#						is_ai = yes
+#					}
+#				}
+#				# initialize for ai
+#			}
+#		}
+#		can_be_sent = { # 如果不满足条件，发送按钮将被禁用。比如正当化战争时没有选择造借口的领土，发送按钮就是灰色的。
+#			always = yes
+#		}
+#		send_description = loc_key ＃如果没有脚本gui，那么这个本地化键将会被用于发送窗口中的描述
+#
+#
+#		＃自定义外交行动接收窗口
+#		# 同样要在脚本gui里使用diplomatic_action作为上下文
+#		# receive_scripted_gui = receive_scripted_gui_name #如果设定，接收外交行动的一方将会收到一个脚本gui的窗口，而不是只有接受或者拒绝的窗口
+#		reset_receive_effect = { ＃用于初始化脚本gui。同上
+#			# clear action
+#			if = {
+#				limit = { 
+#					is_ai = yes
+#				}
+#				# change stuff for ai
+#			}
+#		}
+#		can_be_accepted = { # 如果不满足条件，接受按钮将会禁用。同上
+#			always = yes
+#		}
+#		receive_description = loc_key_receive # 如果没有脚本gui，这个本地化键将会用于窗口内的描述。同上
+#
+#		
+#		# 用于需要对方接受/拒绝的外交行动中，玩家接收到的反馈
+#		accept_title = loc_key_accept # 用于对方接受时，弹出的外交反馈通知的窗口的标题
+#		accept_description = loc_key_accept_desc ＃ 用于对方接受时，弹出的外交反馈通知的窗口的描述
+#		reject_title = loc_key_reject ＃ 类似上面
+#		reject_description = loc_key_reject_desc ＃类似上面
+#	
+#		
+#		# AI
+#		# 用于ai接受/拒绝外交行动的倾向设定
+#		ai_acceptance = { ＃该外交行动接纳度。这应该是个mtth块。因此你大概进行操作mtth那样相同的操作
+#			condition = { # 条件。这些条件的名字由相同名字的本地化键决定
+#				base = 100
+#			}
+#		}
+#
+#		# 和ai_will_do是一回事。决定ai发起这个外交行动的倾向。（注：默认作用域可能是THIS（目标国家）？ROOT是发送国。在示例里，这里的意思是ai使用的倾向默认为-1，但如果英国是发送国，目标是德国，则为1000）
+#		ai_desire = {
+#			base = -1
+#			modifier = {
+#				ROOT = {
+#					tag = ENG
+#				}
+#				tag = GER
+#				add = 1000
+#			}
+#		}
+#	}
+#}
+
+scripted_diplomatic_actions = { ＃来定制你的要求解散军队选项吧
+	DIP_ACTION_DISARM = {
+	allowed = { 
+	always = yes
+	}
+	visible = { 
+	always = yes
+	}
+	visible = { 
+	always = yes
+	}
+
+	send_description = DIP_ACTION_DISARM_SEND_DESC
+	receive_description = DIP_ACTION_DISARM_RECEIVE_DESC
+	accept_title = DIP_ACTION_DISARM_ACCEPT_TITLE
+	accept_description = DIP_ACTION_DISARM_ACCEPT_DESC
+	reject_title = DIP_ACTION_DISARM_REJECT_TITLE
+	reject_description = DIP_ACTION_DISARM_REJECT_DESC
+
+	requires_acceptance = yes
+
+	#行动发送时运行
+	on_sent_effect = {
+	}	
+	# 行动成功发送并被接受时运行
+	complete_effect = { ＃目标国删除所有军队和舰船
+		THIS = {
+			delete_unit = all
+			destroy_ships = all
+		}
+	}	
+	# 行动发送但被拒绝时运行
+	reject_effect = {
+		ROOT = {
+			create_wargoal = {
+    		type = anytype ＃填一个战争借口，只要在wargoal中定义了
+    		target = PREV.THIS
+		}
+	}
+	}
+	}
+}

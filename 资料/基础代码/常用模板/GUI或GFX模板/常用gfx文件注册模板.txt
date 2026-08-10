@@ -1,0 +1,163 @@
+常用gfx文件注册模板 截止1.14.7 by秋起.
+
+1.通用图片（.dds）文件注册模板
+spriteTypes = {				
+	spriteType = {
+		name = GFX_图片文件的名字
+		texturefile = "图片文件的路径地址"
+		effectFile = 着色器路径    定义图片文件的效果。例如说按钮点击时的效果；进度条的加载。具体效果可以在 Hearts of Iron IV/gfx/FX/*.lua 中寻找
+		noOfFrames = x （x为数值） 定义图片分为几帧（也就是传统意义上的分帧图）
+
+
+		legacy_lazy_load = yes/no 定义图片是否能够延迟加载（默认是no）
+		allwaystransparent = yes/no 定义玩家是否可以与图片交互（如果是，则类似于按钮，玩家可以点击图片，实现交互；如果否，则不可以点击图片。—— 注意是“点击”）
+		transparencecheck = yes/no 透明的部分是否可以点击
+
+		animation = { 向图像添加动画（常见于国策shine注册）
+            animationmaskfile = 动画图片的蒙版（蒙版）
+            animationtexturefile = 用于控制彩色图片（底图）
+            animationrotation = 控制动画图像的旋转。默认情况下，它是顺时针 -90。
+            animationlooping = yes/no  控制动画是否循环
+            animationtime = 控制动画的持续时间。以秒为单位。
+            animationdelay = 控制动画循环之间的延迟。以秒为单位。
+            animationblendmode = 控制图像的混合模式。p社提供了三种： "add"(添加/置入) "multiply"（正片叠底） "overlay"（叠加）
+            animationtype = 控制动画的类型。p社wiki提供了三种： "scrolling"（滚动动画） "rotating"（旋转动画） "pulsing"（“脉冲”动画）
+            animationrotationoffset = { 控制旋转的 X 和 Y 偏移量。
+                x = <float>
+                y = <float>
+            }
+            animationtexturescale = { 控制动画图像的比例。
+                x = <float>
+                y = <float>
+            }
+            animationframes = { 设置动画图像中的帧数。
+			}
+        }
+
+		注意：.dds文件的在注册时最大文件大小约为 16MB
+	}
+}
+
+2.分帧动画系列 序列帧动画
+spriteTypes = {
+    frameAnimatedSpriteType = {
+        name = "GFX_<name>" 名字
+        texturefile = "<path>"  图片路径
+        noOfFrames = <int>  你图片中切割帧的多少（分的帧数）
+        effectFile = "<path>" 着色器效果（非必要不添加 实际运用中也就只有进度条和GUI会用到这玩意了）
+        
+        animation_rate_fps = <int> 播放动画的帧数
+        looping = yes/no 动画是否循环
+        play_on_show =  yes/no 动画是否一开始（当你看见它时）就播放
+        pause_on_loop = 动画播放完毕后，暂停多少秒再进行下一个
+        
+        allwaystransparent = yes/no 透明部分是否可点击
+    }
+}
+
+
+3.进度条注册
+spriteTypes = {
+    progressbartype = {
+        name = "GFX_<name>" 进度条名称
+        textureFile1 = "<path>" 满进度的进度条的图片
+        textureFile2 = "<path>" 空进度的进度条的图片（背景）
+
+        size = { 进度条大小（一般是你进度条本身大小）
+            x = <int>
+            y = <int>
+        }
+		color = { <r> <g> <b> } 填充颜色（选填）
+        colortwo = { <r> <g> <b> } 未填充颜色（选填）
+        effectFile = "gfx/FX/progress.lua" 这是进度条着色器，p社原版自带的差不多已经可以满足我们的所需了
+        horizontal = yes/no 横向填充（yes）/竖向填充（no）
+        steps = 填充步数 一般默认为100（选填）
+    }
+}
+
+4.定义文本字体颜色
+bitmapfonts = { 用在本地化，使用这个符号§<字符>xxx§。可以改变字体颜色
+    textcolors = {
+        定义代表这个字体颜色的字符 = { <r> <g> <b> } 字体颜色的RGB值
+    }
+}
+
+
+5.自建字体
+bitmapfonts = {
+    bitmapfont = {
+        name = 字体名字
+        path = 字体所在路径
+        color = 字体的默认颜色（选填，一般在制作时就已经定义完成） - 白色：0xffffffff -黑色：0x00000000
+        border_color = 是字体的边框颜色（选填，一般在制作时就已经定义完成）
+        fontfiles = { 当字体文件大于1个时。则使用fontfiles 代替 path 进行注册字体
+            <path>
+            <path>
+        }
+        textcolors = { 字体颜色（选填）
+            <symbol> = { <r> <g> <b> }
+        }
+        cursor_offset = { 偏移字体的文本光标。定义 x 位置，然后定义 y 位置。（wiki如是说）
+            x = x
+            y = x
+        }
+    }
+}
+
+6.字体：覆盖特定区域位置设定的字体（例如地图字体）
+bitmapfonts = {
+    bitmapfont_override = {
+        name = 字体名字
+        fontfiles = {字体文件所在路径
+            <path>
+            <path>
+        }
+        languages = { 该变动生效适用于哪些语言
+            <language>
+            <language>
+        }
+    }
+}
+
+7.国策注册（包含图片注册和shine注册）
+
+spriteTypes = { shine注册模板（我们会用中文标注哪些是可更改的） - 其他原封不动直接复制即可
+
+    图片注册部分
+    spriteType = {
+        name = 图片注册后的name
+        texturefile = gfx/interface/goals/国策图片.dds   国策图片路径
+    }
+
+	shine注册部分
+    spriteType = {
+        name = 图片注册后的name_shine # Change the name, note to keep _shine in the end
+        texturefile = gfx/interface/goals/国策图片.dds # Change to the focus icon
+        effectFile = gfx/FX/buttonstate.lua
+        animation = {
+            animationmaskfile = gfx/interface/goals/国策图片.dds # Change to the focus icon
+            animationtexturefile = gfx/interface/goals/shine_overlay.dds
+            animationrotation = -90.0
+            animationlooping = no
+            animationtime = 0.75
+            animationdelay = 0
+            animationblendmode = "add"
+            animationtype = "scrolling"
+            animationrotationoffset = { x = 0.0 y = 0.0 }
+            animationtexturescale = { x = 1.0 y = 1.0 }
+        }
+        animation = {
+            animationmaskfile = gfx/interface/goals/国策图片.dds # Change to the focus icon
+            animationtexturefile = gfx/interface/goals/shine_overlay.dds
+            animationrotation = 90.0
+            animationlooping = no
+            animationtime = 0.75
+            animationdelay = 0
+            animationblendmode = "add"
+            animationtype = "scrolling"
+            animationrotationoffset = { x = 0.0 y = 0.0 }
+            animationtexturescale = { x = 1.0 y = 1.0 }
+        }
+        legacy_lazy_load = no
+    }
+}

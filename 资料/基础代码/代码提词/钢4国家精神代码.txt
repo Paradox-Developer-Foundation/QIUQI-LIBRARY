@@ -1,0 +1,803 @@
+#持续性效果
+
+modifier = {   
+
+#陆军
+
+offence #攻击
+
+defence #防御
+
+army_attack_factor #单位攻击
+
+army_defence_factor #单位防御
+
+army_core_attack_factor #核心领土单位攻击
+
+army_core_defence_factor #核心领土单位防御
+
+army_infantry_attack_factor #步兵攻击
+
+army_infantry_defence_factor #步兵防御
+
+motorized_attack_factor #摩托化步兵攻击
+
+motorized_defence_factor #摩托化步兵防御
+
+mechanized_attack_factor #机械化步兵攻击
+
+mechanized_defence_factor #机械化步兵防御
+
+special_forces_attack_factor #特种部队攻击
+
+special_forces_defence_factor #特种部队防御
+
+army_artillery_defence_factor #炮兵防御
+
+army_artillery_attack_factor #炮兵攻击
+
+army_armor_attack_factor #装甲单位攻击
+
+army_armor_defence_factor #装甲单位防御
+
+cavalry_attack_factor #骑兵攻击
+
+cavalry_defence_factor #骑兵防御
+
+army_org_factor #陆军组织度
+
+army_morale_factor #陆军组织度恢复
+
+org_loss_when_moving #移动中组织度损失
+
+army_speed_factor #陆军速度
+
+land_reinforce_rate #增援率
+
+breakthrough_factor #突破
+
+supply_consumption_factor #补给消耗
+
+out_of_supply_factor #补给耗尽
+
+local_supplies #当地补给能力
+
+no_supply_grace #携行补给时间+(h 小时)
+
+attrition #陆军损耗
+
+heat_attrition_factor #炎热损耗
+
+winter_attrition_factor #寒冷损耗
+
+acclimatization_hot_climate_gain_factor #炎热适应度增长率
+
+acclimatization_cold_climate_gain_factor #寒冷适应度增长率
+
+experience_gain_army_unit_factor #陆军师经验增长
+
+experience_loss_factor #有经验的士兵损失
+
+equipment_capture #装备缴获比例增长
+
+training_time_factor #训练时间
+
+minimum_training_level #最小训练程度
+
+special_forces_training_time_factor #特种部队训练时间
+
+special_forces_cap #特种部队容量上限乘数
+
+combat_width_factor #己方战场宽度
+
+dig_in_speed_factor #堑壕速度
+
+max_dig_in #壕沟上限
+
+max_planning #计划加成上限
+
+planning_speed #计划速度
+
+enemy_army_bonus_air_superiority_factor #敌方空中支援
+
+transport_capacity #部队运输船需求
+
+naval_invasion_capacity #登陆作战上限
+
+invasion_preparation #登录准备时间
+
+amphibious_invasion_defence #登录防护
+
+amphibious_invasion #两栖登录速度
+
+#海军
+
+naval_strike #对海攻击 
+
+naval_hit_chance #海军命中率 
+
+naval_speed_factor #海军速度
+
+naval_detection #对海探测
+
+navy_max_range_factor #海军最大航程参数
+
+navy_submarine_detection_factor #对潜探测
+
+navy_anti_air_attack_factor #海军对空攻击
+
+sortie_efficiency #出击效率
+
+carrier_traffic #舰载机起降能力
+
+experience_gain_navy_unit_factor #舰船经验增长
+
+positioning #阵位
+
+spotting_chance #索敌速度
+
+naval_coordination #舰队协同性
+
+repair_speed_factor #船只修理速度
+
+refit_speed #改装速度
+
+refit_ic_cost #改装成本
+
+screening_efficiency #屏卫效率
+
+mines_planting_by_fleets_factor #海军布雷效率
+
+mines_sweeping_by_fleets_factor #海军扫雷效率
+
+naval_mines_effect_reduction #规避水雷
+
+naval_mines_damage_factor #水雷伤害
+
+naval_accidents_chance #海军事故几率
+
+naval_mine_hit_chance #水雷命中率
+
+#空军
+
+air_attack_factor #对空攻击
+
+air_maximum_speed_factor #空军最大速度
+
+air_range_factor #空军航程
+
+air_agility_factor #机动
+
+air_detection #对空探测
+
+air_accidents #空军事故概率
+
+air_accidents_factor #空军事故概率
+
+air_mission_efficiency #空军任务效率
+
+air_bombing_targetting #对地攻击瞄准
+
+naval_strike_targetting_factor #对海攻击瞄准
+
+air_superiority_detect_factor #战机侦测能力
+
+air_superiority_efficiency #夺取制空权任务效率
+
+army_bonus_air_superiority_factor #空优
+
+strategic_bomb_visibility #战略轰炸可见度
+
+air_night_penalty #夜间行动惩罚
+
+air_weather_penalty #恶劣天气惩罚
+
+mines_planting_by_air_factor #空中布雷效率
+
+mines_sweeping_by_air_factor #空中扫雷效率
+
+#海陆空 将领
+
+air_ace_generation_chance_factor #王牌机师产生的概率
+
+experience_gain_factor #将领经验增长
+
+military_leader_cost_factor #指挥官花费
+
+army_leader_cost_factor #陆军指挥官花费
+
+navy_leader_cost_factor #海军指挥官花费
+
+army_leader_start_level #新陆军将领初始等级
+
+navy_leader_start_level #新海军将领初始等级
+
+army_leader_start_attack_level #新陆军将领初始攻击能力
+
+army_leader_start_defense_level #新陆军将领初始防御能力
+
+army_leader_start_planning_level #新陆军将领初始规划能力
+
+army_leader_start_logistics_level #新陆军将领初始后勤能力
+
+navy_leader_start_attack_level #新海军将领初始攻击能力
+
+navy_leader_start_defense_level #新海军将领初始防御能力
+
+navy_leader_start_maneuvering_level #新海军将领初始机动能力
+
+#海陆空 军事经验
+
+experience_gain_army #每日陆军经验增长
+
+experience_gain_army_factor #陆军经验增长
+
+experience_gain_navy #每日海军经验增长
+
+experience_gain_navy_factor #海军经验增长
+
+experience_gain_XXX_combat_factor #XXX(舰船)战斗经验增长(海军)
+
+experience_gain_XXX_training_factor #XXX(舰船)训练经验增长(海军)
+
+experience_gain_air #每日空军经验增长
+
+experience_gain_air_factor #空军经验增长
+
+air_mission_xp_gain_factor #空军任务经验增长
+
+air_training_xp_gain_factor #空军训练经验增长
+
+max_command_power #最大指挥点数提高
+
+command_power_gain_mult #每日指挥点数增长乘数
+
+#占领和抵抗
+
+occupation_cost #占领花费
+
+autonomy_gain #每日自治度进度增长
+
+compliance_gain #每日顺从度增长
+
+resistance_target #抵抗目标
+
+resistance_growth #抵抗增长速度
+
+operation_boost_resistance_outcome #加强抵抗组织效率
+
+compliance_growth_on_our_occupied_states #我们被敌人占领地区的顺从度增长速度
+
+resistance_decay_on_our_occupied_states #我们被敌人占领地区的抵抗下降速度
+
+resistance_growth_on_our_occupied_states #我们被敌人占领地区的抵抗增长速度
+
+resistance_damage_to_garrison #对驻军伤害
+
+required_garrison_factor #驻军需求
+
+#情报部门
+
+encryption #加密
+
+decryption #解密
+
+decryption_power #破译能力
+
+army_intel_decryption_bonus #破译陆军密码加成
+
+navy_intel_decryption_bonus #破译海军密码加成
+
+airforce_intel_decryption_bonus #破译的空军密码加成
+
+civilian_intel_to_others #泄露给他国的民政情报
+
+army_intel_to_others #泄露给他国的陆军情报
+
+navy_intel_to_others #泄露给他国的海军情报
+
+airforce_intel_to_others #泄露给他国的空军情报
+
+operative_slot #特工位
+
+new_operative_slot_bonus #特工招募选项
+
+resistance_garrison_penetration_chance #驻军渗透机会
+
+operation_infiltrate_outcome #渗透效率
+
+agency_upgrade_time #情报机构升级时间
+
+intelligence_agency_defense #反间谍
+
+target_sabotage_cost #破坏活动花费
+
+local_factory_sabotage #破坏建设几率
+
+own_operative_harmed_time_factor #破坏时间
+
+enemy_operative_harmed_time_factor #敌方破坏时间
+
+own_operative_detection_chance_factor #我方特工被发现几率系数
+
+enemy_operative_detection_chance_factor #敌方特工被发现几率系数
+
+own_operative_capture_chance_factor #我方特工被捕几率
+
+enemy_operative_capture_chance_factor #敌方特工被捕几率
+
+own_operative_forced_into_hiding_time_factor #被迫躲藏时间
+
+enemy_operative_forced_into_hiding_time_factor #敌方被迫躲藏时间
+
+own_operative_intel_extraction_rate #情报获取率
+
+enemy_operative_intel_extraction_rate #敌方特工情报获取率
+
+operation_outcome #行动效率 
+
+operation_risk #行动风险
+
+operation_cost #行动花费
+
+propaganda_mission_factor #政治宣传任务成果
+
+boost_ideology_mission_factor #加强意识形态任务成果
+
+operation_steal_tech_outcome #窃取蓝图效率 
+
+operation_steal_tech_risk #窃取蓝图风险 
+
+operation_steal_tech_cost #窃取蓝图花费  
+
+operation_infiltrate_risk #渗透风险 
+
+operation_infiltrate_cost #渗透花费 
+
+target_sabotage_risk #破坏活动风险 
+
+target_sabotage_cost #破坏活动花费 
+
+boost_resistance_factor #加强抵抗组织效率
+
+operation_boost_resistance_risk #加强抵抗组织风险 
+
+operation_boost_resistance_cost #加强抵抗组织花费 
+
+operation_fake_intel_outcome #假情报效率 
+
+operation_fake_intel_risk #假情报风险 
+
+operation_fake_intel_cost #假情报花费 
+
+operation_capture_cipher_outcome #夺取密码效率 
+
+operation_capture_cipher_risk #夺取密码风险 
+
+operation_capture_cipher_cost #夺取密码花费 
+
+operation_coordinated_strike_outcome #协同打击效率 
+
+operation_coordinated_strike_risk #协同打击风险 
+
+operation_coordinated_strike_cost #协同打击花费 
+
+operation_collaboration_government_outcome #筹备合作政府效率 
+
+operation_collaboration_government_risk #筹备合作政府风险 
+
+operation_collaboration_government_cost #筹备合作政府花费 
+
+operation_coup_government_outcome #进行颠覆效率 
+
+operation_coup_government_risk #进行颠覆风险 
+
+operation_coup_government_cost #进行颠覆花费 
+
+operation_rescue_operative_outcome #营救特工效率 
+
+operation_rescue_operative_risk #营救特工风险 
+
+operation_rescue_operative_cost #营救特工花费 
+
+operation_make_resistance_contacts_outcome #接触抵抗组织效率 
+
+operation_make_resistance_contacts_risk #接触抵抗组织风险 
+
+operation_make_resistance_contacts_cost #接触抵抗组织花费 
+
+#政府
+
+XXX_drift #XXX党派每日新增支持率
+
+drift_defence_factor #意识形态变化抵制力度
+
+foreign_subversive_activites #外国颠覆活动效率
+
+political_power_gain #每日获得的政治点数
+
+political_power_cost #每日消耗的政治点数
+
+political_power_factor #政治点数(%)
+
+stability_weekly #每周稳定度
+
+stability_factor #稳定度
+
+defensive_war_stability_factor #防御战争对稳定度修正
+
+war_support_weekly #每周战争支持度
+
+war_support_factor #战争支持度
+
+mobilization_speed #动员速度
+
+conscription #适役人口
+
+conscription_factor #适役人口修正
+
+non_core_manpower #非核心人力
+
+weekly_manpower #每周人力
+
+local_manpower #当地人力
+
+surrender_limit #投降界限(100%)
+
+max_surrender_limit_offset #最低投降界限(20%)
+
+#内阁
+
+disabled_ideas = 1 #禁止修改内阁和法律
+
+political_advisor_cost_factor #政治顾问花费
+
+trade_laws_cost_factor #贸易法案花费
+
+mobilization_laws_cost_factor #征兵法案花费
+
+economy_cost_factor #经济法案花费
+
+tank_manufacturer_cost_factor #装甲制造商花费
+
+naval_manufacturer_cost_factor #海军制造商花费
+
+aircraft_manufacturer_cost_factor #飞机制造商花费
+
+materiel_manufacturer_cost_factor #军需品设计花费
+
+industrial_concern_cost_factor #工业企业花费
+
+high_command_cost_factor #总司令花费
+
+air_chief_cost_factor #空军部长花费
+
+navy_chief_cost_factor #海军部长花费
+
+army_chief_cost_factor #陆军部长花费
+
+theorist_cost_factor #理论家花费
+
+min_export #可出口资源
+
+#工厂与资源
+
+research_speed_factor #研究速度
+
+local_resources_factor #战略资源获取率
+
+local_resources #当地资源
+
+consumer_goods_factor #生活消费品
+
+industrial_capacity_factory #工厂产出
+
+production_factory_max_efficiency_factor #生产效率上限
+
+production_factory_efficiency_gain_factor #生产效率增长
+
+production_factory_start_efficiency_factor #基础生产效率
+
+line_change_production_efficiency_factor #生产效率保持
+
+industrial_capacity_dockyard #船厂产出
+
+nuclear_production_factor #核弹产出
+
+equipment_conversion_speed #改装速度加成
+
+global_building_slots_factor #地区最大工业值
+
+local_factories #当地工业值
+
+industry_air_damage_factor #工厂受轰炸易损性
+
+#建造
+
+production_speed_buildings_factor #建造速度
+
+production_speed_industrial_complex_factor #民用工厂建造速度
+
+production_speed_arms_factory_factor #军用工厂建造速度
+
+production_speed_infrastructure_factor #基础设施建造速度
+
+production_speed_air_base_factor #空军基地建造速度
+
+production_speed_naval_base_factor #海军基地建造速度
+
+production_speed_coastal_bunker_factor #海岸要塞建造速度
+
+production_speed_bunker_factor #陆上要塞建造速度
+
+production_speed_anti_air_building_factor #防空炮阵建造速度
+
+production_speed_synthetic_refinery_factor #合成炼油厂建造速度
+
+production_speed_fuel_silo_factor #储油罐建造速度
+
+production_speed_rocket_site_factor #火箭基地建造速度
+
+production_speed_radar_station_factor #雷达站建造速度
+
+production_speed_nuclear_reactor_factor #核反应堆建造速度
+
+conversion_cost_civ_to_mil_factor #民转军消耗
+
+conversion_cost_mil_to_civ_factor #军转民消耗
+
+industry_repair_factor #工厂修复速度
+
+industry_free_repair_factor #免费维修
+
+max_fuel_factor #燃料容量
+
+fuel_gain_factor #石油转换燃料效率
+
+license_purchase_cost #生产许可购买花费
+
+license_armor_purchase_cost #装甲车辆生产许可购买花费
+
+license_air_purchase_cost #空军装备生产许可购买花费
+
+license_production_speed #许可装备生产速度
+
+#AI
+
+opinion_gain_monthly_factor #改善关系
+
+improve_relations_maintain_cost_factor #改善关系持续花费
+
+trade_opinion_factor #贸易协定关系修正
+
+XXX_acceptance #XXX党派接纳度
+
+justify_war_goal_time #正当化战争目标所需时间
+
+enemy_justify_war_goal_time #其他国家对我国正当化战争目标所需时间
+
+generate_wargoal_tension #制造战争目标紧张度限制
+
+ai_get_ally_desire_factor #AI修正:加入或扩大一个阵营的意愿
+
+join_faction_tension #参加阵营紧张度限制
+
+ai_join_ally_desire_factor #AI修正:参加战争意愿
+
+ai_call_ally_desire_factor #AI修正:请求盟友加入战争意愿
+
+lend_lease_tension #租借法案紧张度限制
+
+guarantee_tension #保障独立紧张度限制
+
+guarantee_cost #保障独立花费
+
+ai_badass_factor #AI修正:威胁度敏感度
+
+ai_focus_aggressive_factor #AI修正:专注攻击
+
+ai_focus_defense_factor #AI修正:专注防御
+
+send_volunteer_size #志愿军数量上限
+
+send_volunteer_divisions_required #可派遣志愿军数量下限
+
+}
+
+#对国家的修正
+
+targeted_modifier = {
+
+tag = XXX(国家tag)
+
+attack_bonus_against #我国对XXX攻击修正
+
+defense_bonus_against #我国对XXX防御修正
+
+breakthrough_bonus_against #我国对XXX突破修正
+
+}
+
+#针对研究的修正
+
+research_bonus = {
+
+light_air_research #轻型飞机研究速度 
+
+medium_air_research #中型飞机研究速度 
+
+heavy_air_research #重型飞机研究速度 
+
+armor_research #装甲研究速度 
+
+artillery_research #炮兵研究速度 
+
+naval_air_research #海军航空兵研究速度 
+
+infantry_weapons_research #武器和装备研究速度 
+
+motorized_equipment_research #摩托化研究速度 
+
+naval_equipment_research #海军研究速度 
+
+rocketry_research #导弹研究速度 
+
+nuclear_research #核能研究速度 
+
+industry_research #工业研究速度 
+
+electronics_research #电子研究速度 
+
+land_doctrine_research #陆战学说研究速度
+
+battlefield_support_tree #战场支援学说研究速度
+
+naval_doctrine_research #海战学说研究速度 
+
+air_doctrine_research #空战学说研究速度
+
+strategic_destruction_tree_research #战略破坏学说研究速度
+
+jet_technology_research #喷气式飞机技术研究速度
+
+}
+
+#针对装备的修正
+
+equipment_bonus = {
+
+XXX = {
+
+soft_attack #对人员杀伤
+
+naval_speed #最大速度
+
+naval_range #最大航程
+
+surface_detection #对海探测
+
+sub_visibility #水下可见度
+
+air_range #作战半径
+
+air_attack #对空攻击
+
+air_ground_attack #对地攻击
+
+naval_strike_attack #对海攻击
+
+air_bombing #战略轰炸
+
+#通用
+
+build_cost_ic #制造花费 
+
+instant = yes #瞬间制造(必要)
+
+}
+
+}
+
+#XXX(可以填入的) = {
+
+infantry_equipment #步兵装备
+
+screen_ship #屏卫舰
+
+carrier #航空母舰
+
+capital_ship #主力舰
+
+destroyer #驱逐舰
+
+submarine #潜艇
+
+ship_hull_light #轻型船体
+
+convoy #运输船
+
+fighter #战斗机
+
+cv_fighter #舰载战斗机
+
+jet_fighter #喷气式战斗机
+
+rocket_interceptor_equipment #喷气式截击机
+
+CAS_equipment #近距离支援机
+
+cv_CAS_equipment #舰载近距离支援机
+
+nav_bomber_equipment #海军轰炸机
+
+cv_nav_bomber_equipment #舰载海军轰炸机
+
+heavy_fighter_equipment #重型战斗机
+
+tac_bomber_equipment #战术轰炸机
+
+jet_tac_bomber_equipment  #喷气式战术轰炸机
+
+strat_bomber_equipment #战略轰炸机
+
+jet_strat_bomber_equipment #喷气式战略轰炸机
+
+transport_plane_equipment #运输机
+
+guided_missile_equipment #制导导弹
+
+scout_plane_equipment #侦察机
+
+}
+
+#规则
+
+rule = {
+
+#填写(yes #OR# no)
+
+can_create_factions #是否可以创建阵营
+
+can_boost_other_ideologies #是否可以提高其他意识形态的支持率
+
+can_send_volunteers #是否可以派遣志愿军
+
+can_use_kamikaze_pilots #是否可以自杀式袭击
+
+can_generate_female_aces #是否允许有女性王牌
+
+}
+
+#仅对领导人特质有用
+
+ai_focus_war_production_factor #AI修正：专注战时生产
+
+ai_focus_military_advancements_factor #AI修正：专注先进军事科技研究
+
+ai_focus_military_equipment_factor #AI修正：专注军备
+
+ai_focus_peaceful_factor #AI修正：专注和平
+
+ai_focus_naval_factor #AI修正：专注海军
+
+ai_focus_naval_air_factor #AI修正：专注海军
+
+ai_focus_aviation_factor #AI修正：专注空军 
+
+
+
+
+	army_attack_factor=1000
+	army_defence_factor=1000
+	army_org_factor=1000
+	army_morale_factor=1000
+	org_loss_when_moving=-1000
+	army_speed_factor=1000
+	land_reinforce_rate=1000
+	breakthrough_factor=1000
+	supply_consumption_factor=-1000
+	out_of_supply_factor=-1000
+	no_supply_grace=1000
+	attrition=-1000
+	minimum_training_level=-1000
+	combat_width_factor=-1000

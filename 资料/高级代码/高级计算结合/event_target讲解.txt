@@ -1,0 +1,53 @@
+我们首先需要知道event_target是什么？
+event_target类似于一个临时变量，只不过这样讲可能反而容易让大家云里雾里。那么我们不妨把它理解为一个“飞镖”或“标记点”
+我们主要讲event_target最经典的用法“引用state的名称”
+假设我们现在是一个美国内战mod的制作人员，我们现在需要逐个写出“路易斯安那州宣布独立”、“德克萨斯州宣布独立”、“佐治亚州宣布独立”三个事件。
+那么我们是否必须得做三个独立的事件呢？这是否太麻烦了？
+答案是只要运用event_target，我们就能用一个万用事件解决这个问题。
+首先假设我们的思路是：做一个任务式决议，每隔30天在随机一个美国南方省份设置state_flag_1，这个state_flag是我们日后用来确认这些土地在内战中属于哪一方、以及这个决议要避开哪些state（以免重复触发）。
+可是我们同时希望在这个任务决议完成时，玩家可以收到一个提示，让他们了解哪些地块出了问题。于是我们就顺势产生了制作上面所述的事件的想法。
+假设这个任务决议每次完成会触发event.1，而event.1需要在不同情况下显示为：“路易斯安那州宣布独立”、“德克萨斯州宣布独立”、“佐治亚州宣布独立”
+那要完成这种需求，就得用到event_target了。
+有人可能会说：能不能用state_event呢？把触发地设置为当地，然后在本地化事件时遇到地名就写[FROM.GetName]？这并不行，因为state_event并不是说这个state发送出了一个event，如果你写[FROM.GetName]，那它只会指向把这个事件发送给你的国家，在我举的这个例子里，[FROM.GetName]会指向美国自己，变成“美国宣布独立”。
+正确的做法是，在这个决议里额外添加一个state_flag，我们不仅给目标state设置state_flag_1，还得设置stae_flag_2。
+接着我们就要正式用到event_target了。
+我们在通过决议任务触发的事件里这样书写：
+country_event = {
+	id = usa_state_event.1
+	title = usa_state_event.1.t
+	desc = usa_state_event.1.desc
+	picture = GFX_event_1
+	
+	immediate = {
+		hidden_effect = {
+			every_core_state = {
+				limit = { has_state_flag = stae_flag_2 }
+				save_event_target_as = independent_usa_state
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = usa_state_event.1.a
+		event_target:independent_usa_state = {
+			clr_state_flag = stae_flag_2
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+首先我们运用immediate在事件出来的一瞬间施加一个效果，效果是：把有state_flag_2的state保存为event_target，什么样的event_target呢？答案是名字叫independent_usa_state的event_target。
+现在的效果就等于我们已经把一个标记扔向了拥有state_flag_2的state，我们锁定了它。你可以进一步理解为，现在在这个事件内（因为event_target是临时的），event_target:independent_usa_state（意思为名叫independent_usa_state的event_target）就等于拥有state_flag_2的state，二者是同样的。
+所以你才会看到我们在option里面写：
+event_target:independent_usa_state = {
+	clr_state_flag = stae_flag_2
+}
+也就是删掉这个地块上的state_flag_2。这是因为state_flag_2的使命已经完成了，要是再留着它就会干扰下一次event_target的锁定了。
+代码搭建完成，现在只需要进行本地化即可。
+前面已经讲过，在这个事件内（因为event_target是临时的），event_target:independent_usa_state（意思为名叫independent_usa_state的event_target）就等于拥有state_flag_2的state
+所以我们直接将事件的本地化标题写为："[independent_usa_state.GetName]宣布独立"即可，写[event_target:independent_usa_state.GetName]大概也没问题，只是可能没有啥特别意义。
+然后你就会看到state的name成功经由event_target引了出来。
+我们顺利地只做了一个event.1，就解决了所有南方州都可以通用的独立事件。

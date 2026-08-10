@@ -1,0 +1,11 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			#UI Setup
+			for_each_scope_loop = {
+				array = global.players
+				set_country_flag = show_welcome_splash
+			}
+		}
+	}
+}

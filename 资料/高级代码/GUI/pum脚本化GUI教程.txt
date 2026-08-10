@@ -1,0 +1,322 @@
+
+注意！请最好使用vsc或n++打开本教案以获得最佳效果！！！！！！！
+
+#################################
+#################################
+###第二部分：脚本化GUI（基础）###
+#################################
+#################################
+
+首先，脚本化GUI储存在/Hearts of Iron IV/common/scripted_gui/*.txt内部
+
+在该文件中一个脚本化GUI的完整例子如下：
+scripted_gui = {
+    <name> = {
+        window_name = 这一窗口的名称（自己随便取）
+        context_type = 可以理解为GUI的作用域
+		##########################################################################################################################################
+		#GUI的作用域问题（默认作用域即为如果你什么作用域都不写，效果会触发在的那个作用域）														 #
+		#player_context类型指gui文件中提到的默认作用域是使用GUI的国家。																			 #
+		#selected_country_context意味着默认作用域是所选国家（比如如果你右键选中了一个国家），而ROOT是正在使用GUI的国家（正在玩弄这个GUI的你自己）#
+		#selected_state_context的默认作用域是所选state（你左键点出了一个state的信息页面，你就选中了它），ROOT是使用GUI的国家。					 #
+		#decision_category将允许你的GUI用在决议里面，做决议gui必须选这个，默认作用域当然是你自己。												 #
+		#使用所选上下文时，请务必记住，默认范围是所选类型的范围，而不是使用 GUI 本身的国家/地区，这意味着在处理所述国家/地区时，				 #
+		#您需要显式将范围限定为 ROOT。																											 #
+		##########################################################################################################################################
+        parent_window_token = 从属于哪个窗口（填写令牌，可选，但是我自己用的时候感觉不如parent_window_name）
+		#######################################################
+		wiki上对此给出的令牌：
+		top_bar
+		decision_tab
+		technology_tab
+		trade_tab
+		construction_tab
+		production_tab
+		deployment_tab
+		logistics_tab
+		diplomacy_tab（仅当未选择国家/地区时）
+		selected_country_view_diplomacy（与其他国家的外交观点）
+		selected_country_view_info（与其他国家/地区的信息分类帐视图）
+		politics_tab
+		tech_infantry_folder
+		tech_support_folder
+		tech_armor_folder
+		tech_artillery_folder
+		tech_land_doctrine_folder
+		tech_naval_folder
+		tech_naval_doctrine_folder
+		tech_air_techs_folder
+		tech_air_doctrine_folder
+		tech_electronics_folder
+		tech_industry_folder
+		national_focus
+		civilian_ledger
+		army_ledger
+		navy_ledger
+		air_ledger
+		########################################################
+		parent_window_name = 效果同上（但是填写具体的窗口）
+		#举个例子，如果你打算在玩家点选state的时候，在state信息窗口里面加装一个按钮，就可以在这里写地区信息那个窗口的名字，那么这个gui就会跟随地区窗口一起出现。
+         
+        visible = {
+            GUI可见的前提
+        }
+        
+        effects = {
+            <element>_click = { #元素名称_click 此处写左键点击某个元素时触发的效果
+                <effects>
+            }
+            <element>_<modifier>_click = { #元素名称_修正_click 此处写点击某个元素时触发的效果（modifier可以写right，表示右键点击）
+                <effects>
+            }
+        }
+        
+        triggers = {
+            <element>_click_enabled = {
+                <triggers> #某某元素允许被点击的条件
+            }
+            <element>_visible = {
+                <triggers> #某某元素可见的条件
+            }
+        }
+        
+        properties = {
+            <element> = {
+                image = <string> #该属性使用的图像（可以采用动态文本以实现动态化的gui）
+                frame = <var> #该属性使用的帧（用于多帧图片），可参考苏联宣传画决议
+                x = <var> #操作属性内元素的坐标，但是不建议在这里使用，建议写在interface
+                y = <var>
+            }
+        }
+        
+        ai_enabled = {
+            <triggers> #何种条件下为GUI启动AI，如果你不希望ai使用可以填always = no
+        }
+        
+        ai_test_parent = <string> #几乎没有看到任何mod使用，按照Wiki的说法和我自己的类推，大概类似于parent_window_token，这里填入另一个GUI窗口的名字，可
+		#让当前GUI的ai_test跟随那个GUI的ai_test，但是真实的、正确的用法不得而知。
+        
+        ai_test_interval = <int> #ai检查GUI的频率，以小时为单位
+        ai_test_variance = <float> #确定ai检查的时间方差，即指定的方差除以2的正负（我也看不懂这是什么逼东西），不过方差应该也是限定ai检查频率的手段
+        ai_test_scopes = <type> #ai在哪些作用域检查GUI，如果你在context_type写的是player_context或decision_category，那么此行是不必要的，因为使用gui界面
+		#仅在该国家自己这里就能完成，但是如果用到selected_state_context或selected_country_context，即选择特定的国家或地区后“展示”的GUI，那就有必要告诉ai
+		#应该在哪些作用域去检查。当然也可以不写，这会导致ai把全世界的国家或地区都检查一遍，造成性能受损，如果你不需要这种全面的检查，建议不这么做。
+		可以填入此处的作用域例子：
+		#国家方面：
+		test_self_country #自己
+		test_enemy_countries #敌国
+		test_ally_countries #盟友国家
+		test_neighbouring_countries #接壤国家
+		test_neighbouring_ally_countries #接壤的盟友
+		test_neighbouring_enemy_countries #接壤的敌人
+		#state方面：
+		test_self_owned_states #检查自己拥有的地
+		test_enemy_owned_states #检查敌人拥有的地
+		test_ally_owned_states #检查盟友拥有的地
+		test_self_controlled_states #（将拥有换为控制）
+		test_enemy_controlled_states
+		test_ally_controlled_states
+		test_neighbouring_states #检查接壤的地
+		test_neighbouring_enemy_states #检查接壤的敌国土地
+		test_neighbouring_ally_states #检查接壤的盟友土地
+		test_contesded_states #一部分沦陷于敌一部分还在我们控制下的地
+        
+        ai_check = {
+            <triggers> #在ai_test_interval指定的频率下检查这个条件，如果不符合则会迫使ai忽略此处的GUI
+        }
+        
+        ai_check_scope = {
+            <triggers> #通过ai_test_scopes我们已经限定了ai检查的范围，我们在这里进一步填写具体的限制条件进一步过滤需要检查的东西
+        }
+        
+        ai_max_weight_taken_per_test = <int> #一般ai每次行动只会点击权重最高的元素，你可以在这里让ai一次行动点选多个元素（点多少个就写多少）
+        
+        ai_weights = { #只要权重大于0，ai就会尝试点击！
+            <element>_<modifiers>_click = { #ai以左键（右键）点击某元素的权重
+                ai_will_do = {
+                    base = <int>
+                    factor = <float>
+                    add = <float>
+                    #就是正常的ai_will_do填法
+                    modifier = {
+                        factor = <float>
+                        add = <float>
+                        
+                        <triggers>
+                    }
+                }
+                ignore_lower_weights = {
+                    factor = <float> #告诉ai在此处factor高于0时忽略低于指定权重（也就是现在我们所处的这个元素点击倾向的权重）的每个操作，这是为了避免
+					#ai点gui点到消耗太多资源或点数，导致点不了一些关键GUI
+					#比如如果有一个消耗20pp的gui按钮，权重50，但是ai此时只有10pp，那么ai很可能跑去点消耗10pp但是权重只有25的另一个gui，最后可能导致ai一
+					#辈子都不会点前者。
+					#但是很少使用，我至少没有在TNO里面看到有关例子，不建议大家去用。
+                }
+				weight = 1 #TNO中使用，但是wiki里面没有任何相关例证与条目，可能是控制该元素点击权重的总体权重的
+            }
+        }
+    }
+	
+	以上是GUI文件自身的设置
+	
+	接下来是GUI需要用到的interface文件写法，包括.gui文件和.gfx文件
+	他们都储存在interface文件夹内部
+	
+	
+	gfx文件一如既往服务于图像的注册，这里不需展开。gui文件则是GUI的门面。
+	如果把脚本化gui比作一个建筑物，那么/Hearts of Iron IV/common/scripted_gui/*.txt是它的地基，而.gui文件便是它地面上的主体。
+	首先我们举例说明interface的.gui文件写法
+	
+	首先我们要创立一个窗口
+	containerWindowType = {
+		name = "message_popup_window" #窗口名称（需要独一无二）
+		position = { x = -225 y = -160 } #窗口位置
+		size = { width = 500 height = 320 } #窗口的大小
+		orientation= center #窗口定位
+		moveable = yes #能否被鼠标拖动
+		fade_time = 200 #消失时的延迟
+		fade_type = linear #窗口消失时的消失方式（类似做ppt时的动画效果）
+		verticalScrollbar = "right_vertical_slider" #采用的滚动条类型，不写则没有滚动条
+		scroll_wheel_factor = 40 #滚动条的滚轮修正（我猜是滚动速度）
+		smooth_scrolling = yes #是否为丝滑的滚动条（对性能有影响，但是观感更好）
+		show_sound = diplomatic_notification #跳出时的音效
+		hide_sound = menu_close_window #关闭时的音效
+		click_to_front = yes #点击后可跳到最前面（类似于图层，哈哈）
+		
+		#用于大窗口背景的元素
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_bg"
+		}
+		
+		#注意，很多文字窗口、图标、按钮下的定义都是可以互相通用的，并没有定死
+		
+		#文字窗口
+		instantTextBoxType = {
+			name = "title" #窗口名称（最好独一无二）
+			position = { x = 110 y = 36 } #窗口位置
+			textureFile = "" #一个屁用没有的代码（Wiki所言），但是p社还是经常把它写出来
+			font = "hoi_18mbs" #文本窗口内部用什么字体
+			borderSize = {x = 0 y = 0} #文本框的边界框
+			text = "Title" #文本内容，用此处来进行本地化
+			maxWidth = 280 #文本最大宽度，大于后文字会提行
+			maxHeight = 24 #文本最大高度，大于后字就被挤出去了
+			fixedsize = yes #如果文字挤出去了，是否截断越位的文字
+			format = centre #对齐方式（这里是居中对齐）
+		}
+
+		#图标
+		iconType = {
+			name = "diplo_war_large_icon"
+			spriteType = "" #用于图标的图像（但是一般都是用的下一条）
+			quadTextureSprite ="GFX_diplo_war_large_icon" #图标采用的图像（动态或多帧）
+			centerposition = no #设置位置时是否以图标的正中心为基准
+			position = { x= 16 y = 6 } #图标位置
+			Orientation = "UPPER_LEFT" #设置位置的原点（和centerposition类似但是更具体），这里是以左上角为基准点确定位置
+			alwaystransparent = yes #强制允许点击，也就是你可以点它来玩
+			pdx_tooltip = "" #鼠标悬停于这个图标时，产生的悬停页面有什么文字
+			pdx_tooltip_delayed = "" #基于上一条，这是延迟的提示，你可以这样思考：上一条的悬停类似于你鼠标移动到民族精神上面后立刻产生的关于精神名称和
+			#效果的悬停页面，但是你如果继续悬停一小会儿，就会在下面出现新的内容也就是民族精神的文本介绍，这个延迟提示就是类似于民族精神介绍的东西
+			frame = #如果你弄的是一个多帧图片，那么这里决定用哪一帧
+		}
+		
+		#按钮
+		buttonType = {
+			name = "ok_button" #按钮框名称
+			position = { x=180 y =265} #位置
+			quadTextureSprite ="GFX_button_123x34" #按钮元素
+			buttonText = "OK" #按钮文字
+			buttonFont = "hoi_18mbs" #文字字体
+			shortcut = "RETURN" #为此按钮添加的快捷方式（你自己做gui的时候这条可能较少用到，因为gui一般通过脚本化gui文件自己来实现返回）
+			clicksound = "" #点击时的音效
+			oversound = "" #鼠标悬停时的音效
+		}
+	}
+}
+
+有了上述知识，让我们自己写一个超事件吧！
+
+scripted_gui = {
+    <name> = {
+        window_name = xstlond_pregnant_OMG #xstlond怀孕了？！OMG，是男是女？
+        context_type = player_context
+         
+        visible = {
+            has_global_flag = xstlond_pregnant_OMG_flag #flag出现时跟着出现
+        }
+        
+        effects = {
+            xstlond_pregnant_OMG_button_click = { 
+                clr_global_flag = xstlond_pregnant_OMG_flag #点击按钮后移除flag，使得超事件消失
+            }
+        }
+        
+        triggers = {
+            xstlond_pregnant_OMG_button_enabled = {
+				always = yes #其实可以不写
+            }
+        }
+	}
+}
+
+interface里面我们这样写：
+containerWindowType = {
+		name = "xstlond_pregnant_OMG_window" #窗口名称（注意与脚本化gui文件的window_name一致）
+		position = { x = -225 y = -160 } #窗口位置
+		size = { width = 500 height = 320 } #窗口的大小
+		orientation= center #窗口定位
+		moveable = yes #能否被鼠标拖动
+		fade_time = 200 #消失时的延迟
+		fade_type = linear #窗口消失时的消失方式（类似做ppt时的动画效果）
+		show_sound = 婴儿啼哭声 #跳出时的音效
+		hide_sound = 舒伯特摇篮曲 #关闭时的音效
+		click_to_front = yes #点击后可跳到最前面（类似于图层，哈哈）
+		
+		#背景，直接把你做好的超事件边框（画框）放进来吧！
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_xstlond_my_wife_bg"
+		}
+		
+		#文字窗口（超事件标题）
+		instantTextBoxType = {
+			name = "event_title" #窗口名称（最好独一无二）
+			position = { x = 110 y = 0 } #窗口位置
+			font = "hoi_18mbs" #文本窗口内部用什么字体
+			borderSize = {x = 0 y = 0} #文本框的边界框
+			text = "xstlond_pregnant_OMG" #文本内容，用此处来进行本地化
+			maxWidth = 280 #文本最大宽度，大于后文字会提行
+			maxHeight = 24 #文本最大高度，大于后字就被挤出去了
+			fixedsize = yes #如果文字挤出去了，是否截断越位的文字
+			format = centre #对齐方式（这里是居中对齐）
+		}
+		
+		#文字窗口（超事件正文）
+		instantTextBoxType = {
+			name = "event_desc" #窗口名称（最好独一无二）
+			position = { x = 110 y = 36 } #窗口位置
+			font = "hoi_18mbs" #文本窗口内部用什么字体
+			borderSize = {x = 0 y = 0} #文本框的边界框
+			text = "xstlond_pregnant_OMG_desc" #文本内容，用此处来进行本地化
+			maxWidth = 300 #文本最大宽度，大于后文字会提行
+			maxHeight = 100 #文本最大高度，大于后字就被挤出去了
+			fixedsize = yes #如果文字挤出去了，是否截断越位的文字
+			format = left #对齐方式（这里是左对齐）
+		}
+		
+		#按钮
+		buttonType = {
+			name = "xstlond_pregnant_OMG_button" #按钮框名称（注意与effects里面的xstlond_pregnant_OMG_button保持一致）
+			position = { x=180 y =265} #位置
+			quadTextureSprite ="GFX_button_123x34" #按钮元素
+			buttonText = "OK" #按钮文字
+			buttonFont = "hoi_18mbs" #文字字体
+			clicksound = "" #点击时的音效
+			oversound = "" #鼠标悬停时的音效
+		}
+	}
+}
+
+以上就是本期PUM代码教学内容了，希望大家能有所收获！我们下次再见。
+作者：我电锯呢 （b站id也是这个）
+PUM粉丝群群号：948522045，欢迎大家前来游玩！

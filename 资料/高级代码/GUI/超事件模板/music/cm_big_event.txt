@@ -1,0 +1,22 @@
+
+music_station = "cm_big_event"
+
+music = {
+	song = "se_song_of_japanese_youth"	
+	chance = {
+		factor = 0
+	}
+}
+
+music = {
+	song = "se_die_wacht_am_rhein"	
+	chance = {
+		factor = 0
+	}
+music = {
+	song = "se_Zentrales_Orchester_der-NVA-_Marsch-des_York_schen_Corps"	
+	chance = {
+		factor = 0
+	}
+  }
+}

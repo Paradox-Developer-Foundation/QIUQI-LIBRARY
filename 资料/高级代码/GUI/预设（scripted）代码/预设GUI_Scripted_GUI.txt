@@ -1,0 +1,27 @@
+scripted_gui = {
+	
+	你的效果名字 ={
+		window_name = "你的主窗口名字"
+		context_type = 常用player_context，具体查wiki
+		
+		visible = {
+			主窗口显示的条件
+		}
+		
+		effects = {
+			窗口部件（按钮）名_click = {
+				这个按钮点击后要实现的效果
+			}
+		}
+		
+		triggers = {
+			窗口部件（按钮）名_enabled = {
+				按钮允许点击的条件
+			}
+			窗口部件（按钮）名_visible = {
+				单个按钮显示的条件
+			}
+		}
+		
+	}
+}

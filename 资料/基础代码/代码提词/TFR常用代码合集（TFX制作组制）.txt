@@ -1,0 +1,392 @@
+income_growth_factor = -0.05 #月度收入增长
+personal_value_factor = -0.15 #个人产值系数
+personal_expense_factor = 0.15 #私人消费系数
+business_value_factor = 0.15 #商业产值系数
+expense_growth_factor = 0.05 #月度支出
+misc_income = 0.05 #杂项收入
+personal_expense = -0.01 #私人消费
+tax_business_rate = 0.1 #商业税税率
+tax_personal_rate = 0.05 #个人税税率
+interest_rate = 0 #利率
+inflation_monthly = 0.002 #月度通胀率
+business_value = 12 #商业产值
+dtg_threshold = 0.3 #债务负担上限
+
+#陆军海军空军维护费（正数代表减维护费，负数代表加维护费）
+land_doctrine_cost_factor = 0.2
+air_doctrine_cost_factor = 0.2
+naval_doctrine_cost_factor = 0.2
+
+industrial_development_monthly = 0.02 工业发展系数
+society_development_monthly = -0.05 社会发展系数
+poverty_development_monthly = -0.02 贫困发展系数
+academic_development_monthly = 0.005 教育发展系数
+military_development_monthly = 0.015 军事发展系数
+farming_development_monthly = 0.15 农业发展系数
+
+#添加各种发展系数具体写法：
+set_temp_variable = {
+	var = (poverty)_development_var_temp 
+	value = -0.1
+}
+add_(poverty)_development = yes
+#括号里填industrial society poverty academic military farming代表工业 社会发展 贫困 教育 军事 农业发展系数
+#value正值代表+ 负值代表减
+#增加/减少债务
+set_temp_variable = {
+	var = debt_var_temp
+	value = 0.5（正代表增加 负代表减少）
+}
+add_debt_with_inflation = yes
+#增加/减少流动金
+set_temp_variable = {
+	var = income_var_temp
+	value = 1500（正代表增加，负代表减少）
+}
+add_income_with_inflation = yes
+#加通胀/减通胀
+set_temp_variable = {
+	inflation_var_temp = -0.5（正代表增加，负代表减少）
+}
+add_inflation = yes
+
+
+#发电站 核电站 办公园区 能源农场 建造速度
+production_speed_nuclear_reactor_factor = 0.05
+production_speed_office_park_factor = 0.05
+production_speed_power_plant_factor = 0.05
+production_speed_energy_farm_factor = 0.05
+
+#在tfr1.05版本更新了经济体制，经济体制只是简单的民族精神，体制如下：
+ZZZ_capitalist_economy #资本主义
+ZZZ_american_capitalism #美式资本主义
+ZZZ_collective_capitalism #集体资本主义
+ZZZ_oligopolistic_capitalism #寡头资本主义
+ZZZ_welfare_capitalism #福利资本主义
+ZZZ_corporatism #法团
+ZZZ_managed_economy #纳粹法团
+ZZZ_command_economy #指令经济
+ZZZ_planned_economy #计划经济
+ZZZ_socialist_market #社会主义市场经济
+ZZZ_developed_socialism #发达社会主义
+ZZZ_military_controlled_economy #军管经济
+ZZZ_worker_controlled_economy #工人主导经济
+ZZZ_chaostic_economy #经济混乱
+ZZZ_minarchism #小政府主义
+ZZZ_ancap #无政府资本主义
+
+切换已存在的经济体制的方法：
+change_economy_type_XXX = yes
+XXX为去掉zzz的经济体制buff名称
+例如：
+change_economy_type_capitalist_economy = yes
+代表将经济体制切换到资本主义
+
+如果要想自己造一个新的经济体制，我们需要做什么呢？
+1.写一个民族精神：
+hidden_ideas = {
+			ZZZ_tfx_economy = {
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+				modifier = {
+					consumer_goods_factor = -0.02
+					production_factory_efficiency_gain_factor = 0.02
+					production_speed_infrastructure_factor = -0.015
+					production_speed_office_park_factor = 0.015
+					business_value_factor = 0.05
+					personal_value_factor = -0.05
+				}
+			}
+}
+格式书写尽量规范 要不然不好进行处理
+2.写一个scriped_effects
+#这个部分是移除所有经济体制（必须要写 自己写的经济体制也要写进去 要不容易出问题）
+remove_economy_types = {
+	remove_ideas = {
+		ZZZ_capitalist_economy
+		ZZZ_american_capitalism
+		ZZZ_collective_capitalism
+		ZZZ_oligopolistic_capitalism
+		ZZZ_welfare_capitalism
+		ZZZ_corporatism
+		ZZZ_managed_economy
+		ZZZ_command_economy
+		ZZZ_planned_economy
+		ZZZ_socialist_market
+		ZZZ_developed_socialism
+		ZZZ_military_controlled_economy
+		ZZZ_worker_controlled_economy
+		ZZZ_chaostic_economy
+		ZZZ_minarchism
+		ZZZ_ancap
+		ZZZ_tfx_economy
+	}
+}
+#这部分是切换经济体制的自定义效果
+change_economy_tfx_economy = {
+	custom_effect_tooltip = change_economy_type_tfx_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = tfx_economy
+	}
+}
+tfr切换经济体制的方式其实很暴力
+先是移除所有的经济体制 然后再add_ideas
+本地化：change_economy_type_tfx_economy_tt: "我们的§Y经济制度§!变为§C TFX主义 §!"
+
+
+
+3.写一个scriped_gui
+#如果要想给我们的这个tfx经济写一个图标，在这里修改就好了
+#打开TFR_scripted_guis_ZZZ_global_association.txt
+#修改位置为economy_type_countrypoliticsview_gui
+triggers = {
+			TFR_no_economy_type_icon_visible = {
+				NOT = {
+					has_idea = ZZZ_capitalist_economy
+					has_idea = ZZZ_american_capitalism
+					has_idea = ZZZ_collective_capitalism
+					has_idea = ZZZ_collective_capitalism2
+					has_idea = ZZZ_oligopolistic_capitalism
+					has_idea = ZZZ_welfare_capitalism
+					has_idea = ZZZ_corporatism
+					has_idea = ZZZ_managed_economy
+					has_idea = ZZZ_command_economy
+					has_idea = ZZZ_planned_economy
+					has_idea = ZZZ_socialist_market
+					has_idea = ZZZ_developed_socialism
+					has_idea = ZZZ_military_controlled_economy
+					has_idea = ZZZ_worker_controlled_economy
+					has_idea = ZZZ_chaostic_economy
+					has_idea = ZZZ_minarchism
+					has_idea = ZZZ_ancap
+					has_idea = ZZZ_tfx_economy
+				}
+			}
+			TFX_tfx_economy_type_icon_visible = {
+				has_idea = ZZZ_tfx_economy
+			}
+		}
+#图标注册在TFR_interface_economy.gfx:
+spriteType = {
+		name = "GFX_tfx_economy" 
+		texturefile = "(这里为图标路径）" 
+		legacy_lazy_load = no
+	}	
+		
+4.#最后的本地化：
+修改countrypoliticsview.gui:
+iconType = {
+			name = "TFX_tfx_economy_politics_icon"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_tfx_economy"
+			pdx_tooltip = "TFX_tfx_TT"
+			pdx_tooltip_delayed = "TFR_tfx_TT_LONG"
+}
+修改countrytradeview.gui：
+iconType = {
+				name = "TFX_tfx_economy_type_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_tfx_economy"
+				pdx_tooltip = "TFX_tfx_TT"
+				pdx_tooltip_delayed = "TFR_tfx_TT_LONG"
+}	
+修改00_TFR_scripted_loc_ZZZ_generic:
+name = GetEconomyType
+	text = {
+		trigger = {
+			has_idea = ZZZ_tfx_economy
+		}
+		localization_key = ZZZ_tfx_economy
+	}
+
+ZZZ_tfx_economy #民族精神本地化
+TFX_tfx_TT #经济体制介绍
+TFR_tfx_TT_LONG #长篇介绍及体制图片
+
+#在tfr1.06版本更新了政治体制，政治体制只是简单的民族精神，体制如下：
+ZZZ_russian_political_system # 俄罗斯政治体制  
+ZZZ_chinese_political_system # 中国政治体制  
+ZZZ_parliamentary_republic # 议会制共和国  
+ZZZ_presidential_republic # 总统制共和国  
+ZZZ_american_presidential_republic # 美式总统制共和国  
+ZZZ_semi_presidential_system # 半总统制  
+ZZZ_presidential_dictatorship # 总统独裁制  
+ZZZ_fascist_dictatorship # 法西斯独裁制  
+ZZZ_military_dictatorship # 军事独裁制  
+ZZZ_nazi_dictatorship # 纳粹独裁制  
+ZZZ_ultranationalist_dictatorship # 极端民族主义独裁制  
+ZZZ_eurasianist_system # 欧亚主义体制  
+ZZZ_islamic_republic # 伊斯兰共和国  
+ZZZ_theocracy # 神权统治  
+ZZZ_ai_governance # 人工智能统治  
+ZZZ_neo_soviet_republic # 新苏维埃共和国  
+ZZZ_communist_party_state # 共产党国家  
+ZZZ_american_peoples_dictatorship # 美式人民独裁  
+ZZZ_socialist_republic # 社会主义共和国  
+ZZZ_revolutionary_front # 革命阵线  
+ZZZ_provisional_government # 临时政府  
+ZZZ_absolute_monarchy # 君主专制  
+ZZZ_constitutional_monarchy # 君主立宪制  
+ZZZ_semi_constitutional_monarchy # 半君主立宪制  
+ZZZ_annihilation_cult # 毁灭邪教  
+
+#切换政治体制
+change_government_type_communist_party_state = yes #将国家切换成共产党国家
+
+#tfr如何添加科技卡
+目前tfr的学说：
+air_superiority 防空作战
+formation_flying 跨区行动
+fleet_in_being 存在舰队
+trade_interdiction 贸易阻断
+base_strike 基地打击
+mobile_warfare 北约 西方学说
+mass_assault 集安 东方学说
+asymetrical_warfare 不对称战争
+目前tfr的科技：
+#步兵科技
+infantry_weapons 步兵武器
+infantry_tech 步兵科技
+night_vision 夜视
+#外骨骼没有特殊科技类型 吃步兵武器卡和步兵科技卡
+cat_mechanized_equipment 机械化装备
+motorized_equipment 摩托化装备
+#注意 机械化装备只吃机械化卡 摩托化装备吃步兵科技和摩托化卡 轻机械化装备吃机械化和摩托化卡
+
+mountaineers_tech 山地卡
+para_tech 伞兵卡
+marine_tech 海军陆战队
+#一个莫名其妙的特种部队（有全地形增益，但是没描述） 吃伞兵科技和步兵科技的卡
+#特种部队升级科技吃山地 伞兵 海军陆战队科技卡
+
+#支援装备
+support_tech 支援科技
+engineers_tech 工兵科技
+recon_tech 侦查科技
+military_police_tech 宪兵队科技
+maintenance_company_tech 维修连科技
+hospital_tech 战地医院科技
+logistics_tech 后勤连科技
+signal_company_tech 通信连科技
+train_tech 火车科技
+#注意 直升机科技吃中型飞机卡和空军科技卡
+
+#火炮科技
+artillery 火炮科技
+mio_cat_all_artillery_equipment 所有火炮科技
+cat_self_propelled 自行火炮科技
+#所有火炮都只有这三种科技卡
+
+
+#装甲科技（分有无no step back dlc的科技树）
+#这里是没有nsb dlc的装甲科技
+armor 装甲科技
+cat_light_armor 轻坦科技
+#man the guns添加运输船科技 两栖坦克吃tp_tech（即运输船科技卡）
+#这里是有nsb dlc的装甲科技
+armor 装甲科技
+cat_light_armor 轻坦科技
+mio_cat_tech_light_armor_and_modules 轻型装甲科技
+cat_medium_armor 中坦科技
+
+#海军科技（分有无 man the guns dlc科技树）
+#无MTG科技树
+naval_equipment 海军科技
+dd_tech 驱逐科技（小型护卫舰）
+cl_tech 轻巡洋科技（驱逐科技）
+ca_tech 重巡洋科技 
+bb_tech 战列科技（导弹巡洋舰）
+cv_tech 航母科技
+ss_tech 潜艇科技
+tp_tech 运输船科技
+#有MTG科技树
+naval_equipment 海军科技
+dd_tech 驱逐科技（小型护卫舰）
+ship_modules_tech 舰艇模块科技
+asw_tech 反潜科技
+cl_tech 轻巡洋科技
+ca_tech 重巡洋科技 （这俩在tfr叫驱逐）
+bb_tech 战列科技（导弹巡洋舰）
+cv_tech 航母科技
+ss_tech 潜艇科技
+tp_tech 运输船科技
+cat_ship_light_battery 轻炮科技
+cat_ship_medium_battery 中炮科技
+cat_ship_heavy_battery 重炮科技
+cat_torpedoes 鱼雷科技
+naval_mines 水雷科技
+naval_minelaying 水雷布置科技
+
+#空军科技（分有无by blood alone dlc科技树）
+#无BBA科技树
+light_air 小飞机科技
+cas_bomber 近距离支援机
+air_equipment 空军装备科技
+mio_cat_all_light_aircraft_and_modules 所有小飞机科技
+light_fighter 小型战斗机
+naval_air 舰载机科技
+naval_bomber 海轰
+heavy_air 重飞机科技
+cat_strategic_bomber 轰炸机
+medium_air 中飞机
+tactical_bomber 无人机
+cat_scout_plane 侦察机
+#有BBA科技树
+light_air 轻型飞机科技
+mio_cat_all_light_aircraft_and_modules 所有小飞机科技
+light_fighter 战斗机
+mio_cat_all_light_fighter_and_modules 所有战斗机科技
+cas_bomber 近距离支援机
+naval_air 舰载机
+naval_bomber 海轰
+air_equipment 空军装备科技
+medium_air 中型飞机
+tactical_bomber 无人机
+cat_heavy_fighter 重型战斗机
+heavy_air 重型飞机
+cat_strategic_bomber 轰炸机
+jet_technology 喷气式引擎科技
+rocketry 火箭科技（另一个无人机科技）
+plane_modules_tech 飞机模组科技
+cat_air_engine 飞机引擎科技
+mio_cat_all_medium_aircraft_and_modules 所有中飞机科技
+cat_air_bombs 飞机炸弹科技
+cat_air_guns 机枪科技
+
+#工业系列的我都放在一起了
+electronics 电子科技
+radar_tech 雷达科技
+energy 发电厂
+nuclear 核电
+industry 工业
+concentrated_industry_category 集中工业
+dispersed_industry_category 离散工业
+construction_tech 建筑
+excavation_tech 挖掘工程
+synth_resources 合成资源
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

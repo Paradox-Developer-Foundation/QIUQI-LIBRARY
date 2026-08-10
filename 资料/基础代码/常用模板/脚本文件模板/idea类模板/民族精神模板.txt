@@ -1,0 +1,182 @@
+#文件路径：MOD文件夹/common/ideas/ideas文本文档.txt
+ideas = {
+	
+	hidden_ideas = {
+		隐藏民族精神id/名字 = {
+
+			allowed_civil_war = {
+				内战国家继承的条件 如has_government = democratic
+			}
+
+			on_add = { 获得该idea时的效果
+				效果
+			}
+			on_remove = { 移除该idea时的效果
+				效果
+			}
+
+			do_effect = { 满足什么条件时这个idea才会真正有效
+				条件
+			}
+			cancel = { 满足什么条件会移除该idea
+				条件
+			}
+			modifier = {
+				国家scope的modifier
+			}
+
+			equipment_bonus = {
+				装备名字或分类 = {
+					装备scope的modifier
+					instant = yes/no 是否立刻生效
+				}
+			}
+
+			research_bonus = {
+				科研分类 = 数值
+			}
+
+			rule = { 设定国家规则，如是否可以加入阵营、是否可以对其他国家造战争借口
+				国家规则可在mod常用代码里找到
+			}
+
+		}
+	}
+
+
+	country = {
+		
+		国家民族精神id/名字 = {
+			
+			picture = 自动检测或指定，指定的图片为在.gfx文件里的图片名（name那行），移除GFX_idea后的名字
+
+			allowed_civil_war = {
+				内战国家继承的条件 如has_government = democratic
+			}
+		
+			on_add = { 获得该idea时的效果
+				效果
+			}
+			on_remove = { 移除该idea时的效果
+				效果
+			}
+
+			do_effect = { 满足什么条件时这个idea才会真正有效
+				条件
+			}
+			cancel = { 满足什么条件会移除该idea
+				条件
+			}
+			modifier = {
+				国家scope的modifier
+			}
+
+			equipment_bonus = {
+				装备名字或分类 = {
+					装备scope的modifier
+					instant = yes/no 是否立刻生效
+				}
+			}
+
+			research_bonus = {
+				科研分类 = 数值
+			}
+
+			rule = { 设定国家规则，如是否可以加入阵营、是否可以对其他国家造战争借口
+				国家规则可在mod常用代码里找到
+			}
+
+		}
+
+	}
+
+	
+	naval_manufacturer/materiel_manufacturer/tank_manufacturer/aircraft_manufacturer/industrial_concern = {	
+		
+		制造商id/名字 = {
+			
+			picture = 自动检测或指定，指定的图片为在.gfx文件里的图片名（name那行），移除GFX_idea后的名字
+			
+			allowed = { 
+				条件（仅在开局时检测一次，不满足条件则游戏全程不会出现）
+			}
+			visible = {
+				条件（随时检测，满足条件则显示）
+			}
+			available = {
+				条件（随时检测，满足条件则可以点击）
+			}
+			
+			modifier = {
+				国家scope的modifier
+			}
+
+			equipment_bonus = {
+				装备名字或分类 = {
+					装备scope的modifier
+					instant = yes/no 是否立刻生效
+				}
+			}
+
+			research_bonus = {
+				科研分类 = 数值
+			}
+
+			traits = { 
+				country_leader特质
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+}
+
+
+民族精神示例：
+ideas = {
+	country = {
+		shili_idea = {
+				
+		picture = generic_coastal_defense_ships2
+
+		allowed_civil_war = {
+			has_government = democratic
+		}
+
+		on_add = { 
+			add_stability = 0.2
+		}
+		on_remove = { 
+		add_stability = -0.2
+		}
+
+		do_effect = {
+			has_war = no
+		}
+		cancel = { 
+			has_war_with = FRA
+		}
+		modifier = {
+			consumer_goods_factor = 0.1
+			army_infantry_attack_factor = 0.1
+			army_infantry_defence_factor = 0.1
+		}
+
+		equipment_bonus = {
+			armor = {
+				build_cost_ic = -0.5
+				instant = yes
+			}
+		}
+
+		research_bonus = {
+			construction_tech = 0.1
+		}
+
+		rule = {
+			can_create_factions = yes
+		}
+	}
+}

@@ -1,0 +1,172 @@
+人物文件位置common/characters/XXX.txt
+characters={
+	<my_character_name> = {
+		instance = { #样例，用于做动态将领
+			name = TAG_loc_key #character名字 到本地化进行汉化
+			portraits={ #人物头像
+				army = {   #担任将领（陆军）时的头像
+					large="gfx/leaders/XXX/XXX.png" #若不写路径，直接写GFX文件里面的图片名字也可以
+					small="gfx/interface/ideas/XXX.png"
+				}
+				navy = { #担任将领（海军）时的头像
+					large = "gfx/leaders/XXX/XXX.png"
+					small = "gfx/interface/ideas/XXX.png"
+				}
+				civilian = {    #担任领导人时的头像
+					large="gfx/leaders/XXX/XXX.png"
+					small="gfx/interface/ideas/XXX.png"
+				}
+			}
+
+			allowed_civil_war = {
+				#内战中继承该顾问的条件
+			}
+
+			gender = undefined/male/female #性别：未定义性别/男性/女性
+
+			can_be_captured = yes/no #是否被俘虏，默认为yes（或者不写）
+			
+			country_leader={   #领导人role（角色）
+				ideology= nazism #意识形态
+				traits={  } #国家领导人特质
+				expire="1965.1.1.1" #可选，领导人下台日期，如果该领导人上台日期晚于expire日期，则该领导人不可用
+				desc = leaders_desc #领导人描述
+				id = -1 #旧版ID，有需求可以保留，默认为-1
+			}
+
+			advisor = {  #内阁role（角色）
+				slot = <slot_id> #定义顾问所处的槽位类型。存在political_advisor/army_cheif/air_chief/navy_chief/high_command/theorist六种形式
+				ledger = <ledger_id> #定义顾问出现在情报页面的哪个分类下。存在army/air/navy/military/invalid/civilian/all/hidden七种形式
+
+				idea_token = TAG_loc_key #内阁名字，用于检测has_idea条件
+				cost = <value> #雇佣花费，如果不定义花费，默认为150政治点
+				traits = {  } #顾问特质
+
+				can_be_fired = yes/no #是否能被解雇，默认为yes
+				removal_cost = -1 #移除时的花费，默认为-1（实际效果是无花费）
+
+				allowed = { } #顾问显示的条件，仅开局检测
+				available = { } #顾问可选择的条件
+				visible = { } #顾问显示的条件，持续检测
+				do_effect = { } #人物生效的条件
+
+				on_add = {  } #雇佣该顾问时的效果
+				on_remove = { } #移除该顾问时的效果
+
+				ai_will_do = { 
+					factor = <value>
+					#ai点击权重
+				}
+			}
+			
+			field_marshal/corps_commander/navy_leader = { #元帅、将军、海军将领role（角色）
+				legacy_id = -1 #旧版ID，有需求可以保留，默认为-1
+				traits = {  } #将领特质 
+				#定义将领的等级，各项能力的等级，最高为10
+				skill = 5 #等级
+				attack_skill = 4  #进攻
+				defense_skill = 3  #防御
+				planning_skill = 4  #计划
+				logistics_skill = 5 #后勤
+
+				#海军将领的技能
+				attack_skill = 4  #进攻
+				defense_skill = 3  #防御
+				maneuvering_skill = 1 #机动
+				coordination_skill = 2 #协同
+
+				visible = {
+					#条件块，满足条件后可以显示
+				} 
+			}
+
+			scientist = {
+				traits = {} #科学家特质
+				skills = { #科学家技能
+					specialization_land = 1 #地面战
+					specialization_air = 1 #空气动力学和航空电子学
+					specialization_naval = 1 #海军工程
+					specialization_nuclear = 1 #核研究
+				}
+				desc = my_desc #科学家的描述
+
+				visible = {
+					#条件块，满足条件后可以显示
+				}
+
+			}
+		}
+
+		instance = {
+			allowed = {
+				#满足该条件后，才会使用该instance下的代码，否则默认使用上面的未有allowed规定的代码块
+			}
+
+
+			name = TAG_loc_key #character名字，到本地化进行汉化
+			portraits={ #人物头像
+				army = {   #担任将领（海军陆军）时的头像
+					large="gfx/leaders/XXX/XXX.png" #不写路径，直接写GFX文件里面的图片名字也可以
+					small="gfx/interface/ideas/XXX.png"
+				}
+				civilian = {    #担任领导人时的头像
+					large="gfx/leaders/XXX/XXX.png"
+					small="gfx/interface/ideas/XXX.png"
+				}
+			}
+
+			gender = undefined/male/female #性别：未定义性别/男性/女性
+
+			can_be_captured = yes/no #是否被俘虏，默认为yes（不写）
+			
+			country_leader={   #领导人role（角色）
+				ideology= nazism #意识形态
+				traits= {  } #国家领导人特质
+				expire="1965.1.1.1" #可选，领导人下台日期，如果该领导人上台日期晚于expire日期，则该领导人不可用
+				desc = leaders_desc #领导人描述
+			}
+
+			advisor = {  #内阁role（角色）
+				slot = political_advisor/army_cheif/air_chief/navy_chief/high_command/theorist #和以前的人物内阁一样
+				idea_token = TAG_loc_key #内阁名字，用于检测has_idea条件
+				ledger = army/air/navy/military/invalid/civilian/all/hidden #给theorist与high_command使用，通常使用army、air、navy分配海陆空理论家（总司令），后四者意义不明
+				cost = 150 #雇佣花费，如果不定义花费，默认为150PP点
+				traits = {  } #国家领导人特质
+
+				can_be_fired = yes/no #是否能被解雇，默认为yes
+				removal_cost = -1 #移除时的花费，默认为-1（实际效果是无花费）
+
+				on_add = {  } #雇佣该顾问时的效果
+				on_remove = {  } #移除该顾问时的效果
+
+				ai_will_do = { 
+					#ai点击权重
+				}
+			}
+			
+			field_marshal/corps_commander/navy_leader = { #元帅、将军、海军将领role（角色）
+				legacy_id = -1 #旧版ID，有需求可以保留，默认为-1
+				traits = {  } #将领特质 
+				#以下与旧版将领一样
+				skill = 5
+				attack_skill = 4 
+				defense_skill = 3 
+				planning_skill = 4 
+				logistics_skill = 5
+
+				visible = {
+					#条件块，满足条件后可以显示
+				} 
+			}
+		}
+	}
+}
+
+
+
+characters = {
+	<my_character_name> = {
+		name = <my_character_name>
+		...................
+	}
+}

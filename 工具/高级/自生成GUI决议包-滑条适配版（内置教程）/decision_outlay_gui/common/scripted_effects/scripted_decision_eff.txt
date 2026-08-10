@@ -1,0 +1,435 @@
+#额外需要增加的内容：
+scripted_decision_initiate = {
+	if = {
+		limit = {
+			NOT = {
+				has_global_flag = scripted_decision_all_initiated
+			}
+		}
+		set_variable = {
+			global.scripted_decision_last_id = -1
+		}
+		set_variable = {
+			global.scripted_decision_icon_last_id = -1
+		}
+		set_variable = {
+			global.scripted_decision_cost_last_id = -1
+		}
+
+
+
+		set_variable = {
+			global.scripted_decision_default_status = 0
+		}
+		set_variable = {
+			global.scripted_decision_is_removing = 1
+		}
+		set_variable = {
+			global.scripted_decision_has_removed = 2
+		}
+		set_variable = {
+			global.scripted_mission_is_active = 3
+		}
+		set_variable = {
+			global.scripted_mission_is_failed = 4
+		}
+
+		clear_array = all_scripted_decision_lists
+		
+		set_global_flag = scripted_decision_all_initiated
+
+		
+		set_variable = {
+			global.scripted_decision_category_last_id = -1
+		}
+		set_variable = {
+			global.scripted_decision_category_icon_last_id = -1
+		}
+		
+		set_variable = {
+			global.scripted_decision_category_collapse = 1 
+		}
+		set_variable = {
+			global.scripted_decision_category_show = 0
+		}
+
+		set_global_flag = scripted_decision_all_category_initiated
+	}
+}
+
+create_scripted_decision = {
+	scripted_decision_initiate = yes
+	add_to_variable = {
+		global.scripted_decision_last_id = 1
+	}
+	add_to_variable = {
+		global.scripted_decision_icon_last_id = 1
+	}
+	add_to_variable = {
+		global.scripted_decision_cost_last_id = 1
+	}
+	set_variable = {
+		new_scripted_decision = -1
+	}
+	meta_effect = {
+		text = {
+			generate_character = {
+				token_base = character_scripted_decision_[tid]
+			}
+			generate_character = {
+				token_base = character_scripted_decision_icon_[tid2]
+			}
+			generate_character = {
+				token_base = character_scripted_decision_cost_[tid3]
+			}
+			set_variable = {
+				new_scripted_decision = character_scripted_decision_[tid]
+			}
+			set_variable = {
+				global.new_scripted_decision_icon = character_scripted_decision_icon_[tid2]
+			}
+			set_variable = {
+				global.new_scripted_decision_cost = character_scripted_decision_cost_[tid3]
+			}
+		}
+		tid = "[?global.scripted_decision_last_id]"
+		tid2 = "[?global.scripted_decision_icon_last_id]"
+		tid3 = "[?global.scripted_decision_cost_last_id]"
+	}
+	add_to_array = {
+		global.all_scripted_decision_lists = new_scripted_decision
+	}
+	var:new_scripted_decision = {
+		set_variable = {
+			icon = global.new_scripted_decision_icon
+		}
+		set_variable = {
+			custom_cost_text = global.new_scripted_decision_cost
+		}
+		set_variable = {
+			cost = 0
+		}
+		set_variable = {
+			days_remove = 0
+		}
+		set_variable = {
+			decision_status = 0
+		}
+		set_variable = {
+			days_mission_timeout = 0
+		}
+		set_variable = {
+			days_re_enable = 0
+		}
+		set_variable = {
+			priority = 0
+		}
+		var:icon = {
+			set_character_name = "GFX_decision_unknown"
+		}
+		var:custom_cost_text = {
+			set_character_name = " scripted_custom_cost_text_default_cost_text"
+		}
+	}
+}
+
+selectable_mission = {
+	set_character_flag = scripted_decision_is_selectable_mission
+}
+is_good = {
+	set_character_flag = scripted_decision_is_good
+}
+visible_while_not_activated = {
+	set_character_flag = scripted_decision_is_visible_while_not_activated
+}
+cancel_if_not_visible = {
+	set_character_flag = scripted_decision_cancel_if_not_visible
+}
+fire_only_once = {
+	set_character_flag = scripted_decision_fire_only_once
+}
+
+
+scripted_decision_complete_scripted_decision_effect = {
+	if = {
+		limit = {
+			scripted_decision_available_trigger = yes
+			var:scripted_decision_entry = {
+				NOT = {
+					check_variable = {
+						decision_status = global.scripted_decision_is_removing
+					}
+					check_variable = {
+						decision_status = global.scripted_decision_has_removed
+					}
+				}
+			}
+		}
+		set_temp_variable = {
+			t_pp = -1
+		}
+		var:scripted_decision_entry = {
+			multiply_temp_variable = {
+				t_pp = cost
+			}
+		}
+		add_political_power = t_pp
+		var:scripted_decision_entry = {
+			complete_scripted_decision = yes
+		}
+	}
+}
+scripted_decision_start_remove = {
+	if = {
+		limit = {
+			scripted_decision_can_be_complete = yes
+		}
+		set_variable = {
+			decision_status = global.scripted_decision_is_removing
+		}
+		set_variable = {
+			days_remove_left = days_remove
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						days_remove > 0
+					}
+				}
+			}
+			remove_scripted_decision = yes
+		}
+	}
+}
+complete_scripted_decision = {
+	meta_effect = {
+		text = {
+			if = {
+				limit = {
+					scripted_decision_can_be_complete = yes
+				}
+				owner = {
+					[t_decision]_complete_effect = yes
+				}
+				scripted_decision_start_remove = yes
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+}
+remove_scripted_decision = {
+	meta_effect = {
+		text = {
+			if = {
+				limit = {
+					check_variable = {
+						decision_status = global.scripted_decision_is_removing
+					}
+				}
+				owner = {
+					[t_decision]_remove_effect = yes
+				}
+				scripted_decision_end_remove = yes
+			}
+		}
+		t_decision = "[?THIS.GetName]"
+	}
+}
+scripted_decision_start_re_enable = {
+	set_variable = {
+		days_re_enable_left = days_re_enable
+	}
+	set_character_flag = scripted_decision_is_re_enabling
+}
+scripted_decision_end_remove = {
+	if = {
+		limit = {
+			check_variable = {
+				decision_status = global.scripted_decision_is_removing
+			}
+		}
+		set_variable = {
+			decision_status = global.scripted_decision_has_removed
+		}
+		scripted_decision_start_re_enable = yes
+	}
+}
+activate_scripted_mission = {
+	if = {
+		limit = {
+			scripted_decision_is_mission = yes
+			OR = {
+				check_variable = {
+					decision_status = global.scripted_mission_is_failed
+				}
+				check_variable = {
+					decision_status = global.scripted_decision_default_status
+				}
+			}
+		}
+		set_variable = {
+			days_mission_timeout_left = days_mission_timeout
+		}
+		set_variable = {
+			decision_status = global.scripted_mission_is_active
+		}
+	}
+}
+cancel_scripted_decision = {
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					decision_status = global.scripted_decision_default_status
+				}
+			}
+		}
+		set_variable = {
+			decision_status = global.scripted_decision_default_status
+		}
+		scripted_decision_start_re_enable = yes
+		meta_effect = {
+			text = {
+				owner = {
+					[t_decision]_cancel_effect = yes
+				}
+			}
+			t_decision = "[?THIS.GetName]"
+		}
+	}
+}
+cancel_scripted_decision_no_effect = {
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					decision_status = global.scripted_decision_default_status
+				}
+			}
+		}
+		set_variable = {
+			decision_status = global.scripted_decision_default_status
+		}
+		scripted_decision_start_re_enable = yes
+	}
+}
+timeout_scripted_mission = {
+	if = {
+		limit = {
+			check_variable = {
+				decision_status = global.scripted_mission_is_active
+			}
+		}
+		set_variable = {
+			decision_status = global.scripted_mission_is_failed
+		}
+		scripted_decision_start_re_enable = yes
+		meta_effect = {
+			text = {
+				owner = {
+					[t_decision]_timeout_effect = yes
+				}
+			}
+			t_decision = "[?THIS.GetName]"
+		}
+	}
+}
+re_enable_scripted_decision = {
+	if = {
+		limit = {
+			scripted_decision_is_re_enabling = yes
+		}
+		clr_character_flag = scripted_decision_is_re_enabling
+		set_variable = {
+			decision_status = global.scripted_decision_default_status
+		}
+	}
+}
+
+
+scripted_decision_cancel_mission_effect_tooltip = {
+	if = {
+		limit = {
+			scripted_mission_show_cancel_effect_tooltip = yes
+		}
+		scripted_decision_cancel_effect_tooltip = yes
+	}
+}
+scripted_decision_timeout_mission_effect_tooltip = {
+	if = {
+		limit = {
+			scripted_mission_show_timeout_effect_tooltip = yes
+		}
+		scripted_decision_timeout_effect_tooltip = yes
+	}
+}
+scripted_decision_complete_mission_effect_tooltip = {
+	if = {
+		limit = {
+			scripted_mission_show_complete_effect_tooltip = yes
+		}
+		scripted_decision_complete_effect_tooltip = yes
+	}
+}
+
+
+scripted_decision_complete_decision_effect_tooltip = {
+	if = {
+		limit = {
+			scripted_decision_show_complete_effect_tooltip = yes
+		}
+		scripted_decision_complete_effect_tooltip = yes
+	}
+}
+scripted_decision_remove_decision_effect_tooltip = {
+	if = {
+		limit = {
+			scripted_decision_show_remove_effect_tooltip = yes
+		}
+		scripted_decision_remove_effect_tooltip = yes
+	}
+}
+scripted_decision_cancel_decision_effect_tooltip = {
+	if = {
+		limit = {
+			scripted_decision_show_cancel_effect_tooltip = yes
+		}
+		scripted_decision_cancel_effect_tooltip = yes
+	}
+}
+
+
+
+scripted_decision_cancel_effect_tooltip = {
+	meta_effect = {
+		text = {
+			[t_decision]_cancel_effect = yes
+		}
+		t_decision = "[?scripted_decision_entry.GetName]"
+	}
+}
+scripted_decision_complete_effect_tooltip = {
+	meta_effect = {
+		text = {
+			[t_decision]_complete_effect = yes
+		}
+		t_decision = "[?scripted_decision_entry.GetName]"
+	}
+}
+scripted_decision_remove_effect_tooltip = {
+	meta_effect = {
+		text = {
+			[t_decision]_remove_effect = yes
+		}
+		t_decision = "[?scripted_decision_entry.GetName]"
+	}
+}
+scripted_decision_timeout_effect_tooltip = {
+	meta_effect = {
+		text = {
+			[t_decision]_timeout_effect = yes
+		}
+		t_decision = "[?scripted_decision_entry.GetName]"
+	}
+}

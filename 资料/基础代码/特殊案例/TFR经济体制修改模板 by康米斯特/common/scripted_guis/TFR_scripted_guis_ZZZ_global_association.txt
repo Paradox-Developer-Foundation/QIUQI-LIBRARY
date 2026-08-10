@@ -1,0 +1,390 @@
+scripted_gui = {
+	TFR_government_type_countrypoliticsview_container = {
+		context_type = player_context
+		window_name = "TFR_government_type_countrypoliticsview_container"
+		parent_window_name = "countrypoliticsview"
+		triggers = {
+			TFR_no_government_type_icon_visible = {
+				NOT = {
+					has_idea = ZZZ_russian_political_system
+					has_idea = ZZZ_absolute_monarchy
+					has_idea = ZZZ_military_dictatorship
+					has_idea = ZZZ_socialist_republic
+					has_idea = ZZZ_semi_constitutional_monarchy
+					has_idea = ZZZ_constitutional_monarchy
+					has_idea = ZZZ_neo_soviet_republic
+					has_idea = ZZZ_nazi_dictatorship
+					has_idea = ZZZ_fascist_dictatorship
+					has_idea = ZZZ_revolutionary_front
+					has_idea = ZZZ_communist_party_state
+					has_idea = ZZZ_semi_presidential_system
+					has_idea = ZZZ_parliamentary_republic
+					has_idea = ZZZ_presidential_republic
+					has_idea = ZZZ_presidential_dictatorship
+					has_idea = ZZZ_ultranationalist_dictatorship
+					has_idea = ZZZ_islamic_republic
+					has_idea = ZZZ_american_presidential_republic
+					has_idea = ZZZ_provisional_government
+					has_idea = ZZZ_theocracy
+					has_idea = ZZZ_annihilation_cult
+					has_idea = ZZZ_ai_governance
+					has_idea = ZZZ_eurasianist_system
+					has_idea = ZZZ_american_peoples_dictatorship
+				}
+			}
+			TFR_russian_political_system_type_icon_visible = {
+				has_idea = ZZZ_russian_political_system
+			}			
+			TFR_chinese_political_system_type_icon_visible = {
+				has_idea = ZZZ_chinese_political_system
+			}	
+			TFR_islamic_republic_type_icon_visible = {
+				has_idea = ZZZ_islamic_republic
+			}	
+			TFR_absolute_monarchy_type_icon_visible = {
+				has_idea = ZZZ_absolute_monarchy
+			}	
+			TFR_military_dictatorship_type_icon_visible = {
+				has_idea = ZZZ_military_dictatorship
+			}	
+			TFR_socialist_republic_type_icon_visible = {
+				has_idea = ZZZ_socialist_republic
+			}	
+			TFR_semi_constitutional_monarchy_type_icon_visible = {
+				has_idea = ZZZ_semi_constitutional_monarchy
+			}		
+			TFR_constitutional_monarchy_type_icon_visible = {
+				has_idea = ZZZ_constitutional_monarchy
+			}	
+			TFR_american_presidential_republic_type_icon_visible = {
+				has_idea = ZZZ_american_presidential_republic
+			}
+			TFR_neo_soviet_republic_type_icon_visible = {
+				has_idea = ZZZ_neo_soviet_republic
+			}	
+			TFR_nazi_dictatorship_type_icon_visible = {
+				has_idea = ZZZ_nazi_dictatorship
+			}	
+			TFR_fascist_dictatorship_type_icon_visible = {
+				has_idea = ZZZ_fascist_dictatorship
+			}		
+			TFR_revolutionary_front_type_icon_visible = {
+				has_idea = ZZZ_revolutionary_front
+			}		
+			TFR_communist_party_state_type_icon_visible = {
+				has_idea = ZZZ_communist_party_state
+			}	
+			TFR_provisional_government_type_icon_visible = {
+				has_idea = ZZZ_provisional_government
+			}	
+			TFR_semi_presidential_system_type_icon_visible = {
+				has_idea = ZZZ_semi_presidential_system
+			}		
+			TFR_parliamentary_republic_type_icon_visible = {
+				has_idea = ZZZ_parliamentary_republic
+			}	
+			TFR_presidential_republic_type_icon_visible = {
+				has_idea = ZZZ_presidential_republic
+			}		
+			TFR_presidential_dictatorship_type_icon_visible = {
+				has_idea = ZZZ_presidential_dictatorship
+			}
+			TFR_ultranationalist_dictatorship_type_icon_visible = {
+				has_idea = ZZZ_ultranationalist_dictatorship
+			}		
+			TFR_annihilation_cult_type_icon_visible = {
+				has_idea = ZZZ_annihilation_cult
+			}
+			TFR_theocracy_type_icon_visible = {
+				has_idea = ZZZ_theocracy
+			}			
+			TFR_ai_governance_type_icon_visible = {
+				has_idea = ZZZ_ai_governance
+			}	
+			TFR_american_peoples_dictatorship_type_icon_visible = {
+				has_idea = ZZZ_american_peoples_dictatorship
+			}		
+			TFR_eurasianist_system_type_icon_visible = {
+				has_idea = ZZZ_eurasianist_system
+			}		
+		}
+		triggers = {
+            PRC_SCS_OPEN_visible = {
+                tag = PRC
+            }
+        }
+
+        effects = {
+            PRC_SCS_OPEN_click = {
+                if = {
+                    limit = { NOT = { has_country_flag = scs_open_on } }
+                    set_country_flag = scs_open_on
+                }
+                else = { clr_country_flag = scs_open_on }
+            }
+        }
+	}
+	
+	economy_type_countrypoliticsview_gui = {
+		context_type = player_context
+		window_name = "TFR_economic_type_countrypoliticsview_container"
+		parent_window_name = "countrypoliticsview"
+		triggers = {
+			TFR_no_economy_type_politics_icon_visible = {
+				NOT = {
+					has_idea = ZZZ_capitalist_economy
+					has_idea = ZZZ_american_capitalism
+					has_idea = ZZZ_collective_capitalism
+					has_idea = ZZZ_collective_capitalism2
+					has_idea = ZZZ_oligopolistic_capitalism
+					has_idea = ZZZ_welfare_capitalism
+					has_idea = ZZZ_corporatism
+					has_idea = ZZZ_managed_economy
+					has_idea = ZZZ_command_economy
+					has_idea = ZZZ_planned_economy
+					has_idea = ZZZ_socialist_market
+					has_idea = ZZZ_developed_socialism
+					has_idea = ZZZ_military_controlled_economy
+					has_idea = ZZZ_worker_controlled_economy
+					has_idea = ZZZ_chaostic_economy
+					has_idea = ZZZ_minarchism
+					has_idea = ZZZ_ancap
+					has_idea = ZZZ_mixed_economy
+					has_idea = ZZZ_party_state_capitalism
+					has_idea = ZZZ_state_capitalism
+					has_idea = ZZZ_america_first_capitalism
+					has_idea = ZZZ_maga_capitalism
+					has_idea = ZZZ_left_corporatism
+					has_idea = ZZZ_liberal_corporatism
+					has_idea = ZZZ_kaiser_economy
+					has_idea = ZZZ_hajimi_economy
+				}
+			}
+			TFR_capitalism_type_politics_icon_visible = {
+				has_idea = ZZZ_capitalist_economy
+			}		
+			TFR_american_capitalism_type_politics_icon_visible = {
+				has_idea = ZZZ_american_capitalism
+			}	
+			TFR_collective_capitalism_type_politics_icon_visible = {
+				OR = {
+					has_idea = ZZZ_collective_capitalism
+					has_idea = ZZZ_collective_capitalism2
+				}
+			}		
+			TFR_oligopolistic_capitalism_type_politics_icon_visible = {
+				has_idea = ZZZ_oligopolistic_capitalism
+			}	
+			TFR_welfare_capitalism_type_politics_icon_visible = {
+				has_idea = ZZZ_welfare_capitalism
+			}	
+			TFR_corporatism_type_politics_icon_visible = {
+				has_idea = ZZZ_corporatism
+			}	
+			TFR_managed_economy_type_politics_icon_visible = {
+				has_idea = ZZZ_managed_economy
+			}	
+			TFR_command_economy_type_politics_icon_visible = {
+				has_idea = ZZZ_command_economy
+			}	
+			TFR_planned_economy_type_politics_icon_visible = {
+				has_idea = ZZZ_planned_economy
+			}		
+			TFR_socialist_market_type_politics_icon_visible = {
+				has_idea = ZZZ_socialist_market
+			}
+			TFR_ZZZ_hajimi_economy_type_politics_icon_visible = {
+				has_idea = ZZZ_hajimi_economy
+			}		
+			TFR_developed_socialism_type_politics_icon_visible = {
+				has_idea = ZZZ_developed_socialism
+			}		
+			TFR_military_controlled_economy_type_politics_icon_visible = {
+				has_idea = ZZZ_military_controlled_economy
+			}			
+			TFR_worker_controlled_economy_type_politics_icon_visible = {
+				has_idea = ZZZ_worker_controlled_economy
+			}		
+			TFR_chaostic_economy_type_politics_icon_visible = {
+				has_idea = ZZZ_chaostic_economy
+			}
+			TFR_minarchism_economy_type_icon_visible = {
+				has_idea = ZZZ_minarchism
+			}
+			TFR_ancap_economy_type_icon_visible = {
+				has_idea = ZZZ_ancap
+			}
+			TFR_mixed_economy_type_icon_visible = {
+				has_idea = ZZZ_mixed_economy
+			}
+			TFR_party_state_capitalism_type_icon_visible = {
+				has_idea = ZZZ_party_state_capitalism
+			}	
+			TFR_state_capitalism_type_icon_visible = {
+				has_idea = ZZZ_state_capitalism
+			}	
+			TFR_america_first_capitalism_type_icon_visible = {
+				has_idea = ZZZ_america_first_capitalism
+			}		
+			TFR_maga_capitalism_type_icon_visible = {
+				has_idea = ZZZ_maga_capitalism
+			}	
+			TFR_left_corporatism_type_icon_visible = {
+				has_idea = ZZZ_left_corporatism
+			}	
+			TFR_liberal_corporatism_type_icon_visible = {
+				has_idea = ZZZ_liberal_corporatism
+			}	
+			TFR_kaiser_economy_type_icon_visible = {
+				has_idea = ZZZ_kaiser_economy
+			}
+		}
+	}
+	global_association_countrypoliticsview_gui = {
+		context_type = player_context
+		window_name = "TFR_global_asssociation_countrypoliticsview_container"
+		parent_window_name = "countrypoliticsview"
+		triggers = {
+			TFR_global_association_politics_icon_visible = {
+				is_in_faction = yes
+				NOT = {
+					has_country_flag = pdto_member
+					has_country_flag = csto_member
+					has_country_flag = hu_member
+					has_country_flag = mto_member
+					has_country_flag = esto_member
+					has_country_flag = eadi_member
+					has_country_flag = revunion_member
+					has_country_flag = psf_member
+					has_country_flag = global_ass_lol
+					has_country_flag = united_front_member
+					has_country_flag = West_African_Anti_Imperialist_Front_member
+					has_country_flag = WDTO_member
+					has_country_flag = CES_member
+					has_country_flag = AOR_member
+					has_country_flag = pact_of_steel_member
+					has_country_flag = BTO_member
+					has_country_flag = National_Front_Member
+				}
+			}
+			TFR_no_faction_politics_icon_visible = {
+				is_in_faction = no
+			}
+			TFR_NATO_politics_icon_visible = {
+				has_country_flag = global_ass_lol
+			}
+			TFR_Pact_of_Steel_politics_icon_visible = {
+				has_country_flag = pact_of_steel_member
+			}
+			TFR_pdto_politics_icon_visible = {
+				has_country_flag = pdto_member
+			}
+			TFR_csto_politics_icon_visible = {
+				has_country_flag = csto_member
+			}
+			TFR_mto_politics_icon_visible = {
+				has_country_flag = mto_member
+			}
+			TFR_hu_politics_icon_visible = {
+				has_country_flag = hu_member
+			}
+			TFR_esto_politics_icon_visible = {
+				has_country_flag = esto_member
+			}
+			TFR_eadi_politics_icon_visible = {
+				has_country_flag = eadi_member
+			}
+			TFR_revunion_politics_icon_visible = {
+				has_country_flag = revunion_member
+			}
+			TFR_psf_politics_icon_visible = {
+				has_country_flag = psf_member
+			}
+			TFR_united_front_politics_icon_visible = {
+				has_country_flag = united_front_member
+			}
+			TFR_waaif_politics_icon_visible = {
+				has_country_flag = West_African_Anti_Imperialist_Front_member
+			}
+			TFR_WDTO_politics_icon_visible = {
+				has_country_flag = WDTO_member
+			}	
+			TFR_ASD_politics_icon_visible = {
+				has_country_flag = ASD_member
+			}
+			TFR_CES_politics_icon_visible = {
+				has_country_flag = CES_member
+			}
+			TFR_BTO_politics_icon_visible = {
+				has_country_flag = BTO_member
+			}
+			TFR_AOR_politics_icon_visible = {
+				has_country_flag = AOR_member
+			}
+			TFR_national_front_politics_icon_visible = {
+				has_country_flag = National_Front_Member
+			}
+		}
+	}
+	global_association_countrydiplomacyview_gui = {
+		context_type = selected_country_context
+		window_name = "TFR_global_asssociation_countrydiplomacyview_container"
+		parent_window_token = selected_country_view_diplomacy
+		triggers = {
+			TFR_global_association_diplo_icon_visible = {
+				has_country_flag = global_ass_lol
+			}
+			TFR_Pact_of_Steel_diplo_icon_visible = {
+				has_country_flag = pact_of_steel_member
+			}
+			TFR_pdto_diplo_icon_visible = {
+				has_country_flag = pdto_member
+			}
+			TFR_csto_diplo_icon_visible = {
+				has_country_flag = csto_member
+			}
+			TFR_mto_diplo_icon_visible = {
+				has_country_flag = mto_member
+			}
+			TFR_hu_diplo_icon_visible = {
+				has_country_flag = hu_member
+			}
+			TFR_esto_diplo_icon_visible = {
+				has_country_flag = esto_member
+			}
+			TFR_eadi_diplo_icon_visible = {
+				has_country_flag = eadi_member
+			}
+			TFR_revunion_diplo_icon_visible = {
+				has_country_flag = revunion_member
+			}
+			TFR_psf_diplo_icon_visible = {
+				has_country_flag = psf_member
+			}
+			TFR_united_front_diplo_icon_visible = {
+				has_country_flag = united_front_member
+			}
+			TFR_waaif_diplo_icon_visible = {
+				has_country_flag = West_African_Anti_Imperialist_Front_member
+			}
+			TFR_WDTO_diplo_icon_visible = {
+				has_country_flag = WDTO_member
+			}	
+			TFR_ASD_diplo_icon_visible = {
+				has_country_flag = ASD_member
+			}			
+			TFR_CES_diplo_icon_visible = {
+				has_country_flag = CES_member
+			}
+			TFR_AOR_diplo_icon_visible = {
+				has_country_flag = AOR_member
+			}
+			TFR_BTO_diplo_icon_visible = {
+				has_country_flag = BTO_member
+			}	
+			TFR_national_front_diplo_icon_visible = {
+				has_country_flag = National_Front_Member
+			}
+		}
+	}
+}

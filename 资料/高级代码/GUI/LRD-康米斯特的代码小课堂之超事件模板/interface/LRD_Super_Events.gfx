@@ -1,0 +1,68 @@
+	spriteTypes = {	
+
+		spriteType = {
+			name = "GFX_Super_Event_Quote_Background"
+			texturefile = "gfx/Super_Event_Quote_Background.dds"
+			legacy_lazy_load = no
+		}
+		
+		spriteType = {
+			name = "GFX_Super_event_bg"
+			texturefile = "gfx/super_events/Super_event_bg.dds"
+			legacy_lazy_load = no
+		}
+		
+		#Super Event Pictures
+		
+		##超事件用的图片
+		spriteType = {
+			name = "GFX_super_china_to_mars"
+			texturefile = "gfx/super_events/super_china_to_mars.png"
+			legacy_lazy_load = no
+		}
+
+		spriteType = {
+			name = "GFX_se_closed"
+			texturefile = "gfx/super_events/death_certificate/se_closed.tga"
+			legacy_lazy_load = no
+		}
+		
+		spriteType = {
+			name = "GFX_se_background"
+			texturefile = "gfx/super_events/death_certificate/se_background.tga"
+			legacy_lazy_load = no
+		}
+		
+		FrameAnimatedSpriteType = {
+			name = "GFX_super_nine_angels"
+			textureFile = "gfx/super_events/super_09A.tga"
+			noOfFrames = 13
+			loadType = "INGAME"
+			alwaystransparent = no
+			animation_rate_fps = 13
+			looping = yes
+			play_on_show = yes
+			pause_on_loop = 0.0
+		}
+		
+		FrameAnimatedSpriteType = {
+			name = "GFX_critical_power"
+			textureFile = "gfx/super_events/critical power.png"
+			noOfFrames = 5
+			loadType = "INGAME"
+			alwaystransparent = no
+			animation_rate_fps = 10
+			looping = yes
+			play_on_show = yes
+			pause_on_loop = 0.0
+		}
+
+		corneredTileSpriteType = {
+			name = "GFX_tiled_window_thin_border"
+			size= { x=192 y=192 }
+			textureFile = "gfx//interface//tiles//tiled_window_thin_border.dds"
+			borderSize = { x=64 y=64 }
+			tilingCenter = yes
+			effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
+		}
+	}

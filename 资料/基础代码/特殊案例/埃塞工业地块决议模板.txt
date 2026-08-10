@@ -1,0 +1,97 @@
+萌新学习原版代码的笔记：
+一：国策部分（其实在事件效果，决议效果都行）
+ every_owned_state = {#对于这个国家所拥有的每一个省份（限制地块的词条等等可以改）
+				custom_effect_tooltip = ailove_invest_tt #自定义一个 “效果提示”：开启A计划
+				set_state_flag =state_flag #给地块上标记
+				IF = {
+					limit = {
+						NOT = { has_state_flag = A_flag }
+					}#如果这个省份不拥有‘A计划’标记的话
+					set_state_flag = A_flag
+				}#那么就给这个省份添加上‘A计划’标记			}
+二：决议组decisions/categories
+ETH_improve_country_category = { 
+	icon = GFX_decision_category_generic_economy #图标
+	allowed = {
+		original_tag = HJM  #原始国家标签为哈基米	}
+	priority = {
+		base = 5 # 排序优先级
+	}
+	visible = {
+		has_dlc = "By Blood Alone" #凝聚力购买（如果给地区加一些DLC才有的建筑或BUFF尽量写）
+		OR = {
+			#任意一个你拥有的省份拥有‘A计划
+			any_owned_state = {  
+				OR = {
+					has_state_flag = A_flag
+					}
+			}
+			#国家当前拥有任何一个以下的活跃任务
+			has_active_mission = HJM_huajiminabeiludou
+						AND = {#必须同时满足以下所有三个条件（根据需求改写）
+				has_completed_focus = #必须已经完成了某个国策
+				any_owned_state = { #在非洲有个省份
+					is_on_continent = africa 
+					is_controlled_by = ROOT 
+				}
+				check_variable = { 头顶光照强度 < 13 }#某个变量的数值限制
+			}
+		}
+	}
+	visible_when_empty = yes #暂时没有任何可供选择的具体决议，（只在地图显示）
+}
+三，决议类别decisions
+HJM_electrify_state = {
+    icon = decision_generic_electricity  -- 决议图标  
+	  target_trigger = {  -- 目标州需要满足的条件
+        FROM = {
+            has_state_flag = A_flag  -- 必须有“”标记
+            NOT = { has_state_flag = A_flag }  -- 还没有
+            is_fully_controlled_by = ROOT  -- 完全由本国控制
+        }
+    }
+    state_target = any_controlled_state  -- 目标可以是任何被控制的州
+    on_map_mode = map_only  -- 只能在地图模式下触发
+    fire_only_once = yes  -- 每个州只能执行一次
+    cost = 25  -- 花费25政治点数
+    modifier = {  -- 执行期间的国家 modifier
+        consumer_goods_factor = 0.10  -- 消费品需求增加10%
+    }
+    remove_effect = {  -- 决议完成后的效果
+        maodiehaqi_effect = yes  -- 触发一个自定义效果（哈气）
+    }
+    ai_will_do = {  -- AI执行意愿
+        base = 125  -- 基础权重
+        modifier = {
+            factor = 2  -- 和平时期权重翻倍
+            has_war = no 
+        }
+        modifier = {
+            factor = 0  -- 投降进度超过20%时不执行
+            surrender_progress > 0.2
+        }
+    }
+}
+#自定义效果scripted_effects
+maodiehaqi_effect = {
+	clr_country_flag = ETH_investments_in_progress_flag #清除一个国家层面的标记
+	FROM = { #清理和设置州标记
+		clr_state_flag = A_flag
+		set_state_flag = huajinle_flag 
+	}
+	custom_effect_tooltip = ETH_electrify_state_tt#自定义的效果提示框:圆头耄耋哈气
+	FROM = {#目标州的州级动态修正器变量增加一个数值
+		add_to_variable = { dagoujiao = 0.1 }
+			add_to_variable = { dingdongji = 0.1 }
+	}
+	}
+四：州级动态修正器dynamic_modifiers
+ETH_state_development_dynamic_modifier = { #STATE MODIFIER
+	enable = { always = yes }
+	icon = GFX_modifiers_ETH_state_development
+	state_production_speed_buildings_factor = dagoujiao #大狗叫，生产速度提升
+	local_building_slots_factor = dingdongji #叮咚鸡，建筑槽位增加
+	local_factories = manbo #曼波,可能用于直接增加州内工厂的数量或效率
+	state_resources_factor = gugugaga #咕咕嘎嘎，可能用于提升州内资源（如煤炭、铁、石油）的产量。
+
+}

@@ -1,0 +1,62 @@
+【指挥点数上限修改】
+BASE_MAX_COMMAND_POWER = 360.0
+
+【建造建筑时投入最大工厂数修改】
+MAX_CIV_FACTORIES_PER_LINE = 15
+
+【海军单条生产线船坞上限修改】
+DEFAULT_MAX_NAV_FACTORIES_PER_LINE = 50
+
+【将军初始指挥军队上限修改】
+CORPS_COMMANDER_DIVISIONS_CAP = 12
+
+【元帅指挥军队上限修改】
+FIELD_MARSHAL_DIVISIONS_CAP = 24
+
+【元帅初始指挥集团军上限修改】
+FIELD_MARSHAL_ARMIES_CAP = 5
+
+【三军经验上限修改】
+MAX_ARMY_EXPERIENCE = 5000
+MAX_NAVY_EXPERIENCE = 5000
+MAX_AIR_EXPERIENCE = 5000
+
+【将领可升级槽位修改】
+UNIT_LEADER_TRAIT_SLOT_PER_LEVEL = { 
+		2.0, -- field marshal
+		2.0, -- corps commander
+		2.0, -- navy general
+		2.0, -- operative
+	}
+
+UNIT_LEADER_INITIAL_TRAIT_SLOT = { 		
+		2.0, -- field marshal
+		2.0, -- corps commander
+		2.0, -- navy general
+		2.0, -- operative
+	}
+
+【战争阵亡人数所获得的战争分数比例修改】
+WAR_SCORE_LOSSES_RATIO = 0.1
+
+
+CORPS_COMMANDER_DIVISIONS_CAP= 24,(上将指挥部队数量上限) 
+CORPS_COMMANDER_ARMIES_CAP = -1,(这不晓得别管)
+FIELD_MARSHAL_DIVISIONS_CAP = 24,(元帅指挥部队数量上限) 	
+FIELD_MARSHAL_ARMIES_CAP = 5,(元帅指挥集团军上限)	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

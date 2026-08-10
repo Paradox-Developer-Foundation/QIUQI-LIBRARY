@@ -1,0 +1,153 @@
+===Light（光照相关）===
+// 控制昼夜环境光的强度和方向参数，影响场景整体亮度
+夜间环境光增强值 | NIGHT_AMBIENT_BOOST|float|3.0f | 增强夜间环境光的整体强度，后续可整合到其他环境光参数中 |>0 | 启用 | 是
+白天环境光贴图右方向值 | DayAmbientMapPosX|float3|float3 (0.1, 0.1, 0.05)| 白天场景中，右侧方向的环境光贴图颜色参数（RGB）| 每个分量 0-1 | 启用 | 否
+白天环境光贴图左方向值 | DayAmbientMapNegX|float3|float3 (0.15, 0.15, 0.15)| 白天场景中，左侧方向的环境光贴图颜色参数（RGB）| 每个分量 0-1 | 启用 | 否
+白天环境光贴图上方向值 | DayAmbientMapPosY|float3|float3 (0.03, 0.03, 0.06)| 白天场景中，上方方向的环境光贴图颜色参数（RGB） | 每个分量 0-1 | 启用 | 否
+白天环境光贴图下方向值 | DayAmbientMapNegY|float3|float3 (0.0, 0.0, 0.0)| 白天场景中，下方方向的环境光贴图颜色参数（RGB） | 每个分量 0-1 | 启用 | 否
+白天环境光贴图前方向值 | DayAmbientMapPosZ|float3|float3 (0.0502, 0.05023, 0.1023)| 白天场景中，前方方向的环境光贴图颜色参数（RGB）| 每个分量 0-1 | 启用 | 否
+白天环境光贴图后方向值 | DayAmbientMapNegZ|float3|float3 (0.03, 0.033, 0.033)| 白天场景中，后方方向的环境光贴图颜色参数（RGB）| 每个分量 0-1 | 启用 | 否
+夜间环境光贴图右方向值 | NightAmbientMapPosX|float3|float3 (0.2, 0.2, 0.2)| 夜间场景中，右侧方向的环境光贴图颜色参数（RGB）| 每个分量 0-1 | 启用 | 否
+夜间环境光贴图左方向值 | NightAmbientMapNegX|float3|float3 (0.0, 0.0, 0.0)| 夜间场景中，左侧方向的环境光贴图颜色参数（RGB） | 每个分量 0-1 | 启用 | 否
+夜间环境光贴图上方向值 | NightAmbientMapPosY|float3|float3 (0.01, 0.01, 0.01)| 夜间场景中，上方方向的环境光贴图颜色参数（RGB） | 每个分量 0-1 | 启用 | 否
+夜间环境光贴图下方向值 | NightAmbientMapNegY|float3|float3 (0.0, 0.0, 0.1)| 夜间场景中，下方方向的环境光贴图颜色参数（RGB） | 每个分量 0-1 | 启用 | 否
+夜间环境光贴图前方向值 | NightAmbientMapPosZ|float3|float3 (0.06, 0.1, 0.15)| 夜间场景中，前方方向的环境光贴图颜色参数（RGB） | 每个分量 0-1 | 启用 | 否
+夜间环境光贴图后方向值 | NightAmbientMapNegZ|float3|float3 (0.14, 0.14, 0.2)| 夜间场景中，后方方向的环境光贴图颜色参数（RGB） | 每个分量 0-1 | 启用 | 否
+夜间环境光右方向值 | NightAmbientPosX|float3|float3 (2.0, 2.0, 2.0)| 夜间场景中，右侧方向的基础环境光颜色强度（非贴图） |>0 | 启用 | 否
+夜间环境光左方向值 | NightAmbientNegX|float3|float3 (0.2, 0.2, 0.2)| 夜间场景中，左侧方向的基础环境光颜色强度（非贴图）|>0 | 启用 | 否
+夜间环境光上方向值 | NightAmbientPosY|float3|float3 (0.1, 0.1, 0.1)| 夜间场景中，上方方向的基础环境光颜色强度（非贴图）|>0 | 启用 | 否
+夜间环境光下方向值 | NightAmbientNegY|float3|float3 (0.0, 0.0, 0.0)| 夜间场景中，下方方向的基础环境光颜色强度（非贴图） |>0 | 启用 | 否
+夜间环境光前方向值 | NightAmbientPosZ|float3|float3 (3.0, 3.0, 3.0)| 夜间场景中，前方方向的基础环境光颜色强度（非贴图） |>0 | 启用 | 否
+夜间环境光后方向值 | NightAmbientNegZ|float3|float3 (0.8, 0.8, 0.8)| 夜间场景中，后方方向的基础环境光颜色强度（非贴图）|>0 | 启用 | 否
+
+===Specular（高光相关）===
+// 控制物体高光反射的范围和强度，影响材质的反光效果
+高光宽度 | SPECULAR_WIDTH|float|15.0 | 控制高光反射的扩散范围，值越大高光越分散 |>0 | 启用 | 是
+高光强度倍增 | SPECULAR_MULTIPLIER|float|1.0 | 整体放大高光反射的强度，值为 1 表示默认强度 |≥0 | 启用 | 是
+贴图高光宽度 | MAP_SPECULAR_WIDTH|float|15.0 | 基于贴图的高光反射扩散范围，值越大高光越分散 |>0 | 启用 | 是
+
+===TERRAIN（地形相关）===
+// 控制地形外观（城市灯光、纹理、积雪、水体裁剪等）的参数
+城市灯光平铺频率 | CITY_LIGHTS_TILING|float|0.09103 | 城市灯光纹理的重复频率，值越小灯光分布越密集 |>0 | 启用 | 是
+城市灯光强度 | CITY_LIGHTS_INTENSITY|float|5.5 | 城市灯光的发光强度，值越高灯光越亮 |>0 | 启用 | 是
+城市灯光光晕系数 | CITY_LIGHTS_BLOOM_FACTOR|float|0.3 | 城市灯光的光晕扩散程度，值越大光晕越明显 | 0-1 | 启用 | 是
+地形纹理平铺频率 | TERRAIN_TILE_FREQ|float|128.0f | 地形基础纹理的重复频率，值越大纹理越密集 |>0 | 启用 | 否
+地形贴图数量 | MAP_NUM_TILES|float|4.0f | 地形使用的贴图瓦片总数，固定为 4 片 |=4 | 启用 | 否
+每瓦片像素数 | TEXELS_PER_TILE|float|512.0f | 单个地形贴图瓦片的像素尺寸（边长），固定为 512 像素 |=512 | 启用 | 否
+图集像素幂次 | ATLAS_TEXEL_POW2_EXPONENT|float|11.0f | 地形图集的像素尺寸对应的 2 的幂次（2^11=2048 像素）|=11 | 启用 | 否
+地形水体裁剪高度 | TERRAIN_WATER_CLIP_HEIGHT|float|3.0f | 地形与水体衔接处的裁剪高度阈值，控制水体显示范围 |≥0 | 启用 | 是
+地形水体裁剪相机高值 | TERRAIN_WATER_CLIP_CAM_HI|float|700.0f | 相机高度高于此值时，启用地形水体裁剪 |>0 | 启用 | 否
+地形水体裁剪相机低值 | TERRAIN_WATER_CLIP_CAM_LO|float|50.0f | 相机高度低于此值时，禁用地形水体裁剪 |>0 | 启用 | 否
+泥泞纹理平铺频率 | MUD_TILING|float|0.09 | 泥泞区域纹理的重复频率，值越小纹理越密集 |>0 | 启用 | 是
+泥泞法线阈值 | MUD_NORMAL_CUTOFF|float|10.982 | 控制泥泞区域的法线贴图生效阈值，值越高泥泞显示范围越小 |>0 | 启用 | 否
+泥泞强度增强 | MUD_STRENGHTEN|float|1.0 | 放大泥泞区域的显示强度，值为 1 表示默认强度 |≥0 | 启用 | 是
+积雪不透明度最小值 | SNOW_OPACITY_MIN|float|0.95f | 相机靠近时积雪的最小不透明度（值越高越不透明）|0-1 | 启用 | 是
+积雪不透明度最大值 | SNOW_OPACITY_MAX|float|0.2f | 相机远离时积雪的最大不透明度（值越低越透明）|0-1 | 启用 | 是
+积雪相机最近距离 | SNOW_CAM_MIN|float|50.0f | 相机距离低于此值时，积雪不透明度按最小值显示 |>0 | 启用 | 否
+积雪相机最远距离 | SNOW_CAM_MAX|float|300.0f | 相机距离高于此值时，积雪不透明度按最大值显示 |>0 | 启用 | 否
+泥泞相机最近距离 | MUD_CAM_MIN|float|50.0f | 相机距离低于此值时，泥泞区域正常显示 |>0 | 启用 | 否
+泥泞相机最远距离 | MUD_CAM_MAX|float|300.0f | 相机距离高于此值时，泥泞区域逐渐淡化 |>0 | 启用 | 否
+冰层相机最近距离 | ICE_CAM_MIN|float|100.0f | 相机距离低于此值时，冰层正常显示 |>0 | 启用 | 否
+冰层相机最远距离 | ICE_CAM_MAX|float|350.0f | 相机距离高于此值时，冰层逐渐淡化 |>0 | 启用 | 否
+积雪开始高度 | SNOW_START_HEIGHT|float|3.0f | 地形高度高于此值时，开始显示积雪 |≥0 | 启用 | 是
+山脊积雪开始高度 | SNOW_RIDGE_START_HEIGHT|float|11.0f | 山脊地形高度高于此值时，开始显示积雪 |≥0 | 启用 | 是
+积雪法线起始值 | SNOW_NORMAL_START|float|0.7f | 积雪法线贴图的生效起始阈值，控制积雪的凹凸效果 | 0-1 | 启用 | 否
+积雪颜色 | SNOW_COLOR|float3|float3 (0.46, 0.48, 0.69)| 积雪的基础颜色（RGB），带有轻微蓝色调 | 每个分量 0-1 | 启用 | 是
+积雪水体颜色 | SNOW_WATER_COLOR|float3|float3 (0.3, 0.6, 1.0)| 积雪区域附近水体的颜色（RGB），蓝色分量较高 | 每个分量 0-1 | 启用 | 是
+积雪悬崖强度 | SNOW_CLIFFS|float|5.0f | 增强悬崖区域的积雪显示效果，值越高积雪越明显 |>0 | 启用 | 否
+积雪高光光泽倍增 | SNOW_SPEC_GLOSS_MULT|float|0.2f | 放大积雪的高光光泽度，值越高积雪越亮 | 0-1 | 启用 | 是
+积雪纹理平铺频率 | SNOW_TILING|float|0.05f | 积雪纹理的重复频率，值越小纹理越密集 |>0 | 启用 | 是
+积雪噪声平铺频率 | SNOW_NOISE_TILING|float|0.06f | 积雪噪声纹理的重复频率，控制积雪的不规则纹理 |>0 | 启用 | 否
+积雪冰层噪声平铺频率 | SNOW_ICE_NOISE_TILING|float|0.0625f | 积雪区域冰层噪声纹理的重复频率 |>0 | 启用 | 否
+积雪霜效最小影响值 | SNOW_FROST_MIN_EFFECT|float|0.4f | 积雪霜效的最小生效阈值，值越低霜效范围越广 | 0-1 | 启用 | 否
+冰层颜色 | ICE_COLOR|float3|float3 (0.5f, 0.6f, 0.9f)| 冰层的基础颜色（RGB），蓝色调明显 | 每个分量 0-1 | 启用 | 是
+冰层噪声平铺频率 | ICE_NOISE_TILING|float|0.1f | 冰层噪声纹理的重复频率，值越小纹理越密集 |>0 | 启用 | 是
+水体颜色亮度 | WATER_COLOR_LIGHTNESS|float|0.5 | 控制水体颜色的亮度，值越高水体越亮 | 0-1 | 启用 | 是
+水体波纹效果强度 | WATER_RIPPLE_EFFECT|float|0.0025 | 水体波纹的显示强度，值越小波纹越微弱 |>0 | 启用 | 是
+颜色贴图叠加强度 | COLORMAP_OVERLAY_STRENGTH|float|0.75f | 地形颜色贴图的叠加显示强度，值越高颜色越鲜艳 | 0-1 | 启用 | 是
+颜色贴图泥泞叠加强度 | COLORMAP_MUD_OVERLAY_STRENGTH|float|0.5f | 泥泞区域颜色贴图的叠加强度，值越高泥泞颜色越明显 | 0-1 | 启用 | 是
+模拟立方体贴图颜色 | FAKE_CUBEMAP_COLOR|float3|float3 (0.0f, 0.0f, 0.0f)| 模拟立方体贴图的基础颜色（RGB），当前为黑色 | 每个分量 0-1 | 启用 | 否
+边界瓦片参数 | BORDER_TILE|float|0.4f | 地形边界瓦片的显示参数，控制边界过渡效果 | 0-1 | 启用 | 否
+树木季节最小值 | TREE_SEASON_MIN|float|0.5f | 树木季节变化的最小阈值，低于此值触发季节外观变化 | 0-1 | 启用 | 否
+树木季节过渡调整 | TREE_SEASON_FADE_TWEAK|float|2.5f | 调整树木季节过渡的速度，值越高过渡越快 |>0 | 启用 | 否
+
+===HDR（高动态范围）===
+// 控制 HDR 效果的亮度计算参数
+亮度计算向量 | LUMINANCE_VECTOR|float3|float3 (0.2125f, 0.7154f, 0.0721f)| 将 RGB 颜色转换为亮度值的权重向量（符合人眼对红、绿、蓝的敏感度）| 每个分量 0-1 | 启用 | 否
+
+===TREES（树木相关）===
+// 控制树木材质的高光和粗糙度，影响树木反光效果
+树木高光强度 | TREE_SPECULAR|float|0.1f | 树木表面的高光反射强度，值越高反光越明显 | 0-1 | 启用 | 是
+树木表面粗糙度 | TREE_ROUGHNESS|float|0.6f | 树木表面的粗糙程度，值越高反光越分散（越不光滑）|0-1 | 启用 | 是
+
+===WATER（水体相关）===
+// 控制水体外观和动画的参数，部分参数暂未启用
+水体纹理平铺频率（禁用）|WATER_TILE|float|4.0f | 水体纹理的重复频率，值越小纹理越密集（当前在着色器中被注释，暂不生效）|>0 | 禁用 | 是
+水体动画时间缩放 | WATER_TIME_SCALE|float|1.0f / 50.0f | 控制水流动画的速度，值越小动画越慢（当前为 1/50 秒每帧）|>0 | 启用 | 是
+水体基准高度 | WATER_HEIGHT|float|9.5f | 水体在场景中的基础高度位置，影响与地形的衔接 |≥0 | 启用 | 是
+水体高度倒数（自动计算）|WATER_HEIGHT_RECP|float|1.0f / WATER_HEIGHT | 由 “水体基准高度” 自动计算的倒数，用于水体效果的数学运算 |>0 | 启用 | 否
+水体高度倒数平方（自动计算）|WATER_HEIGHT_RECP_SQUARED|float|WATER_HEIGHT_RECP * WATER_HEIGHT_RECP | 由 “水体高度倒数” 自动计算的平方值，用于水体效果的数学运算 |>0 | 启用 | 否
+
+===BUILDINGS（建筑与阴影相关）===
+// 控制建筑阴影强度的参数，影响场景光影层次感
+地形阴影权重 | SHADOW_WEIGHT_TERRAIN|float|0.7f | 地形阴影的显示强度，值越高阴影越暗 | 0-1 | 启用 | 是
+贴图阴影权重 | SHADOW_WEIGHT_MAP|float|0.7f | 贴图相关阴影的显示强度，值越高阴影越暗 | 0-1 | 启用 | 是
+边界阴影权重 | SHADOW_WEIGHT_BORDER|float|0.7f | 地形边界阴影的显示强度，值越高阴影越暗 | 0-1 | 启用 | 是
+水体阴影权重 | SHADOW_WEIGHT_WATER|float|0.5f | 水体阴影的显示强度，值越高阴影越暗（低于其他类型阴影）|0-1 | 启用 | 是
+河流阴影权重 | SHADOW_WEIGHT_RIVER|float|0.4f | 河流阴影的显示强度，值越高阴影越暗（最低的阴影权重）|0-1 | 启用 | 是
+树木阴影权重 | SHADOW_WEIGHT_TREE|float|0.7f | 树木阴影的显示强度，值越高阴影越暗 | 0-1 | 启用 | 是
+
+===FOG（雾效相关）===
+// 控制场景雾效和战争迷雾的参数，影响视野范围
+雾效颜色 | FOG_COLOR|float3|float3 (0.12, 0.28, 0.6)| 场景雾效的基础颜色（RGB），带有蓝色调 | 每个分量 0-1 | 启用 | 是
+雾效开始距离 | FOG_BEGIN|float|1.0f | 相机距离大于此值时开始显示雾效 |≥0 | 启用 | 是
+雾效结束距离 | FOG_END|float|150.0f | 相机距离大于此值时雾效达到最大强度 |>FOG_BEGIN | 启用 | 是
+雾效最大强度 | FOG_MAX|float|0.35f | 雾效的最大不透明度，值越高雾越浓 | 0-1 | 启用 | 是
+战争迷雾最大强度 | FOW_MAX|float|0.5f | 战争迷雾的最大不透明度，值越高迷雾越浓 | 0-1 | 启用 | 是
+战争迷雾相机最近距离 | FOW_CAMERA_MIN|float|200 | 相机距离低于此值时，战争迷雾强度最高 |>0 | 启用 | 否
+战争迷雾相机最远距离 | FOW_CAMERA_MAX|float|500 | 相机距离高于此值时，战争迷雾强度最低 |>FOW_CAMERA_MIN | 启用 | 否
+
+===GRADIENT BORDERS（渐变边界相关）===
+// 控制地形渐变边界的显示参数，影响边界过渡效果
+渐变边界相机最近距离 | GB_CAM_MIN|float|100.0f | 相机距离低于此值时，渐变边界正常显示 |>0 | 启用 | 否
+渐变边界相机最远距离 | GB_CAM_MAX|float|350.0f | 相机距离高于此值时，渐变边界开始淡化 |>GB_CAM_MIN | 启用 | 否
+渐变边界最大填充限制 | GB_CAM_MAX_FILLING_CLAMP|float|0.8f | 相机在最远距离时，渐变边界的填充限制（0-1，值越高填充越满）|0-1 | 启用 | 否
+渐变边界过渡阈值 1|GB_THRESHOLD|float|0.05f | 渐变边界的第一次过渡时间阈值，控制过渡速度 |>0 | 启用 | 否
+渐变边界过渡阈值 2|GB_THRESHOLD2|float|0.25f | 渐变边界的第二次过渡时间阈值，控制过渡速度 |>0 | 启用 | 否
+渐变边界海面裁剪阈值 | GB_OUTLINE_CUTOFF_SEA|float|0.990f | 平衡海面无相邻地形时的边界裁剪阈值（经验值）|0-1 | 启用 | 否
+渐变边界近距离不透明度 | GB_OPACITY_NEAR|float|1.0f | 相机靠近时渐变边界的不透明度（完全不透明）|0-1 | 启用 | 是
+渐变边界远距离不透明度 | GB_OPACITY_FAR|float|0.85f | 相机远离时渐变边界的不透明度（轻微透明）|0-1 | 启用 | 是
+边界夜间去饱和度最大值 | BORDER_NIGHT_DESATURATION_MAX|float|0.2f | 夜间边界颜色的最大去饱和度（1.0 为完全灰色）|0-1 | 启用 | 是
+边界战争迷雾移除系数 | BORDER_FOW_REMOVAL_FACTOR|float|0.8f | 从边界中移除战争迷雾的程度（1.0 为完全无迷雾）|0-1 | 启用 | 否
+边界光照移除系数 | BORDER_LIGHT_REMOVAL_FACTOR|float|0.8f | 从边界中移除光照计算的程度（1.0 为完全无光照影响）|0-1 | 启用 | 否
+渐变边界底层强度 | GB_STRENGTH_CH1|float|1.0 | 渐变边界底层（第一层）的不透明度 | 0-1 | 启用 | 是
+渐变边界顶层强度 | GB_STRENGTH_CH2|float|1.0 | 渐变边界顶层（第二层）的不透明度 | 0-1 | 启用 | 是
+渐变边界图层优先级 | GB_FIRST_LAYER_PRIORITY|float|0.4 | 两层边界同时生效时，底层的优先级（值越高底层显示越优先）|0-1 | 启用 | 否
+边界贴图瓦片尺寸 | BORDER_MAP_TILE|float|18000.0f | 边界贴图瓦片的尺寸（像素），固定为 18000 像素 |>0 | 启用 | 否
+
+===SECONDARY COLOR MAP（次级颜色贴图相关）===
+// 控制次级颜色贴图的平铺参数
+次级颜色贴图瓦片尺寸 | SEC_MAP_TILE|float|6000.0f | 次级颜色贴图瓦片的尺寸（像素），固定为 6000 像素 |>0 | 启用 | 否 
+
+===MAP ARROWS（地图箭头相关）===
+// 控制地图箭头的显示和动画参数
+地图箭头选中闪烁速度 | MAP_ARROW_SEL_BLINK_SPEED|float|5.5f | 地图选中箭头的闪烁频率，值越高闪烁越快 |>0 | 启用 | 是
+地图箭头选中闪烁范围 | MAP_ARROW_SEL_BLINK_RANGE|float|0.7f | 地图选中箭头的闪烁亮度范围（0-0.7），值越大闪烁越明显 | 0-1 | 启用 | 是
+地图箭头地形法线强度 | MAP_ARROW_NORMALS_STR_TERR|float|0.0125f | 地形上地图箭头的法线贴图强度，值越小效果越微弱 |>0 | 启用 | 否
+地图箭头水体法线强度 | MAP_ARROW_NORMALS_STR_WATER|float|0.08f | 水体上地图箭头的法线贴图强度，值越大效果越明显 |>0 | 启用 | 否
+
+===PARTICLES（粒子相关）===
+// 控制粒子效果的淡入淡出参数
+粒子淡出开始距离 | PARTICLE_FADE_START_DISTANCE|float|100 | 相机距离大于此值时，粒子开始淡出 |>0 | 启用 | 否
+粒子淡出停止距离 | PARTICLE_FADE_STOP_DISTANCE|float|350 | 相机距离大于此值时，粒子完全消失 |>PARTICLE_FADE_START_DISTANCE | 启用 | 否
+
+===RIM LIGHT（边缘光相关）===
+// 控制模型边缘光的显示范围和颜色
+边缘光开始阈值 | RIM_START|float|0.55f | 边缘光开始显示的角度阈值，值越高边缘光范围越小 | 0-1 | 启用 | 是
+边缘光结束阈值 | RIM_END|float|0.6f | 边缘光完全显示的角度阈值，值越高边缘光范围越小 |>RIM_START | 启用 | 是
+边缘光颜色 | RIM_COLOR|float4|float4( 0.3f, 0.3f, 0.3f, 0.0f ) | 用于调整边缘光的颜色，四个值代表R B G 透明通道 |每个分量0f-1f | 启用 | 是
+
+===MAP BORDER（地图边界相关）===
+// 控制地图边界的光照参数
+地图边界阳光强度 | BORDER_SUN_INTENSITY|float3|float3 (1.5, 1.5, 1.6)| 地图边界的阳光照射强度（RGB），蓝色分量略高 |>0 | 启用 | 是
+地图边界阳光方向 | BORDER_SUN_DIRECTION|float3|float3 (-0.2, 0.9, 0.1)| 地图边界的阳光照射方向向量（XYZ），控制阴影投射方向 | 无固定范围 | 启用 | 否

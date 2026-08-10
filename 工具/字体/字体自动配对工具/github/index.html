@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+	<link rel="icon" href="https://edu.aperip.com/uploads/QIUQI-LIBRARY.webp">
+    <link rel="stylesheet" href="https://edu.aperip.com/uploads/qlr.style.css">
+</head>
+<body>
+    <main class="container" aria-labelledby="redirect-title">
+        <div class="logo">QIUQI-LIBRARY</div>
+
+        <section class="card">
+		    <!--
+            <div class="status"></div>
+			-->
+
+            <h1 id="redirect-title">Redirecting...</h1>
+
+            <p>
+                The page is about to navigate to the target website. You can also enter directly, and the redirection will automatically complete after the countdown ends.
+            </p>
+
+            <div class="progress" aria-hidden="true">
+                <div class="progress__bar" id="progressBar"></div>
+            </div>
+
+            <div class="actions">
+                <a class="btn" href="#" id="enterBtn" aria-label="Enter immediately">
+                    Enter
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path d="M7 17 17 7"></path>
+                        <path d="M7 7h10v10"></path>
+                    </svg>
+                </a>
+
+                <div class="countdown" aria-live="polite">
+                    Automatically redirecting in<span id="seconds"></span>seconds
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Copyright © 2026 <a href="https://github.com/Paradox-Developer-Foundation/QIUQI-LIBRARY" class="bold-link">QIUQI-LIBRARY</a>. All rights reserved.
+    </footer>
+
+    <script>
+        const TARGET_URL = "https://github.com/czxieddan/HOI4-Font-Oragnizer";
+        const TOTAL_SECONDS = 10;
+
+        let timeLeft = TOTAL_SECONDS;
+
+        const secondsEl = document.getElementById("seconds");
+        const progressBar = document.getElementById("progressBar");
+        const enterBtn = document.getElementById("enterBtn");
+
+        enterBtn.href = TARGET_URL;
+        progressBar.style.setProperty("--progress", "100%");
+
+        const timer = setInterval(() => {
+            timeLeft -= 1;
+            secondsEl.textContent = timeLeft;
+            progressBar.style.setProperty("--progress", `${(timeLeft / TOTAL_SECONDS) * 100}%`);
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                window.location.href = TARGET_URL;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

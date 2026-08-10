@@ -1,0 +1,103 @@
+注意：写AI需要你对钢4这个游戏的玩法流程有几乎掌握的程度
+
+
+!!!!!注意:请对ai_strategy、ai_equipment、ai_template三个文件有充足的了解再来了解此文件
+
+
+ai_area文件位置:common/ai_areas
+p社原版文件名称:default.txt
+作用和意义:
+在写AI的时候,假如我想让AI派兵去一大块地方,比如说巴尔干地区
+这个区域有南斯拉夫、保加利亚、希腊、罗马尼亚、匈牙利5个国家的地块
+如果手动写这几个区域的state id(省份id就是你建造工厂的区域)或者strategic regions(战略区域就是你空军和海军派飞机或舰船去的大块区域)那么会导致代码冗长,
+因此这个文件的意义就是把你想定义的一大片”战略区域“整合成一条代码
+
+比如：我想定义德国，意大利所在的战略区域为”轴心国核心区域“，可以这样写：
+
+areas = {  ---格式开头必须要写
+
+    Axis_core_regions = { --这里的名称是自定义的，后续要写在ai_strategy里
+
+        strategic_regions = {--
+            #德国所在的战略区域
+            7 #德国南部
+            6 #德国西北部
+            9 #德国东部
+            38 #德国普鲁士地区和西波兰
+
+
+            #意大利所在的战略区域
+            21 #阿尔卑斯山区，包含了意大利北部和奥地利
+            23 #意大利南部
+        }
+
+    }
+
+
+}----请一定要注意代码书写格式，避免屎山代码从我做起
+
+我该如何查找这些地块？两个方法：
+1.以-debug模式进去游戏，鼠标放在地块上会显示state id和strategic regions
+2.vscode下载插件”HOI4 Mod Utilities“作者杨超凡随后快捷键ctrl+shift+P打开vscode上面命令栏工作条，点击”钢丝模组工具：预览世界地图”即可预览原版地块
+
+
+我该如何使用我定义的战略区域？
+比如我想英美AI在上面我所定义的”轴心国核心区域“也就是“Axis_core_regions”在此地区画前线进攻或者进行海军入侵可以这样写：
+
+ENG_USA_invade_axis_core_regions = {
+
+    allowed = { ---指定战略对英美AI生效
+        or = {
+            original_tag = ENG
+            original_tag = USA
+        }
+	}
+
+	enable = { ---何时生效？与德意处于战争状态
+		or = {
+            has_war_with = GER
+            has_war_with = ITA
+        }
+	}
+
+	abort_when_not_enabled = yes --当enalb条件不生效时候即取消这条AI行为
+
+    ai_strategy = {
+        type = invasion_unit_request
+        area = Axis_core_regions   --这里意思就是海军入侵上面我所提到的轴心国核心区域，即德意所在的地块，这样英美AI就会分兵海军入侵这些区域
+        value = 25
+    }
+
+    ai_strategy = {
+		type = front_control
+		area = Axis_core_regions  --这里同样意思就是在刚才我在上面定义的轴心国核心区域，让英美AI在此处画进宫线，而且无脑进攻
+		ratio = 0.5
+		ordertype = front
+		execution_type = balanced --rush就是AI执行激进计划 balanced就是平衡计划 careful 就是小心计划，就是玩家划线平推的时候那个将领界面执行的三个方式
+		execute_order = yes ---这里就是无脑进攻的意思，yes就是无脑进攻，no就是打死也不在这个区域进攻
+	} 
+
+	ai_strategy = {
+		type = front_unit_request 
+		area = Axis_core_regions 
+		value = 50
+	}
+
+    ai_strategy = {
+		type = force_concentration_front_factor
+		ratio = 0.5
+		area = Axis_core_regions
+		value = 50
+	}
+
+}
+
+接下来就是更高级的问题了，如果我想写AI的模组改了地块怎么办？
+还是请用杨超凡的这个vscode工具请把您改地块的模组加入vscode的工作区，然后删除原版钢4文件的工作区，随后用上面的方法即可预览改过地块后的战略区域数字id
+改过地块的使用方法也是一样的
+
+
+
+
+-----------------------------------------内部学习请勿外传------------------------------------
+作者：菜鸟904

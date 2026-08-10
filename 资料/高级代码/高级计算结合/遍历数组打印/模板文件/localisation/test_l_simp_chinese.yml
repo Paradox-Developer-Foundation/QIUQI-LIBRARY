@@ -1,0 +1,14 @@
+﻿l_simp_chinese:
+TST_category:0 "测试决议组"
+#因为desc之类的地方会闪退，所以需要通过tech_effect实现绕路的效果，这里是用于给科技显示的本地化tt，其中的内容专门调用了对应科技的tech_effect
+TST_category_desc:0 "[GET_your_arr_looper_with_tech_effect]"
+TST_decision:0 "测试决议"
+
+GET_your_arr_looper_0:0 ""
+GET_your_arr_looper_1:0 "[?Global.Test_Arr^temp_looper.GetName]\n[GET_your_arr_looper]"
+#在这里，一开始要调用数组^坐标，然后调用数组^坐标的^名字（也就是用GetName，你也可以在这里调用其它内容，甚至写新的脚本本地化，根据数组里存了什么再做新的文本显示），最后再调用一次你的looper脚本本地化，这样就可以实现循环了。此外注意数组调用的作用域不要搞错了，这里是global是因为我最开始设置给global了。
+
+#注意，遍历尽量在trigger或者effect block里进行，或者在tooltip这样的地方
+#desc之类的地方会闪退
+TST_decision_tr:0 "[GET_your_arr_looper_starter]"
+TST_decision_tt:0 "[GET_your_arr_looper_starter]"

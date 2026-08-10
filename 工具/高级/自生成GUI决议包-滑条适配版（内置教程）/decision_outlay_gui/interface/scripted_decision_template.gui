@@ -1,0 +1,450 @@
+guiTypes = {
+	
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_1"   size = { width = 0 height = 1   }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_2"   size = { width = 0 height = 2   }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_3"   size = { width = 0 height = 3   }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_4"   size = { width = 0 height = 4   }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_5"   size = { width = 0 height = 5   }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_6"   size = { width = 0 height = 6   }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_7"   size = { width = 0 height = 7   }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_8"   size = { width = 0 height = 8   }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_9"   size = { width = 0 height = 9   }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_10"  size = { width = 0 height = 10  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_11"  size = { width = 0 height = 11  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_12"  size = { width = 0 height = 12  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_13"  size = { width = 0 height = 13  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_14"  size = { width = 0 height = 14  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_15"  size = { width = 0 height = 15  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_16"  size = { width = 0 height = 16  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_17"  size = { width = 0 height = 17  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_18"  size = { width = 0 height = 18  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_19"  size = { width = 0 height = 19  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_20"  size = { width = 0 height = 20  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_21"  size = { width = 0 height = 21  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_22"  size = { width = 0 height = 22  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_23"  size = { width = 0 height = 23  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_24"  size = { width = 0 height = 24  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_25"  size = { width = 0 height = 25  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_26"  size = { width = 0 height = 26  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_27"  size = { width = 0 height = 27  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_28"  size = { width = 0 height = 28  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_29"  size = { width = 0 height = 29  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_30"  size = { width = 0 height = 30  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_31"  size = { width = 0 height = 31  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_32"  size = { width = 0 height = 32  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_33"  size = { width = 0 height = 33  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_34"  size = { width = 0 height = 34  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_35"  size = { width = 0 height = 35  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_36"  size = { width = 0 height = 36  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_37"  size = { width = 0 height = 37  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_38"  size = { width = 0 height = 38  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_39"  size = { width = 0 height = 39  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_40"  size = { width = 0 height = 40  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_41"  size = { width = 0 height = 41  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_42"  size = { width = 0 height = 42  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_43"  size = { width = 0 height = 43  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_44"  size = { width = 0 height = 44  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_45"  size = { width = 0 height = 45  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_46"  size = { width = 0 height = 46  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_47"  size = { width = 0 height = 47  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_48"  size = { width = 0 height = 48  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_49"  size = { width = 0 height = 49  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_50"  size = { width = 0 height = 50  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_51"  size = { width = 0 height = 51  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_52"  size = { width = 0 height = 52  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_53"  size = { width = 0 height = 53  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_54"  size = { width = 0 height = 54  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_55"  size = { width = 0 height = 55  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_56"  size = { width = 0 height = 56  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_57"  size = { width = 0 height = 57  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_58"  size = { width = 0 height = 58  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_59"  size = { width = 0 height = 59  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_60"  size = { width = 0 height = 60  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_61"  size = { width = 0 height = 61  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_62"  size = { width = 0 height = 62  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_63"  size = { width = 0 height = 63  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_64"  size = { width = 0 height = 64  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_65"  size = { width = 0 height = 65  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_66"  size = { width = 0 height = 66  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_67"  size = { width = 0 height = 67  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_68"  size = { width = 0 height = 68  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_69"  size = { width = 0 height = 69  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_70"  size = { width = 0 height = 70  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_71"  size = { width = 0 height = 71  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_72"  size = { width = 0 height = 72  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_73"  size = { width = 0 height = 73  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_74"  size = { width = 0 height = 74  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_75"  size = { width = 0 height = 75  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_76"  size = { width = 0 height = 76  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_77"  size = { width = 0 height = 77  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_78"  size = { width = 0 height = 78  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_79"  size = { width = 0 height = 79  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_80"  size = { width = 0 height = 80  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_81"  size = { width = 0 height = 81  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_82"  size = { width = 0 height = 82  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_83"  size = { width = 0 height = 83  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_84"  size = { width = 0 height = 84  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_85"  size = { width = 0 height = 85  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_86"  size = { width = 0 height = 86  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_87"  size = { width = 0 height = 87  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_88"  size = { width = 0 height = 88  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_89"  size = { width = 0 height = 89  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_90"  size = { width = 0 height = 90  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_91"  size = { width = 0 height = 91  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_92"  size = { width = 0 height = 92  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_93"  size = { width = 0 height = 93  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_94"  size = { width = 0 height = 94  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_95"  size = { width = 0 height = 95  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_96"  size = { width = 0 height = 96  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_97"  size = { width = 0 height = 97  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_98"  size = { width = 0 height = 98  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_99"  size = { width = 0 height = 99  }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_100" size = { width = 0 height = 100 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_101" size = { width = 0 height = 101 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_102" size = { width = 0 height = 102 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_103" size = { width = 0 height = 103 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_104" size = { width = 0 height = 104 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_105" size = { width = 0 height = 105 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_106" size = { width = 0 height = 106 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_107" size = { width = 0 height = 107 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_108" size = { width = 0 height = 108 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_109" size = { width = 0 height = 109 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_110" size = { width = 0 height = 110 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_111" size = { width = 0 height = 111 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_112" size = { width = 0 height = 112 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_113" size = { width = 0 height = 113 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_114" size = { width = 0 height = 114 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_115" size = { width = 0 height = 115 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_116" size = { width = 0 height = 116 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_117" size = { width = 0 height = 117 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_118" size = { width = 0 height = 118 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_119" size = { width = 0 height = 119 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_120" size = { width = 0 height = 120 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_121" size = { width = 0 height = 121 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_122" size = { width = 0 height = 122 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_123" size = { width = 0 height = 123 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_124" size = { width = 0 height = 124 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_125" size = { width = 0 height = 125 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_126" size = { width = 0 height = 126 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_127" size = { width = 0 height = 127 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_128" size = { width = 0 height = 128 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_129" size = { width = 0 height = 129 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_130" size = { width = 0 height = 130 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_131" size = { width = 0 height = 131 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_132" size = { width = 0 height = 132 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_133" size = { width = 0 height = 133 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_134" size = { width = 0 height = 134 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_135" size = { width = 0 height = 135 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_136" size = { width = 0 height = 136 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_137" size = { width = 0 height = 137 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_138" size = { width = 0 height = 138 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_139" size = { width = 0 height = 139 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_140" size = { width = 0 height = 140 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_141" size = { width = 0 height = 141 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_142" size = { width = 0 height = 142 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_143" size = { width = 0 height = 143 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_144" size = { width = 0 height = 144 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_145" size = { width = 0 height = 145 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_146" size = { width = 0 height = 146 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_147" size = { width = 0 height = 147 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_148" size = { width = 0 height = 148 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_149" size = { width = 0 height = 149 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_150" size = { width = 0 height = 150 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_151" size = { width = 0 height = 151 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_152" size = { width = 0 height = 152 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_153" size = { width = 0 height = 153 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_154" size = { width = 0 height = 154 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_155" size = { width = 0 height = 155 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_156" size = { width = 0 height = 156 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_157" size = { width = 0 height = 157 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_158" size = { width = 0 height = 158 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_159" size = { width = 0 height = 159 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_160" size = { width = 0 height = 160 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_161" size = { width = 0 height = 161 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_162" size = { width = 0 height = 162 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_163" size = { width = 0 height = 163 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_164" size = { width = 0 height = 164 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_165" size = { width = 0 height = 165 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_166" size = { width = 0 height = 166 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_167" size = { width = 0 height = 167 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_168" size = { width = 0 height = 168 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_169" size = { width = 0 height = 169 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_170" size = { width = 0 height = 170 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_171" size = { width = 0 height = 171 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_172" size = { width = 0 height = 172 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_173" size = { width = 0 height = 173 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_174" size = { width = 0 height = 174 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_175" size = { width = 0 height = 175 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_176" size = { width = 0 height = 176 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_177" size = { width = 0 height = 177 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_178" size = { width = 0 height = 178 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_179" size = { width = 0 height = 179 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_180" size = { width = 0 height = 180 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_181" size = { width = 0 height = 181 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_182" size = { width = 0 height = 182 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_183" size = { width = 0 height = 183 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_184" size = { width = 0 height = 184 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_185" size = { width = 0 height = 185 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_186" size = { width = 0 height = 186 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_187" size = { width = 0 height = 187 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_188" size = { width = 0 height = 188 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_189" size = { width = 0 height = 189 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_190" size = { width = 0 height = 190 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_191" size = { width = 0 height = 191 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_192" size = { width = 0 height = 192 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_193" size = { width = 0 height = 193 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_194" size = { width = 0 height = 194 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_195" size = { width = 0 height = 195 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_196" size = { width = 0 height = 196 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_197" size = { width = 0 height = 197 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_198" size = { width = 0 height = 198 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_199" size = { width = 0 height = 199 }    }
+	containerWindowType = {name = "scripted_decision_container_slider_controller_container_200" size = { width = 0 height = 200 }    }
+	
+	containerWindowType = {
+		name = "scripted_decision_container"
+		position = { x=200 y= 200 }
+		size = { width=550 height=140 }
+		clipping = yes
+	
+		verticalScrollbar = "right_vertical_slider"
+		margin = { top = 14 bottom = 12}
+
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_window_1b_border"
+		}
+		
+		iconType = {
+			name = "scripted_decision_gui_calculator"
+			position = {
+				x = 0
+				y = 0
+			}
+			centerposition = yes
+			orientation = UPPER_LEFT
+			spriteType = ""
+		}
+		gridBoxType = {
+			name = "scripted_decision_slider_controller_grid"
+			position = { x=0 y=0 }
+			max_slots_horizontal = 1
+			slotsize = {width = 887 height = 100}
+			add_horizontal = no
+		}
+		gridboxtype = {
+			name = "scripted_decision_category_grid"
+			position = { x = 0 y = 0 }
+			size = { width = 0 height = 0 }
+			slotsize = { width=0 height=0 }
+			max_slots_horizontal = 1
+		}
+	}
+	
+	containerWindowType = {
+		name = "scripted_decision_container_category_entry"
+		position = { x=0 y=0 }
+		size = { width=100%% height=40 }
+		clipping = no
+
+		iconType = {
+			name = "scripted_decision_category_calculator"
+			position = {
+				x = 0
+				y = 0
+			}
+			centerposition = yes
+			orientation = UPPER_LEFT
+			spriteType = ""
+		}
+
+		buttonType = {
+			name = "scripted_decision_category_icon_header_bg"
+			position = {x=-4 y=8}
+			spriteType = "GFX_category_header_bg"
+			clicksound = decisions_ui_tab
+		}
+		
+		iconType = {
+			name = "scripted_decision_category_icon"
+			position = {x=10 y=16}
+			spriteType = "GFX_decision_category_generic"
+		}
+
+		instantTextboxType = {
+			name = "scripted_decision_category_name_text"
+			position = { x = 74 y = 26 }
+			textureFile = ""
+			font = "hoi_20b"
+			borderSize = { x = 0 y = 0 }
+			text = scripted_decision_category_name_loc_key
+			maxWidth = 365
+			maxHeight = 40
+			format = center
+			#alwaystransparent = yes
+			fixedsize=yes
+		}
+		
+		buttonType = {
+			name = "scripted_decision_category_collapse_btn"
+			position = { x=475 y=25 }
+			quadTextureSprite = "GFX_conveyor_collapse_btn"
+			buttonFont = "hoi_18mbs"
+			clicksound = click_default
+			alwaystransparent = yes
+			frame = 1
+		}
+
+		###########################################################################
+		#↓↓↓↓你应该在这里插入你的决议组介绍、图片和gui，并在scrgui文件中注册可见性↓↓↓↓#
+		###########################################################################
+
+
+
+		#################################
+		#################################
+
+		gridboxtype = {
+			name = "scripted_decision_grid"
+			position = { x = 0 y = 0 }
+			size = { width = 0 height = 0 }
+			slotsize = { width=0 height=0 }
+			#slotsize = { width = 1 height = 1 }
+			max_slots_horizontal = 1
+		}
+	}
+
+
+	containerWindowType = {
+		name = "scripted_decision_container_entry"
+		position = { x=0 y=0 }
+		size = { width=100%% height=40 }
+		clipping = no
+
+		iconType = {
+			name = "scripted_decision_calculator"
+			position = {
+				x = 0
+				y = 0
+			}
+			centerposition = yes
+			orientation = UPPER_LEFT
+			spriteType = ""
+		}
+	
+
+		iconType = {
+			name = "scripted_decision_btn_bg"
+			position = {x=0 y=0}
+			spriteType = "GFX_decision_item_bg"
+			tooltip = scripted_decision_tooltip_loc_key
+		}
+	
+		iconType = {
+			name = "scripted_decision_btn_progress"
+			position = {x=9 y=28}
+			spriteType = "GFX_decision_item_progress_good"
+			tooltip = scripted_decision_tooltip_loc_key
+		}
+		instantTextboxType = {
+			name = "scripted_decision_name_text"
+			position = { x = 62 y = 2 }
+			textureFile = ""
+			font = "hoi_16mbs"
+			borderSize = { x = 0 y = 0 }
+			text = scripted_decision_name_loc_key
+			tooltip = scripted_decision_tooltip_loc_key
+			maxWidth = 300
+			maxHeight = 32
+			format = left
+			vertical_alignment = center
+		}
+
+		iconType = {
+			name = "scripted_decision_icon"
+			position = {x=32 y=20}
+			spriteType = "GFX_decision_unknown"
+			centerposition = yes
+			tooltip = scripted_decision_tooltip_loc_key
+		}
+	
+		iconType = {
+			name = "scripted_decision_timer_icon"
+			position = {x=492 y=15}
+			spriteType = "GFX_decision_timer_icon_strip"
+			centerposition = yes
+			tooltip = scripted_decision_tooltip_loc_key
+			scale = 0.95
+		}
+	
+		instantTextboxType = {
+			name = "scripted_decision_cost_and_timer_text"
+			position = { x = 135 y = 9 }
+			textureFile = ""
+			font = "hoi_16mbs"
+			borderSize = { x = 0 y = 0 }
+			text = scripted_decision_timer_and_cost_loc_key
+			tooltip = scripted_decision_tooltip_loc_key
+			maxWidth = 320
+			maxHeight = 32
+			format = right
+		}
+	
+		buttonType = {
+			name = "scripted_decision_btn_select"
+			position = {x=465 y=6}
+			spriteType = "GFX_decision_select_icon_strip"
+			clicksound = decisions_ui_checkbox
+			pdx_tooltip  = scripted_decision_tooltip_loc_key
+			#bound_tooltip = {
+			#	localization_key = scripted_decision_tooltip_loc_key
+			#}
+			#context_aware_tooltip = test_loc
+		}
+
+		buttonType = {
+			name = "scripted_decision_hidden_tool_button_cancel_decision"
+			position = {x=465 y=6}
+			spriteType = "GFX_decision_select_icon_strip"
+			clicksound = decisions_ui_checkbox
+			#alwaystransparent = yes
+		}
+		buttonType = {
+			name = "scripted_decision_hidden_tool_button_remove_decision"
+			position = {x=465 y=6}
+			spriteType = "GFX_decision_select_icon_strip"
+			clicksound = decisions_ui_checkbox
+			#alwaystransparent = yes
+		}
+		buttonType = {
+			name = "scripted_decision_hidden_tool_button_complete_decision"
+			position = {x=465 y=6}
+			spriteType = "GFX_decision_select_icon_strip"
+			clicksound = decisions_ui_checkbox
+			#alwaystransparent = yes
+		}
+
+
+		buttonType = {
+			name = "scripted_decision_hidden_tool_button_cancel_mission"
+			position = {x=465 y=6}
+			spriteType = "GFX_decision_select_icon_strip"
+			clicksound = decisions_ui_checkbox
+			#alwaystransparent = yes
+		}
+		buttonType = {
+			name = "scripted_decision_hidden_tool_button_complete_mission"
+			position = {x=465 y=6}
+			spriteType = "GFX_decision_select_icon_strip"
+			clicksound = decisions_ui_checkbox
+			#alwaystransparent = yes
+		}
+		buttonType = {
+			name = "scripted_decision_hidden_tool_button_timeout_mission"
+			position = {x=465 y=6}
+			spriteType = "GFX_decision_select_icon_strip"
+			clicksound = decisions_ui_checkbox
+			#alwaystransparent = yes
+		}
+	}
+}

@@ -1,0 +1,24 @@
+为了搞个超事件我一下午求爷爷告奶奶总算整会了QAQ，我把原来全英文的1000个超事件的模板整合了一下，著成此作品。详细注释在文件里
+      第一：common文件
+1.scripted_effects文件夹下的CM_big_event_scripted_effects
+超事件的核心
+2.scripted_guis文件夹
+GUI 容器（超事件整体），通过全局变量se_display存在而出现。或者点击超事件按钮清除全局变量se_display而消失
+3.scripted_localisation文件夹
+里面的文件基本决定几号超事件用几号的图片与文本。比如我写的1号事件”大风纪战争“check_variable = { global.se_display = 0001 }
+0001变量会调用localization_key = GFX_CM_SE_0001（我老婆，超事件图片） ，CM_SE_title_0001（大风纪战争，标题本地化）
+， CM_SE_desc_0001（游戏是儿童最正当的行为……，名言本地化） ，CM_SE_quote_0001（鲁迅，出处本地化），CM_SE_btn_0001（以孩童之名！，按钮文本本地化）
+     第二：event文件夹
+里面事件主要是通过~按键测试超事件，如果没问题你可以把选项里的set_variable = { global.se_display = 000 }
+与play_song = 000移动到你需要的地方
+     第三：GFX文件夹
+如果你觉得丑你可以把想要的图片改成与这个文件夹同名图片再替换
+第四：interface文件夹
+CM_superevent.gfx文件是告诉电脑你要用的图片叫什么在哪里
+CM_superevent.gui文件是告诉电脑你要用的图片怎么摆，是否能点击拖动
+      第四：localisation文件夹
+本地化文件，除了最上面的一段不要动其他随意，因为我当初被吓住没给最上面一段写中文本地化导致大BUG，哭哭QAQ
+     第五：music文件夹
+bigevent文件夹将你的音乐摆进去
+cm_big_event.asset文件是告诉电脑你要用的音乐叫什么在哪里
+cm_big_event.txt文件是告诉电脑这些音乐只在超事件时用

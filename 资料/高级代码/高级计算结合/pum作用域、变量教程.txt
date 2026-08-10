@@ -1,0 +1,395 @@
+注意！请最好使用vsc或n++打开本教案以获得最佳效果！！！！！！！
+
+######################
+######################
+###第一部分：作用域###
+######################
+######################
+
+作用域是什么？
+作用域，也即scope，是指条件（trigger）检查的范围与指令（effect）施加的范围。例如我们要检测“军用工厂大于2”这一trigger，那么它必然需要一个作用域，
+我们不能平白无故问“军用工厂大于2”，应该问“xx这个state军用工厂大于2？”、“xx这个tag的军用工厂大于2？”。同样，施加effect也是，必须要有一个范围才行。
+
+##################
+#作用域的单独使用#
+##################
+
+一般而言，当我们在国策和决议中填写效果时，作用域就是持有这个国策和决议的国家自己，这种不需要指明作用域就能直接填写的情况，就是“根作用域”。即后面
+要讲到的ROOT作用域。而如果我们想要让effect或者trigger的目标范围变成别的国家或者某块state，就需要额外写一个tag、state编号来进行限定了：
+
+164 = {
+	add_resource = {
+		type = steel
+		amount = 30
+	}
+	add_resource = {
+		type = aluminium
+		amount = 25
+	}
+	add_resource = {
+		type = chromium
+		amount = 15
+	}
+	add_resource = {
+		type = tungsten
+		amount = 15
+	}
+	add_resource = {
+		type = rubber
+		amount = 15
+	}
+	add_resource = {
+		type = oil
+		amount = 10
+	}
+}
+#在地块164添加资源
+
+这种单个单个的作用域（单个tag、单个state）虽然简洁明了，但是效果非常局限，有时候我们也会用到一些更大更灵活的作用域，例如every_enemy_country
+（所有敌对国家）等，这些作用域将使得我们免于穷举法的深渊。
+但是这里有一个需要注意的地方，那就是在某些情况下，同样的一个作用域，当你用它来检查trigger和施加effect时，其写法是不同的。
+
+例如：所有敌对国家的写法
+
+当你检查所有敌对国家是否满足某条件，应该这样写：
+all_enemy_country = {
+	<trigger>
+}
+但是如果你要给所有敌国施加一个效果时：
+every_enemy_country = {
+	<effect>
+}
+这些用于检测/指令的作用域我就不再赘述，wiki里有非常详细的表格，使用时进行参考即可。不过它们都大致遵循以下规律：
+
+all_<name>	trigger用，所有<name>作用域都必须达到内部的条件。
+any_<name>	trigger用，至少有一个<name>作用域达到条件。
+every_<name>	effect用，施加在所有<name>作用域作用域上。
+random_<name>	effect用，施加在任一<name>作用域上。
+
+唯一需要提及的是如果你在使用effect用到的作用域时，需要进一步限定，
+比如：所有敌国中是主要国家的tag
+直接这样写就行：
+every_enemy_country = {
+	limit = { is_major = yes }
+	<effect>
+}
+
+##################
+#作用域的叠加使用#
+##################
+
+作用域是可以叠加着用的，这会为我们提供巨大的灵活性，但是也需要了解一个新的知识点——作用域之间的移动：
+
+ROOT	定位这个效果或触发器所在的根（脚本进入的第一个作用域）国家，无视其它任何作用域。（如前面讲到的一样）	
+
+THIS	定位当前作用域。比如：
+
+random_state = {
+    add_resource = {
+        type = oil
+        amount = 50
+        state = THIS
+    }
+}	
+#也就是把资源添加到random_state，这意味着大部分情况下THIS是最没卵用的。
+
+PREV	定位上一个作用域。例如：
+
+every_country = {
+	limit = { 
+		OR = {
+			is_in_faction_with = URS
+			tag = URS 
+		}
+	}
+	YAN = {
+		every_allied_country = { 
+			white_peace = PREV.PREV
+		}
+		if = {
+			limit = { has_war_with = PREV }
+			white_peace = PREV
+		}
+	}
+}
+}#YAN的所有盟国全部向URS以及与URS在同一阵营的国家白和。炎国如果与URS以及与URS在同一阵营的国家交战，那么也和它们白和（PREV.PREV连用的意思是上个
+作用域的上个作用域）
+
+FROM	在决议中，定位到目标决议的目标。在事件中，定位到向你发送这个事件的tag，例如德国向意大利发送了一个事件，那么对意大利而言FROM就是GER。
+
+以上就是四个用于移动的作用域了。
+
+这里我们来看一个经典的省事代码（运用作用域切换避开穷举）：
+every_state = {
+	limit = {
+		OR = {
+			is_on_continent = south_america
+			is_on_continent = north_america
+		}
+		is_owned_by = IBE
+	}
+	COL = {
+		transfer_state = PREV
+	}
+}
+将所有在南美、北美，且拥有者（注意不是控制者）是IBE的地块移交给COL。
+如果你像初学者一样把涉及到的地块挨个列出挨个划给COL，不仅费时费力还可能搞错，日后mod内容细化还可能出现bug。而这种写法不仅不易出错还兼容性良好。
+
+
+####################
+####################
+###第二部分：变量###
+####################
+####################
+
+在了解了作用域之后，我们便可以讲到变量问题了。
+变量的本质实际上就是储存在特定作用域中的“值”，隶属于钢铁雄心4的“数据结构”（我们此前讲的event_target就是其中一种）。
+
+变量可以储存在以下四种作用域：
+
+1、国家（tag）
+2、state（id）
+3、将领（将领编码）
+4、全球（global）
+
+同时，在我们探讨自创变量之前，我们可以先了解一些游戏中自带的变量，以及我们如何访问变量。
+假如游戏内有一个名为PUM_var的变量
+
+global.PUM_var #访问全球作用域中储存的PUM_var变量
+TAG.PUM_var #这个TAG作用域储存的PUM_var变量
+
+这意味着访问的基本格式就是：<scope>.变量名称
+请记住，当你需要修改或者现实某一作用域的变量时，最好采取这种写法，即使你明显是打算在root作用域添加变量，也最好这么做，以免游戏判定不出变量属于哪个作用域
+
+同时，在一个作用域内的变量还可以被指定目标：
+PUM_var@GER 意为当前作用域中名为PUM_var且目标为GER的变量，这个机制很适合用于模组中的评分系统。
+此外这个机制也有妙用：
+ROOT.ideology_popularity@意识形态id（注意肯定是填母意识形态的id） #意思是root作用域中该意识形态的支持率
+ROOT.ideology_popularity@ROOT.ruling_ideology #root作用域中执政党所属意识形态的支持率
+
+这里我们便发现，这什么政党支持率，不都是游戏里面已经有了的变量吗？没错，无论是政治点数还是稳定度，都是变量，如果你想要了解游戏中多如繁星的各种已有变量，
+可以前往英文维基网站的“数据结构”栏目查看，变量列表在后半部分，中文维基也有相关内容，但是相对不够齐全，也可参考。
+
+到这里我们终于可以开始讲解进一步的东西，那就是如何操作变量了：
+
+
+#设置变量
+set_variable = { #设置变量的数值
+	var = 变量名称
+	value = 数值大小
+}
+也可以简写：
+set_variable = { 变量名称 = 数值大小 }
+
+请注意，其实最佳写法是set_variable = { scope.变量名称 = 数值大小 }，这个作用域的注明可能看上去很多余，而且确实大部分情况下它也是多余的，但是如果你没有
+养成一遇变量就写作用域的习惯，很容易在真正必须标注作用域时忘记了它，从而引发bug，最后还可能翻来覆去找不到错在哪里。
+
+一个没有设置的变量是不存在的，如果你访问一个不存在的变量，那么只会得到0
+
+
+#变量的计算
+1、加法
+add_to_variable = { #设置变量的数值
+	var = scope.变量名称
+	value = 要加上的数值大小
+}
+也可以简写：
+add_to_variable = { scope.变量名称 = 要加上的数值大小 }
+
+2、减法
+subtract_from_variable = { #设置变量的数值
+	var = scope.变量名称
+	value = 要减去的数值大小
+}
+也可以简写：
+subtract_from_variable = { scope.变量名称 = 要减去的数值大小 }
+
+当然你可以不用这么僵化，你可以直接这样写：
+add_to_variable = { #设置变量的数值
+	var = scope.变量名称
+	value = -要减去的数值大小（写想减去的数值的负数）
+}
+也可以简写：
+add_to_variable = { scope.变量名称 = -要减去的数值大小 }
+就能用add_to实现变量的减法运算。
+
+3、加减之外，更有乘除等：
+multiply_variable #乘
+divide_variable #除
+modulo_variable #取模（数学课知识，忘记了的话我们可以复习一下，取模运算即两数相除取其余数，意思就是你选定一个值来除变量，最后把变量变成计算结果的余数）
+用法与add_to_variable一致。
+
+4、round_variable = scope.变量名称 #取整（四舍五入）
+
+5、还可以将一个变量设置为random来获取随机值：
+set_variable = { example = random }
+或者更进一步，获得你想要的随机值：
+randomize_temp_variable = {
+	var = 随机值要储存到的变量
+	distribution = 随机数的获取方式
+	min = 最小值（可选）
+	max = 最大值（可选）
+	lambda = 仅在随机数获取方式为poisson有效，数值越大，最大值与最小值的平均差值越小（可选）
+}
+随机数的获取方式有以下几种：
+uniform #通常的取值方式，在范围之间不加权地直接取值
+binomial #取值倾向于接近平均数，如果定义了min，则必须定义max
+poisson #只能设置min而不能设置max，引入一个lambda数值，该数值越大，最大值与最小值的平均差值越小
+
+
+#对变量的其他操作
+1、限定变量的最大最小值（请注意，这个效果是瞬时的，也就是完成一次它限定一次，如果你在运算变量，那么每次运算都要执行一次clamp_variable）
+clamp_variable = {
+    var = scope.变量名称
+    min = 最小值
+	max = 最大值
+}
+
+2、clear_variable = scope.变量名称 #删除变量
+
+3、has_variable = scope.变量名称 #检查是否拥有变量
+只要变量在该作用域曾经被set过，并且没有用clear_variable清除，哪怕它数值为0，都会返回真。
+
+4、最后则是检查变量大小
+check_variable = { #检查变量大小
+	var = scope.变量名称
+	value = 要与变量比较的值
+	compare = 检查方式
+}
+检查方式有以下几种：
+less_than #小于
+less_than_or_equals #小于等于
+greater_than #大于
+greater_than_or_equals #大于等于
+equals #等于
+not_equals #不等于
+检查大小可以简化为
+check_variable = { scope.变量名称 【<、=或>符号】 要与变量比较的值 }
+注意简化形式的只能是<、>以及=，没有大于等于小于等于。
+例子：check_variable = { PUM.Length_of_xstlond > PUM.Length_of_lin }
+
+
+#临时变量
+可以设置临时变量，这些变量会在当前的模块（决议、时间等）执行完毕后清除，这一点上它非常类似类似event_target，我们稍后讲讲。
+修改局部变量数值都必须使用局部变量的指令，但是用法没有什么变化：
+set_temp_variable
+add_to_temp_variable
+subtract_from_temp_variable
+multiply_temp_variable
+divide_temp_variable
+modulo_temp_variable
+clamp_temp_variable
+如果你要访问一个局部变量，则不需要特殊写法。
+
+关于临时变量与event_target的相似之处：
+
+变量的值不仅仅可以是数字，也可以是国家或地区id：
+set_temp_variable = { state_var = 600 }
+var:state_var = {
+	<effects>
+}
+这里我将state_var设置为600，也就是江西，然后意味着var:state_var等效于江西（当然这也可以理解为state_var的值等于600刚好符合江西的id）
+
+set_temp_variable = { country_var = GER }
+var:country_var = {
+	<effects>
+}
+这个例子里，则是将country_var储存为GER德国，这意味着var:country_var就等效于德国。是不是看到这里就发现它非常类似event_target了。
+
+注意，非临时变量也可以这样使用，但是因为它会一直存在，和执行完当前模块就自动消失的event_target以及临时变量不同，所以使用时要记得调整。
+
+
+变量的独特用法：
+变量除了制作评分系统外，还能用来影响动态修正（不过尽量少用动态修正，这玩意儿用多了游戏会卡）
+动态修正储存在common\dynamic_modifiers\*.txt里面
+
+以下是一个典型例子：
+urs_the_fruits_of_the_revolution_modifier = {
+	icon = GFX_urs_the_fruits_of_the_revolution_modifier
+	
+	custom_modifier_tooltip = weekly_ref_counter_add_war_line_tt
+	stability_weekly = urs_war_line_nation_modifier_stability_weekly_var
+	conscription_factor = urs_war_line_nation_modifier_conscription_factor_var
+	trade_opinion_factor = urs_war_line_nation_modifier_trade_opinion_factor_var
+	war_stability_factor = urs_war_line_nation_modifier_war_stability_factor_var 
+	political_power_factor = urs_war_line_nation_modifier_political_power_factor_var  
+	consumer_goods_factor = urs_war_line_nation_modifier_consumer_goods_factor_var
+	monthly_population = urs_war_line_nation_modifier_monthly_population_var
+	surrender_limit = urs_war_line_nation_modifier_max_surrender_limit_offset_var 
+	mobilization_speed = urs_war_line_nation_modifier_mobilization_speed_var 
+	operative_slot = urs_war_line_nation_modifier_operative_slot_var  
+	production_speed_infrastructure_factor = urs_war_line_nation_modifier_production_speed_infrastructure_factor_var
+	production_speed_industrial_complex_factor = urs_war_line_nation_modifier_production_speed_industrial_complex_factor_var
+	industrial_capacity_factory = urs_war_line_nation_modifier_industrial_capacity_factory_var
+	industrial_capacity_dockyard = urs_war_line_nation_modifier_industrial_capacity_dockyard_var
+	opinion_gain_monthly_same_ideology_factor = urs_war_line_nation_modifier_opinion_gain_monthly_same_ideology_factor_var 
+	weekly_casualties_war_support = urs_war_line_nation_modifier_weekly_casualties_war_support_var
+	army_org_regain = urs_war_line_nation_modifier_army_org_regain_var
+	operative_slot = urs_war_line_nation_modifier_operative_slot_var
+	enemy_operative_detection_chance = urs_war_line_nation_modifier_enemy_operative_detection_chance_var 
+	enemy_operative_capture_chance_factor = urs_war_line_nation_modifier_enemy_operative_capture_chance_factor_var 
+	global_building_slots_factor = urs_war_line_nation_modifier_global_building_slots_factor_var 
+}
+
+可以看到，我们没有在动态修正的每条修正后面填写具体数字，而是写了一个变量，然后我们通过加减这些变量，就能实现修正效果的变化。
+这么做的好处是什么呢？它可以使你不再需要考虑民族精神修正所依赖的if代码。如果你希望通过一条复杂、多线的国策来修正一个buff，很显然，使用swap_idea会
+非常麻烦，你需要考虑各种情况，写下一大串if、else_if代码。但是用动态修正的话，你只需每次加减一下变量就行。
+不过这里需要注意，变量加减导致的buff变化不会显示在效果中，你需要自己手动书写效果，或者运用effect_tooltip
+
+所谓effect_tooltip = {}就是展示框内效果，但是不会执行它。乍一看这是个没用的东西，但是事实绝非如此，你可以通过做一个没有任何修正效果，也没有图标的工具
+民族精神（tool_idea_1，但是name与你的动态修正相同），然后用加减变量调整动态修正时就做个tool_idea_2，tool_idea_2的修正效果就写此次变量调整后这个buff改
+变的内容。比如我的做法：
+
+completion_reward = {
+	set_variable = { urs_war_line_nation_modifier_production_speed_infrastructure_factor_var = 0.1 }
+	set_variable = { urs_war_line_nation_modifier_production_speed_industrial_complex_factor_var = 0.05 }
+	effect_tooltip = {
+		swap_ideas = {
+			remove_idea = urs_the_fruits_of_the_revolution_modifier_tooltip
+			add_idea = urs_the_fruits_of_the_revolution_modifier_tooltip_1
+		}
+	}
+}
+
+这样就能显示效果了。这种swap_ideas是不需要考虑if关系的，因为它只是effect_tooltip，你只需要它展示效果，所以每次运用只许考虑本次变量变化导致的buff效果
+变化，每次变化，你单独复制并且写一个tool_idea_3、tool_idea_4、tool_idea_5即可：
+swap_ideas = {
+	remove_idea = urs_the_fruits_of_the_revolution_modifier_tooltip
+	add_idea = urs_the_fruits_of_the_revolution_modifier_tooltip_2
+}
+swap_ideas = {
+	remove_idea = urs_the_fruits_of_the_revolution_modifier_tooltip
+	add_idea = urs_the_fruits_of_the_revolution_modifier_tooltip_3
+}
+swap_ideas = {
+	remove_idea = urs_the_fruits_of_the_revolution_modifier_tooltip
+	add_idea = urs_the_fruits_of_the_revolution_modifier_tooltip_4
+}
+#以此类推
+
+因为它们不需要有图标，仅仅name能对上动态修正就行，所以完全不需要费脑子：
+
+urs_ref_line_nation_modifier_tooltip_4 = {
+	
+	name = urs_ref_line_nation_modifier_tooltip
+	
+	allowed = {
+		original_tag = URS
+	}
+
+	allowed_civil_war = {
+		always = yes
+	}
+		
+	removal_cost = -1
+		
+	modifier = {
+		consumer_goods_factor = -0.01
+		industrial_capacity_factory = 0.03
+		industrial_capacity_dockyard = 0.03
+	}
+}
+
+以上就是本期PUM代码教学内容了，希望大家能有所收获！我们下次再见。
+作者：我电锯呢 （b站id也是这个）
+PUM粉丝群群号：948522045，欢迎大家前来游玩！

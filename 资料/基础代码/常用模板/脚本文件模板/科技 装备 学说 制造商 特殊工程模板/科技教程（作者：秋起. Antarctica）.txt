@@ -1,0 +1,305 @@
+截止1.16.2 by 秋起.＆Antarctica Form 霜泽(秋起)图书馆
+
+注意，阅读本教程之前请先阅读该段文字：
+   （1）folder ： 科技大类，即最上方可以进行切换的决议组
+
+
+第一章 科技本体
+#科技文件定义在common/technologies
+
+technologies = {
+    technology_1 = {
+        
+
+        #显示条件
+        allow = {
+            是否可点（随时检测）
+        }
+        allow_brunch = {
+            是否可见（仅开局检测）
+        }
+        
+        #花费
+        research_cost = <value> 研究花费 #每1个值等效于游戏中100天（正常情况）
+		start_year = <year> 基准年份 #即该科技到了所设定的年份，“超前研究”的debuff消失，可以正常开始研究。如若超前研究，每一年惩罚加200%的研究花费
+
+        show_effect_as_desc = yes/no #可以使modifier/effect在科技本身的描述中显示。no则显示在鼠标悬停的科技具体描述内（默认为no）
+
+        #科技连线
+        path = { #如果是新建科技，则还需要在科技树的“前端”进行修改，规定gridbox，才可以使得分支可见。
+            leads_to_tech = <technology_name> #被链接科技名字（即上一科技的名字）
+            research_cost_coeff = 1 #一般不动，代码层面的原理为：研究花费 = 设定研究花费 ✖ research_cost_coeff设定系数。可以更好的反映科技进步（科技进步愈快，科技花费愈底）
+        }
+
+        dependencies = {
+            没有连线的连线（类比国策中“需要完成某国策”条件）
+        }
+
+        folder = { #非常非常非常重要！   #用于指定当前研究选项在科技树中的位置。同时也需要对应common/technology_tags文件中technology_folder = {}之下的定位。    
+            name = xxx_folder  #name = XXX_folder对应countrytechtreeview.gui（科技）文件中定义的“containerWindowType = {name = "XXX_folder"}，position = {x = a, y = b}”指定了具体位置。
+            position = { x = a y = b }  #x,y 代表的具体像素数由对应folder下gridboxType定义的width与height的数值决定
+        }
+
+        #研发效果
+        on_research_complete_limit = {
+            科技完成后所产生效果的条件（下面效果的条件）
+        }
+        on_research_complete = {
+            科技完成后所产生的效果（满足条件才会产生）
+        }
+
+        <modifier> #可以直接填modifier
+
+        enable_equipments = {
+            科技完成后对装备的效果，后面可以填写装备，组件，船体，机身等等
+            注：如果是解锁装备类型（例如装备，船体，机身等），默认以大选项显示。但是 force_use_small_tech_layout = yes 可以强制让这一研究选项以小选项出现。
+        }
+
+        enable_equipment_modules = {
+            解锁装备配件（小选项显示，如三乘员炮塔、近距支援炮）
+        }
+
+        enable_building = { #科技完成后对建筑的效果（解锁某种建筑的最大等级，例如雷达是逐科技解锁等级的）
+            building = 建筑名 #（common\buildings\00_builings.txt文件中找到建筑名）
+            level = <value> #建筑等级，但是最大值不得超过定义文件中所定义的建筑最大等级
+        }
+
+        enable_tactic = <tactic_name> #解锁战术卡（一般用于学说），战术卡文件位于common\combat_tactics.txt文件中，<tactic_name>为战术卡名字
+
+        enable_subunits = {
+            解锁部队（营和支援连）
+        }
+        
+
+        #其他
+        doctrine = yes/no #是否为学说
+        desc = xxxx #可以写本地化描述，在鼠标悬停在科技页面时显示
+        force_use_small_tech_layout = yes/no #研究选项是否为小选项
+
+        #AI 加权
+        ai_will_do = {
+            base = 1 #基准值
+            modifier = {
+                factor = 3 #满足条件后的加权值
+                tag = POL #满足条件
+            }
+        }
+
+
+    }
+
+    technology_2 = {
+        内容同上
+    }
+}
+
+
+第二章 technology_tags
+
+#technology_tags文件定义在common/technology_tags
+
+categories = {
+    # 给当前科研选项注明分类标签。
+    # 例如原版的山地步兵I，既属于infantry_tech(步兵科技)
+    # 又属于cat_special_forces_generic（特种部队科技）
+    # 还属于mountaineers_tech（山地步兵科技）
+    # 所有的分类标签都需要在common/technology_tags目录下的文件中进行定义（原则上随意定义）
+
+    以下是翻译：（提供数个翻译示例，其他的可以在原版查询）
+    light_air #战斗机科技
+	medium_air #中型战斗机科技
+	heavy_air #重型战斗机科技
+	armor #装甲科技
+	cat_light_armor  #轻坦
+	cat_medium_armor #中坦
+	cat_heavy_armor #重坦
+	artillery #火炮
+	cat_anti_tank #反坦克炮
+	cat_anti_air #防空炮
+	naval_air #舰载机
+	infantry_weapons #轻武器
+	motorized_equipment #摩托化装备
+	cat_mechanized_equipment #机械化装备
+	naval_equipment #船体
+	rocketry #导弹
+	nuclear #火炮
+	industry #军工
+	electronics #电子
+	cat_fortification #防御工事
+	land_doctrine #陆军学说
+	air_doctrine #空军学说
+	naval_doctrine #海军学说
+
+}
+
+technology_folders = {
+    xxx_folder = { #xxx_folder 对应你科技文件中的folder
+        available = {
+            全分支可见的条件
+        } 
+        ledger = army/air/navy/military/civilian/all/hidden #整条科技树的分类（分别为陆军科技army，空军科技air，海军科技naval，军事科技military，民用科技civilian，通用科技all，隐藏科技hidden）
+
+        doctrine = yes/no #是否为学说，默认为NO（为科技）
+    }
+}
+
+第三章 科技interface
+
+interface/countrytechtreeview.gui定义了科技树，其结构为 guiTypes = {}，有两类结构：
+修改interface时，必须保证name同原版格式相同，才可以生效。
+
+- positionType = {} 疑似是与特殊研究项目相关的位置预设
+	- name = "special_project_tech_icon_offset"
+	- position = { x = -10 y = -10 }
+
+- containerWindowType = { name = "countrytechtreeview"} - 科技树界面
+	- containerWindowType = { name = "techtree_XX_folder"} - 步兵科技界面。注意此处的folder均在common/technology_tags中technology_folders = {}加以定义
+		- gridboxtype = { name = "infantry_weapons_tree"} - 轻武器分支
+	- containerWindowType = { name = "folder_tabs"} - 所有科研领域按键标签的集合
+		- buttonType = { name = {infantry_<xxx_folder>_tab}} - 步兵科技树按键标签
+- containerWindowType = { name = "techtree_<xxx_folder>_small_item"} - 小研究选项
+- containerWindowType = { name = "techtree_<xxx_folder>_item"} -大研究选项
+
+
+#以下将wiki上给予的模板复制如下，其中my_folder为可修改的变量名字（对应你科技对应的folder）
+containerWindowType = { #单个folder对应大选项卡
+    name = "techtree_my_folder_item"
+    position = { x=-56 y=-7 }
+    size = { width = 183 height = 84 }
+    clipping = no
+    background = {
+        name = "Background"
+        quadTextureSprite ="GFX_technology_unavailable_item_bg"
+    }
+    iconType = {
+        name = "Icon"
+        position = { x=91 y=50 }
+        spriteType = "GFX_technology_medium"
+        centerposition = yes
+        alwaystransparent = yes
+    }
+    instantTextBoxType = {
+        name = "Name"
+        position = { x = 3 y = -3 }
+        textureFile = ""
+        font = "hoi_20bs"
+        borderSize = {x = 4 y = 4}
+        text = "Happy-Go-Lucky-Tank"
+        maxWidth = 160
+        maxHeight = 20
+        fixedsize = yes
+        format = left
+    }
+    iconType = {
+        name = "bonus_icon"
+        position = { x=111 y=-22 }
+        spriteType = "GFX_tech_bonus"
+    }
+    instantTextBoxType = {
+        name = "bonus"
+        position = { x = 111 y = -22 }
+        textureFile = ""
+        font = "hoi_16mbs"
+        borderSize = {x = 4 y = 4}
+        text = "lol boat"
+        maxWidth = 80
+        maxHeight = 20
+        format = center
+    }
+    containerWindowType = {
+        name = "sub_technology_slot_0"
+        position = { x=141 y=1 }
+        size = { width = 35 height = 26 }
+        clipping = no
+
+        background = {
+            name = "Background"
+            spriteType ="GFX_subtechnology_unavailable_item_bg"
+        }
+
+        iconType = {
+            name = "picture"
+            position = { x=2 y=2 }
+            spriteType = "GFX_subtech_rocket"
+            alwaystransparent = yes
+        }
+    }
+}
+
+containerWindowType = { #小选项卡
+    name = "techtree_my_folder_small_item"
+    position = { x=0 y=5 }
+    size = { width = 204 height = 72 }
+    clipping = no
+    background = {
+        name = "Background"
+        quadTextureSprite ="GFX_technology_unavailable_item_bg"
+    }
+    iconType = {
+        name = "Icon"
+        position = { x=34 y=35 }
+        spriteType = "GFX_technology_medium"
+        centerposition = yes
+        alwaystransparent = yes
+    }
+    iconType = {
+        name = "bonus_icon"
+        position = { x=-1 y=-22 }
+        spriteType = "GFX_tech_bonus"
+    }
+    instantTextBoxType = {
+        name = "bonus"
+        position = { x = -1 y = -22 }
+        textureFile = ""
+        font = "hoi_16mbs"
+        borderSize = {x = 4 y = 4}
+        text = "lol boat"
+        maxWidth = 80
+        maxHeight = 20
+        format = center
+    }
+}
+
+
+containerWindowType = { #gridbox生成单个科技大类，每一个gridbox对应一段科技树
+    name = "my_folder"
+    position = { x=0 y=47 }
+    size = { width = 100%% height = 100%% }
+    margin = { top = 13 left = 13 bottom = 24 right = 25}
+    drag_scroll = { left middle }
+    verticalScrollbar = "right_vertical_slider"
+    horizontalScrollbar = "bottom_horizontal_slider"
+    scroll_wheel_factor = 40
+    background = {
+        name = "Background"
+        quadTextureSprite ="GFX_tiled_window_2b_border"
+    }
+    iconType = {
+        name ="my_techtree_bg"
+        spriteType = "GFX_my_techtree_bg"
+        position = { x=0 y=0 }
+    }
+    gridboxtype = {
+        name = "my_technology_1_tree"
+        position = { x = 150 y = 60}
+        size = { width = 100 height = 140 }
+        slotsize = { width = 70 height = 70 }
+        format = "LEFT"
+    }
+    gridboxtype = {
+        name = "my_technology_2_tree"
+        position = { x = 150 y = 360 }
+        size = { width = 100 height = 140 }
+        slotsize = { width = 70 height = 70 }
+        format = "LEFT"
+    }
+}
+
+buttonType = { #科技大类的选择按钮（科技树最上面的那个选择决议分类的那个按钮）
+    name = "my_folder_tab"
+    position = { x = 22 y = 0 }
+    quadTextureSprite = "GFX_my_folder_tab"
+    frame = 1
+    clicksound = click_default
+}
+

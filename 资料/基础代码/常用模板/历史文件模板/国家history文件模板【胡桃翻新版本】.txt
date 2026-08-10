@@ -1,0 +1,85 @@
+﻿#前言：本质上来说国家历史文件就是个开局时生效的效果（effect）的合集，所以这里可以填任意effect代码（如宣战、加政治点等等），这个模板中仅列出常用的一些效果。
+#国家历史文件位置为 history/countries
+#文件名为 TAG（在common/country_tags文件中）- 国家名（在common/countries里面的txt文件名），则国家history文件应该为：TAG - 国家名.txt 。（请多多参考原版）
+
+# 此模板由胡桃翻新。
+
+capital = 首都省份ID
+oob = "XXXX" #开局军队
+set_naval_oob = "XXXX" #海军开局设置
+set_air_oob = "xxx" #空军开局设置
+
+set_research_slots = 科研槽数
+set_stability = 稳定度
+set_war_support = 战争支持度
+
+set_technology = {
+	#开局科技，科技名在common/technologies文件夹里找
+	科技名 = 1
+	#如下
+	infantry_weapons = 1
+}
+
+
+set_convoys = 运输船数量
+starting_train_buffer = 火车数量
+set_fuel_ratio = 设置开局燃油比例
+set_fuel = 设置开局燃油数量
+
+set_politics = {
+	ruling_party = 执政党
+	last_election = "1932.11.8" #上次选举日期
+	election_frequency = 48 #选举周期，月为单位
+	elections_allowed = yes #是否允许选举
+}
+set_popularities = {
+	#政党支持度
+	democratic = 25 #民主
+	communism = 25 #共产
+	fascism = 25 #法西斯
+	neutrality = 25 #中立
+}
+
+add_ideas = {
+	#民族精神，内阁、法案也是民族精神（ideas）的一种。
+}
+
+add_dynamic_modifier = { #添加动态修正
+	modifier = your_dynamic_modifier 
+}
+
+set_variable = { #设置变量
+	变量名字 = 值
+}
+
+set_autonomy = {
+	target = TAG #被傀儡国家tag
+	autonomous_state = autonomy_colony 
+	# 以下是先版本所有傀儡国类型：
+ 	# autonomy_dominion = 自治领
+ 	# autonomy_supervised_state = 监管国
+ 	# autonomy_colony = 殖民领
+ 	# autonomy_puppet = 傀儡国
+ 	# autonomy_integrated_puppet = 半吞并傀儡国
+ 	# autonomy_reichskommissariat = 专员辖区
+ 	# autonomy_reichsprotectorate = 保护国
+ 	# autonomy_satellite = 卫星国
+ 	# autonomy_wtt_imperial_associate = 皇国协从国
+ 	# autonomy_wtt_imperial_protectorate = 皇国保护国
+ 	# autonomy_wtt_imperial_subject = 皇国臣属国
+ 	# autonomy_collaboration_government = 合作政府
+ 	# autonomy_personal_union = 共主邦联
+ 	# autonomy_communist_satellite = 卫星国
+ 	# autonomy_occupation_zone = 占领区
+ 	# autonomy_aat_defense_council_member = 北欧防务理事会成员国
+ 	# autonomy_austro_hungarian_subject = 奥匈帝国附庸
+ 	# autonomy_volkskommissariat = 人民专员辖区
+ 	# autonomy_eu_member = 欧盟成员国
+}
+
+create_equipment_variant = { #创建装备型号，具体见“装备设计模板（坦克，飞机，舰船）【原作者：一只萌新】（胡桃优化修改版）”。
+	# ………………
+}
+
+# 注：由于蠢驴的问题，history文件最好留 一行 ，因为最后一行很有可能不读取。
+# 修改日期：2025.3.27 ----胡桃

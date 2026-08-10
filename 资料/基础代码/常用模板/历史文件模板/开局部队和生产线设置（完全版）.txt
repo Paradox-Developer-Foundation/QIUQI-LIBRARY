@@ -1,0 +1,329 @@
+【作者：幸好无声Bstarh-Tao】  所有人可以使用，祝所有mod制作者的制作道理顺利！
+本模板将会展示如何设置国家的开局陆军和海军，在   Hearts of Iron IV/history/units/*.txt    中定义。
+
+########################################
+在开始展示之前，你需要知道的是：这些国家单位文件需要载入，比如我写了一个"PRC_1936.txt"
+那么要在history/countries里的"PRC - ComChina.txt"里录入这个单位文件，当然，国策奖励、决议效果、on_actions等地方也可以写这些载入代码。
+具体代码如下：
+#不需要写文件后缀，写文件的名字就可以了（可以加""）
+set_oob = xxx 
+obb = xxx
+#上面两个好像都是陆军的
+set_naval_oob = xxx #海军
+set_air_oob = xxx #空军
+
+还有！！！陆海空三军要分开写！！！
+陆军的就写陆军，海军的就写海军，空军的就写空军！！！
+
+
+#######################################
+
+### 陆军 ###
+division_template = { #设置陆军师编制
+    name = "陆军师编制名字"
+    regiments = { #陆军师战斗营编制
+        战斗营 = { x = 0 y = 0 }
+        战斗营 = { x = 0 y = 1 }
+        # x表示横轴，y表示竖轴，x=0表示第一行，y=0表示第一列，x=1表示第二行，y=1表示第二列，以此类推
+        # 编制规则同原版一样，如果是基于原版的模组一定要按照原版陆军师编制的规则编，不然会出现错误的编制
+        # 战斗营列表见底部
+    }
+    support = { #支援连
+        支援连 = { x = 0 y = 0 }
+        #支援连列表见底部
+    }
+    priority = 0 #是供应接收优先级。选项为 0 表示“储备”，1 表示默认，2 表示“精英”。如果未设置，则默认为 1。
+    #以下代码选择性使用
+    division_cap = 12 #可以使用此编制训练陆军师的最大数量。模板必须被锁定。如果未设置，则默认为无上限。
+    force_allow_recruiting = yes/no #将 允许训练 被锁定的陆军师编制。对未锁定的编制没有影响。如果未设置，则默认为否。
+    is_locked = yes/no #是否被锁定
+    division_names_group = USA_INF_01 #设置用于师的名称组，
+    # 在 /Hearts of Iron IV/common/units/names_divisions/*.txt 文件中定义。
+    template_counter = 图标
+    override_model = 模型
+}
+units = { #设置开局陆军
+    division= { #单个师生成
+        name = "名字"
+        location = 9392 #生成陆军师的位置，要写小地块（province）
+        division_template = "陆军师编制名字"
+        start_experience_factor = 0.2 #初始训练等级，经验等级设置在 0 到 1 的范围内。
+        #如果未设置，则默认为 0。游戏中的经验等级边界是{ 0.1, 0.3, 0.75, 0.9 }
+        start_equipment_factor = 0.3 #初始装备水平，不决定人力。如果未设置，则默认为 1。
+        start_manpower_factor = 0.3 #起始人力水平。如果未设置，则自动从人力储备中减去，直到可达到的最高水平。范围：0~1
+        force_equipment_variants = { #设定师使用的装备
+            equipment_type = {
+                owner = TAG #是装备的所有者。（必须是这个师的所有国！）
+                creator = TAG #是装备的制造者，比如德国的师使用苏联装备。如果未指定，则默认为所有者。
+                amount = 14 #数量
+                version_name = "name" #是应使用装备变型的名称。比如你设计了一个坦克，写坦克的名字上去
+            }
+        }
+    }
+    division= {
+        division_name = { #分配给师编制的名称组，与name = "xxx"互斥
+            is_name_ordered = yes #必须要写
+            name_order = 35 #设置用于名称组的数字（需要自己在Hearts of Iron IV/common/units/names_divisions中设定）
+        }
+        location = 6488
+        division_template = "Infanterie-Division"
+        force_equipment_variants = { infantry_equipment_0 = { owner = "SCO" } }
+        officer = { #师长
+            name = SCO_officer_1 #师长名字
+            portraits = { 
+                army = { #图片
+                    large = GFX_SCO_officer_1
+                    small = GFX_SCO_officer_generic_small
+                }
+            }
+        }
+    }
+}
+#############################
+海军舰船与空军的设计请移步另一个模板 “装备设计模板（坦克，飞机，舰船）【原作者：一只萌新】（胡桃优化修改版）.txt” 
+设置开局海军
+units = {
+    fleet = { #一个海军舰队
+        name = "舰队的名字"
+        naval_base = 241  #舰队的停靠基地（港口），填province即小地块
+		task_force = { #海军舰队内的海军编队	
+			name = "Hochseeflotte" #海军编队名字
+			location = 241  #所在港口（位置）
+			ship = { #编队内的一条船
+                name = "Deutschland" #船的名字 
+                definition = heavy_cruiser #定位，下有
+                start_experience_factor = 0.3 #初始经验
+                pride_of_the_fleet = yes #舰队荣耀 
+                equipment = { 
+                    ship_hull_cruiser_panzerschiff = { #这里要填船的类型，详见“装备设计模板（坦克，飞机，舰船）【原作者：一只萌新】（胡桃优化修改版）”
+                        amount = 1 #数量
+                        owner = GER #拥有者
+                        version_name = "Deutschland" #舰船设计的名字
+                    } 
+                } 
+            }
+            #以此类推，一个编队里可以有很多条不同的船，一个舰队里可以有多个编队	
+		}
+    }
+}
+设置开局空军
+air_wings = { #
+    500 = { #State id 该地块应当有机场
+        fighter_equipment_0 = { #填飞机类型，详见“装备设计模板（坦克，飞机，舰船）【原作者：一只萌新】（胡桃优化修改版）”。此外，这是一个飞机编队
+            owner = "BRA" #创建此型号的国家
+            amount = 10 #数量，一般最大为100
+			version_name = "设计型号名字"
+        }
+        name = "上一个飞机编队的名字"
+    }
+}
+#############################
+### 生产 ### 陆军装备写陆军单位文件里，海空以此类推
+instant_effect = {
+    add_equipment_production = {
+        equipment = {
+	        type = infantry_equipment_0 #生产的装备类型（详见群文件里的科技列表）
+        #注意，如果你生产的是船（有mtg的dlc），type参考群文件：“装备设计模板（坦克，飞机，舰船）【原作者：一只萌新】（胡桃优化修改版）”里的海军类型，必须要写那里面的
+	        creator = "TAG" #生产该装备的国家，一般是本国
+            version_name = "name" #如果生产的是有单独设计的船或者飞机，则需要写你的设计的名字
+	    }
+	    requested_factories = 1 #设置用于生产该装备的工厂
+	    efficiency = 100 #该生产线的效率（100是最高）
+	    progress = 0.19 #生产或者改造船的时候的进度
+        industrial_manufacturer = mio:xxx #生产商设置
+    }
+    #示例（中共生产火炮）
+    add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_1
+			creator = "PRC" 
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 90
+		industrial_manufacturer = mio:CHI_taiyuan_arsenal_organization #可以加生产商
+	}
+}
+
+
+陆军战斗营
+infantry = 步兵
+cavalry = 骑兵
+camelry = 骆驼骑兵
+motorized = 摩托化步兵
+bicycle_battalion = 自行车营
+mountaineers = 山地步兵
+mechanized = 机械化步兵
+marine = 海军陆战队
+marine_commando = 海军突击队
+fake_intel_unit = 疑兵营
+penal_battalion = 惩戒营
+irregular_infantry = 非正规步兵
+militia = 民兵
+paratrooper = 空降伞兵
+light_armor = 轻坦
+medium_armor = 中坦
+heavy_armor = 重坦
+super_heavy_armor = 超重型坦克
+modern_armor = 现坦
+amphibious_armor = 两栖坦克营
+amphibious_mechanized = 两栖机步营
+anti_tank_brigade = 反坦克炮
+anti_air_brigade = 防空炮
+armored_car = 装甲车
+artillery_brigade = 炮兵
+mot_artillery_brigade = 摩托化炮兵
+mot_anti_tank_brigade = 摩托化反坦克
+mot_anti_air_brigade = 摩托化防空
+rocket_artillery_brigade = 火箭炮
+mot_rocket_artillery_brigade = 牵引式火箭炮营
+motorized_rocket_brigade = 自行火箭炮
+light_sp_anti_air_brigade = 轻型自行防空炮
+medium_sp_anti_air_brigade = 中型自行防空炮
+heavy_sp_anti_air_brigade = 重型自行防空炮
+super_heavy_sp_anti_air_brigade = 超重型自行防空炮
+modern_sp_anti_air_brigade = 现代自行防空炮
+light_sp_artillery_brigade = 轻型自行火炮
+medium_sp_artillery_brigade = 中型自行火炮
+heavy_sp_artillery_brigade = 重型自行火炮
+super_heavy_sp_artillery_brigade = 超重型自行火炮
+modern_sp_artillery_brigade = 现代自行火炮
+light_tank_destroyer_brigade = 轻型自行反坦克炮
+medium_tank_destroyer_brigade = 中型自行反坦克炮
+heavy_tank_destroyer_brigade = 重型自行反坦克炮
+super_heavy_tank_destroyer_brigade = 超重型自行反坦克炮
+modern_tank_destroyer_brigade = 现代自行反坦克炮
+
+陆军支援连
+anti_air = 防空
+anti_tank =反坦克
+armored_car_recon = 轻型装甲侦察连
+artillery = 火炮支援连
+engineer = 工兵连
+field_hospital = 战地医院
+logistics_company = 后勤连
+maintenance_company = 维修连
+military_police = 宪兵队
+mot_recon = 摩托化侦察连
+recon = 侦察连
+rocket_artillery = 火箭炮支援连
+signal_company = 通信连
+light_flame_tank = 轻型喷火坦克连
+medium_flame_tank = 中型喷火坦克连
+heavy_flame_tank = 重型喷火坦克连
+rangers_support = 游骑兵
+airborne_light_armor = 空降轻装甲
+mountaineers_ski = 滑雪部队
+pioneer_support = 先头工程部队
+marines_shore_parties = 滩头部队
+marines_commandoes = 海军突击队
+winter_logistics_support = 冬季后勤连
+long_range_patrol_support = 长程巡逻连
+category_cavalry = 马背骑兵
+
+飞机类型
+fighter_equipment_0 = 战间期型战斗机
+fighter_equipment_1 = 战斗机I型
+fighter_equipment_2 = 战斗机II型
+fighter_equipment_3 = 战斗机III型
+cv_fighter_equipment_0 = 战间期型舰载战斗机
+cv_fighter_equipment_1 = 舰载战斗机I型
+cv_fighter_equipment_2 = 舰载战斗机II型
+cv_fighter_equipment_3 = 舰载战斗机III型
+jet_fighter_equipment_1 = 喷气式战斗机I型
+jet_fighter_equipment_2 = 喷气式战斗机II型
+
+CAS_equipment_1 = 近距支援机I型
+CAS_equipment_2 = 近距支援机II型
+CAS_equipment_3 = 近距支援机III型
+cv_CAS_equipment_1 = 舰载近距支援机I型
+cv_CAS_equipment_2 = 舰载近距支援机II型
+cv_CAS_equipment_3 = 舰载近距支援机III型
+
+nav_bomber_equipment_1 = 海军轰炸机I型
+nav_bomber_equipment_2 = 海军轰炸机II型
+nav_bomber_equipment_3 = 海军轰炸机III型
+cv_nav_bomber_equipment_1 = 舰载海军轰炸机I型
+cv_nav_bomber_equipment_2 = 舰载海军轰炸机II型
+cv_nav_bomber_equipment_3 = 舰载海军轰炸机III型
+
+tac_bomber_equipment_0 = 战间期型轰炸机
+tac_bomber_equipment_1 = 战术轰炸机I型
+tac_bomber_equipment_2 = 战术轰炸机II型
+tac_bomber_equipment_3 = 战术轰炸机III型
+
+heavy_fighter_equipment_1 = 重型战斗机I型
+heavy_fighter_equipment_2 = 重型战斗机II型
+heavy_fighter_equipment_3 = 重型战斗机III型
+
+scout_plane_equipment_1 = 侦察机I型
+scout_plane_equipment_2 = 侦察机II型
+
+tac_bomber_equipment_1 = 战术轰炸机 I型
+tac_bomber_equipment_2 = 战术轰炸机 II型
+tac_bomber_equipment_3 = 战术轰炸机 III型
+
+jet_tac_bomber_equipment_1 = 喷气式战术轰炸机 I型
+jet_tac_bomber_equipment_2 = 喷气式战术轰炸机 II型
+
+strat_bomber_equipment_1 = 战略轰炸机 I型
+strat_bomber_equipment_2 = 战略轰炸机 II型
+strat_bomber_equipment_3 = 战略轰炸机 III型
+
+jet_strat_bomber_equipment_1 = 喷气式战略轰炸机 I型
+
+rocket_suicide_equipment_1 = 自杀攻击用飞行器
+
+舰船类型
+battleship = 战列舰
+carrier = 航空母舰
+destroyer = 驱逐舰
+battle_cruiser = 战列巡洋舰
+heavy_cruiser = 重巡洋舰
+light_cruiser = 轻型船体
+submarine = 潜艇
+
+海军类型
+#航空母舰
+ship_hull_carrier_1 = 1936型航母船体
+ship_hull_carrier_2 = 1940型航母船体
+ship_hull_carrier_3 = 1944型航母船体
+ship_hull_carrier_conversion_bb = 改装战列舰船体
+ship_hull_carrier_conversion_ca = 改装巡洋舰船体
+#以此类推
+
+#巡洋舰
+ship_hull_cruiser_1 = 早期巡洋舰船体
+ship_hull_cruiser_2
+ship_hull_cruiser_3
+ship_hull_cruiser_4
+#战列舰
+ship_hull_pre_dreadnought = 早期重型战舰船体
+ship_hull_heavy_1
+ship_hull_heavy_2
+ship_hull_heavy_3
+ship_hull_heavy_4
+
+ship_hull_super_heavy_1 = 超重型战列舰
+
+#驱逐舰
+ship_hull_light_1 = 早期驱逐舰船体
+ship_hull_light_2
+ship_hull_light_3
+ship_hull_light_4
+#潜艇
+ship_hull_submarine_1 = 早期潜艇船体
+ship_hull_submarine_2
+ship_hull_submarine_3
+ship_hull_submarine_4
+
+ship_hull_cruiser_submarine = 巡洋潜艇
+
+torpedo_cruiser = 重雷装巡洋舰
+ship_hull_torpedo_cruiser = 重雷装巡洋舰
+ship_hull_cruiser_panzerschiff = 装甲舰
+
+ship_hull_cruiser_coastal_defense_ship = 岸防舰
+
+SH_battleship_1 = 超重战列舰I型
+SH_battleship_2 = 超重战列舰II型

@@ -1,0 +1,98 @@
+#	Triggers to control if diplomatic actions are enabled:
+#		Format:
+#
+#		<diplomatic action tag>_enabled_trigger = {
+#			<trigger contents>
+#		}
+#
+#		ROOT is the country initiating the diplomatic action.
+#		FROM is the recipient or target of the diplomatic action.
+#
+#		Note:  For cleaner tooltips, it is recommended that you use
+#			if triggers within the enable triggers, and a single
+#			custom_trigger_tooltip trigger within each if trigger.
+#
+#		Example: (Germany is prevented from declaring war on the Soviet Union.)
+#
+#		DIPLOMACY_WAR_ENABLE_TRIGGER = {
+#			if = {
+#				limit = {
+#					tag = GER
+#				}
+#				custom_trigger_tooltip = {
+#					tooltip = PREVENT_GER_WAR_ON_SOV
+#					FROM = {
+#						NOT = {
+#							tag = SOV
+#						}
+#					}
+#				}
+#			}
+#		}
+
+# This specifically overrides the rule check as to whether or not you can guarantee other ideologies
+
+#################################################
+# 注意 有些按钮是无法禁止的 比如给予或索要军事通行权 
+#################################################
+# 将本文件放在 common\scripted_triggers 里面并修改
+#################################################
+
+### 举例 ###
+
+DIPLOMACY_WAR_ENABLE_TRIGGER = {
+	NOT = {
+		custom_trigger_tooltip = {has_global_flag = yongjiu_heping_on tooltip = "以和为贵，不可宣战"}
+	}
+}
+
+DIPLOMACY_OFFER_JOIN_FACTION_ENABLE_TRIGGER = {
+    NOT = {
+		custom_trigger_tooltip = {has_global_flag = dulang_xingdong_on tooltip = "不能加阵营，我说不能就不能"}
+	}
+}
+
+DIPLOMACY_OFFER_JOIN_FACTION_ENABLE_TRIGGER = {
+    NOT = {
+		custom_trigger_tooltip = {has_global_flag = dulang_xingdong_on tooltip = "不能加阵营，我说不能就不能"}
+	}
+}
+
+DIPLOMACY_CREATE_FACTION_ENABLE_TRIGGER = {
+    NOT = {
+		custom_trigger_tooltip = {has_global_flag = dulang_xingdong_on tooltip = "不能创阵营，我说不能就不能"}
+	}
+}
+
+
+### 不能向指定国家宣战，同时该国家也无法向任何国家宣战 ###
+### 如果不满足限制条件，还是可以解锁选项的 ###
+### 例子 ###
+DIPLOMACY_WAR_ENABLE_TRIGGER = {
+
+	NOT = {
+		ROOT = {
+			tag = ARE
+			custom_trigger_tooltip = {
+				NOT = {
+					has_global_flag = ARE_can_diplomacy_flag # 没有全局变量：可以和ARE外交
+				}
+				tooltip = ARE_no_diplomacy_2_tt # 我们正在闭关锁国，无法向其他国家派遣特使。
+			}
+		}
+
+		FROM = {
+			tag = ARE
+			custom_trigger_tooltip = {
+				NOT = {
+					has_global_flag = ARE_can_diplomacy_flag # 没有全局变量：可以和ARE外交
+				}
+				tooltip = ARE_no_diplomacy_tt # 诺瓦帝国正在闭关锁国，我们的使团无法与诺瓦建立联系。
+			}
+		}
+
+	}
+
+}
+
+### 如果有全局变量：可以和ARE外交(has_global_flag = ARE_can_diplomacy_flag)，那么将会解锁互动选项 ###

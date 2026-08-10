@@ -1,0 +1,70 @@
+add_namespace = SE_test
+
+
+country_event = { 
+	
+	# 用于调试，后续移除
+	id = SE_test.1
+    title = SE_test.1.t
+    desc = SE_test.1.d 
+	is_triggered_only = yes
+	hidden = no 
+	
+	option = { 
+		# 测试事件 1
+		name = SE_test.1.a
+		SE_center = yes
+		hidden_effect = {
+			SE_center = yes
+			 # 如果你的特色文本需要居中对齐（如诗歌歌词等），添加此代码行(poetry lyric etc.)
+			set_variable = { global.se_display = 1 }
+			play_song = se_song_of_japanese_youth
+		}
+	}
+	
+	option = { 
+		 # 测试事件 2
+		name = SE_test.1.b
+		hidden_effect = {
+			#SE_center = yes
+			set_variable = { global.se_display = 2 }
+			play_song = se_die_wacht_am_rhein
+		}
+	}
+	
+	option = { 
+		name = SE_test.1.c
+		hidden_effect = {
+			SE_center = yes
+			set_variable = { global.se_display = 4 }
+			play_song = se_die_wacht_am_rhein
+		}
+	}
+	
+	option = { 
+		# 当某些内容定义不当时的显示情况
+		name = SE_test.1.d
+		hidden_effect = {
+			#SE_center = yes
+			set_variable = { global.se_display = 5 }
+		    }
+	    }
+	 id = Bavaria.100
+     title = SE_test.1.t
+     desc = SE_test.1.d 
+	 is_triggered_only = yes
+	 hidden = no 
+	
+	option = { 
+		 # 测试事件 1
+		name = BAV_test.1.a
+		SE_center = yes
+		hidden_effect = {
+			SE_center = yes
+			# 如果你的特色文本需要居中对齐（如诗歌歌词等）(poetry lyric etc.)
+			set_variable = { global.se_display = 1 }
+			play_song = se_Zentrales_Orchester_der-NVA-_Marsch-des_York_schen_Corps
+		}
+	}	
+}
+

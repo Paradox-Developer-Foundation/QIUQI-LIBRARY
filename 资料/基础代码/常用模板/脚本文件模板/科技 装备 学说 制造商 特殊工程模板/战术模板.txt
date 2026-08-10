@@ -1,0 +1,57 @@
+#战术模板
+#模板不一定将所有内容列出，另请参考wiki中关于触发器部分combat的内容
+phases = { # 战斗阶段（不是常规的战斗阶段）
+	close_combat #近距离作战
+	tactical_withdrawal #战术撤退
+	seize_bridge #占领桥梁
+	hold_bridge #坚守桥梁
+	street_fighting #巷战
+}
+
+#模板 # NOTE: tactics must start with "tactic_" in their name to work with techs.（战术必须加上tactic_前缀才能被科技解锁）
+tactic_model = { 
+	is_attacker = yes #是进攻方,填no则为防御方
+	trigger = { #什么情况下触发该触发器
+		is_attacker = yes #是进攻方,填no则要求为防御方
+		phase = no #没有任何阶段，或者说常规阶段，也可以填写close_combat等战斗阶段，使其为特定战斗阶段的战术。
+		has_artillery_ratio > 0.1 #师炮兵比例，has_artillery_ratio > 0.1即为一个师内的炮兵营比例大于10%时，该触发被满足。
+		has_trait = [任意特质] #拥有将领特质
+		skill_advantage > 0 #技能（即将领等级）优势（相较于敌方将领）大于0
+		skill > 2 #将领的等级，在这里为将领等级高于2的时候，该触发被满足
+		OWNER = { NOT = { has_tech = masterful_blitz } } #科技限制，在这里意为使用战术的所属方没有大师级闪电战科技时可以使用该战术
+		frontage_full = yes #前线已满
+		has_reserves = yes #拥有预备队
+		has_combat_modifier = river_crossing #拥有战斗后缀，如这里是穿越河流 
+	}
+
+	active = yes #设置为yes后，不需要达成特定条件即可使用（如通用战术）；设置为no后，需要“满足特定条件”才能解锁（类似于事件的仅触发？），如原版的大师级闪电战。
+	
+	base =  { #采用该战术的倾向
+		factor = 2 #基础权重
+		modifier = { #修正
+			add = 2 #权重增加2，比如原权重为2，增加后为4
+
+			has_trait = aggressive_assaulter #条件项，如这里代表拥有aggressive_assaulter特质的指挥官采用该战术的权重增加2
+		}
+
+		modifier = {
+			factor = 0.2 #权重乘以0.2，如基本权重为2，乘以0.2后为0.4
+
+			NOT = { is_fighting_in_terrain = urban } #条件项，如在这里为不在城区战斗时权重乘以0.2
+		}
+
+	} 
+	
+	picture = assault #战术图片
+	countered_by = tactic_counterattack #被何战术反制
+	
+	phase = close_combat #进入战斗阶段，如这里为进入短兵交战阶段
+	display_phase = close_combat #显示的战术阶段，如这里为短兵交战阶段
+
+	attacker = 0.25			#进攻方伤害加成
+	attacker_movement_speed = 0.25 #进攻方战术速度加成
+	defender = 0.25 #防御方伤害加成
+	combat_width = 0.25 #战术宽度
+	attacker_org_damage_modifier = 0.25 #进攻方对组织度造成的伤害
+	defender_org_damage_modifier = 0.25 #防御方对组织度造成的伤害
+}

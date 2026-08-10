@@ -1,0 +1,82 @@
+模板不太完整，有时间再完善一下，目前可以自己多试试。
+guiTypes = {
+	containerWindowType = {#主窗口
+		name = "你的大窗口名字"
+		position = { x = 100 y = 100 }#你的窗口坐标，单位为像素，X轴正数为向右、Y轴正数为向下
+		verticalScrollbar = "right_vertical_slider" 右滑条
+		size = { width = 宽 height = 高} 窗口大小
+		Orientation = 起始位置，不写则默认左上角为起始位置
+		background = {
+			name = "Background" 背景图
+			quadTextureSprite = "GFX里的图片名字（需要interface定义，也可去复制原版的背景图片）"
+		}
+		buttonType = { #按钮窗口
+			name = "按钮部件名"
+			position = { x =  y =  } #你的按钮位置（在窗口中）
+			quadTextureSprite = "GFX里的窗口图标（需要interface定义）"
+			buttonFont = "字体文件"
+			buttonText = "在本地化里的名字"
+			pdx_tooltip = "拓展描述，起名后在本地化写"
+			clicksound = 点击音效，在原版里自己找
+		} 
+
+		iconType = {#图片窗口，无效果
+			name = "图片部件名"
+			spriteType = "GFX里的图标（需要interface定义）"		
+			position = { x =   y =  }#你的图片位置（相对于窗口）
+			pdx_tooltip = "拓展描述，起名后在本地化写"
+		}
+		
+		instantTextboxType = {
+			name = "文本框部件名"
+			position = { x =  y =  }#你的文本位置（相对于窗口）
+			font = "字体文件"
+			text = "文本，起名后在本地化写"
+			maxWidth = 文本框最大宽度，像素
+			maxHeight = 文本框最大高度，像素
+			format = 文本与文本框对齐方式，center left right
+		}
+	}
+}
+	
+		
+GUI位置：
+#默认从左上开始计算
+Orientation = lower_left#左下
+Orientation = left#左
+Orientation = lower_right#右下
+Orientation = right#右
+Orientation = upper_right#右上
+Orientation = center_up#中上
+Orientation = center_down#中下
+Orientation = center#正中
+
+
+
+scripted_gui = {
+	
+	你的效果名字 ={
+		window_name = "你的主窗口名字"
+		context_type = 常用player_context，具体查wiki
+		
+		visible = {
+			主窗口显示的条件
+		}
+		
+		effects = {
+			窗口部件（按钮）名_click = {
+				这个按钮点击后要实现的效果
+			}
+		}
+		
+		triggers = {
+			窗口部件（按钮）名_enabled = {
+				按钮允许点击的条件
+			}
+			窗口部件（按钮）名_visible = {
+				单个按钮显示的条件
+			}
+		}
+		
+	}
+}

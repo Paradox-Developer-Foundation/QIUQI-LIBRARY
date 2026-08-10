@@ -1,0 +1,267 @@
+Collection教程
+更新日期：26/4/18
+推荐使用 VSCode 查看
+
+本教程基于原版文件与测试结果整理，可能存在表述或细节上的错误（。・ω・。）
+
+############################################################
+基本介绍：
+集合是具有相同类型的可作用域对象的分组，能自动将满足条件的元素纳入其中，并移除不再满足条件的元素（具体更新机制尚不明确 猜测是调用一次更新一次）。
+但集合不能将变量作为元素，元素不会重复
+
+定义集合：
+集合在 common/collections/*.txt 中定义。
+集合文件支持游戏内热重载。
+
+通常情况下，使用集合不需要指定作用域，除非使用input中定义了需要作用域的集合
+
+####################
+完整定义格式如下：
+####################
+collection_name = {
+    input = game:collection  # 或 collection:another_collection
+            # 将一个集合作为输入来源。如果未定义 operators，则 input 中的元素直接成为集合元素。
+            # P 社提供的游戏集合：
+            # game:all_countries             # 所有存在的国家
+            # game:all_possible_countries    # 所有存在/不存在的国家
+            # game:all_states                # 所有地区
+            # game:empty                     # 空集合
+            # game:scope                     # ROOT
+
+            # country:faction_members        # 调用集合的代码块所属作用域（国家）所在阵营的所有成员
+            # 若填写此项，调用该集合时需要处于国家作用域
+
+    operators = {  # 可选
+            # 可选
+        # 指定额外的集合，以输入来源为作用域，扩展选取范围（可切换元素类型），相当于并集
+        collection:another_collection
+
+        # 也可使用游戏提供的集合（示例见下），效果可参考 every_xxx
+        # 国家集合：
+        faction_members     # 输入国家所在阵营的成员国
+        # 地区集合：
+        controlled_states
+        owned_states
+        # 若指定地区集合，元素类型将变为地区
+            #
+
+        # 可选
+        # 元素需满足的条件：
+        limit = {
+            # trigger
+        }
+    }
+
+    # 可选
+    name = localisation_key  # 本地化文本，游戏内显示的效果或条件文本
+                             # 详情查看原版的本地化文本对应的显示
+}
+ROOT、FROM 作用域由调用集合的代码块（即上一层代码）决定，与集合定义无关。
+SCOPE作用域固定为元素作用域。
+PREV THIS 视情况而定
+
+####################
+集合中的元素指定方式
+####################
+例如：
+input = game:all_countries #定义元素为 集合game:all_countries 中的元素
+
+operators = {
+    faction_members #定义元素为 集合game:all_countries中的元素 的（所属阵营的全体阵营成员）
+}#此时作用域为国家
+#或者
+operators = {
+    controlled_states #定义元素为 集合game:all_countries中的元素 的（所有控制的地区）
+}#此时作用域为地区
+#或者
+operators = {
+    faction_members
+    controlled_states #定义元素为 集合game:all_countries中的元素 的 所属阵营的全体阵营成员 的（所有控制的地区）
+}#此时作用域为地区
+
+operators = {
+    faction_members
+    collection:another_collection #定义元素为：    集合game:all_countries中的元素 的（所属阵营的全体阵营成员）
+                                                  与
+                                                  集合collection:another_collection中的元素
+}#此时作用域为国家
+
+####################
+集合用作 trigger：
+####################
+
+collection_size
+将所有满足条件的输入元素数量与给定值进行比较。
+
+    collection_size = {
+        input = {
+            input = # 同上
+            operators = {
+                # 同上
+            }
+            name = localisation_key
+        }
+        value > x  # 常数或变量，支持 <、=、>
+    }
+
+has_resources_in_collection
+将集合中各国的资源总量与给定值进行比较。
+
+    has_resources_in_collection = {
+        collection = {
+            input = game:collection_name / collection:collection_name  # 仅限于国家
+            operators = {
+                # 同上
+            }
+            name = localisation_key
+        }
+        resource = oil  # 可选 rubber 等
+        amount > x      # 常数或变量，支持 <、=、>
+        extracted = yes # 可选，默认为 no；yes 表示检测资源产出，no 表示检测资源盈余（平衡值）
+    }
+
+count_in_collection
+将集合中各国在特定项目上的拥有量与给定值进行比较。
+
+    count_in_collection = {
+        collection = {
+            input = game:collection_name / collection:collection_name  # 仅限于国家
+            operators = {
+                # 同上
+            }
+            name = localisation_key
+        }
+        # 以下类型任选其一，效果可参考阵营面板：
+
+        # 集合中各国指定类型的建筑总数与 size 比较
+        buildings = { buildings_name }  # 可填多个，空格分隔 # 常数或变量，支持 <、=、>
+
+        # 集合中各国人力总数与 size 比较
+        manpower = yes # 常数或变量，支持 <、=、>
+
+        # 集合中各国部署的特定单位数量与 size 比较
+        unit = unit_name
+        equipment_ratio = x  # 常数或变量，支持 <、=、>；表示该单位黄条最低比例
+
+        # 集合中各国部署单位所含特定营数量与 size 比较
+        unit_category = { unit_category }  # 可填多个，空格分隔
+        equipment_ratio = x  # 常数或变量，支持 <、=、>；表示该营所属单位黄条最低比例
+
+        # 集合中各国库存中特定装备总数与 size 比较
+        stockpile = equipment_name # 常数或变量，支持 <、=、>
+
+        size > x  # 常数或变量，支持 <、=、>
+    }
+
+collection_contains
+检查集合是否包含指定的所有元素。
+
+    collection_contains = {
+        collection = game:collection_name / collection:collection_name  # 仅限于国家
+        countries = { ENG GER }
+    }
+    或
+    collection_contains = {
+        collection = game:collection_name / collection:collection_name  # 仅限于国家
+        country = FRA
+    }
+
+any_collection_element / all_collection_elements
+检测集合中是否存在任意一个或所有元素满足条件。
+
+    any_collection_element = {
+        collection = {
+            input = game:collection_name / collection:collection_name
+            operators = {
+                # 同上
+            }
+            name = localisation_key
+        }
+        # trigger
+    }
+
+    all_collection_elements = {
+        collection = {
+            input = game:collection_name / collection:collection_name
+            operators = {
+                # 同上
+            }
+            name = localisation_key
+        }
+        # trigger
+    }
+
+####################
+集合用作效果：
+####################
+
+every_collection_element
+为集合中每个满足条件的元素执行效果。
+
+    every_collection_element = {
+        input = {
+            input = # 同上
+            operators = {
+                # 同上
+                limit = {
+                    # 同上
+                }
+            }
+            name = localisation_key
+        }
+        # effect
+    }
+
+##########
+其他重要说明：
+##########
+集合块中的 effect / trigger 支持使用 var_name@tag，因此集合在灵活性上优于 every_country / every_state。
+
+
+
+####################
+一些集合用法举例
+####################
+在collections中定义：
+
+otsr_other_countries_collection = {
+	input = game:all_countries
+	operators = {
+		limit = {
+			not = {
+				has_country_flag = otsr_call_collection_code_block_country_cflag
+			}
+		}
+	}
+}
+
+otsr_country_import_oil_countries_collection = {
+	input = game:all_countries
+	operators = {
+		limit = {
+			check_variable = {
+				ROOT.otsr_import_oil_from_country@THIS > 0
+			}
+		}
+	}
+}
+
+在效果块中调用：
+    on_monthly = {
+    	effect = {
+            every_collection_element = {
+				input = {
+					input = game:all_countries
+				}
+				if = {
+					limit = {
+						not = {
+							otsr_country_can_import_resource_country_trigger = yes
+						}
+					}
+					clear_variable = ROOT.otsr_import_oil_from_country@THIS
+					clear_variable = ROOT.otsr_import_oil_expenditure_from_country@THIS
+				}
+			}
+        }
+    }

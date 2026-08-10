@@ -1,0 +1,64 @@
+
+例子：
+units = {
+	division= {	
+		name = "第3禁卫步兵师"
+		location = 6488 # Parana
+		division_template = "禁卫步兵师"
+		start_experience_factor = 1
+		start_equipment_factor = 1
+		army_history={
+				history_queue={
+						army_names="鲁登道夫攻势"
+						target_country="GER"
+						location={}
+						date="1918.3.21.4"
+						unique=13
+						medal_count=yes
+						inherit=yes
+						}
+		}
+	}
+}
+
+模板：
+army_history={
+	history_queue={
+		army_names=""
+		target_country=""
+		location={}
+		date=""
+		unique=
+		medal_count=
+		inherit=
+			}
+	}
+	
+正常加在军队的oob里就可以了哦*
+
+这几个变量的具体含义：
+army_names="" 可以表示，一场行动，一个将领，一个国家亦或者是一个军队名称
+target_country="" 这个军队在当时是属于哪个TAG
+location={} 该行动发生的地点位于哪个province
+date="" 该行动发生的时间
+medal_count=yes 是否可以授勋
+inherit=yes 是否可以继承
+
+unique 这个历史条目是怎么样书写的,具体参考官方loc
+
+ CONQUERED_PROVINCE_HISTORY:0 "在$SUBJECT$军队的攻击中保卫了$PROVINCE$。"
+ UNIT_KILL_HISTORY:0 "在位于$PROVINCE$的战斗中策划了$SUBJECT$的投降。"
+ COMMANDER_PROMOTED_HISTORY:0 "指挥官$SUBJECT$在$PROVINCE$的战场上晋升。"
+ NEW_COMMANDER_HISTORY:0 "$SUBJECT$被任命为新的指挥官。"
+ INVASION_SUCCESS_HISTORY:0 "率先登陆$PROVINCE$的海滩。"
+ PROVINCE_LIBERATED_HISTORY:0 "代表$TARGET_COUNTRY$解放$PROVINCE$。"
+ CORE_LIBERATED_HISTORY:0 "挺进$PROVINCE$，从$SUBJECT$的压迫中解放我们的同胞。"
+ HIGH_VP_HISTORY:0 "參与了在$PROVINCE$的围攻。"
+ HISTORY_KILL_COUNT_TEXT:0 "伤亡人数：$VALUE|R$"
+ AIRFIELD_HISTORY:0 "夺取了位于$PROVINCE$的机场。"
+ CAPITAL_HISTORY:0 "参与占领了$SUBJECT$政府的前驻地$PROVINCE$。"
+ PARADROP_HISTORY:0 "在主力部队展开前成功空降至$PROVINCE$。"
+ UNIT_RENAMED_HISTORY:0 "部队番号更改为$SUBJECT$。"
+ WAS_ON_OPERATION_HISTORY:0 "因在$SUBJECT$持续行动而受到表彰。"
+ WAS_ON_OPERATION_EXCELLED_HISTORY:0 "因在$SUBJECT$的杰出勇行而受到称赞。"
+ MEDAL_COMBINED_NAME:0 "$TYPE$\n§L因在$LOCATION$的杰出表现而授予§!"

@@ -1,0 +1,16 @@
+music = {
+	name = "se_song_of_japanese_youth"
+	file = "bigevent/se_song_of_japanese_youth.ogg"
+	volume = 0.60
+}
+
+music = {
+	name = "se_die_wacht_am_rhein"
+	file = "bigevent/se_die_wacht_am_rhein.ogg"
+	volume = 0.60
+}
+music = {
+	name = "se_Zentrales_Orchester_der-NVA-_Marsch-des_York_schen_Corps"
+	file = "bigevent/se_Zentrales_Orchester_der-NVA-_Marsch-des_York_schen_Corps.ogg"
+	volume = 0.60	
+}

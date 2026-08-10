@@ -1,0 +1,7 @@
+spriteTypes = {	
+	spriteType = {
+		name = "GFX_ZZZ_hajimi_economy"
+		texturefile = "gfx/interface/ideas/ZZZ_economy_type/ZZZ_hajimi_economy.png"
+		legacy_lazy_load = no
+	}
+}

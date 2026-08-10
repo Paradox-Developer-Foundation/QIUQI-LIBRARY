@@ -1,0 +1,73 @@
+on_actions = {
+	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+	on_state_control_changed = { #检测省份控制权变化
+		effect = {
+			if = {
+				limit = { #动态地名打开：是
+					has_global_flag = allowrenaming_flag
+				}
+				if = { #进行命名，ROOT代表控制国
+					limit = {
+						ROOT = { is_independent_china_or_warlord = yes }
+					}
+					do_chinese_renames_in_asia = yes
+				}
+				else_if = {
+					limit = {
+						ROOT = { tag = RYU }
+					}
+					do_ryukyuan_renames_in_asia = yes
+				}
+				else_if = {
+					limit = {
+						ROOT = { tag = JAP }
+					}
+					do_japanese_renames = yes
+				}
+				else_if = {
+					limit = {
+						ROOT = { is_france_culture =yes }
+					}
+					do_france_renames = yes
+				}
+				else_if = {
+					limit = {
+						ROOT = { tag = BRI }
+					}
+					do_breizh_renames_in_breizh = yes
+				}
+				else_if = {
+					limit = {
+						ROOT = {
+							tag = GER
+							has_government = fascism
+						}
+					}
+					do_nazi_germany_renames = yes
+				}
+				else_if = {
+					limit = {
+						ROOT = { tag = GRE }
+					}
+					do_greek_renames = yes
+				}
+				else_if = {
+					limit = {
+						ROOT = { tag = POL }
+					}
+					do_polish_renames = yes
+				}
+				else_if = {
+					limit = {
+						ROOT = {
+							tag = TUR
+							has_completed_focus = TUR_return_of_the_sultan
+						}				
+					}
+					do_ottoman_renames = yes
+				}	
+			}
+		}
+	}
+}
+

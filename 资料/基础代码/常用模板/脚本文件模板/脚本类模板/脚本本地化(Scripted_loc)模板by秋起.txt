@@ -1,0 +1,63 @@
+#文件路径：MOD/scripted_localisation\*.txt（*为任意文本名字）
+
+#作用：
+#脚本本地化，通过设置不同的条件，可以用于进行动态的文本制作，例如让不同国家的新闻内容不同，让不同国家显示事件的option内容不同
+
+defined_text = {
+	name = name  #脚本的id，在本地化内容时需用
+
+	text = {  ##用于设定分类动态文本
+	   trigger = {
+		   #条件（符合条件即可触发）
+	   }
+	   localization_key = 词条1 ##用于本地化的词条
+	   
+	}
+
+	text = {
+		trigger = {
+			#条件（符合条件即可触发）
+		}
+		localization_key = 词条2 ##用于本地化的词条
+	}
+}
+
+#########  在 本 地 化 #############
+
+目标本地化名字:0"[name]"
+
+词条1:0"一个本地化"
+词条2:0"另一个本地化"
+
+
+
+
+###### 例子 ##########################
+#####################################
+
+defined_text = {
+	name = GER_GUI
+
+	text = {
+		trigger = {
+			has_country_flag = AOR_GER_gui  ##符合此条件，显示词条1的文本
+		}
+
+		localization_key = AOR_GER_SP_LOC_1
+	}
+
+	text = {
+		trigger = {
+			has_country_flag = AOR_GER_NOT_gui  ##符合此条件，显示词条2的文本
+		}
+
+		localization_key = AOR_GER_SP_LOC_2
+	}
+}
+
+###本地化写法##########
+
+GER:0"[GER_GUI]"
+
+AOR_GER_SP_LOC_1:0"词条1"
+AOR_GER_SP_LOC_2:0"词条2"

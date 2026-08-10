@@ -1,0 +1,395 @@
+变量是储存在作用域（全局、国家、省份、将军）的数值，可以当做数字使用，也能转化为国家、省份、意识形态组、装备类型和行动。
+
+如果要访问变量，直接使用变量的名称即可，例如：
+example
+
+按照以上方法即可读取当前作用域的example变量值。如果要读取不同作用域的变量，或是想要读取变量对应作用域的变量，可以使用：
+<scope>.example
+<var>:example #注意是冒号！
+比如：
+ROOT.example
+FROM.example
+42.example
+global.example
+example:example
+就可以分别读取ROOT、FROM、42-摩泽兰、全局和example变量的example变量值。
+要是愿意，可以（？）无限套娃：
+example:example:example:example:example:example:example:example:example:example:example:example:example:example:example:example:example:example:example:example:example
+
+变量可以指定目标，比如：
+example@ROOT
+就是在当前作用域，名称为example，目标为ROOT的变量。使用这一特点，可以添加类似评分的系统。
+
+再列举一个变量指定目标的实例：
+ideology_popularity@communism
+这个变量的数值等同于当前作用域的共产主义支持度。可见，在该实例中，变量的目标为communism。你也可以指定其他意识形态组，比如
+ideology_popularity@ROOT.ruling_ideology
+这样可以获取当前作用域中，ROOT的意识形态组的支持度。
+
+需要注意的是，本文当中<var>代表要填入一个变量，如果填入的是一个数字，则会自动将它转化为同样数值的变量。读取未设置的变量将返回0。
+
+变量的基本命令，如果不加定义，操作的都是当前作用域的变量：
+
+set_variable = { #设置变量的数值
+	var = <string> #变量
+	value = <var> #数值
+}
+也可以简化为
+set_variable = { <var> = <value> }
+注意set_variable = { 1 = 2 }从格式上讲是正确的，但是没有道理，故而不会发生任何效果，在log中会有报错提示。
+
+clear_variable = <string> #清除一个变量
+注意将变量设置为0和清除变量在应用中大致是相同的，略有区别，这里稍后讲到。
+
+add_to_variable = { #加法运算
+	var = <string> #被加数
+	value = <var> #加数
+}
+可以简化为
+add_to_variable = { <var> = <value> }
+此外，类似的变量还有：
+subtract_from_variable #减
+multiply_variable #乘
+divide_variable #除
+modulo_variable #取模
+用法与add_to_variable一致。
+
+clamp_variable = { #限定变量
+	var = <string> #变量
+	min = <var> #可选，最小值，如果变量比这个小则会设定为这个值
+	max = <var> #可选，最大值，如果变量比这个大则会设定为这个值
+}
+
+round_variable = <string> #四舍五入取整
+
+变量的基本条件语句：
+
+check_variable = { #检查变量大小
+	var = <string> #变量
+	value = <var> #要检查的值
+	compare = <string> #检查的方式
+}
+检查方式有以下几种：
+less_than #小于
+less_than_or_equals #小于等于
+greater_than #大于
+greater_than_or_equals #大于等于
+equals #等于
+not_equals #不等于
+可以简化为
+check_variable = { <var> <compare> <value> }
+注意简化形式的<compare>只能是大于号、小于号或等号，比如<=就是无效的。
+
+has_variable = <string> #检查是否拥有变量
+只要变量在该作用域曾经被设置过，并且没有用clear_variable清除，哪怕它数值为0，都会返回真。
+
+可以将一个国家或省份储存为变量，随后转化为作用域，比如：
+set_variable = { example = POL }
+var:example = {
+	<effects>
+}
+这条命令先将波兰储存为example，然后对example进行转化，最终对波兰进行一些动作。
+对省份也是一样：
+set_variable = { example = 42 }
+var:example = {
+	<effects>
+}
+这条命令先将42-摩泽兰储存为example，然后对example进行转化，最终对摩泽兰进行一些动作。
+
+可以设置局部变量，这些变量会在当前的模块（决议、时间等）执行完毕后清除，类似event_target。
+修改局部变量数值都必须使用局部变量的特有指令（这些指令的用法和一般变量对应指令的用法一致），而读取数值则与一般变量共用：
+set_temp_variable
+add_to_temp_variable
+subtract_from_temp_variable
+multiply_temp_variable
+divide_temp_variable
+modulo_temp_variable
+clamp_temp_variable
+
+你可以将一个变量设置为random来获取一个随机值：
+set_variable = { example = random }
+当然也可使用以下的指令获取一个限制的随机值：
+randomize_temp_variable = {
+	var = <string> #要储存到的变量
+	distribution = <string> #随机数的获取方式
+	min = <var> #可选，最小值
+	max = <var> #可选，最大值
+	lambda = <var> #可选，仅在随机数获取方式为poisson有效，数值越大，最大值与最小值的平均差值越小
+}
+随机数的获取方式有以下几种：
+uniform #通常的取值方式，在范围之间不加权地直接取值
+binomial #取值倾向于接近平均数，如果定义了min，则必须定义max
+poisson #只能设置min而不能设置max，引入一个lambda数值，该数值越大，最大值与最小值的平均差值越小
+
+装备、意识形态组和省份作用域也可以被储存，比如：
+set_temp_variable = { example = ROOT.ruling_ideology }
+或者 set_temp_variable = { example = communism }
+start_civil_war = {
+	ideology = var:example
+}
+这样会储存ROOT的意识形态，或者是第二行中的共产主义，然后在当前作用域挑起内战。
+
+游戏内有一些已经定义的变量，随着作用域自动变化，我们称之为游戏变量。一部分游戏变量是自带的，另一部分则由条件的对应语句转化而来：
+set_temp_variable = { example = political_power }
+set_temp_variable = { factor = global.threat }
+第一行，将example设置为当前作用域的政治点数；第二行，将factor设置为当前的紧张度。其中，threat就是由条件中的threat语句转化而来。
+
+游戏变量的完整列表在https://hoi4.paradoxwikis.com/Variables最后有列举，全英文，需要一定的阅读能力。
+
+数组类似于变量，储存在一个作用域中，可以被读写。数组中储存的是变量，可以通过一定方法转化为国家、省份作用域。
+
+几个最基本的命令：
+
+add_to_array = { #将变量添加到数组
+	array = <string> #要添加到的数组
+	index = <int> #可选，如果填写则在数组的对应位置插入变量
+	value = <var> #要添加的变量
+}
+也可以简化为
+add_to_array = { <array> = <value> }
+
+remove_from_array = { #从数组中移除变量，如果index和value均未定义则移除最后一个
+	array = <string> #要移除的数组
+	index = <int> #可选，与value冲突，将会移除数组中该位置的变量
+	value = <var> #可选，与index冲突，将会移除数组中所有等于该变量的变量
+}
+也可以简化为
+remove_from_array = { <array> = <value> }
+
+clear_array = <string> #清除一个数组内所有变量
+
+resize_array = { #设置数组大小
+	array = <string> #要设置的数组
+	value = <var> #可选，用以填充空白位置的变量，默认为0
+	size = <int> #要设置的大小，多余的舍去，不足的用value补上
+}
+也可以简化为
+resize_array = { <array> = <size> }
+
+for_each_scope_loop = { #对数组内每一个变量操作（切换作用域）
+	array = <string> #读取的数组
+	break = <string> #可选，定义一个局部变量，当数值不为0时终止循环，默认为break
+	<effects>
+}
+
+for_each_loop = { #对数组内每一个变量操作（不切换作用域）
+	array = <string> #读取的数组
+	value = <string> #可选，定义一个局部变量，用以代表正在读取的变量，默认为v
+	index = <string> #可选，定义一个局部变量，用以代表正在读取变量的位置，默认为i
+	break = <string> #可选，定义一个局部变量，当数值不为0时终止循环，默认为break
+	<effects>
+}
+
+random_scope_in_array = { #选取数组内一个满足条件的变量操作（切换作用域）
+	array = <string> #读取的数组
+	break = <string> #可选，定义一个局部变量，当数值不为0时终止循环，默认为break
+	limit = { <triggers> } #变量须满足的条件
+	<effects>
+}
+
+同样可以建立局部数组，使用以下命令对局部数组本身进行修改，调用时尽可使用与一般数组同样的命令：
+add_to_temp_array
+remove_from_temp_array
+clear_temp_array
+resize_temp_array
+
+检测变量的条件语句：
+
+is_in_array = { #检查该数值是否在数组中
+	array = <string> #要检测的数组
+	value = <var> #要检测的数值
+}
+
+any_of = { #对数组中所有数值运行检查（不切换作用域），如果任意为真，则返回真
+	array = <string> #要检测的数组
+	value = <string> #可选，定义一个局部变量，用以代表正在读取的变量，默认为v
+	index = <string> #可选，定义一个局部变量，用以代表正在读取变量的位置，默认为i
+	<triggers>
+}
+
+all_of = { #对数组中所有数值运行检查（不切换作用域），如果任意为假，则返回假
+	array = <string> #要检测的数组
+	value = <string> #可选，定义一个局部变量，用以代表正在读取的变量，默认为v
+	index = <string> #可选，定义一个局部变量，用以代表正在读取变量的位置，默认为i
+	<triggers>
+}
+
+any_of_scopes = { #对数组中所有数值运行检查（切换作用域），如果任意为真，则返回真
+	array = <string> #要检测的数组
+	<triggers>
+}
+
+all_of_scopes = { #对数组中所有数值运行检查（切换作用域），如果任意为假，则返回假
+	array = <string> #要检测的数组
+	<triggers>
+}
+
+另外，一个命令也可以在游戏中实现循环，但是与数组无关，这里顺带一提：
+
+while_loop_effect = { #循环，在循环开始时检查条件是否满足，若不满足终止循环
+	break = <string> #可选，定义一个局部变量，当数值不为0时终止循环，默认为break
+	limit = { <triggers> } #循环继续的条件
+	<effects>
+}
+
+在游戏变量当中，也存在数组，按照作用域列举如下：
+
+全局：
+countries #所有国家，包括不存在的
+ideology_groups #所有意识形态组，现版本有民主、共产、法西斯、中立四个
+majors #所有主要国家
+operations #所有特工行动种类
+
+国家：
+allies #所有盟友
+army_leaders #所有拥有的元帅将军
+controlled_states #所有控制的省份
+core_states #所有核心省份
+enemies #所有敌人
+enemies_of_allies #盟友的所有敌人
+faction_members #阵营的所有成员
+neighbors #所有相邻国家
+neighbors_owned #所有相邻省份
+occupied_countries #所有占领的国家
+operatives #所有拥有的特工
+owned_controlled_states #所有拥有并控制的省份
+owned_states #所有拥有的省份
+potential_and_current_enemies #所有现有和潜在（与现有敌人处于同一阵营）敌人
+subjects #所有附庸国
+
+省份：
+core_countries #所有核心国家
+
+比如，如果想要移除一个省份的所有核心：
+42 = {
+	for_each_scope_loop = {
+		array = core_countries
+		42 = {  remove_core_of = PREV }
+	}
+}
+
+42 = {
+	for_each_loop = {
+		array = core_countries
+		remove_core_of = v
+	}
+}
+以上两个的效果是一样的，都会移除在42-摩泽兰有核心的国家的核心。
+
+再例如，对所有国家做动作，包括存在与不存在的：
+for_each_scope_loop = {
+	array = global.countries
+	<effects>
+}
+
+以上就是全部内容了。最后我附上一个移除省份核心的决议，以供参考。注意这个决议直接放进decisions是无效的，需要放在一个决议类型（category）之内。
+
+remove_a_core = { #ROOT是执行的国家；FROM是目标省份
+	name = remove_a_core_name #决议的显示名称
+
+	icon = generic_intelligence_operation #图标
+
+	allowed = { #允许条件
+		always = yes #永远为真
+	}
+
+	available = { #可以选取的条件
+		has_war = no #和平
+		FROM = {
+			custom_trigger_tooltip = { #自定义触发文本
+				tooltip = not_core_exists #文本
+				all_of_scopes = {
+					array = global.countries
+					or = {
+						FROM = { NOT = { is_core_of = PREV } #不是核心
+						not = { country_exists = THIS } #不存在
+						tag = ROOT #是ROOT
+						is_in_faction_with = ROOT #与ROOT在同一阵营
+						is_subject_of = ROOT #是ROOT的附庸
+					}
+				}
+				any_of_scopes = {
+					array = core_countries
+					not = { tag = ROOT } #不是ROOT
+				}
+			}
+			is_owned_and_controlled_by = ROOT #ROOT拥有并控制
+			is_core_of = ROOT #是ROOT核心
+		}
+	}
+
+	state_target = yes #省份目标，默认为no，即国家目标
+
+	remove_trigger = { #移除条件，满足时将立即移除，不触发结果
+		FROM = {
+			NOT = { is_owned_and_controlled_by = ROOT } ##ROOT未拥有并控制
+		}
+	}
+
+	on_map_mode = map_only #地图显示模式，如果是map_only则只显示在地图上，如果不写则默认为map_and_decisions_view，即在地图上显示的同时也会出现在决议列表中
+
+	visible = { #可见条件
+		OR = {
+			not = { original_tag = SPR } #不是西班牙势力
+			not = { has_dlc = "La Resistance" } #没有抵抗运动DLC
+			has_global_flag = spanish_civil_war #西班牙内战已经打响
+		}
+		FROM = {
+			is_core_of = ROOT #是ROOT核心
+			any_of_scopes = {
+				array = core_countries
+				not = { tag = ROOT } #不是ROOT
+			}
+		}
+	}
+
+	target_trigger = {
+		FROM = {
+			is_core_of = ROOT #是ROOT核心
+			any_of_scopes = {
+				array = core_countries
+				not = { tag = ROOT } #不是ROOT
+			}
+		}
+	}
+
+	target_array = owned_controlled_states #目标数组，每天会先以该数组筛选，然后判断target_trigger是否满足，如果满足则添加以该省份为目标的决议，一经添加不会移除，所以要用visible决定是否显示
+
+	days_remove = 70 #持续时间
+
+	modifier = { #持续时间内的效果
+		weekly_manpower = -2000 #每周人力-2000
+	}
+
+	complete_effect = { #选取立刻发生的效果
+	}
+
+	cost = 10 #消耗政治点数
+
+	remove_effect = { #持续时间结束后的效果
+		for_each_scope_loop = {
+			array = global.countries #如果使用标准的every_country，不存在的国家就无法获取；every_occupied_country似乎不奏效
+			if = {
+				limit = {
+					FROM = { is_core_of = PREV } #是核心
+					NOT = { tag = ROOT } #不是ROOT
+				}
+				FROM = { remove_core_of = PREV } #移除核心
+				if = {
+					limit = {
+						any_state = {
+							is_core_of = PREV #是核心
+						}
+					}
+					FROM = { add_claim_by = PREV } #添加宣称
+				}
+				else = {
+					every_state = {
+						limit = { is_claimed_by = PREV } #被宣称
+						remove_claim_by = PREV #移除宣称
+					}
+				}
+			}
+		}
+	}
+}

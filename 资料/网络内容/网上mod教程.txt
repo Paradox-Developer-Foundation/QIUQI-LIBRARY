@@ -1,0 +1,52 @@
+1.钢铁雄心4地图细化与Nudge教程，修改地图；https://www.bilibili.com/read/cv15997341
+2.钢铁雄心4国策代码；https://www.bilibili.com/read/cv12171594?spm_id_from=333.1007.0.0
+3.钢铁雄心4】Mod制作基础教程【合集】:https://www.bilibili.com/video/BV1ia4y1n7bd?spm_id_from=333.337.search-card.all.click&vd_source=6d39db5c6c1e86f934c7f72306d36756
+4从零开始的钢丝MOD教学:https://www.bilibili.com/video/BV1c64y1y7SF/?spm_id_from=333.788.recommend_more_video.0&vd_source=6d39db5c6c1e86f934c7f72306d36756
+5.《钢铁雄心4》mod制作教程1——创建一个国家:https://www.bilibili.com/video/BV13Z4y1N7NL/?spm_id_from=333.788.recommend_more_video.1&vd_source=6d39db5c6c1e86f934c7f72306d36756
+6.[钢铁雄心4] 创建一个新意识形态；https://www.bilibili.com/video/BV1WY41147gc/?spm_id_from=333.788.recommend_more_video.-1&vd_source=6d39db5c6c1e86f934c7f72306d36756
+7.【钢铁雄心4】MOD教学 #8 国策制作:https://www.bilibili.com/video/BV1z64y1u7Y6/?spm_id_from=333.788.recommend_more_video.0&vd_source=6d39db5c6c1e86f934c7f72306d36756  [这个有点乱】
+8.钢丝国策树编辑器；https://www.bilibili.com/video/BV12S4y1t7aj/?spm_id_from=333.788.recommend_more_video.-1&vd_source=6d39db5c6c1e86f934c7f72306d36756
+9.【钢铁雄心4】国策图标美工制作；https://www.bilibili.com/video/BV1qM4y1u7Rn/?spm_id_from=333.788.recommend_more_video.2&vd_source=6d39db5c6c1e86f934c7f72306d36756
+10.[钢铁雄心4]MOD制作教程：https://www.bilibili.com/video/BV1444y1m7PL/?spm_id_from=333.788.recommend_more_video.12&vd_source=6d39db5c6c1e86f934c7f72306d36756 比较全
+11.钢4MOD基础教学-第一期-准备工作；https://www.bilibili.com/video/BV1E5411U7Xy?spm_id_from=333.337.search-card.all.click&vd_source=6d39db5c6c1e86f934c7f72306d36756
+12.【钢铁雄心4】Mod制作进阶教程【合集】；https://www.bilibili.com/video/BV1gh41117pJ?spm_id_from=333.337.search-card.all.click&vd_source=6d39db5c6c1e86f934c7f72306d36756
+13.【钢铁雄心4】MOD制作的进阶简单教程；https://www.bilibili.com/video/BV1Wt411t7RL?spm_id_from=333.337.search-card.all.click&vd_source=6d39db5c6c1e86f934c7f72306d36756
+14,杨白给；https://space.bilibili.com/5205090
+15.【雪儿解说】钢铁雄心4地图生成器MapGen教程；https://www.bilibili.com/video/BV17q4y1s7iD?spm_id_from=333.337.search-card.all.click&vd_source=6d39db5c6c1e86f934c7f72306d36756
+16.钢铁雄心（Hoi4）数组 Array 简单应用   https://www.bilibili.com/read/cv17266666
+17.钢铁雄心4 GUI教程 P7gridboxType(二) https://www.bilibili.com/read/cv21910522?spm_id_from=333.976.0.0
+18.钢铁雄心4 GUI教程 P7gridboxType(一) https://www.bilibili.com/read/cv21719393
+19.钢铁雄心4 GUI教程 P6滑轮 https://www.bilibili.com/read/cv21689855
+20. 钢铁雄心4 GUI教程 P5进度条  https://www.bilibili.com/read/cv21668910
+21.钢铁雄心4 GUI教程 P4地图互动型界面 https://www.bilibili.com/read/cv21647732
+22.钢铁雄心4 GUI教程 P3窗口类型与图像资源（三） https://www.bilibili.com/read/cv21557483
+23. 钢铁雄心4 GUI教程 P3窗口类型与图像资源（二） https://www.bilibili.com/read/cv21533718
+24. 钢铁雄心4 GUI教程 P3窗口类型与图像资源（一） https://www.bilibili.com/read/cv21533239
+25.钢铁雄心4 GUI教程 P2图像与文本变换   https://www.bilibili.com/read/cv21451860
+26. 钢铁雄心4 GUI教程 P1创建一个新的界面 https://www.bilibili.com/read/cv21444232
+27. 如何制作一份钢铁雄心4字体 https://www.bilibili.com/read/cv18809301?from=search&spm_id_from=333.337.0.0
+28. 钢铁雄心4mod制作教程（1） https://www.bilibili.com/read/cv13248093?spm_id_from=333.999.0.0
+29. 钢铁雄心4mod制作教程（2） https://www.bilibili.com/read/cv13255540?spm_id_from=333.999.0.0
+30 . 钢铁雄心4mod制作教程（3） https://www.bilibili.com/read/cv13322527?spm_id_from=333.999.0.0
+31 .  钢铁雄心4mod制作教程（4） https://www.bilibili.com/read/cv13433885?spm_id_from=333.999.0.0
+32 . 钢铁雄心4军队编制对应表 https://www.bilibili.com/read/cv13442774?spm_id_from=333.999.0.0
+33 . 钢铁雄心4mod制作教程（5） https://www.bilibili.com/read/cv13798941?spm_id_from=333.999.0.0
+34 . 钢铁雄心4mod制作教程-空军与海军   https://www.bilibili.com/read/cv14196839?spm_id_from=333.999.0.0
+35 . 钢铁雄心4Mod教程（7）https://www.bilibili.com/read/cv14684103?spm_id_from=333.999.0.0
+36 . 钢铁雄心4mod教程（8）https://www.bilibili.com/read/cv14766181?spm_id_from=333.999.0.0
+37 . 钢铁雄心4新版本国家领导人的改法 https://www.bilibili.com/read/cv15058443?spm_id_from=333.999.0.0
+38 . 从零开始做个Modder！钢铁雄心4mod开发教程（附录1）州的配置文件详解 https://www.bilibili.com/read/cv10099291
+39 . 从零开始做个Modder！钢铁雄心4mod开发教程（一） https://www.bilibili.com/read/cv10097565
+40 . 从零开始做个Modder！钢铁雄心4mod开发教程（零） https://www.bilibili.com/read/cv9892396
+41 . 钢铁雄心4mod地图生成器MapGen v2.2 https://www.bilibili.com/read/cv21898122?from=search&spm_id_from=333.337.0.0\
+42 . 钢铁雄心4地图细化与Nudge教程 P1-省份细化 https://www.bilibili.com/read/cv15997341?from=search&spm_id_from=333.337.0.0
+43 . 钢铁雄心4地图细化与Nudge教程 P2-战略区 https://www.bilibili.com/read/cv16030582
+44 . 钢铁雄心4地图细化与Nudge教程 P3-铁路和补给 https://www.bilibili.com/read/cv16047188
+45 . 钢铁雄心4地图细化与Nudge教程 P4-邻接设定 https://www.bilibili.com/read/cv16062313
+46 . 钢铁雄心4地图细化与Nudge教程 P5-地块数据 https://www.bilibili.com/read/cv16091998
+47 . 钢铁雄心4地图细化与Nudge教程 P6-新建地块 https://www.bilibili.com/read/cv16158648
+48 . 钢铁雄心4地图细化教程番外篇 KR城市地标显示 https://www.bilibili.com/read/cv20606292
+49 . R可视化——议会图（parliament diagrams）的绘制 https://www.bilibili.com/read/cv18777316?from=search&spm_id_from=333.337.0.0
+50 . 钢铁雄心4 GUI教程 P7gridboxType(三) https://www.bilibili.com/read/cv22188433
+51.钢铁雄心4常用代码 https://www.bilibili.com/read/cv27037995/
+ 

@@ -1,0 +1,534 @@
+截止到1.19.x；国策模板更新 by秋起
+
+筛选器标签：
+政治 search_filters = {FOCUS_FILTER_POLITICAL}
+科研 search_filters = {FOCUS_FILTER_RESEARCH}
+工业 search_filters = {FOCUS_FILTER_INDUSTRY}
+稳定度 search_filters = {FOCUS_FILTER_STABILITY}
+战争支持度 search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+人力 search_filters = {FOCUS_FILTER_MANPOWER}
+吞并 search_filters = {FOCUS_FILTER_ANNEXATION}
+史实 search_filters = {FOCUS_FILTER_HISTORICAL}
+
+以下为国策树内容，国策树文件位置common/national_focus/xxx.txt
+focus_tree = {
+	id = mod_focus_tree #国策树id 
+	country = {
+		factor = 0 #国策树权重（一定不要碰），如果设置为1 那就是全图显示，因为全部国策树的权重默认为0
+		modifier = {
+			add = 10 #权重修正（在这里修改），多用于阶段性国策。例如阶段1 add = 5 阶段二 add = 3
+			tag = GER #指向国家
+		}
+	}
+	Reset_on_civilwarno = yes/no #是否在内战中重置 默认是no
+	default = no #是否为通用国策 默认是no
+
+	#########共享国策的引用#################
+	shared_focus = 共享/联合国策ID（或名字） ·效果是引入一个shared_focus（或者是joint_focus）和它下辖的所有导向focus #注意，必须使用 相对位置定位的方法才可以锁定下属focus
+    #如果不填写引用内容（等号后面空着不写东西），加载国策时，会直接崩溃（不会弹报错文件）
+
+	initial_show_position = { #点击进入国策树后，相机的位置（通俗来说，就是你进入国策树页面后，视角在国策树的哪一位置）
+    x = 17 #默认x y轴
+    y = 0
+	    offset = { #在某条件下，xy轴的位置
+			x = 0
+			y = 0
+			trigger = {
+				#条件块
+			}
+		}
+    }
+
+	shortcut = { #在国策树内左下角增加导航按钮，通过点击按钮，可以快速使视角滑动到target规定的国策上
+		name = lockey #导航按钮的id，需要本地化
+		target = focus_id #被索引国策的id
+		scroll_wheel_factor = <0,1> #范围在0到1之间，值越大，缩进越大
+		trigger = {
+			#条件块，判断该按钮是否可见
+		}
+	}
+
+
+    #这个代码块要在common/focus_inlay_windows/*.txt文件中定义，不要写在国策文件里面！（这里只是为了方便整理）
+	#对应关系：GUI的前端依旧需要去interface中的.gui文件中写，但是后端则需要到common/focus_inlay_windows/*.txt文件中定义
+	<inlay_window_id> = { #国策GUI 任意填写
+		window_name = gui_component_name #国策GUI的name(id) 
+		internal = yes/no #如果为yes，则该窗口只对本国可见，默认为no
+		visible = {
+			#是否可见的条件，持续检测
+		}
+		scripted_buttons = { #按钮
+			<button_name> = { #按钮的anme <button_name>为任意id
+				available = {
+					#是否可以点击的条件，持续监测
+				}
+			}
+			click_effect = {
+				#按下按钮时的效果
+			}
+		}
+		scripted_images = { #图片
+            <icon_name> = { #图片的名字，具体在.gfx文件中注册
+			    #形式1 #条件块，默认为yes
+                <gfx_name> = {
+				#可以显示的条件
+			    }
+			    #形式2
+			    <gfx_name> = yes #始终可以显示
+            }
+        }
+		scripted_progressbars = { #进度条
+            icon_name = {
+                progress = <variable_name> #进度条对应的变量
+            }
+        }
+	}
+
+
+	#这个直接写在focus_tree下
+	inlay_window = { #国策GUI的整个窗口的位置
+		id = <inlay_window_id> #国策GUI的名字
+		position = { x = 1 y = 20} #位置
+	}
+
+
+	continuous_focus_position = { x = 1200 y = 100 } #持续性国策位置（在全图范围内）。
+
+	focus = { #普通国策
+		id = 单独国策ID（或名字）
+
+
+		普通icon
+		icon = GFX_在.gfx文件里的图片名 普通icon
+        
+		动态icon（图标）
+		dynamic = yes/no #是否允许icon为动态 注：不能实时刷新（需要手动刷新国策树）
+		icon = {
+			GFX_icon_example_1 = {
+				#GFX_icon_example_1显示的条件
+			}
+			GFX_icon_example_2 = yes #默认显示的icon
+		}
+
+		标题栏样式：
+		text_icon = 标题栏定义的name — 决定显示国策名字的框是什么样式的，一般p社是默认为普通国策的标题栏
+
+		style = { #text_icon定义部分（建议在common/nation_focus/00_titlebar_styles.txt中定义）
+			name = 标题栏定义的name
+
+			unavailable = GFX_未完成国策时（不可点）的框
+			completed = GFX_完成国策时的框
+			available = GFX_未完成国策时（可点）的框
+			current = GFX_国策进行中的框样式
+			#以上文件均在interface/xx.gfx文件中注册
+		}
+
+
+		国策位置系列
+		法一：（相对于左上角的极点而言） - y轴越大 国策向下移动（y = 5） / x轴越大 国策向右移动 （x = 5）
+		x = 5 #x轴 横轴 （一般是以国策树内 左上角极点为0）
+		y = 0 #y轴 纵轴 （一般是以国策树内 左上角极点为0）
+        法二：（相对于relative_position_id所确定的国策id而言）
+		x = 5 #x轴 横轴 
+		y = 0 #y轴 纵轴 
+		relative_position_id = 基于某一国策的位置（直接填国策id） #这里xy轴就变成了类似加法/减法运算。如果按照现在所看到的内容来说：加入你基于的国策 x = 0 y = 1 那么你现在的国策的坐标系为 x = 5+0 y = 0+1 即 x =5 y = 1
+		动态国策位置：（相对于左上角的极点而言）
+		x = 5 #x轴 横轴 （一般是以国策树内 左上角极点为0）
+		y = 0 #y轴 纵轴 （一般是以国策树内 左上角极点为0）
+		offset = { #注：不能实时刷新（需要手动刷新国策树）。一般地，如果开局就满足该条件 移动效果将会立即生效（仅开局检测一次）
+			x = -5 #基于原先国策xy轴的加减法 假如满足国策里面的条件
+			trigger = {
+				让国策实现移动的条件
+			}
+		}
+
+		mutually_exclusive = { #国策互斥效果（注：所谓互斥 是互相排斥 所以你需要在目标国策上也设置相同的代码指向本国策）
+			focus = 国策id 
+		}
+		情况1
+		prerequisite = { #前置国策 下述表示 你仅需要完成一个国策 就可以进行下一个国策了 
+			focus = 国策id_0 focus = 国策id_1
+		}
+		情况2
+		prerequisite = { #前置国策 下述表示 你需要同时完成两个国策 才可进行下面的国策
+			focus = 国策id_0 
+		}
+		prerequisite = {
+			focus = 国策id_1
+		}
+
+
+
+		cost = 10 #国策持续天数 cost = 1 为 一周（七天）。这里cost=10为70天，可加小数点。同时cost的数值在定义内可以修改
+
+		ai_will_do = { #ai点击国策的倾向
+			base = 1 #基础值
+			modifier = { #可附加的值（类似于1+x的加法运算）
+				条件
+				add/factor = X 
+			}
+		}
+		available = {
+			国策可点的条件
+		}
+		allow_branch = {
+			国策可显示的条件（仅开局检测一次，否则则需要刷新国策树）
+		}
+		select_effect = {
+			国策点击时的效果
+		}
+		bypass = {
+			跳过国策的条件（不会给国策效果）
+		}
+		historical_ai = {
+			决定 AI 何时能够在打开历史焦点的情况下选择此焦点。这并不能确保它选择此焦点，而是防止它在错误时选择它。这优先于人工智能战略计划中授予的焦点顺序：如果人工智能接下来要按照计划完成这个重点，但是错误的，并且历史焦点被打开了，那么它将无法做到。（wiki机翻）
+			初步来看 这是防ai错选的机制
+		}
+		cancel = {
+			当满足条件时，国策会被取消
+		}
+
+		Available_if_capitulated = yes/no 代表投降后是否可点
+		cancelable = yes/no 国策能否取消
+
+		bypass_if_unavailable = yes/no 不满足某一条件国策是否跳过
+		cancel_if_invalid = yes/no 不满足某一条件国策是否取消
+		continue_if_invalid = yes/no 不满足某一条件国策是否继续
+
+		will_lead_to_war_with = TAG #当准备战争的时候，向对应国家提示（和正当化战争目标提示类似）
+
+		search_filters = { FOCUS_FILTER_MANPOWER } #国策标签
+		completion_reward = {
+			国策效果
+
+			注：刷新国策树的效果
+			mark_focus_tree_layout_dirty = yes
+
+		}
+		
+	}
+	
+}
+
+
+
+共享国策（不是国策树） shared_focus 同时，我们下文所说的joint_focus是共享国策的特殊形式，所以它们可以交替地去写
+	shared_focus = { #定义内容和普通国策大致相同，其效果也可以通用
+		id = 共享国策ID（或名字）
+
+
+		普通icon
+		icon = GFX_在.gfx文件里的图片名 普通icon
+        
+		动态icon（图标）
+		dynamic = yes/no #是否允许icon为动态 注：不能实时刷新（需要手动刷新国策树）
+		icon = {
+			trigger = {
+				第一个icon显示的条件（默认为 always= yes）
+			}
+			value = GFX_在.gfx文件里的图片名
+		}
+
+		icon = {
+			trigger = {
+				第二个icon显示的条件（默认为 always= yes）
+			}
+			value = GFX_在.gfx文件里的图片名
+		}
+		标题栏样式：
+		text_icon = 标题栏定义的name — 决定显示国策名字的框是什么样式的，一般p社是默认为普通国策的标题栏
+
+		style = { #text_icon定义部分（建议在common/nation_focus/00_titlebar_styles.txt中定义）
+			name = 标题栏定义的name
+
+			unavailable = GFX_未完成国策时（不可点）的框
+			completed = GFX_完成国策时的框
+			available = GFX_未完成国策时（可点）的框
+			current = GFX_国策进行中的框样式
+			#以上文件均在interface/xx.gfx文件中注册
+		}
+
+
+		共享国策位置系列
+        （相对于relative_position_id所确定的国策id而言）
+		x = 5 #x轴 横轴 
+		y = 0 #y轴 纵轴 
+		relative_position_id = 基于某一国策的位置（直接填国策id） #这里xy轴就变成了类似加法/减法运算。如果按照现在所看到的内容来说：加入你基于的国策 x = 0 y = 1 那么你现在的国策的坐标系为 x = 5+0 y = 0+1 即 x =5 y = 1
+		#建议在共享国策里面，只使用这种国策定位方式，引用时方便引用
+
+		mutually_exclusive = { #国策互斥效果（注：所谓互斥 是互相排斥 所以你需要在目标国策上也设置相同的代码指向本国策）
+			focus = 国策id 
+		}
+		情况1
+		prerequisite = { #前置国策 下述表示 你仅需要完成一个国策 就可以进行下一个国策了 
+			focus = 国策id_0 focus = 国策id_1
+		}
+		情况2
+		prerequisite = { #前置国策 下述表示 你需要同时完成两个国策 才可进行下面的国策
+			focus = 国策id_0 
+		}
+		prerequisite = {
+			focus = 国策id_1
+		}
+
+
+
+		cost = 10 #国策持续天数 cost = 1 为 一周（七天）。这里cost=10为70天，可加小数点。同时cost的数值在定义内可以修改
+
+		ai_will_do = { #ai点击国策的倾向
+			base = 1 #基础值
+			modifier = { #可附加的值（类似于1+x的加法运算）
+				条件
+				add/factor = X 
+			}
+		}
+		available = {
+			国策可点的条件
+		}
+		allow_branch = {
+			国策可显示的条件（仅开局检测一次，否则则需要刷新国策树）
+		}
+		select_effect = {
+			国策点击时的效果
+		}
+		bypass = {
+			跳过国策的条件（不会给国策效果）
+		}
+		historical_ai = {
+			决定 AI 何时能够在打开历史焦点的情况下选择此焦点。这并不能确保它选择此焦点，而是防止它在错误时选择它。这优先于人工智能战略计划中授予的焦点顺序：如果人工智能接下来要按照计划完成这个重点，但是错误的，并且历史焦点被打开了，那么它将无法做到。（wiki机翻）
+			初步来看 这是防ai错选的机制
+		}
+		cancel = {
+			当满足条件时，国策会被取消
+		}
+
+		Available_if_capitulated = yes/no 代表投降后是否可点
+		cancelable = yes/no 国策能否取消
+
+		bypass_if_unavailable = yes/no 不满足某一条件国策是否跳过
+		cancel_if_invalid = yes/no 不满足某一条件国策是否取消
+		continue_if_invalid = yes/no 不满足某一条件国策是否继续
+
+		will_lead_to_war_with = TAG #当准备战争的时候，向对应国家提示（和正当化战争目标提示类似）
+
+		search_filters = { FOCUS_FILTER_MANPOWER } #国策标签
+		completion_reward = {
+			国策效果
+
+			注：刷新国策树的效果
+			mark_focus_tree_layout_dirty = yes
+
+		}
+	}
+
+
+
+
+
+
+联合国策系列（joint_focus） - 联合国策是共享国策的一种特殊形式
+joint_focus = { #定义内容和普通国策大致相同，其效果也可以通用
+		id = 共享国策ID（或名字）
+
+
+		普通icon
+		icon = GFX_在.gfx文件里的图片名 普通icon
+        
+		动态icon（图标）
+		dynamic = yes/no #是否允许icon为动态 注：不能实时刷新（需要手动刷新国策树）
+		icon = {
+			trigger = {
+				第一个icon显示的条件（默认为 always= yes）
+			}
+			value = GFX_在.gfx文件里的图片名
+		}
+
+		icon = {
+			trigger = {
+				第二个icon显示的条件（默认为 always= yes）
+			}
+			value = GFX_在.gfx文件里的图片名
+		}
+		标题栏样式：
+		text_icon = 标题栏定义的name — 决定显示国策名字的框是什么样式的，一般p社是默认为普通国策的标题栏
+
+		style = { #text_icon定义部分（建议在common/nation_focus/00_titlebar_styles.txt中定义）
+			name = 标题栏定义的name
+
+			unavailable = GFX_未完成国策时（不可点）的框
+			completed = GFX_完成国策时的框
+			available = GFX_未完成国策时（可点）的框
+			current = GFX_国策进行中的框样式
+			#以上文件均在interface/xx.gfx文件中注册
+		}
+
+
+		联合国策位置系列
+        （相对于relative_position_id所确定的国策id而言）
+		x = 5 #x轴 横轴 
+		y = 0 #y轴 纵轴 
+		relative_position_id = 基于某一国策的位置（直接填国策id） #这里xy轴就变成了类似加法/减法运算。如果按照现在所看到的内容来说：加入你基于的国策 x = 0 y = 1 那么你现在的国策的坐标系为 x = 5+0 y = 0+1 即 x =5 y = 1
+		#建议在联合国策里面，只使用这种国策定位方式，引用时方便引用
+
+		mutually_exclusive = { #国策互斥效果（注：所谓互斥 是互相排斥 所以你需要在目标国策上也设置相同的代码指向本国策）
+			focus = 国策id 
+		}
+		情况1
+		prerequisite = { #前置国策 下述表示 你仅需要完成一个国策 就可以进行下一个国策了 
+			focus = 国策id_0 focus = 国策id_1
+		}
+		情况2
+		prerequisite = { #前置国策 下述表示 你需要同时完成两个国策 才可进行下面的国策
+			focus = 国策id_0 
+		}
+		prerequisite = {
+			focus = 国策id_1
+		}
+
+
+
+		cost = 10 #国策持续天数 cost = 1 为 一周（七天）。这里cost=10为70天，可加小数点。同时cost的数值在定义内可以修改
+
+		ai_will_do = { #ai点击国策的倾向
+			base = 1 #基础值
+			modifier = { #可附加的值（类似于1+x的加法运算）
+				条件
+				add/factor = X 
+			}
+		}
+		available = {
+			国策可点的条件
+		}
+		allow_branch = {
+			国策可显示的条件（仅开局检测一次，否则则需要刷新国策树）
+		}
+		select_effect = {
+			国策点击时的效果
+		}
+		bypass = {
+			跳过国策的条件（不会给国策效果）
+		}
+		historical_ai = {
+			决定 AI 何时能够在打开历史焦点的情况下选择此焦点。这并不能确保它选择此焦点，而是防止它在错误时选择它。这优先于人工智能战略计划中授予的焦点顺序：如果人工智能接下来要按照计划完成这个重点，但是错误的，并且历史焦点被打开了，那么它将无法做到。（wiki机翻）
+			初步来看 这是防ai错选的机制
+		}
+		cancel = {
+			当满足条件时，国策会被取消
+		}
+		joint_trigger = {
+			用于确定联合国策的“发起方”（重点国家）
+		}
+
+		Available_if_capitulated = yes/no 代表投降后是否可点
+		cancelable = yes/no 国策能否取消
+
+		bypass_if_unavailable = yes/no 不满足某一条件国策是否跳过
+		cancel_if_invalid = yes/no 不满足某一条件国策是否取消
+		continue_if_invalid = yes/no 不满足某一条件国策是否继续
+
+		will_lead_to_war_with = TAG #当准备战争的时候，向对应国家提示（和正当化战争目标提示类似）
+
+		search_filters = { FOCUS_FILTER_MANPOWER } #国策标签
+
+		completion_reward = {
+			效果（发起者和其他成员共同享有）
+		}
+
+		completion_reward_joint_originator = {
+			发起者单独享有的效果
+		}
+
+		completion_reward_joint_member = {
+			其他成员（接收者）享有的成果
+		}
+
+
+	}
+
+
+
+持续性国策系列（）
+
+持续性国策位置/Hearts of Iron IV/common/continuous_focus/*.txt
+模板：
+continuous_focus_palette = {
+    id = BHR_focus_palette #和上述内容基本一致
+    country = {
+        factor = 0
+        modifier = {
+            tag = BHR
+            add = 10
+        }
+    }
+	position = { x = 50 y = 1000 } #持续性国策初始位置
+
+	focus = { #普通国策
+		id = 单独持续性国策ID（或名字）
+
+
+		普通icon
+		icon = GFX_在.gfx文件里的图片名 普通icon
+        
+		动态icon（图标）
+		dynamic = yes/no #是否允许icon为动态 注：不能实时刷新（需要手动刷新国策树）
+		icon = {
+			trigger = {
+				第一个icon显示的条件（默认为 always= yes）
+			}
+			value = GFX_在.gfx文件里的图片名
+		}
+
+		icon = {
+			trigger = {
+				第二个icon显示的条件（默认为 always= yes）
+			}
+			value = GFX_在.gfx文件里的图片名
+		}
+		标题栏样式：
+		text_icon = 标题栏定义的name — 决定显示国策名字的框是什么样式的，一般p社是默认为普通国策的标题栏
+
+		style = { #text_icon定义部分（建议在common/nation_focus/00_titlebar_styles.txt中定义）
+			name = 标题栏定义的name
+
+			unavailable = GFX_未完成国策时（不可点）的框
+			completed = GFX_完成国策时的框
+			available = GFX_未完成国策时（可点）的框
+			current = GFX_国策进行中的框样式
+			#以上文件均在interface/xx.gfx文件中注册
+		}
+
+		daily_cost = 国策每日花费政治点（0.1 就是每天花费0.1的政治点）
+
+
+		ai_will_do = { #ai点击国策的倾向
+			base = 1 #基础值
+			modifier = { #可附加的值（类似于1+x的加法运算）
+				条件
+				add/factor = X 
+			}
+		}
+		available = {
+			国策可见的条件
+		}
+		enable = {
+			国策可点的条件
+		}
+
+		select_effect = {
+			国策点击时的效果
+		}
+
+		cancel_effect = {
+			取消时的效果
+		}
+
+		Available_if_capitulated = yes/no 代表投降后是否可点
+
+
+		search_filters = { FOCUS_FILTER_MANPOWER } #国策标签
+		modifier = {
+			持续性国策修正效果
+		}
+		
+	}
+}

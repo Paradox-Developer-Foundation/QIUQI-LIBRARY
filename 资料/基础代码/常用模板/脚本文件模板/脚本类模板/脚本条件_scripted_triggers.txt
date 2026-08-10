@@ -1,0 +1,28 @@
+#路径：common\scripted_triggers
+#triggers就是条件，这个文件是用来整理重复运用的条件的，比如你在两个或更多地方需要同样的条件，这时候你就可以调出来你的条件预设
+
+#格式：
+name = {
+	#条件
+
+}#name就是调用时使用的条件预设名字，可随意更改（不是中文就行）
+
+#使用：在需要使用该条件的地方输入 name=yes,如果需要不满足就是name=no
+#例
+#在striggers里写
+abcde = {
+	x = 1
+}
+#在需要使用的时候写
+GER = {
+	if = {
+		limit = {
+			abcde = yes
+		}
+	}
+	set_country_flag = boluo
+}
+
+
+#换句话说，在写striggers的时候是非常简单的，只需要名字和条件
+

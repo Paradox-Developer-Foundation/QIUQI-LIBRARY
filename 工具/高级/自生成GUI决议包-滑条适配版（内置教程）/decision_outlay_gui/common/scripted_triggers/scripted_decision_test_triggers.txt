@@ -1,0 +1,18 @@
+test_decision_custom_cost_trigger = {
+	has_army_experience > 4
+}
+test_decision_2_available = {
+	has_political_power > 500
+}
+test_decision_3_available = {
+	has_political_power > 1500
+}
+test_decision_available = {
+	has_political_power > 50
+}
+test_decision_3_activation = {
+	has_political_power > 50
+}
+test_decision_activation = {
+	has_political_power > 50
+}
