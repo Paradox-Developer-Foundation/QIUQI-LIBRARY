@@ -3,5 +3,5 @@ tags={
 	"Utilities"
 }
 name="秋起图书馆"
-supported_version="1.19.2.0"
+supported_version="*"
 remote_file_id="3445449478"
