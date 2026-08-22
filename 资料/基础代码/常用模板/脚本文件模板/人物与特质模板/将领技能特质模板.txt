@@ -1,0 +1,100 @@
+#国家领导人特质和#单位领导人特质的一些语句，如on_add、on_remove、daily_effect等是通用的。
+#国家领导人特质模板
+#国家领导人特质保存在Hearts of Iron IV/common/country_leader/下的任意txt文件中，国家领导人特质可用于顾问、理念和领导人
+leader_traits = { #特质文件的主结构，使游戏能够识别和应用特质
+    my_trait = { #特质的id
+        random = no #是否随机应用特质，如果是，则该特质可以出现在随机领导人身上
+        sprite = 1 #决定在顾问左下角出现的该特质的贴图的帧。关于所有领导人特质的贴图存放在由Hearts of Iron IV/interface/ideas.gfx文件所注册的的帧图（GFX_idea_traits_strip）里。最多只能有一张帧图。
+		#修正
+        political_power_gain = 0.1
+        equipment_bonus = { #特殊修正。关于特殊修正，也可用targeted_modifier = { ... }
+            train_equipment = {
+                build_cost_ic = 0.05
+                reliability = 0.15
+            }
+        }
+        ai_will_do = { #AI选择拥有该特质的顾问的概率
+            base = 2
+        }
+        command_cap = 10 #具有该特质的顾问占用的指挥点数的数量。
+    }
+}
+#单位领导人特质模板
+#单位领导人特质保存在Hearts of Iron IV/common/unit_leader/下的任意txt文件中，单位领导人特质可用于单位领导人和特工。
+ leader_traits = {
+ 	my_trait = {
+ 		type = all # 适用身份类型，可选值：all（全部将领）、field_marshal（陆军元帅）、corps_commander（军长）、navy（海军将领）
+		trait_type = basic_trait # 特质大类，可选参数：
+   					#basic_trait 基础特质
+   					#status_trait 状态特质
+   					#personality_trait 性格特质
+   					#assignable_trait 可手动指派特质
+   					#basic_terrain_trait 基础地形特质
+   					#assignable_terrain_trait 可指派地形特质
+   					#exile 流亡特质
+
+		attack_skill = 0 # 增减的进攻技能点数（整数）
+		defense_skill = 0 # 增减的防御技能点数（整数）
+		logistics_skill = 0 # 增减的后勤技能点数（整数）
+		planning_skill = 0 # 增减的计划技能点数（整数）
+		maneuvering_skill = 0 # 增减的机动技能点数（整数）(海军）
+		coordination_skill = 0 # 增减的协同技能点数（整数）(海军）
+
+		attack_skill_factor = 0.0 # 进攻技能修正倍率（浮点数）
+		defense_skill_factor = 0.0 # 防御技能修正倍率（浮点数）
+		logistics_skill_factor = 0.0 # 后勤技能修正倍率（浮点数）
+		planning_skill_factor = 0.0 # 计划技能修正倍率（浮点数）
+		maneuvering_skill_factor = 0.0 # 机动技能修正倍率（浮点数）(海军）
+		coordination_skill_factor = 0.0 # 协同技能修正倍率（浮点数）(海军）
+
+		show_in_combat = yes # 是否在战斗面板展示该特质（布尔值 yes / no）
+		override_effect_tooltip = "" # 覆盖默认的提示，填写本地化Key。如，该特质为+1进攻时，一般来说会自动显示“+1进攻”，添加自定义提示，后，会使用自定义的本地化值覆盖默认的自动提示。
+		custom_effect_tooltip = "" # 自定义效果提示本地化Key，附加在默认提示上
+		custom_prerequisite_tooltip = "" # 自定义解锁前置条件提示本地化Key，用于特质树
+		custom_gain_xp_trigger_tooltip = "" # 自定义获取经验触发提示本地化Key，用于特质树
+
+		mutually_exclusive = other_trait # 互斥特质，填写冲突特质ID，二选一无法共存，用于特质树
+
+		parent = { # 父级前置特质组，可重复多组定义，用于特质树
+		    traits = {XXX YYY ZZZ}  # 父特质ID列表
+    	   num_parents_needed = 1 # 需要满足几条前置父特质才能解锁
+   		}	
+   		any_parent = { XXX YYY ZZZ } # 简写：任意满足列表中一个父特质（等价于num_parents_needed = 1），用于特质树
+   		all_parents = { XXX YYY ZZZ } # 简写：必须拥有列表全部父特质才可解锁，用于特质树
+
+		gui_row = 0 # 特质树UI行号（从0开始），留空或设为-1：不在可解锁特质树显示
+		gui_column = 0 # 特质树UI列号（从0开始），留空或设为-1：自动排布列位置
+
+		allowed = { ... } # 允许获取该特质的判定触发器，作用域：将领 unit leader
+		prerequisites = { ... } # 解锁前置条件触发器，作用域：将领 unit leader
+		gain_xp = { ... } # 战斗获取经验触发器，作用域：作战单位 combatant
+		gain_xp_leader = { ... } # 将领自身获取经验触发器，作用域：将领；ROOT=所属国家，FROM=特工目标国籍
+		gain_xp_on_spotting = 0 # 发现敌方单位获得的经验值（整数）
+
+		modifier = { ... } # 特质赋予指挥的师的修正
+		non_shared_modifier = { ... } # 非共享修正,与modifier类似，只是在工具提示上有所不同。
+		corps_commander_modifier = { ... } # 仅担任陆军将领时生效的修正
+		field_marshal_modifier = { ... } # 仅担任陆军元帅时生效的修正
+
+		sub_unit_modifiers = { # 细分兵种独立修正组
+			# 示例
+			submarine {
+				units = {} # 单位筛选器列表
+				# 修正示例：潜艇隐蔽度-0.1
+				naval_visibility = -0.1
+			}
+		}
+
+		trait_xp_factor = { ... } # 其他特质对本特质的经验获取倍率，格式：特质ID = 倍率小数
+
+		on_add = { ... } # 获得特质时执行的效果，作用域：将领
+		on_remove = { ... } # 移除特质时执行的效果，作用域：将领
+		daily_effect = { ... } # 每日循环执行效果，作用域：将领
+
+		cost = 1000 # 手动指派消耗点数（通常为政治点数，整数）
+		ai_will_do = { ... } # AI主动解锁/选择该特质的权重
+		new_commander_weight = { ... } # 游戏随机刷将领自带此特质的权重，如factor = 0为随机将领不会自动获得
+
+		enable_ability = ability_key # 解锁将领能力，填写技能ID
+}
+}
