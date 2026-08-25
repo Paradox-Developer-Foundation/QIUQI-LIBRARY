@@ -25,8 +25,8 @@
 | [冷战:热斗(CW:HS)制作组](https://steamcommunity.com/sharedfiles/filedetails/?id=3757466864)                                                                                                                                               | [日月不落](https://steamcommunity.com/sharedfiles/filedetails/?id=2917842100)模组                     | [英式和平:自由或死亡](https://steamcommunity.com/sharedfiles/filedetails/?id=3071559334)(PB:LOM)制作组      |
 | 东方乱世录:幻想终末(THW)制作组                                                                                                                                            | 钢铁雄心4萌新社                                                                                        | [P社系列游戏资源互助站](https://share.paragames233.com)                                                   |
 | [八年抗战优化补充整合](https://steamcommunity.com/sharedfiles/filedetails/?id=3273220145)制作组                                                                            | [蔚蓝新世界(ANW)制作组](https://steamcommunity.com/sharedfiles/filedetails/?id=3114407695)              | [临界坍塌(CC)制作组](https://steamcommunity.com/sharedfiles/filedetails/?id=3666006236)                                                                                     |
-| 新秩序:砥锋挺锷(TNO:FSE)制作组                                                                                                                                          | 新秩序:燧峰砂(TNO:ER)制作组                                                                              | 西欧社会主义一体化制作组                                                                                    |
-|                                                                                                                                                               | 新秩序:正道沧桑(TNO:STV)制作组                                                                            |                                                                                                 |
+| 新秩序:砥锋挺锷(TNO:FSE)制作组                                                                                                                                           | 新秩序:燧峰砂(TNO:ER)制作组                                                                              | [西欧社会主义一体化](https://steamcommunity.com/sharedfiles/filedetails/?id=2960968689)制作组                                                                                    |
+| 凡尔赛秩序(IOV)制作组                                                                                                                                                              | 新秩序:正道沧桑(TNO:STV)制作组                                                               | 永恒金色黎明(EGD)制作组                                                                                                |
 
 ## 贡献人士
 
@@ -70,7 +70,7 @@ BLO(AOR组) - 收录其代码工具
 
 [Y鱼の饼B(赤潮:雨打芭蕉组)](https://space.bilibili.com/546778033)  - 担任图书馆群聊管理，并为美工馆建设做出贡献
 
-sergey taboritsky(TNO:DSR组;TNO:IPN组;TNO:SFFH组) - 担任图书馆群聊管理，并为汉化组建设做出贡献
+sergey taboritsky - 担任图书馆群聊管理，并为汉化组建设做出贡献
 
 华莎(CR组) - 担任图书馆群聊管理，并为美工馆建设做出贡献
 
@@ -126,7 +126,7 @@ CancerCendil(红与白组) - 提供有关token的部分教程
 
 Apolynoid - 提供自定义制造商的修改模板
 
-康米斯特(烈焰升腾:潜龙腾渊组) - 提供其撰写代码教程合集
+康米斯特 - 提供其撰写代码教程合集
 
 墨合 - 收录其代码工具
 
